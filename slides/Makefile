@@ -1,10 +1,12 @@
-all: slides.html slidesDutch.html slidesDutch.tmp
+all: slides.html slidesDutch.html 
 
 slides.html: slides.md
 	pandoc --offline -s -t slidy -o $@ $<
-slidesDutch.html: slidesDutch.tmp pre.html post.html
-	copy pre.html+slidesDutch.tmp+post.html slidesDutch.html
-slidesDutch.tmp: slidesDutch.md
-	pandoc -t slidy slidesDutch.md -o $@ $<
+slidesDutch2.html: slidesDutch2.tmp pre.html post.html
+	cp pre.html slidesDutch2.tmp post.html > $@
+slidesDutch2.tmp: slidesDutch.md
+	pandoc -t slidy -o $@ $<
+slidesDutch.html: slidesDutch.md
+	pandoc --offline -s -t slidy -o $@ $<
 clean:
-	-rm -f slidesDutch.html
+	rm slide*.html *.tmp

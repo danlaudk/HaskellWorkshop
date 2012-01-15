@@ -1,6 +1,6 @@
-% Functioneel programmeren met Haskell
+% Introductie Functioneel Programmeren (met Haskell)
 % Han Joosten
-% 7 maart 2012
+% 21 februari 2012 
 
 # Welkom!
 
@@ -8,7 +8,7 @@
 main = putStrLn "hallo!"
 ~~~~
 
-* Mijn naam is Han Joosten
+* Mijn naam is Han Joosten (han.joosten@atos.net)
 
 * Ik ben Requirements Engineer bij TS Noord
 
@@ -47,7 +47,19 @@ Na mijn afstuderen in 1990 heb ik geprogrammeerd in iteratieve talen
 
 * Doel: Enthousiasmeren van jullie
 
-* Over deze sheets: gepikt van Bryan O'Sullivan
+# Over deze sheets
+
+* Veel is (met dank!) gepikt van Bryan O'Sullivan
+
+![Real World Haskell](http://www.realworldhaskell.org/blog/wp-content/themes/mistylook-101/img/profile.jpg) Bryan O'Sullivan is co-auteur van het boek [Real World Haskell](http://www.realworldhaskell.org). Dit is een gratis online boek dan zeer goed bruikbaar is als leerboek als je verder wilt met Haskell.
+
+* Na te lezen op [http://hanjoosten.github.com/HaskellWorkshop/slides/slidesDutch.html](http://hanjoosten.github.com/HaskellWorkshop/slides/slidesDutch.html)
+
+* beschikbaar op Github:
+ 
+~~~~
+git clone https://github.com/hanjoosten/HaskellWorkshop
+~~~~
 
 
 # Wat kan je verwachten 1
@@ -212,7 +224,7 @@ Laten we ons programma in `ghci` laden:
 De `ghci` prompt verandert:
 
 ~~~~
-*Main>
+Main>
 ~~~~
 
 
@@ -337,7 +349,7 @@ Gebruik `ghci` als een rekenmachine.
 
 De `**` operator is voor machtsverheffen.
 
-* Als ik 5 FT's investeer met 3% samengestelde rente per jaar, hoeveel FT's heb ik dan
+* Als ik 500 Euro op een bankrekening zet tegen 3% rente per jaar, hoeveel heb ik dan
   na 10 jaar?
 
 
@@ -469,7 +481,7 @@ Maar is dit alles wat er valt te weten?
 
 # Lijst constructors
 
-Stel dat we een lijst van de gront af aan willen opbouwen.
+Stel dat we een lijst van de grond af aan willen opbouwen.
 
 * We schrijven de *lege lijst* als `[]`.
 
@@ -506,7 +518,7 @@ Wat is het resultaat van deze expressie?
 
 # Constructors
 
-We refereren aan `[]` en `:` als *constructors*, omdat we ze gebruiken om lijsten mee te constureren.
+We refereren aan `[]` en `:` als *constructors*, omdat we ze gebruiken om lijsten mee te construreren.
 
 Als je een lijst maakt, moet de Haskell runtime onthouden welke constructors je hebt gebruikt, en waar precies.
 
@@ -523,9 +535,10 @@ Dus de waarde `[5,8]` wordt gerepresenteerd als:
 
 Afhankelijk van je achtergrond, dacht je waarschijnlijk iets als:
 
-* "Hee! Haskell lijsten lijken op enkelvoudig gelinkte lijsten!"
+![Hee! Haskell lijsten lijken op enkelvoudig gelinkte lijsten](http://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Singly-linked-list.svg/408px-Singly-linked-list.svg.png)
 
-* "Hee! Dat lijkt op de `cons` cellen van Lisp!"
+![Hee! Dat lijkt op de `cons` cellen in Lisp!](http://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Cons-cells.svg/300px-Cons-cells.svg.png) 
+
 
 Inderdaad.
 
@@ -569,7 +582,7 @@ dan wordt het interessanter.
 * Wat er ook maar als eerste argument gebruikt is voor de `:` constructor wordt gebonden
   aan de naam `first`.
 * Het tweede argument van de `:` constructor (dus alles in de lijst na het eerste element) wordt gebonden aan de naam `rest`.
-* De expressie volgend op `->` wordt ge-evalueerd met deze waarden.
+* De expressie volgend op `->` wordt geëvalueerd met deze waarden.
 
 # Pattern matching
 
@@ -625,10 +638,10 @@ countCaps string =
 
 # Huh.
 
-Ik dacht dat Haskell zo beknopt was!?
+Ik dacht dat Haskell zo eenvoudig leesbaar was!?
 
 
-# Beknoptheid 1: top-level pattern matching
+# Leesbaarheid 1: top-level pattern matching
 
 ~~~~ {.haskell}
 countCaps []     = 0
@@ -640,10 +653,10 @@ countCaps (x:xs) =
 
 We kunnen een functie definieren als een serie vergelijkingen, die elk een `pattern match` bevatten.
 
-Dit is een beknopte schrijfwijze voor `case`.
+Dit is een beter leesbare schrijfwijze voor `case`.
 
 
-# Beknoptheid 2: guards
+# Leesbaarheid 2: guards
 
 ~~~~ {.haskell}
 countCaps []     = 0
@@ -658,7 +671,7 @@ Achter elke `|` staat een *guard*.
 
 * Zodra er een succes heeft, evalueren we de rechterkant als de `body` van de functie.
 
-(Jazeker, pattronen in een `case` kunnen ook guards hebben.)
+(Jazeker, patronen in een `case` kunnen ook guards hebben.)
 
 
 # Vóór
@@ -676,7 +689,7 @@ countCaps xs =
 
 # Na
 
-Zowel korter als eenvoudiger te begrijpen:
+Zowel korter als beter leesbaar:
 
 ~~~~ {.haskell}
 countCaps []     = 0
@@ -760,7 +773,7 @@ countLowerCase = length . filter isLower
 
 Enige toelichting is wel op z'n plek, om het duidelijker te maken.
 
-We plaatsen de argumenten in de rechterkant va onze functie definitie:
+We plaatsen de argumenten in de rechterkant van onze functie definitie:
 
 ~~~~ {.haskell}
 (f . g) x = f (g x)
@@ -1490,7 +1503,7 @@ isOpenTag (TagWarning x)    = False
 isOpenTag (TagPosition x y) = False
 ~~~~
 
-Beknopt, maar lelijk. 
+Begrijpbaar, maar lelijk. 
 
 * We zijn maar in precies één constructor geïnteresseerd.
 
@@ -1729,7 +1742,7 @@ Stel je voor dat we een functie zouden hebben die een gewone waarde als input he
 a -> Maybe b
 ~~~~
 
-En stel je voor dat we een beknopte syntax hebben om een anonieme functie te schrijven.
+En stel je voor dat we een begrijpbare syntax hebben om een anonieme functie te schrijven.
 
 ~~~~ {.haskell}
 \a -> "hoi mam! " ++ a
@@ -2052,8 +2065,8 @@ gaam we verder in een we-zien-wel-wat-voor-avontuur sessie.
 Bedankt dat je tot nu toe niet bent afgehaakt!
 
 
-# Copy these slides (if you want)
+# Deze slides zijn herbruikbaar, als je wilt:
 
 ~~~~
-git clone https://github.com/hanjoosten/strange-loop-2011
+git clone https://github.com/hanjoosten/HaskellWorkshop
 ~~~~
