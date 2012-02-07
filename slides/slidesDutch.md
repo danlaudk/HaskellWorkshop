@@ -1,6 +1,6 @@
 % Introductie Functioneel Programmeren (met Haskell)
 % Han Joosten
-% 19 januari 2012 
+% februari 2012 
 
 # Welkom!
 
