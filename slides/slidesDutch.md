@@ -1,6 +1,6 @@
 % Introductie Functioneel Programmeren (met Haskell)
 % Han Joosten
-% 21 februari 2012 
+% 19 januari 2012 
 
 # Welkom!
 
@@ -41,19 +41,28 @@ Na mijn afstuderen in 1990 heb ik geprogrammeerd in iteratieve talen
 
 * Haskell community is heel behulpzaam
 
+# Waarom zou ik me druk maken over FP?
+
+* Functioneel programmeren maakt dat je anders zal gaan denken over programmeren
+
+    * Mainstream talen gaan over *state*
+
+    * Functioneel programmeren gaat over *values*
+
+* Of je nou overstapt op Haskell of niet, je wordt een betere programmeur in je eigen favoriete taal.
+
+
 # Over deze presentatie
 
-* Reden: Omdat ik enthousiast ben over Functioneel Programmeren
-
 * Doel: Enthousiasmeren van jullie
-
-# Over deze sheets
 
 * Veel is (met dank!) gepikt van Bryan O'Sullivan
 
 ![Real World Haskell](http://www.realworldhaskell.org/blog/wp-content/themes/mistylook-101/img/profile.jpg) Bryan O'Sullivan is co-auteur van het boek [Real World Haskell](http://www.realworldhaskell.org). Dit is een gratis online boek dan zeer goed bruikbaar is als leerboek als je verder wilt met Haskell.
 
-* Na te lezen op [http://hanjoosten.github.com/HaskellWorkshop/slides/slidesDutch.html](http://hanjoosten.github.com/HaskellWorkshop/slides/slidesDutch.html)
+* Sheets ook beschikbaar om zelf te doen: 
+
+    [http://hanjoosten.github.com/HaskellWorkshop/slides/slidesDutch.html](http://hanjoosten.github.com/HaskellWorkshop/slides/slidesDutch.html)
 
 * beschikbaar op Github:
  
@@ -456,7 +465,7 @@ Waarom kan dit wel bij imperatieve talen, en niet in Haskell?
 
 # Een bijna triviale oefening
 
-Schrijf een functie met als resultaat het argument met daarachter `", world"` geplakt, als dat 
+Schrijf een functie met een string als parameter. Het resultaat is het argument met daarachter `", world"` geplakt, als dat 
 argument `"hello"` is, of alleen maar het onveranderde argument in andere gevallen.
 
 * Oh ja, De "append"-functie luistert naar de naam `++`.
@@ -551,14 +560,7 @@ Het laat *ons* ook een lijst inspecteren, zodat we kunnen nagaan welke contstruc
 
 Hoe doen we dat?
 
-~~~~ {.haskell}
-import Data.Char
-
-isCapitalized name
-  = case name of
-      (first:rest) -> isUpper first
-      []           -> False
-~~~~
+Stel dat we van een string willen weten of die begint met een hoofdletter.  
 
 
 # De case-expressie
@@ -566,6 +568,8 @@ isCapitalized name
 De `case` expressie laat ons een structuur *inspecteren*.
 
 ~~~~ {.haskell}
+import Data.Char
+
 isCapitalized name
   = case name of
       []           -> False
@@ -687,7 +691,16 @@ countCaps xs =
        else countCaps (tail xs)
 ~~~~
 
-# Na
+# Voor, Na
+
+~~~~ {.haskell}
+countCaps xs =
+  if null xs
+  then 0 
+  else if isUpper (head xs)
+       then 1 + countCaps (tail xs)
+       else countCaps (tail xs)
+~~~~
 
 Zowel korter als beter leesbaar:
 
@@ -885,7 +898,7 @@ source Haskell software:
 
 * (In de volksmond: "Hackage")
 
-Go er nu heen!
+Ga er nu heen!
 
 Click op de
 [Packages](http://hackage.haskell.org/packages/archive/pkg-list.html)

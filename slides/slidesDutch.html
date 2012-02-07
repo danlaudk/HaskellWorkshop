@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Han Joosten" />
-  <meta name="date" content="21 februari 2012" />
+  <meta name="date" content="19 januari 2012" />
   <style type="text/css">
 /*<![CDATA[*/
 /* slidy.css
@@ -424,7 +424,7 @@ var w3c_slidy={ns_pos:(typeof window.pageYOffset!="undefined"),khtml:((navigator
   <p class="author">
 Han Joosten
   </p>
-  <p class="date">21 februari 2012</p>
+  <p class="date">19 januari 2012</p>
 </div>
 <div class="slide">
 <h1 id="welkom">Welkom!</h1>
@@ -458,20 +458,26 @@ Han Joosten
 </ul>
 </div>
 <div class="slide">
-<h1 id="over-deze-presentatie">Over deze presentatie</h1>
+<h1 id="waarom-zou-ik-me-druk-maken-over-fp">Waarom zou ik me druk maken over FP?</h1>
 <ul>
-<li><p>Reden: Omdat ik enthousiast ben over Functioneel Programmeren</p></li>
-<li><p>Doel: Enthousiasmeren van jullie</p></li>
+<li><p>Functioneel programmeren maakt dat je anders zal gaan denken over programmeren</p>
+<ul>
+<li><p>Mainstream talen gaan over <em>state</em></p></li>
+<li><p>Functioneel programmeren gaat over <em>values</em></p></li>
+</ul></li>
+<li><p>Of je nou overstapt op Haskell of niet, je wordt een betere programmeur in je eigen favoriete taal.</p></li>
 </ul>
 </div>
 <div class="slide">
-<h1 id="over-deze-sheets">Over deze sheets</h1>
+<h1 id="over-deze-presentatie">Over deze presentatie</h1>
 <ul>
-<li>Veel is (met dank!) gepikt van Bryan O'Sullivan</li>
+<li><p>Doel: Enthousiasmeren van jullie</p></li>
+<li><p>Veel is (met dank!) gepikt van Bryan O'Sullivan</p></li>
 </ul>
 <p><img src="http://www.realworldhaskell.org/blog/wp-content/themes/mistylook-101/img/profile.jpg" alt="Real World Haskell" /> Bryan O'Sullivan is co-auteur van het boek <a href="http://www.realworldhaskell.org">Real World Haskell</a>. Dit is een gratis online boek dan zeer goed bruikbaar is als leerboek als je verder wilt met Haskell.</p>
 <ul>
-<li><p>Na te lezen op <a href="http://hanjoosten.github.com/HaskellWorkshop/slides/slidesDutch.html">http://hanjoosten.github.com/HaskellWorkshop/slides/slidesDutch.html</a></p></li>
+<li><p>Sheets ook beschikbaar om zelf te doen:</p>
+<p><a href="http://hanjoosten.github.com/HaskellWorkshop/slides/slidesDutch.html">http://hanjoosten.github.com/HaskellWorkshop/slides/slidesDutch.html</a></p></li>
 <li><p>beschikbaar op Github:</p></li>
 </ul>
 <pre><code>git clone https://github.com/hanjoosten/HaskellWorkshop
@@ -754,7 +760,7 @@ else &quot;wombat&quot;
 </div>
 <div class="slide">
 <h1 id="een-bijna-triviale-oefening">Een bijna triviale oefening</h1>
-<p>Schrijf een functie met als resultaat het argument met daarachter <code>&quot;, world&quot;</code> geplakt, als dat argument <code>&quot;hello&quot;</code> is, of alleen maar het onveranderde argument in andere gevallen.</p>
+<p>Schrijf een functie met een string als parameter. Het resultaat is het argument met daarachter <code>&quot;, world&quot;</code> geplakt, als dat argument <code>&quot;hello&quot;</code> is, of alleen maar het onveranderde argument in andere gevallen.</p>
 <ul>
 <li>Oh ja, De &quot;append&quot;-functie luistert naar de naam <code>++</code>.</li>
 </ul>
@@ -820,18 +826,14 @@ else &quot;wombat&quot;
 <p>Haskell moet natuurlijk onthouden hoe een lijst is opgebouwd.</p>
 <p>Het laat <em>ons</em> ook een lijst inspecteren, zodat we kunnen nagaan welke contstructors er gebruikt zijn.</p>
 <p>Hoe doen we dat?</p>
-<pre class="haskell"><code>import Data.Char
-
-isCapitalized name
-  = case name of
-      (first:rest) -&gt; isUpper first
-      []           -&gt; False
-</code></pre>
+<p>Stel dat we van een string willen weten of die begint met een hoofdletter.</p>
 </div>
 <div class="slide">
 <h1 id="de-case-expressie">De case-expressie</h1>
 <p>De <code>case</code> expressie laat ons een structuur <em>inspecteren</em>.</p>
-<pre class="haskell"><code>isCapitalized name
+<pre class="haskell"><code>import Data.Char
+
+isCapitalized name
   = case name of
       []           -&gt; False
       (first:rest) -&gt; isUpper first
@@ -910,7 +912,7 @@ countCaps (x:xs)
 <li><p>Als een patroon matcht, evalueren we iedere Boolean guard expressie van boven naar beneden.</p></li>
 <li><p>Zodra er een succes heeft, evalueren we de rechterkant als de <code>body</code> van de functie.</p></li>
 </ul>
-<p>(Jazeker, pattronen in een <code>case</code> kunnen ook guards hebben.)</p>
+<p>(Jazeker, patronen in een <code>case</code> kunnen ook guards hebben.)</p>
 </div>
 <div class="slide">
 <h1 id="v&#243;&#243;r">Vóór</h1>
@@ -924,7 +926,14 @@ countCaps (x:xs)
 </code></pre>
 </div>
 <div class="slide">
-<h1 id="na">Na</h1>
+<h1 id="voor-na">Voor, Na</h1>
+<pre class="haskell"><code>countCaps xs =
+  if null xs
+  then 0 
+  else if isUpper (head xs)
+       then 1 + countCaps (tail xs)
+       else countCaps (tail xs)
+</code></pre>
 <p>Zowel korter als beter leesbaar:</p>
 <pre class="haskell"><code>countCaps []     = 0
 countCaps (x:xs)
@@ -1062,7 +1071,7 @@ in x + y
 <li><p><a href="http://hackage.haskell.org/">http://hackage.haskell.org</a></p></li>
 <li><p>(In de volksmond: &quot;Hackage&quot;)</p></li>
 </ul>
-<p>Go er nu heen!</p>
+<p>Ga er nu heen!</p>
 <p>Click op de <a href="http://hackage.haskell.org/packages/archive/pkg-list.html">Packages</a> link bovenin de pagina om packages te doorzoeken.</p>
 <p>Helaas is het een overweldigende grote lijst, maar wie geduld heeft, kan er altijd nuttige dingen vinden.</p>
 <p>Wie heeft geduld?</p>
