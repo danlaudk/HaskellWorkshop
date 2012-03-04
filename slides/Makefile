@@ -8,5 +8,7 @@ slidesDutch2.tmp: slidesDutch.md
 	pandoc -t slidy -o $@ $<
 slidesDutch.html: slidesDutch.md
 	pandoc --offline -s -t slidy -o $@ $<
+index.html: slidesDutch.html
+	cp slidesDutch.html index.html
 clean:
 	rm slide*.html *.tmp
