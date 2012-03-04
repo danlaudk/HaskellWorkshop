@@ -1,6 +1,6 @@
 % Introductie Functioneel Programmeren (met Haskell)
 % Han Joosten
-% februari 2012 
+% Maart 2012 
 
 # Welkom!
 
@@ -58,11 +58,11 @@ Na mijn afstuderen in 1990 heb ik geprogrammeerd in iteratieve talen
 
 * Veel is (met dank!) gepikt van Bryan O'Sullivan
 
-![Real World Haskell](http://www.realworldhaskell.org/blog/wp-content/themes/mistylook-101/img/profile.jpg) Bryan O'Sullivan is co-auteur van het boek [Real World Haskell](http://www.realworldhaskell.org). Dit is een gratis online boek dan zeer goed bruikbaar is als leerboek als je verder wilt met Haskell.
+![Real World Haskell](http://www.realworldhaskell.org/blog/wp-content/themes/mistylook-101/img/profile.jpg) Bryan O'Sullivan is co-auteur van het boek [Real World Haskell](http://www.realworldhaskell.org). Dit is een gratis online boek dat zeer goed bruikbaar is als leerboek als je verder wilt met Haskell.
 
 * Sheets ook beschikbaar om zelf te doen: 
 
-    [http://hanjoosten.github.com/HaskellWorkshop/slides/slidesDutch.html](http://hanjoosten.github.com/HaskellWorkshop/slides/slidesDutch.html)
+    [http://hanjoosten.github.com/HaskellWorkshop](http://hanjoosten.github.com/HaskellWorkshop)
 
 * beschikbaar op Github:
  
@@ -397,7 +397,7 @@ Open je tekst editor, maak een nieuw bestand met de `.hs` extentie,
 en begin te schrijven:
 
 ~~~~ {.haskell}
-isOdd x  =  (rem x 2) == 1
+isOneven x  =  (rem x 2) == 1
 ~~~~
 
 * We beginnen met de naam van de functie.
@@ -406,7 +406,7 @@ isOdd x  =  (rem x 2) == 1
 
 * Dan komt een enkel `=` teken, waarachter de *body* van de functie volgt.
 
-Laad je bestand in `ghci` en probeer `myOdd` maar eens uit.
+Laad je bestand in `ghci` en probeer `isOneven` maar eens uit.
 
 
 # Smaakmakers
@@ -2077,9 +2077,36 @@ gaam we verder in een we-zien-wel-wat-voor-avontuur sessie.
 
 Bedankt dat je tot nu toe niet bent afgehaakt!
 
-
-# Deze slides zijn herbruikbaar, als je wilt:
-
 ~~~~
 git clone https://github.com/hanjoosten/HaskellWorkshop
 ~~~~
+
+
+# Afronding
+Allemaal hartelijk bedankt voor het lekker meedoen!
+
+
+
+
+#### Hebben we de doelen gehaald?
+
+> * Een idee over wat Functioneel Programmeren is 
+> * Enthousiasme gedeeld
+> * Een leuke avond
+> * Webcrawler
+
+# Voor de liefhebber
+
+Deze presentatie staat online:
+
+* [http://hanjoosten.github.com/HaskellWorkshop](http://hanjoosten.github.com/HaskellWorkshop)
+
+> Leuke linkst:
+
+> * [http://haskell.org]()  (alles over Haskell)
+> * [http://www.haskell.org/haskellwiki/Haskell_in_industry]()(gebruik van Haskell in bedrijfsleven)
+> * [http://corp.galois.com](http://corp.galois.com) is een innovatief bedrijf die heel veel met Haskell doet.
+
+> * [www.tryhaskell.org](http://www.tryhaskell.org) (online Haskell)
+> * [www.projecteuler.net](http://www.projecteuler.net) (kijk hoever je zelf komt met Haskell)
+

@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Han Joosten" />
-  <meta name="date" content="februari 2012" />
+  <meta name="date" content="Maart 2012" />
   <style type="text/css">
 /*<![CDATA[*/
 /* slidy.css
@@ -424,7 +424,7 @@ var w3c_slidy={ns_pos:(typeof window.pageYOffset!="undefined"),khtml:((navigator
   <p class="author">
 Han Joosten
   </p>
-  <p class="date">februari 2012</p>
+  <p class="date">Maart 2012</p>
 </div>
 <div class="slide">
 <h1 id="welkom">Welkom!</h1>
@@ -474,10 +474,10 @@ Han Joosten
 <li><p>Doel: Enthousiasmeren van jullie</p></li>
 <li><p>Veel is (met dank!) gepikt van Bryan O'Sullivan</p></li>
 </ul>
-<p><img src="http://www.realworldhaskell.org/blog/wp-content/themes/mistylook-101/img/profile.jpg" alt="Real World Haskell" /> Bryan O'Sullivan is co-auteur van het boek <a href="http://www.realworldhaskell.org">Real World Haskell</a>. Dit is een gratis online boek dan zeer goed bruikbaar is als leerboek als je verder wilt met Haskell.</p>
+<p><img src="http://www.realworldhaskell.org/blog/wp-content/themes/mistylook-101/img/profile.jpg" alt="Real World Haskell" /> Bryan O'Sullivan is co-auteur van het boek <a href="http://www.realworldhaskell.org">Real World Haskell</a>. Dit is een gratis online boek dat zeer goed bruikbaar is als leerboek als je verder wilt met Haskell.</p>
 <ul>
 <li><p>Sheets ook beschikbaar om zelf te doen:</p>
-<p><a href="http://hanjoosten.github.com/HaskellWorkshop/slides/slidesDutch.html">http://hanjoosten.github.com/HaskellWorkshop/slides/slidesDutch.html</a></p></li>
+<p><a href="http://hanjoosten.github.com/HaskellWorkshop">http://hanjoosten.github.com/HaskellWorkshop</a></p></li>
 <li><p>beschikbaar op Github:</p></li>
 </ul>
 <pre><code>git clone https://github.com/hanjoosten/HaskellWorkshop
@@ -712,14 +712,14 @@ Prelude&gt;
 <h1 id="zelf-functies-defini&#235;ren">Zelf functies definiëren</h1>
 <p>Zelf functies definiëren is best eenvoudig.</p>
 <p>Open je tekst editor, maak een nieuw bestand met de <code>.hs</code> extentie, en begin te schrijven:</p>
-<pre class="haskell"><code>isOdd x  =  (rem x 2) == 1
+<pre class="haskell"><code>isOneven x  =  (rem x 2) == 1
 </code></pre>
 <ul>
 <li><p>We beginnen met de naam van de functie.</p></li>
 <li><p>Vervolgens komen de namen van de parameter(s) die we willen, gescheiden door spaties.</p></li>
 <li><p>Dan komt een enkel <code>=</code> teken, waarachter de <em>body</em> van de functie volgt.</p></li>
 </ul>
-<p>Laad je bestand in <code>ghci</code> en probeer <code>myOdd</code> maar eens uit.</p>
+<p>Laad je bestand in <code>ghci</code> en probeer <code>isOneven</code> maar eens uit.</p>
 </div>
 <div class="slide">
 <h1 id="smaakmakers">Smaakmakers</h1>
@@ -1883,11 +1883,38 @@ spider count url0 = go 0 Map.empty (Set.singleton url0)
 <h1 id="fin">Fin</h1>
 <p>In het hoogst onwaarschijnlijke geval dat we hier aankomen voordat we uit de tijd zijn gelopen, gaam we verder in een we-zien-wel-wat-voor-avontuur sessie.</p>
 <p>Bedankt dat je tot nu toe niet bent afgehaakt!</p>
-</div>
-<div class="slide">
-<h1 id="deze-slides-zijn-herbruikbaar-als-je-wilt">Deze slides zijn herbruikbaar, als je wilt:</h1>
 <pre><code>git clone https://github.com/hanjoosten/HaskellWorkshop
 </code></pre>
+</div>
+<div class="slide">
+<h1 id="afronding">Afronding</h1>
+<p>Allemaal hartelijk bedankt voor het lekker meedoen!</p>
+<h4 id="hebben-we-de-doelen-gehaald">Hebben we de doelen gehaald?</h4>
+<ul class="incremental">
+<li>Een idee over wat Functioneel Programmeren is</li>
+<li>Enthousiasme gedeeld</li>
+<li>Een leuke avond</li>
+<li>Webcrawler</li>
+</ul>
+</div>
+<div class="slide">
+<h1 id="voor-de-liefhebber">Voor de liefhebber</h1>
+<p>Deze presentatie staat online:</p>
+<ul>
+<li><a href="http://hanjoosten.github.com/HaskellWorkshop">http://hanjoosten.github.com/HaskellWorkshop</a></li>
+</ul>
+<blockquote>
+<p>Leuke linkst:</p>
+</blockquote>
+<ul class="incremental">
+<li><a href="">http://haskell.org</a> (alles over Haskell)</li>
+<li><a href="">http://www.haskell.org/haskellwiki/Haskell_in_industry</a>(gebruik van Haskell in bedrijfsleven)</li>
+<li><a href="http://corp.galois.com">http://corp.galois.com</a> is een innovatief bedrijf die heel veel met Haskell doet.</li>
+</ul>
+<ul class="incremental">
+<li><a href="http://www.tryhaskell.org">www.tryhaskell.org</a> (online Haskell)</li>
+<li><a href="http://www.projecteuler.net">www.projecteuler.net</a> (kijk hoever je zelf komt met Haskell)</li>
+</ul>
 </div>
 </body>
 </html>
