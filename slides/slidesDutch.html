@@ -465,7 +465,7 @@ Han Joosten
 <li><p>Mainstream talen gaan over <em>state</em></p></li>
 <li><p>Functioneel programmeren gaat over <em>values</em></p></li>
 </ul></li>
-<li><p>Of je nou overstapt op Haskell of niet, je wordt een betere programmeur in je eigen favoriete taal.</p></li>
+<li><p>Of je nou overstapt op Haskell of niet, je wordt een <strong><em>betere programmeur</em></strong> in je eigen favoriete taal.</p></li>
 </ul>
 </div>
 <div class="slide">
@@ -476,7 +476,7 @@ Han Joosten
 </ul>
 <p><img src="http://www.realworldhaskell.org/blog/wp-content/themes/mistylook-101/img/profile.jpg" alt="Real World Haskell" /> Bryan O'Sullivan is co-auteur van het boek <a href="http://www.realworldhaskell.org">Real World Haskell</a>. Dit is een gratis online boek dat zeer goed bruikbaar is als leerboek als je verder wilt met Haskell.</p>
 <ul>
-<li><p>Sheets ook beschikbaar om zelf te doen:</p>
+<li><p>Sheets ook (nu al!) beschikbaar om zelf te doen:</p>
 <p><a href="http://hanjoosten.github.com/HaskellWorkshop">http://hanjoosten.github.com/HaskellWorkshop</a></p></li>
 <li><p>beschikbaar op Github:</p></li>
 </ul>
@@ -520,6 +520,7 @@ Han Joosten
 <ul>
 <li><p>Een text editor</p></li>
 <li><p>Een terminal window</p></li>
+<li><p>Een 'speel'-directory</p></li>
 </ul>
 </div>
 <div class="slide">
@@ -536,7 +537,7 @@ Han Joosten
 </div>
 <div class="slide">
 <h1 id="aan-de-slag">Aan de slag!</h1>
-<p>Maak een file <code>Hello.hs</code> met de volgende inhoud:</p>
+<p>Maak in je 'speel'-directory een file <code>Hello.hs</code> met de volgende inhoud:</p>
 <pre class="haskell"><code>main = putStrLn &quot;hello, world!&quot;
 </code></pre>
 <p>De extentie <code>.hs</code> is de standaard voor Haskell source files.</p>
@@ -621,6 +622,7 @@ Prelude&gt;
 <li><p><code>:help</code> toont welke commando's we tot onze beschikking hebben.</p></li>
 <li><p><code>:reload</code> laden van het bestand dat het laatst is ge<code>:load</code>.</p></li>
 <li><p><code>:edit</code> opent de tekst editor met het bestand dat het laatst is ge<code>:load</code>. (echter <em>niet</em> automatische <code>:reload</code>.)</p></li>
+<li><p><code>:type</code> geeft het type van een in Haskell gedefinieerd <code>ding</code>.</p></li>
 <li><p><code>:quit</code> beëindigt <code>GHCi</code>.</p></li>
 </ul>
 </div>
@@ -689,12 +691,38 @@ Prelude&gt;
 </ul>
 </div>
 <div class="slide">
+<h1 id="zelf-doen-1-1">Zelf doen: 1</h1>
+<p>Gebruik <code>ghci</code> als een rekenmachine.</p>
+<p>De <code>**</code> operator is voor machtsverheffen.</p>
+<ul>
+<li>Als ik 500 Euro op een bankrekening zet tegen 3% rente per jaar, hoeveel heb ik dan na 10 jaar?</li>
+</ul>
+<pre><code>Prelude&gt; 500 * 1.03 ** 10
+671.9581896720612
+Prelude&gt; 
+</code></pre>
+</div>
+<div class="slide">
 <h1 id="zelf-doen-2">Zelf doen: 2</h1>
 <p>De notatie <code>['a'..'z']</code> genereert een lijst van start tot eind, inclusief.</p>
 <p>De <code>sum</code> functie sommeert alle elementen in een lijst.</p>
 <ul>
 <li>Wat is de som van de getallen tussen 9 en 250, inclusief, <em>minus</em> 2?</li>
 </ul>
+</div>
+<div class="slide">
+<h1 id="zelf-doen-2-1">Zelf doen: 2</h1>
+<p>De notatie <code>['a'..'z']</code> genereert een lijst van start tot eind, inclusief.</p>
+<p>De <code>sum</code> functie sommeert alle elementen in een lijst.</p>
+<ul>
+<li>Wat is de som van de getallen tussen 9 en 250, inclusief, <em>minus</em> 2?</li>
+</ul>
+<pre><code>Prelude&gt; sum [9..250]
+31339
+Prelude&gt; sum [9..250] -2
+31337
+Prelude&gt; 
+</code></pre>
 </div>
 <div class="slide">
 <h1 id="zelf-doen-3">Zelf doen: 3</h1>
@@ -707,6 +735,24 @@ Prelude&gt;
 <ul>
 <li>Uit hoeveel cijfers bestaat het product van alle getallen tussen 0xBE en 0xEF, inclusief?</li>
 </ul>
+</div>
+<div class="slide">
+<h1 id="zelf-doen-3-1">Zelf doen: 3</h1>
+<p>De <code>show</code> functie toont een waarde als een String. Probeer maar!</p>
+<pre class="haskell"><code>show (1 == 2)
+</code></pre>
+<p>De <code>length</code> functie geeft ons het aantal elementen in een lijst.</p>
+<pre class="haskell"><code>length [1,2,3]
+</code></pre>
+<ul>
+<li>Uit hoeveel cijfers bestaat het product van alle getallen tussen 0xBE en 0xEF, inclusief?</li>
+</ul>
+<pre><code>Prelude&gt; product [0xBE..0xEF]
+332675816112263267856283533963851818076207506005655794001611738031848399818081502871648044328813710016512000000000000
+Prelude&gt; length (show (product [0xBE..0xEF]))
+117
+Prelude&gt; 
+</code></pre>
 </div>
 <div class="slide">
 <h1 id="zelf-functies-defini&#235;ren">Zelf functies definiëren</h1>
@@ -766,12 +812,31 @@ else &quot;wombat&quot;
 </ul>
 </div>
 <div class="slide">
+<h1 id="een-bijna-triviale-oefening-1">Een bijna triviale oefening</h1>
+<p>Schrijf een functie met een string als parameter. Het resultaat is het argument met daarachter <code>&quot;, world&quot;</code> geplakt, als dat argument <code>&quot;hello&quot;</code> is, of alleen maar het onveranderde argument in andere gevallen.</p>
+<ul>
+<li>Oh ja, De &quot;append&quot;-functie luistert naar de naam <code>++</code>.</li>
+</ul>
+<pre class="haskell"><code>hw1 str = if str == &quot;hello&quot;
+          then str ++ &quot;, world&quot;
+          else str
+</code></pre>
+<p>of</p>
+<pre class="haskell"><code>hw2 str = str ++ if str == &quot;hello&quot;
+                 then &quot;, world&quot;
+                 else &quot;&quot;
+</code></pre>
+</div>
+<div class="slide">
 <h1 id="lijsten-in-haskell">Lijsten in Haskell</h1>
 <p>We weten al hoe een lijst er in Haskell uitziet:</p>
 <pre class="haskell"><code>[1,2,3]
 </code></pre>
 <p>En natuurlijk de verkorte schrijfwijze voor Strings:</p>
 <pre class="haskell"><code>&quot;foo&quot; == ['f','o','o']
+</code></pre>
+<p>En misschien had je dit ook al geprobeerd:</p>
+<pre class="haskell"><code>[1..]
 </code></pre>
 <p>Maar is dit alles wat er valt te weten?</p>
 </div>
@@ -865,12 +930,45 @@ isCapitalized name
 </code></pre>
 </div>
 <div class="slide">
+<h1 id="een-voorbeeld-1">Een voorbeeld</h1>
+<pre class="haskell"><code>isCapitalized name
+  = case name of
+      []           -&gt; False
+      (first:rest) -&gt; isUpper first
+</code></pre>
+<ul>
+<li>isCapitalized ('A' : 'n' : 'n' : [] )</li>
+</ul>
+<ul class="incremental">
+<li><em>matcht [] ? Nee.</em></li>
+<li><em>matcht (first:rest) ? Ja!</em></li>
+<li>first <em>krijgt als waarde</em> 'A'</li>
+<li>rest <em>krijgt als waarde</em> 'n' : 'n' : []</li>
+<li>isCapitalized ('A' : 'n' : 'n' : [] ) <em>wordt herschreven als</em> isUpper 'A'</li>
+<li>isUpper 'A' <em>evalueert naar</em> True</li>
+</ul>
+</div>
+<div class="slide">
 <h1 id="whew-een-paar-oefeningen">Whew! Een paar oefeningen!</h1>
 <p>Eindelijk! We kunnen nu iets ingewikkelder functies schrijven.</p>
 <p>Nu je het begin van een lijst kan inspecteren, zou je een <em>hele</em> lijst recursief kunnen afhandelen.</p>
 <p>Schrijf eerst een functie met de naam <code>myLength</code> die het aantal elementen in een lijst bepaalt.</p>
 <p>Vervolgens schrijf je een functie met de naam <code>countCaps</code> die het aantal hoofdletters in een String bepaalt.</p>
 <pre class="haskell"><code>countCaps &quot;Monkey Butter&quot; == 2
+</code></pre>
+</div>
+<div class="slide">
+<h1 id="whew-een-paar-oefeningen-1">Whew! Een paar oefeningen!</h1>
+<p>Eindelijk! We kunnen nu iets ingewikkelder functies schrijven.</p>
+<p>Nu je het begin van een lijst kan inspecteren, zou je een <em>hele</em> lijst recursief kunnen afhandelen.</p>
+<p>Schrijf eerst een functie met de naam <code>myLength</code> die het aantal elementen in een lijst bepaalt.</p>
+<p>Vervolgens schrijf je een functie met de naam <code>countCaps</code> die het aantal hoofdletters in een String bepaalt.</p>
+<pre class="haskell"><code>countCaps &quot;Monkey Butter&quot; == 2
+</code></pre>
+<pre class="haskell"><code>myLength lijst =
+   case lijst of
+     []   -&gt; 0
+     e:es -&gt; 1 + myLength es
 </code></pre>
 </div>
 <div class="slide">
@@ -926,7 +1024,8 @@ countCaps (x:xs)
 </code></pre>
 </div>
 <div class="slide">
-<h1 id="voor-na">Voor, Na</h1>
+<h1 id="v&#243;&#243;r-en-na">Vóór en Na</h1>
+<p>Zoals in de originele versie, maar nu zonder gebruik van <code>case</code>:</p>
 <pre class="haskell"><code>countCaps xs =
   if null xs
   then 0 
@@ -945,16 +1044,41 @@ countCaps (x:xs)
 <h1 id="een-andere-aanpak">Een andere aanpak</h1>
 <p>Schrijf een nieuwe versie van <code>countCaps</code>:</p>
 <ul>
-<li><p>Schrijf een functie die door een lijst loopt, en die een nieuwe lijst genereert bestaande uit alleen de hoofdletters van de oorspronkelijke lijst.</p></li>
-<li><p>Gebruik <code>length</code> om het aantal elementen te tellen.</p></li>
+<li>Schrijf een functie die door een lijst loopt, en die een nieuwe lijst genereert bestaande uit alleen de hoofdletters van de oorspronkelijke lijst.</li>
+</ul>
+<pre class="haskell"><code></code></pre>
+<ul>
+<li>Gebruik <code>length</code> om het aantal elementen te tellen.</li>
 </ul>
 <p>Dit zou hetzelfde resultaat moeten opleveren als je eerste functie. Toch?</p>
+<pre class="haskell"><code></code></pre>
+</div>
+<div class="slide">
+<h1 id="een-andere-aanpak-1">Een andere aanpak</h1>
+<p>Schrijf een nieuwe versie van <code>countCaps</code>:</p>
+<ul>
+<li>Schrijf een functie die door een lijst loopt, en die een nieuwe lijst genereert bestaande uit alleen de hoofdletters van de oorspronkelijke lijst.</li>
+</ul>
+<pre class="haskell"><code>allCaps [] = []
+allCaps (x:xs) = if isUpper x
+                 then x : allCaps xs
+                 else allCaps xs
+</code></pre>
+<ul>
+<li>Gebruik <code>length</code> om het aantal elementen te tellen.</li>
+</ul>
+<p>Dit zou hetzelfde resultaat moeten opleveren als je eerste functie. Toch?</p>
+<pre class="haskell"><code>countCaps2 string = length (allCaps string)
+</code></pre>
 </div>
 <div class="slide">
 <h1 id="wijziging-van-de-specificatie">Wijziging van de specificatie</h1>
 <p>Stel dat we het aantal kleine letters in een string willen tellen.</p>
 <p>Dit lijkt bijna hetzelfde als onze functie om hoofletters te tellen.</p>
 <p>Wat kunnen we doen met deze observatie?</p>
+<ul class="incremental">
+<li>We zouden een <strong>functie als parameter</strong> willen gebruiken!</li>
+</ul>
 </div>
 <div class="slide">
 <h1 id="hogere-orde-functies">Hogere orde functies</h1>
@@ -965,6 +1089,20 @@ filter pred (x:xs)
   | otherwise  =     filter pred xs
 </code></pre>
 <p>Hoe kunnen we dit gebruiken om <code>countLowerCase</code> te definieren?</p>
+<pre class="haskell"><code></code></pre>
+</div>
+<div class="slide">
+<h1 id="hogere-orde-functies-1">Hogere orde functies</h1>
+<p><em>Hogere orde functie</em>: een functie die een andere functie accepteert als argument.</p>
+<pre class="haskell"><code>filter pred [] = []
+filter pred (x:xs)
+  | pred x     = x : filter pred xs
+  | otherwise  =     filter pred xs
+</code></pre>
+<p>Hoe kunnen we dit gebruiken om <code>countLowerCase</code> te definieren?</p>
+<pre class="haskell"><code>countLowerCase string = 
+  length (filter isLower string)
+</code></pre>
 </div>
 <div class="slide">
 <h1 id="data-in-data-uit">Data in, data uit</h1>
@@ -1042,16 +1180,24 @@ in x + y
 <li>Voor je begint, is het verstandig om eerst met de <code>words</code> en <code>unwords</code> functies te spelen.</li>
 </ul>
 <p>Voorbeeld:</p>
-<pre class="haskell"><code>disemvowel &quot;I think, therefore I am.&quot;
-  == &quot;I I am.&quot;
+<pre class="haskell"><code>klinkerWoorden &quot;Ik denk, dus ik ben.&quot;
+  == &quot;Ik ik&quot;
 </code></pre>
+<pre class="haskell"><code></code></pre>
 </div>
 <div class="slide">
-<h1 id="een-oplossing">Een oplossing</h1>
-<p>Dit is hoe ik <code>disemvowel</code> schreef:</p>
-<pre class="haskell"><code>disemvowel = 
-  let isVowel c = toLower c `elem` &quot;aeiou&quot;
-  in  unwords . filter (isVowel . head) . words
+<h1 id="oefenen-met-compositie-1">Oefenen met compositie</h1>
+<p>Schrijf een functie die een String accepteert en die een nieuwe String oplevert, die alleen de woorden bevat die met een klinker beginnen. Maak hierbij zoveel mogelijk gebruik van functie compositie.</p>
+<ul>
+<li>Voor je begint, is het verstandig om eerst met de <code>words</code> en <code>unwords</code> functies te spelen.</li>
+</ul>
+<p>Voorbeeld:</p>
+<pre class="haskell"><code>klinkerWoorden &quot;Ik denk, dus ik ben.&quot;
+  == &quot;Ik ik&quot;
+</code></pre>
+<pre class="haskell"><code>klinkerWoorden = 
+  let isKlinker c = toLower c `elem` &quot;aeiou&quot;
+  in  unwords . filter (isKlinker . head) . words
 </code></pre>
 <p>Doet dit je denken aan een Unix shell pipeline, maar dan van rechts naar links?</p>
 </div>
@@ -1172,7 +1318,7 @@ in x + y
 <p>Een type synoniem kan handig zijn om de bedoeling van een bestaand type te documenteren.</p>
 </div>
 <div class="slide">
-<h1 id="words">Words</h1>
+<h1 id="words">words</h1>
 <pre><code>words :: String -&gt; [String]
 </code></pre>
 <p>We zien nu dat deze functie een String als argument accepteert, en een lijst van Strings teruggeeft.</p>
@@ -1197,6 +1343,9 @@ in x + y
 </ul>
 <p>We zullen die gekke kleine letter <code>m</code> nu ook maar even laten voor wat het is.</p>
 <p>Wat kunnen we nu zeggen over deze functie?</p>
+<ul class="incremental">
+<li>Inderdaad: Het is een functie die een String als parameter heeft, en die een Bytestring teruggeeft.</li>
+</ul>
 </div>
 <div class="slide">
 <h1 id="bytestring">ByteString</h1>
@@ -1277,32 +1426,32 @@ in x + y
 </code></pre>
 <p>Zie je het <code>IO</code> in het resulterend type?</p>
 <p>Dat betekent &quot;deze functie kan zij-effecten hebben&quot;.</p>
-<p>niet-pure functies, met <code>IO</code> in het resulterend type, worden vaak <em>acties</em> genoemd.</p>
+<p>niet-pure functies, met <code>IO</code> in het resulterend type, worden vaak <strong><em>acties</em></strong> genoemd.</p>
 <ul>
 <li>Dit helpt om ze te onderscheiden van pure functies.</li>
 </ul>
 </div>
 <div class="slide">
-<h1 id="mengen-van-io-met-ander-spul">Mengen van IO met ander spul</h1>
-<p>Het type-systeem 'weet' welke functies <code>IO</code> doen en zorgt ervoor dat we hier op een eerlijke manier mee omgaan.</p>
-<p>We kunnen echter op een natuurlijke manier pure code mengen met code met zijeffecten:</p>
-<pre class="haskell"><code>charCount fileName = do
-  contents &lt;- readFile fileName
-  return (length contents)
+<h1 id="mengen-van-acties-met-pure-code">Mengen van <em>acties</em> met <em>pure code</em></h1>
+<p>Het type-systeem 'weet' welke functies <code>IO</code> doen en zorgt ervoor dat we hier op een nette manier mee omgaan.</p>
+<p>We kunnen echter op een natuurlijke manier pure code mengen met acties:</p>
+<pre class="haskell"><code>charCount fileName = 
+  do contents &lt;- readFile fileName
+     return (length contents)
 </code></pre>
 </div>
 <div class="slide">
 <h1 id="do-notatie">&quot;do&quot; notatie</h1>
-<p>Cruciaal in wat we net zagen was het <code>do</code> keyword aan het begin van de functie definitie.</p>
-<p>Het introduceert een serie van <code>IO</code> acties. Een per regel.</p>
+<p>Cruciaal in wat we net zagen was het <strong>do</strong> keyword aan het begin van de functie definitie.</p>
+<p>Het introduceert een serie van <code>IO</code> acties. Één per regel.</p>
 </div>
 <div class="slide">
-<h1 id="opvangen-van-het-resultaat-van-niet-pure-code">Opvangen van het resultaat van niet-pure code</h1>
+<h1 id="opvangen-van-het-resultaat-van-acties">Opvangen van het resultaat van acties</h1>
 <p>Om het resultaat van een <code>IO</code> actie op te vangen, gebruiken we <code>&lt;-</code> in plaats van <code>=</code>.</p>
 <pre class="haskell"><code>contents &lt;- readFile fileName
 </code></pre>
 <p>Het resultaat (<code>contents</code>) is puur - Het heeft <em>geen</em> <code>IO</code> type.</p>
-<p>Hiermee voeden we pure code met data uit niet-pure code.</p>
+<p>Hiermee voeden we pure code met data uit acties (niet-pure code).</p>
 </div>
 <div class="slide">
 <h1 id="de-return-actie">De &quot;return&quot; actie</h1>
@@ -1323,14 +1472,18 @@ in x + y
 <h1 id="binary-naar-tekst">Binary naar tekst</h1>
 <p>Herinner je nog dat we probeerden vals te spelen?</p>
 <p>We hadden dit:</p>
-<pre class="haskell"><code>simpleHttp :: String -&gt; IO ByteString
+<pre class="haskell"><code>simpleHttp :: MonadIO m =&gt; String -&gt; m ByteString
 </code></pre>
 <p>In plaats hiervan hebben we iets nodig met als resultaat <code>IO String</code>.</p>
 <p>Hoe moet dat er uit zien?</p>
+<p>we zoeken een functie met het volgende type:</p>
+<pre class="haskell"><code>eenOfAndereConversieFunctie :: ByteString -&gt; String
+</code></pre>
+<p>we maken gebruik van <strong><em><a href="http://holumbus.fh-wedel.de/hayoo/hayoo.html">Hayoo!</a></em></strong></p>
 </div>
 <div class="slide">
 <h1 id="utf-8-conversie">UTF-8 conversie</h1>
-<p>Om de conversie te doen, gaan we gebruik maken van het package <code>utf8-string</code>.</p>
+<p>Om de conversie te doen, gaan we gebruik maken van het package <code>utf8-string</code>, dat we dankzij Hayoo hebben gevonden.</p>
 <pre><code>cabal install utf8-string
 </code></pre>
 <p>Dit package bevat een module met de naam <code>Data.ByteString.Lazy.UTF8</code>.</p>
@@ -1343,11 +1496,39 @@ in x + y
 <div class="slide">
 <h1 id="utf-8-conversie-oefening">UTF-8 conversie oefening</h1>
 <p>Gebruik <code>toString</code> om een actie te schrijven die een URL downloadt en het resultaat converteert naar een <code>String</code>.</p>
-<p>Schrijf het type op van de actie.</p>
+<p>Schrijf eerst het type op van de actie.</p>
+<pre class="haskell"><code></code></pre>
 <ul>
 <li><p>Haskell definities hebben gewoonlijk geen type signature nodig.</p></li>
 <li><p>Ondanks dit is het een goede gewoonte om ze als <em>documentatie</em> op te schrijven bij top-level definities.</p></li>
 </ul>
+</div>
+<div class="slide">
+<h1 id="utf-8-conversie-oefening-1">UTF-8 conversie oefening</h1>
+<p>Gebruik <code>toString</code> om een actie te schrijven die een URL downloadt en het resultaat converteert naar een <code>String</code>.</p>
+<p>Schrijf eerst het type op van de actie.</p>
+<pre class="haskell"><code>download :: String -&gt; IO String
+</code></pre>
+<ul>
+<li><p>Haskell definities hebben gewoonlijk geen type signature nodig.</p></li>
+<li><p>Ondanks dit is het een goede gewoonte om ze als <em>documentatie</em> op te schrijven bij top-level definities.</p></li>
+</ul>
+<pre class="haskell"><code></code></pre>
+</div>
+<div class="slide">
+<h1 id="utf-8-conversie-oefening-2">UTF-8 conversie oefening</h1>
+<p>Gebruik <code>toString</code> om een actie te schrijven die een URL downloadt en het resultaat converteert naar een <code>String</code>.</p>
+<p>Schrijf eerst het type op van de actie.</p>
+<pre class="haskell"><code>download :: String -&gt; IO String
+</code></pre>
+<ul>
+<li><p>Haskell definities hebben gewoonlijk geen type signature nodig.</p></li>
+<li><p>Ondanks dit is het een goede gewoonte om ze als <em>documentatie</em> op te schrijven bij top-level definities.</p></li>
+</ul>
+<pre class="haskell"><code>download :: String -&gt; IO String
+download url = do res &lt;- simpleHttp url
+                  return (toString res)
+</code></pre>
 </div>
 <div class="slide">
 <h1 id="downloaden-en-opslaan-van-een-web-pagina">Downloaden en opslaan van een web pagina</h1>
@@ -1359,6 +1540,23 @@ in x + y
 makeFileName k = &quot;download-&quot; ++ show k ++ &quot;.html&quot;
 </code></pre>
 <p>Om een lokale kopie van een bestand op te slaan, heb je de actie <code>writeFile</code> nodig.</p>
+<pre class="haskell"><code></code></pre>
+</div>
+<div class="slide">
+<h1 id="downloaden-en-opslaan-van-een-web-pagina-1">Downloaden en opslaan van een web pagina</h1>
+<p>Gebruik je <code>download</code> functie om een lokale kopie op te slaan van een webpagina.</p>
+<pre class="haskell"><code>saveAs :: String -&gt; Int -&gt; IO ()
+</code></pre>
+<p>Laten we voor het gemak de lokale files opslaan met namen die nummers bevatten:</p>
+<pre class="haskell"><code>makeFileName :: Int -&gt; FilePath
+makeFileName k = &quot;download-&quot; ++ show k ++ &quot;.html&quot;
+</code></pre>
+<p>Om een lokale kopie van een bestand op te slaan, heb je de actie <code>writeFile</code> nodig.</p>
+<pre class="haskell"><code>saveAs :: String -&gt; Int -&gt; IO ()
+saveAs url k = 
+  do content &lt;- download url
+     writeFile (makeFileName k) content
+</code></pre>
 </div>
 <div class="slide">
 <h1 id="spitten-in-html">Spitten in HTML</h1>
@@ -1457,14 +1655,31 @@ Nothing :: Maybe Int
 <h1 id="pattern-matching-over-een-tag">Pattern matching over een Tag</h1>
 <p>Stel dat we een predikaat willen schrijven die aangeeft of een <code>Tag</code> een opening tag is.</p>
 <ul>
-<li><p>Wat zou het type van deze functie zijn?</p></li>
-<li><p>Hoe zou de bode van de functie er uit zien?</p></li>
+<li>Wat zou het type van deze functie zijn?</li>
 </ul>
+<pre class="haskell"><code></code></pre>
+<ul>
+<li>Hoe zou de body van de functie er uit zien?</li>
+</ul>
+</div>
+<div class="slide">
+<h1 id="pattern-matching-over-een-tag-1">Pattern matching over een Tag</h1>
+<p>Stel dat we een predikaat willen schrijven die aangeeft of een <code>Tag</code> een opening tag is.</p>
+<ul>
+<li>Wat zou het type van deze functie zijn?</li>
+</ul>
+<pre class="haskell"><code>isOpenTag :: Tag -&gt; Bool
+</code></pre>
+<ul>
+<li>Hoe zou de body van de functie er uit zien?</li>
+</ul>
+<pre class="haskell"><code></code></pre>
 </div>
 <div class="slide">
 <h1 id="om-het-even">Om het even!</h1>
 <p>Onze eerste body zag er als volgt uit:</p>
-<pre class="haskell"><code>isOpenTag (TagOpen x y)     = True
+<pre class="haskell"><code>isOpenTag :: Tag -&gt; Bool
+isOpenTag (TagOpen x y)     = True
 isOpenTag (TagClose x)      = False
 isOpenTag (TagText x)       = False
 isOpenTag (TagComment x)    = False
@@ -1479,8 +1694,9 @@ isOpenTag (TagPosition x y) = False
 </div>
 <div class="slide">
 <h1 id="het-wild-card-patroon">Het wild card patroon</h1>
-<p>We kunnen met het &quot;<code>_</code>&quot; teken opschrijven dat het ons niet uitmaakt wat een patroon of variabele precies is.</p>
-<pre class="haskell"><code>isOpenTag (TagOpen _ _) = True
+<p>We kunnen met het <strong>&quot;<code>_</code>&quot;</strong> teken opschrijven dat het ons niet uitmaakt wat een patroon of variabele precies is.</p>
+<pre class="haskell"><code>isOpenTag :: Tag -&gt; Bool
+isOpenTag (TagOpen _ _) = True
 isOpenTag  _            = False
 </code></pre>
 <p>Het wild card patroon matcht altijd.</p>
@@ -1492,7 +1708,8 @@ isOpenTag  _            = False
 <div class="slide">
 <h1 id="even-een-vraag-tussendoor">Even een vraag tussendoor</h1>
 <p>Waarom schrijven we de functie niet op deze manier?</p>
-<pre class="haskell"><code>isOpenTag  _            = False
+<pre class="haskell"><code>isOpenTag :: Tag -&gt; Bool
+isOpenTag  _            = False
 isOpenTag (TagOpen _ _) = True
 </code></pre>
 </div>
@@ -1904,14 +2121,12 @@ spider count url0 = go 0 Map.empty (Set.singleton url0)
 <li><a href="http://hanjoosten.github.com/HaskellWorkshop">http://hanjoosten.github.com/HaskellWorkshop</a></li>
 </ul>
 <blockquote>
-<p>Leuke linkst:</p>
+<p>Leuke Links:</p>
 </blockquote>
 <ul class="incremental">
 <li><a href="">http://haskell.org</a> (alles over Haskell)</li>
 <li><a href="">http://www.haskell.org/haskellwiki/Haskell_in_industry</a>(gebruik van Haskell in bedrijfsleven)</li>
-<li><a href="http://corp.galois.com">http://corp.galois.com</a> is een innovatief bedrijf die heel veel met Haskell doet.</li>
-</ul>
-<ul class="incremental">
+<li><a href="http://corp.galois.com">http://corp.galois.com</a> is een innovatief bedrijf die heel veel met Haskell doet, en daarover veel vertelt.</li>
 <li><a href="http://www.tryhaskell.org">www.tryhaskell.org</a> (online Haskell)</li>
 <li><a href="http://www.projecteuler.net">www.projecteuler.net</a> (kijk hoever je zelf komt met Haskell)</li>
 </ul>

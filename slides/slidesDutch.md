@@ -49,7 +49,7 @@ Na mijn afstuderen in 1990 heb ik geprogrammeerd in iteratieve talen
 
     * Functioneel programmeren gaat over *values*
 
-* Of je nou overstapt op Haskell of niet, je wordt een betere programmeur in je eigen favoriete taal.
+* Of je nou overstapt op Haskell of niet, je wordt een ***betere programmeur*** in je eigen favoriete taal.
 
 
 # Over deze presentatie
@@ -60,7 +60,7 @@ Na mijn afstuderen in 1990 heb ik geprogrammeerd in iteratieve talen
 
 ![Real World Haskell](http://www.realworldhaskell.org/blog/wp-content/themes/mistylook-101/img/profile.jpg) Bryan O'Sullivan is co-auteur van het boek [Real World Haskell](http://www.realworldhaskell.org). Dit is een gratis online boek dat zeer goed bruikbaar is als leerboek als je verder wilt met Haskell.
 
-* Sheets ook beschikbaar om zelf te doen: 
+* Sheets ook (nu al!) beschikbaar om zelf te doen: 
 
     [http://hanjoosten.github.com/HaskellWorkshop](http://hanjoosten.github.com/HaskellWorkshop)
 
@@ -112,6 +112,7 @@ git clone https://github.com/hanjoosten/HaskellWorkshop
 
 * Een terminal window
 
+* Een 'speel'-directory 
 
 # Probleemstelling
 
@@ -132,7 +133,7 @@ Er valt dan ook veel uit te zoeken!
 
 # Aan de slag!
 
-Maak een file `Hello.hs` met de volgende inhoud:
+Maak in je 'speel'-directory een file `Hello.hs` met de volgende inhoud:
 
 ~~~~ {.haskell}
 main = putStrLn "hello, world!"
@@ -264,6 +265,8 @@ Onthoud dat alle `ghci` commando's met een "`:`" beginnen.
 
 * `:edit` opent de tekst editor met het bestand dat het laatst is ge`:load`. (echter *niet* automatische `:reload`.)
   
+* `:type` geeft het type van een in Haskell gedefinieerd `ding`.
+  
 * `:quit` beëindigt `GHCi`.
 
 
@@ -361,6 +364,20 @@ De `**` operator is voor machtsverheffen.
 * Als ik 500 Euro op een bankrekening zet tegen 3% rente per jaar, hoeveel heb ik dan
   na 10 jaar?
 
+# Zelf doen: 1
+
+Gebruik `ghci` als een rekenmachine.
+
+De `**` operator is voor machtsverheffen.
+
+* Als ik 500 Euro op een bankrekening zet tegen 3% rente per jaar, hoeveel heb ik dan
+  na 10 jaar?
+
+~~~~
+Prelude> 500 * 1.03 ** 10
+671.9581896720612
+Prelude> 
+~~~~
 
 # Zelf doen: 2
 
@@ -370,6 +387,21 @@ De `sum` functie sommeert alle elementen in een lijst.
 
 * Wat is de som van de getallen tussen 9 en 250, inclusief, *minus* 2?
 
+# Zelf doen: 2
+
+De notatie `['a'..'z']` genereert een lijst van start tot eind, inclusief.
+
+De `sum` functie sommeert alle elementen in een lijst.
+
+* Wat is de som van de getallen tussen 9 en 250, inclusief, *minus* 2?
+
+~~~~
+Prelude> sum [9..250]
+31339
+Prelude> sum [9..250] -2
+31337
+Prelude> 
+~~~~
 
 # Zelf doen: 3
 
@@ -388,6 +420,30 @@ length [1,2,3]
 * Uit hoeveel cijfers bestaat het product van alle getallen tussen 0xBE en
   0xEF, inclusief?
 
+# Zelf doen: 3
+
+De `show` functie toont een waarde als een String.  Probeer maar!
+
+~~~~ {.haskell}
+show (1 == 2)
+~~~~
+
+De `length` functie geeft ons het aantal elementen in een lijst.
+
+~~~~ {.haskell}
+length [1,2,3]
+~~~~
+
+* Uit hoeveel cijfers bestaat het product van alle getallen tussen 0xBE en
+  0xEF, inclusief?
+
+~~~~
+Prelude> product [0xBE..0xEF]
+332675816112263267856283533963851818076207506005655794001611738031848399818081502871648044328813710016512000000000000
+Prelude> length (show (product [0xBE..0xEF]))
+117
+Prelude> 
+~~~~
 
 # Zelf functies definiëren 
 
@@ -470,6 +526,26 @@ argument `"hello"` is, of alleen maar het onveranderde argument in andere gevall
 
 * Oh ja, De "append"-functie luistert naar de naam `++`.
 
+# Een bijna triviale oefening
+
+Schrijf een functie met een string als parameter. Het resultaat is het argument met daarachter `", world"` geplakt, als dat 
+argument `"hello"` is, of alleen maar het onveranderde argument in andere gevallen.
+
+* Oh ja, De "append"-functie luistert naar de naam `++`.
+
+~~~~{.haskell}
+hw1 str = if str == "hello"
+          then str ++ ", world"
+          else str
+~~~~
+
+of
+
+~~~~{.haskell}
+hw2 str = str ++ if str == "hello"
+                 then ", world"
+                 else ""
+~~~~
 
 # Lijsten in Haskell
 
@@ -483,6 +559,12 @@ En natuurlijk de verkorte schrijfwijze voor Strings:
 
 ~~~~ {.haskell}
 "foo" == ['f','o','o']
+~~~~
+
+En misschien had je dit ook al geprobeerd:
+
+~~~~ {.haskell}
+[1..]
 ~~~~
 
 Maar is dit alles wat er valt te weten?
@@ -608,6 +690,23 @@ Laten we stap voor stap kijken wat er gebeurt als we deze expressie evalueren.
 isCapitalized "Ann"
 ~~~~
 
+# Een voorbeeld
+
+~~~~ {.haskell}
+isCapitalized name
+  = case name of
+      []           -> False
+      (first:rest) -> isUpper first
+~~~~
+
+* isCapitalized ('A' : 'n' : 'n' : [] )
+
+> * *matcht []  ? Nee.*
+> * *matcht (first:rest)  ? Ja!*
+> * first *krijgt als waarde* 'A'
+> * rest *krijgt als waarde* 'n' : 'n' : [] 
+> * isCapitalized ('A' : 'n' : 'n' : [] ) *wordt herschreven als* isUpper 'A'
+> * isUpper 'A' *evalueert naar* True
 
 # Whew! Een paar oefeningen!
 
@@ -623,6 +722,26 @@ Vervolgens schrijf je een functie met de naam `countCaps` die het aantal hoofdle
 countCaps "Monkey Butter" == 2
 ~~~~
 
+# Whew! Een paar oefeningen!
+
+Eindelijk! We kunnen nu iets ingewikkelder functies schrijven.
+
+Nu je het begin van een lijst kan inspecteren, zou je een *hele* lijst recursief kunnen afhandelen.
+
+Schrijf eerst een functie met de naam `myLength` die het aantal elementen in een lijst bepaalt.
+
+Vervolgens schrijf je een functie met de naam `countCaps` die het aantal hoofdletters in een String bepaalt.
+
+~~~~ {.haskell}
+countCaps "Monkey Butter" == 2
+~~~~
+
+~~~~ {.haskell}
+myLength lijst =
+   case lijst of
+     []   -> 0
+     e:es -> 1 + myLength es
+~~~~
 
 # Het tellen van Hoofdletters
 
@@ -691,7 +810,9 @@ countCaps xs =
        else countCaps (tail xs)
 ~~~~
 
-# Voor, Na
+# Vóór en Na
+
+Zoals in de originele versie, maar nu zonder gebruik van `case`:
 
 ~~~~ {.haskell}
 countCaps xs =
@@ -719,9 +840,37 @@ Schrijf een nieuwe versie van `countCaps`:
 * Schrijf een functie die door een lijst loopt, en die een nieuwe lijst genereert 
   bestaande uit alleen de hoofdletters van de oorspronkelijke lijst.
 
+~~~~ {.haskell}
+~~~~
+
 * Gebruik `length` om het aantal elementen te tellen.
 
 Dit zou hetzelfde resultaat moeten opleveren als je eerste functie. Toch?
+
+~~~~ {.haskell}
+~~~~
+
+# Een andere aanpak
+
+Schrijf een nieuwe versie van `countCaps`:
+
+* Schrijf een functie die door een lijst loopt, en die een nieuwe lijst genereert 
+  bestaande uit alleen de hoofdletters van de oorspronkelijke lijst.
+
+~~~~ {.haskell}
+allCaps [] = []
+allCaps (x:xs) = if isUpper x
+                 then x : allCaps xs
+                 else allCaps xs
+~~~~
+
+* Gebruik `length` om het aantal elementen te tellen.
+
+Dit zou hetzelfde resultaat moeten opleveren als je eerste functie. Toch?
+
+~~~~ {.haskell}
+countCaps2 string = length (allCaps string)
+~~~~
 
 
 # Wijziging van de specificatie
@@ -731,6 +880,8 @@ Stel dat we het aantal kleine letters in een string willen tellen.
 Dit lijkt bijna hetzelfde als onze functie om hoofletters te tellen.
 
 Wat kunnen we doen met deze observatie?
+
+> * We zouden een **functie als parameter** willen gebruiken!
 
 
 # Hogere orde functies
@@ -745,6 +896,27 @@ filter pred (x:xs)
 ~~~~
 
 Hoe kunnen we dit gebruiken om `countLowerCase` te definieren?
+
+~~~~ {.haskell}
+~~~~
+
+# Hogere orde functies
+
+*Hogere orde functie*: een functie die een andere functie accepteert als argument.
+
+~~~~ {.haskell}
+filter pred [] = []
+filter pred (x:xs)
+  | pred x     = x : filter pred xs
+  | otherwise  =     filter pred xs
+~~~~
+
+Hoe kunnen we dit gebruiken om `countLowerCase` te definieren?
+
+~~~~ {.haskell}
+countLowerCase string = 
+  length (filter isLower string)
+~~~~
 
 
 # Data in, data uit
@@ -860,19 +1032,32 @@ Maak hierbij zoveel mogelijk gebruik van functie compositie.
 Voorbeeld:
 
 ~~~~ {.haskell}
-disemvowel "I think, therefore I am."
-  == "I I am."
+klinkerWoorden "Ik denk, dus ik ben."
+  == "Ik ik"
 ~~~~
 
+~~~~ {.haskell}
+~~~~
 
-# Een oplossing
+# Oefenen met compositie
 
-Dit is hoe ik `disemvowel` schreef:
+Schrijf een functie die een String accepteert en die een nieuwe String 
+oplevert, die alleen de woorden bevat die met een klinker beginnen.
+Maak hierbij zoveel mogelijk gebruik van functie compositie.
+
+* Voor je begint, is het verstandig om eerst met de `words` en `unwords` functies te spelen.
+
+Voorbeeld:
 
 ~~~~ {.haskell}
-disemvowel = 
-  let isVowel c = toLower c `elem` "aeiou"
-  in  unwords . filter (isVowel . head) . words
+klinkerWoorden "Ik denk, dus ik ben."
+  == "Ik ik"
+~~~~
+
+~~~~ {.haskell}
+klinkerWoorden = 
+  let isKlinker c = toLower c `elem` "aeiou"
+  in  unwords . filter (isKlinker . head) . words
 ~~~~
 
 Doet dit je denken aan een Unix shell pipeline, maar dan van rechts naar links?
@@ -1063,7 +1248,7 @@ type Euros = Int
 Een type synoniem kan handig zijn om de bedoeling van een bestaand type te documenteren.
 
 
-# Words
+# words
 
 ~~~~
 words :: String -> [String]
@@ -1104,6 +1289,7 @@ We zullen die gekke kleine letter `m` nu ook maar even laten voor wat het is.
 
 Wat kunnen we nu zeggen over deze functie?
 
+> * Inderdaad: Het is een functie die een String als parameter heeft, en die een Bytestring teruggeeft.
 
 # ByteString
 
@@ -1227,32 +1413,32 @@ Zie je het `IO` in het resulterend type?
 
 Dat betekent "deze functie kan zij-effecten hebben".
 
-niet-pure functies, met `IO` in het resulterend type, worden vaak *acties* genoemd.
+niet-pure functies, met `IO` in het resulterend type, worden vaak ***acties*** genoemd.
 
 * Dit helpt om ze te onderscheiden van pure functies.
 
 
-# Mengen van IO met ander spul
+# Mengen van *acties* met *pure code*
 
-Het type-systeem 'weet' welke functies `IO` doen en zorgt ervoor dat we hier op een eerlijke manier mee omgaan.
+Het type-systeem 'weet' welke functies `IO` doen en zorgt ervoor dat we hier op een nette manier mee omgaan.
 
-We kunnen echter op een natuurlijke manier pure code mengen met code met zijeffecten:
+We kunnen echter op een natuurlijke manier pure code mengen met acties:
 
 ~~~~ {.haskell}
-charCount fileName = do
-  contents <- readFile fileName
-  return (length contents)
+charCount fileName = 
+  do contents <- readFile fileName
+     return (length contents)
 ~~~~
 
 
 # "do" notatie
 
-Cruciaal in wat we net zagen was het `do` keyword aan het begin van de functie definitie.
+Cruciaal in wat we net zagen was het **do** keyword aan het begin van de functie definitie.
 
-Het introduceert een serie van `IO` acties. Een per regel.
+Het introduceert een serie van `IO` acties. Één per regel.
 
 
-# Opvangen van het resultaat van niet-pure code
+# Opvangen van het resultaat van acties
 
 Om het resultaat van een `IO` actie op te vangen, gebruiken we `<-` in plaats van `=`.
 
@@ -1262,7 +1448,7 @@ contents <- readFile fileName
 
 Het resultaat (`contents`) is puur - Het heeft *geen* `IO` type.
 
-Hiermee voeden we pure code met data uit niet-pure code.
+Hiermee voeden we pure code met data uit acties (niet-pure code).
 
 
 # De "return" actie
@@ -1298,17 +1484,24 @@ Herinner je nog dat we probeerden vals te spelen?
 We hadden dit:
 
 ~~~~ {.haskell}
-simpleHttp :: String -> IO ByteString
+simpleHttp :: MonadIO m => String -> m ByteString
 ~~~~
 
 In plaats hiervan hebben we iets nodig met als resultaat `IO String`.
 
 Hoe moet dat er uit zien?
 
+we zoeken een functie met het volgende type:
+
+~~~~{.haskell}
+eenOfAndereConversieFunctie :: ByteString -> String
+~~~~
+
+we maken gebruik van ***[Hayoo!](http://holumbus.fh-wedel.de/hayoo/hayoo.html)***
 
 # UTF-8 conversie
 
-Om de conversie te doen, gaan we gebruik maken van het package `utf8-string`.
+Om de conversie te doen, gaan we gebruik maken van het package `utf8-string`, dat we dankzij Hayoo hebben gevonden.
 
 ~~~~
 cabal install utf8-string
@@ -1331,13 +1524,55 @@ toString :: ByteString -> String
 
 Gebruik `toString` om een actie te schrijven die een URL downloadt en het resultaat converteert naar een `String`.
 
-Schrijf het type op van de actie.
+Schrijf eerst het type op van de actie.
+
+~~~~ {.haskell}
+~~~~
 
 * Haskell definities hebben gewoonlijk geen type signature nodig.
 
 * Ondanks dit is het een goede gewoonte om ze als *documentatie* op te schrijven bij top-level 
   definities.
 
+
+# UTF-8 conversie oefening
+
+Gebruik `toString` om een actie te schrijven die een URL downloadt en het resultaat converteert naar een `String`.
+
+Schrijf eerst het type op van de actie.
+
+~~~~ {.haskell}
+download :: String -> IO String
+~~~~
+
+* Haskell definities hebben gewoonlijk geen type signature nodig.
+
+* Ondanks dit is het een goede gewoonte om ze als *documentatie* op te schrijven bij top-level 
+  definities.
+
+~~~~ {.haskell}
+~~~~
+
+# UTF-8 conversie oefening
+
+Gebruik `toString` om een actie te schrijven die een URL downloadt en het resultaat converteert naar een `String`.
+
+Schrijf eerst het type op van de actie.
+
+~~~~ {.haskell}
+download :: String -> IO String
+~~~~
+
+* Haskell definities hebben gewoonlijk geen type signature nodig.
+
+* Ondanks dit is het een goede gewoonte om ze als *documentatie* op te schrijven bij top-level 
+  definities.
+
+~~~~ {.haskell}
+download :: String -> IO String
+download url = do res <- simpleHttp url
+                  return (toString res)
+~~~~
 
 # Downloaden en opslaan van een web pagina
 
@@ -1356,6 +1591,32 @@ makeFileName k = "download-" ++ show k ++ ".html"
 
 Om een lokale kopie van een bestand op te slaan, heb je de actie `writeFile` nodig.
 
+~~~~ {.haskell}
+~~~~
+
+# Downloaden en opslaan van een web pagina
+
+Gebruik je `download` functie om een lokale kopie op te slaan van een webpagina.
+
+~~~~ {.haskell}
+saveAs :: String -> Int -> IO ()
+~~~~
+
+Laten we voor het gemak de lokale files opslaan met namen die nummers bevatten:
+
+~~~~ {.haskell}
+makeFileName :: Int -> FilePath
+makeFileName k = "download-" ++ show k ++ ".html"
+~~~~
+
+Om een lokale kopie van een bestand op te slaan, heb je de actie `writeFile` nodig.
+
+~~~~ {.haskell}
+saveAs :: String -> Int -> IO ()
+saveAs url k = 
+  do content <- download url
+     writeFile (makeFileName k) content
+~~~~
 
 # Spitten in HTML
 
@@ -1500,14 +1761,33 @@ Stel dat we een predikaat willen schrijven die aangeeft of een `Tag` een opening
 
 * Wat zou het type van deze functie zijn?
 
-* Hoe zou de bode van de functie er uit zien?
+~~~~ {.haskell}
+~~~~
 
+* Hoe zou de body van de functie er uit zien?
+
+
+# Pattern matching over een Tag
+
+Stel dat we een predikaat willen schrijven die aangeeft of een `Tag` een opening tag is.
+
+* Wat zou het type van deze functie zijn?
+
+~~~~ {.haskell}
+isOpenTag :: Tag -> Bool
+~~~~
+
+* Hoe zou de body van de functie er uit zien?
+
+~~~~ {.haskell}
+~~~~
 
 # Om het even!
 
 Onze eerste body zag er als volgt uit:
 
 ~~~~ {.haskell}
+isOpenTag :: Tag -> Bool
 isOpenTag (TagOpen x y)     = True
 isOpenTag (TagClose x)      = False
 isOpenTag (TagText x)       = False
@@ -1525,10 +1805,11 @@ Begrijpbaar, maar lelijk.
 
 # Het wild card patroon
 
-We kunnen met het "`_`" teken opschrijven dat het ons niet uitmaakt
+We kunnen met het **"`_`"** teken opschrijven dat het ons niet uitmaakt
 wat een patroon of variabele precies is.
 
 ~~~~ {.haskell}
+isOpenTag :: Tag -> Bool
 isOpenTag (TagOpen _ _) = True
 isOpenTag  _            = False
 ~~~~
@@ -1545,6 +1826,7 @@ Het wild card patroon matcht altijd.
 Waarom schrijven we de functie niet op deze manier?
 
 ~~~~ {.haskell}
+isOpenTag :: Tag -> Bool
 isOpenTag  _            = False
 isOpenTag (TagOpen _ _) = True
 ~~~~
@@ -2101,12 +2383,11 @@ Deze presentatie staat online:
 
 * [http://hanjoosten.github.com/HaskellWorkshop](http://hanjoosten.github.com/HaskellWorkshop)
 
-> Leuke linkst:
+> Leuke Links:
 
 > * [http://haskell.org]()  (alles over Haskell)
 > * [http://www.haskell.org/haskellwiki/Haskell_in_industry]()(gebruik van Haskell in bedrijfsleven)
-> * [http://corp.galois.com](http://corp.galois.com) is een innovatief bedrijf die heel veel met Haskell doet.
-
+> * [http://corp.galois.com](http://corp.galois.com) is een innovatief bedrijf die heel veel met Haskell doet, en daarover veel vertelt.
 > * [www.tryhaskell.org](http://www.tryhaskell.org) (online Haskell)
 > * [www.projecteuler.net](http://www.projecteuler.net) (kijk hoever je zelf komt met Haskell)
 
