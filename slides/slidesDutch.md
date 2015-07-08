@@ -1,22 +1,21 @@
 % Introductie Functioneel Programmeren (met Haskell)
 % Han Joosten
-% Maart 2012 
-
+% Juli 2015 
 # Welkom!
 
 ~~~~ {.haskell}
 main = putStrLn "hallo!"
 ~~~~
 
-* Mijn naam is Han Joosten (han.joosten@atos.net)
+* Mijn naam is Han Joosten (han.joosten@oridna.nl)
 
-* Ik ben Requirements Engineer bij TS Noord
+* Ik ben Analist bij RT&O
 
 * Begonnen met Haskell ca. 2006
 
-* Ik help mee bij een open source project
+* Ik help mee bij ontwikkeling van Ampersand (Open source project)
 
-    * [ampersand.sourceforge.net](http://ampersand.sourceforge.net)
+    * [ampersand op github](https://github.com/AmpersandTarski)
 
 
 
@@ -58,7 +57,7 @@ Na mijn afstuderen in 1990 heb ik geprogrammeerd in iteratieve talen
 
 * Veel is (met dank!) gepikt van Bryan O'Sullivan
 
-![Real World Haskell](http://www.realworldhaskell.org/blog/wp-content/themes/mistylook-101/img/profile.jpg) Bryan O'Sullivan is co-auteur van het boek [Real World Haskell](http://www.realworldhaskell.org). Dit is een gratis online boek dat zeer goed bruikbaar is als leerboek als je verder wilt met Haskell.
+![Real World Haskell](http://book.realworldhaskell.org/support/rwh-200.jpg) Bryan O'Sullivan is co-auteur van het boek [Real World Haskell](http://book.realworldhaskell.org/). Dit is een gratis online boek dat zeer goed bruikbaar is als leerboek als je verder wilt met Haskell.
 
 * Sheets ook (nu al!) beschikbaar om zelf te doen: 
 
