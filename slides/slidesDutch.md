@@ -1,6 +1,6 @@
 % Introductie Functioneel Programmeren (met Haskell)
 % Han Joosten
-% Juli 2015 
+% Juli 2015
 # Welkom!
 
 ~~~~ {.haskell}
@@ -24,15 +24,15 @@ main = putStrLn "hallo!"
 ik ben in aanraking gekomen met functionele talen op de universiteit
 
 	* Twentel, Miranda, Lisp
-	
+
 Diverse specificatie talen:
 
 	* Lotos, ASF+SDF, Typol, LaTeX
-	
+
 Na mijn afstuderen in 1990 heb ik geprogrammeerd in iteratieve talen
 
     * Pascal, C, Perl, Rexx, Cool:Gen (integrated Case tool)
-    
+
 
 * Mijn interesse voor Haskell werd gewekt rond 2006
 
@@ -59,15 +59,9 @@ Na mijn afstuderen in 1990 heb ik geprogrammeerd in iteratieve talen
 
 ![Real World Haskell](http://book.realworldhaskell.org/support/rwh-200.jpg) Bryan O'Sullivan is co-auteur van het boek [Real World Haskell](http://book.realworldhaskell.org/). Dit is een gratis online boek dat zeer goed bruikbaar is als leerboek als je verder wilt met Haskell.
 
-* Sheets ook (nu al!) beschikbaar om zelf te doen: 
+* Sheets ook (nu al!) beschikbaar om zelf te doen:
 
     [http://hanjoosten.github.com/HaskellWorkshop](http://hanjoosten.github.com/HaskellWorkshop)
-
-* beschikbaar op Github:
- 
-~~~~
-git clone https://github.com/hanjoosten/HaskellWorkshop
-~~~~
 
 
 # Wat kan je verwachten 1
@@ -98,10 +92,10 @@ git clone https://github.com/hanjoosten/HaskellWorkshop
 
     * De GHC compiler (`ghc`)
 
-    * De GHCi interpreter (`ghci`)
-    
+    * De GHCi interpreter (`ghci` of `winghci`)
+
     * De Cabal package manager (`cabal`)
-    
+
     * Enkele handige libraries en tools
 
 
@@ -111,7 +105,7 @@ git clone https://github.com/hanjoosten/HaskellWorkshop
 
 * Een terminal window
 
-* Een 'speel'-directory 
+* Een 'speel'-directory
 
 # Probleemstelling
 
@@ -151,7 +145,7 @@ Dit commando zoekt naar `Hello.hs` in de huidige directory, en vertaalt het:
 ghc --make Hello
 ~~~~
 
-Het gegenereerde programma heet `Hello` (`Hello.exe` op 
+Het gegenereerde programma heet `Hello` (`Hello.exe` op
 Windows).
 
 * De `--make` optie zorgt er voor dat GHC de afhankelijkheden met andere bestanden en packages automatisch afhandelt.
@@ -263,9 +257,9 @@ Onthoud dat alle `ghci` commando's met een "`:`" beginnen.
 * `:reload` laden van het bestand dat het laatst is ge`:load`.
 
 * `:edit` opent de tekst editor met het bestand dat het laatst is ge`:load`. (echter *niet* automatische `:reload`.)
-  
+
 * `:type` geeft het type van een in Haskell gedefinieerd `ding`.
-  
+
 * `:quit` beëindigt `GHCi`.
 
 
@@ -375,7 +369,7 @@ De `**` operator is voor machtsverheffen.
 ~~~~
 Prelude> 500 * 1.03 ** 10
 671.9581896720612
-Prelude> 
+Prelude>
 ~~~~
 
 # Zelf doen: 2
@@ -399,7 +393,7 @@ Prelude> sum [9..250]
 31339
 Prelude> sum [9..250] -2
 31337
-Prelude> 
+Prelude>
 ~~~~
 
 # Zelf doen: 3
@@ -441,10 +435,10 @@ Prelude> product [0xBE..0xEF]
 332675816112263267856283533963851818076207506005655794001611738031848399818081502871648044328813710016512000000000000
 Prelude> length (show (product [0xBE..0xEF]))
 117
-Prelude> 
+Prelude>
 ~~~~
 
-# Zelf functies definiëren 
+# Zelf functies definiëren
 
 Zelf functies definiëren is best eenvoudig.
 
@@ -488,7 +482,7 @@ We hebben de volgende elementen:
 * Een Boolean expressie
 
 * `then` een expressie die het resultaat is als de Boolean `True` is
-  
+
 * `else` een expressie die het resultaat is als de Boolean `False` is
 
 
@@ -520,14 +514,14 @@ Waarom kan dit wel bij imperatieve talen, en niet in Haskell?
 
 # Een bijna triviale oefening
 
-Schrijf een functie met een string als parameter. Het resultaat is het argument met daarachter `", world"` geplakt, als dat 
+Schrijf een functie met een string als parameter. Het resultaat is het argument met daarachter `", world"` geplakt, als dat
 argument `"hello"` is, of alleen maar het onveranderde argument in andere gevallen.
 
 * Oh ja, De "append"-functie luistert naar de naam `++`.
 
 # Een bijna triviale oefening
 
-Schrijf een functie met een string als parameter. Het resultaat is het argument met daarachter `", world"` geplakt, als dat 
+Schrijf een functie met een string als parameter. Het resultaat is het argument met daarachter `", world"` geplakt, als dat
 argument `"hello"` is, of alleen maar het onveranderde argument in andere gevallen.
 
 * Oh ja, De "append"-functie luistert naar de naam `++`.
@@ -575,7 +569,7 @@ Stel dat we een lijst van de grond af aan willen opbouwen.
 
 * We schrijven de *lege lijst* als `[]`.
 
-* Gegeven een bestaande lijst, kunnen we een ander element aan 
+* Gegeven een bestaande lijst, kunnen we een ander element aan
 het *begin* van de lijst toevoegen met behulp van de `:` operator.
 
 
@@ -617,7 +611,7 @@ Dus de waarde `[5,8]` wordt gerepresenteerd als:
 * Een `:` constructor, met `5` als zijn eerste argument, en als tweede ...
 
 * Nog een `:` constructor, deze keer met `8` als zijn eerste argument, en nu als tweede ...
-  
+
 * Een `[]` constructor.
 
 
@@ -627,7 +621,7 @@ Afhankelijk van je achtergrond, dacht je waarschijnlijk iets als:
 
 ![Hee! Haskell lijsten lijken op enkelvoudig gelinkte lijsten](http://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Singly-linked-list.svg/408px-Singly-linked-list.svg.png)
 
-![Hee! Dat lijkt op de `cons` cellen in Lisp!](http://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Cons-cells.svg/300px-Cons-cells.svg.png) 
+![Hee! Dat lijkt op de `cons` cellen in Lisp!](http://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Cons-cells.svg/300px-Cons-cells.svg.png)
 
 
 Inderdaad.
@@ -663,7 +657,7 @@ isCapitalized name
 
 Als de gebruikte constructor de "aan de voorkant toevoegen" `:` operator is,
 dan wordt het interessanter.
-  
+
 * Wat er ook maar als eerste argument gebruikt is voor de `:` constructor wordt gebonden
   aan de naam `first`.
 * Het tweede argument van de `:` constructor (dus alles in de lijst na het eerste element) wordt gebonden aan de naam `rest`.
@@ -677,7 +671,7 @@ Wat de `case` expressie doet, noemen we *pattern matching*.
 
 * Zodra een een patroon 'matcht', wordt het rechter deel (het deel achter de `->`) gebruikt
   als het resultaat van de hele `case` expressie.
-  
+
 * Als geen enkel patroon 'matcht', ontstaat een exceptie.
 
 
@@ -703,7 +697,7 @@ isCapitalized name
 > * *matcht []  ? Nee.*
 > * *matcht (first:rest)  ? Ja!*
 > * first *krijgt als waarde* 'A'
-> * rest *krijgt als waarde* 'n' : 'n' : [] 
+> * rest *krijgt als waarde* 'n' : 'n' : []
 > * isCapitalized ('A' : 'n' : 'n' : [] ) *wordt herschreven als* isUpper 'A'
 > * isUpper 'A' *evalueert naar* True
 
@@ -803,7 +797,7 @@ Zoals in de originele versie, maar nu zonder gebruik van `case`:
 ~~~~ {.haskell}
 countCaps xs =
   if null xs
-  then 0 
+  then 0
   else if isUpper (head xs)
        then 1 + countCaps (tail xs)
        else countCaps (tail xs)
@@ -816,7 +810,7 @@ Zoals in de originele versie, maar nu zonder gebruik van `case`:
 ~~~~ {.haskell}
 countCaps xs =
   if null xs
-  then 0 
+  then 0
   else if isUpper (head xs)
        then 1 + countCaps (tail xs)
        else countCaps (tail xs)
@@ -836,7 +830,7 @@ countCaps (x:xs)
 
 Schrijf een nieuwe versie van `countCaps`:
 
-* Schrijf een functie die door een lijst loopt, en die een nieuwe lijst genereert 
+* Schrijf een functie die door een lijst loopt, en die een nieuwe lijst genereert
   bestaande uit alleen de hoofdletters van de oorspronkelijke lijst.
 
 ~~~~ {.haskell}
@@ -853,7 +847,7 @@ Dit zou hetzelfde resultaat moeten opleveren als je eerste functie. Toch?
 
 Schrijf een nieuwe versie van `countCaps`:
 
-* Schrijf een functie die door een lijst loopt, en die een nieuwe lijst genereert 
+* Schrijf een functie die door een lijst loopt, en die een nieuwe lijst genereert
   bestaande uit alleen de hoofdletters van de oorspronkelijke lijst.
 
 ~~~~ {.haskell}
@@ -913,7 +907,7 @@ filter pred (x:xs)
 Hoe kunnen we dit gebruiken om `countLowerCase` te definieren?
 
 ~~~~ {.haskell}
-countLowerCase string = 
+countLowerCase string =
   length (filter isLower string)
 ~~~~
 
@@ -967,7 +961,7 @@ Als eerste argument van "`.`" hadden we `length`, en `filter isLower`
 als het tweede:
 
 ~~~~ {.haskell}
-(length . filter isLower) x 
+(length . filter isLower) x
   = length (filter isLower x)
 ~~~~
 
@@ -993,7 +987,7 @@ Haskell is gevoelig voor white space!
 
 * Een top-level definitie start in de meest linkse kolom.
 
-* Volgend op het begin van een definitie, als de volgende regel 
+* Volgend op het begin van een definitie, als de volgende regel
   inspringt, wordt die regel behandeld als vervolg van die definitie.
 
 * Gebruik nooit 'Tab' in je source files.
@@ -1022,7 +1016,7 @@ in x + y
 
 # Oefenen met compositie
 
-Schrijf een functie die een String accepteert en die een nieuwe String 
+Schrijf een functie die een String accepteert en die een nieuwe String
 oplevert, die alleen de woorden bevat die met een klinker beginnen.
 Maak hierbij zoveel mogelijk gebruik van functie compositie.
 
@@ -1040,7 +1034,7 @@ klinkerWoorden "Ik denk, dus ik ben."
 
 # Oefenen met compositie
 
-Schrijf een functie die een String accepteert en die een nieuwe String 
+Schrijf een functie die een String accepteert en die een nieuwe String
 oplevert, die alleen de woorden bevat die met een klinker beginnen.
 Maak hierbij zoveel mogelijk gebruik van functie compositie.
 
@@ -1054,7 +1048,7 @@ klinkerWoorden "Ik denk, dus ik ben."
 ~~~~
 
 ~~~~ {.haskell}
-klinkerWoorden = 
+klinkerWoorden =
   let isKlinker c = toLower c `elem` "aeiou"
   in  unwords . filter (isKlinker . head) . words
 ~~~~
@@ -1085,70 +1079,62 @@ source Haskell software:
 Ga er nu heen!
 
 Click op de
-[Packages](http://hackage.haskell.org/packages/archive/pkg-list.html)
-link bovenin de pagina om packages te doorzoeken.
+[Browse](http://hackage.haskell.org/packages)
+link om door packages te bladeren
 
 Helaas is het een overweldigende grote lijst, maar wie geduld heeft, kan er altijd nuttige dingen vinden.
 
 Wie heeft geduld?
 
 
-# Bah!
+# Zoeken
 
-Bladeren door *duizenden* libraries kost veel tijd/moeite. Is er geen betere manier?
+Bladeren door *duizenden* libraries kost veel tijd/moeite. Gelukkig kan er ook worden gezocht.
 
-Gebruik het `cabal` commando!
+Click op de
+[Search](http://hackage.haskell.org/packages/search)
+link om packages te doorzoeken.
 
-Voer dit commando uit in een terminal window:
+zoek op keyword *http*
 
-~~~~
-cabal update
-~~~~
-
-Hiermee download je de meest recente index van alle software op Hackage.
-
-Met deze bijgewerkte index kunnen we zoeken:
-
-~~~~
-cabal list http
-~~~~
-
-Je hebt nu nog wel ruim 20 packages om door te akkeren, maar het is beter dan de duizenden packages op de Packages pagina.
-
+Je hebt nu nog wel heel veel packages om door te akkeren, maar het is beter dan de duizenden packages op de Packages pagina.
 
 # Even de zoektocht 'helpen'.
 
-Een goede HTTP client library heet `http-enumerator`.
+We gebruiken vandaag de *http-conduit* library. Die ziet er goed uit, en is nog redelijk recent.
+Laten we eens kijken of we daar wat mee kunnen.
 
 De documentatie staat natuurlijk online:
 
-* [hackage.haskell.org/package/http-enumerator](http://hackage.haskell.org/package/http-enumerator)
+* [http://hackage.haskell.org/package/http-conduit](http://hackage.haskell.org/package/http-conduit)
 
-De startpagina voor een package kan intimiderend overkomen, maar kijk maar eens onderaan, bij de sectie "Modules".
+De startpagina voor een package kan intimiderend overkomen. Laat je niet gek maken. Kijk maar eens onderaan, bij de sectie "Modules".
 
 Wat zie je?
 
 
 # Een package installeren
 
-We moeten `http-enumerator` eerst installeren, voordat we er gebuik van kunnen maken.
+We moeten `http-conduit` eerst installeren, voordat we er gebuik van kunnen maken.
 
-Het installeren van het `http-enumerator` package gaat met behulp van een eenvoudig commando:
+Het installeren van het `http` package gaat met behulp van een eenvoudig commando:
+(eerst doen we nog even een update van de lijst van packeges, want dat verandert met de dag)
 
 ~~~~
-cabal install http-enumerator
+cabal update
+cabal install http-conduit
 ~~~~
 
-Dit commando bepaalt alle andere packages waar `http-enumerator`
-afhankelijk van is. Vervolgens worden al deze packages gedownload, 
-vertaald en geïnstalleerd. 
+Dit commando bepaalt alle andere packages waar `http-conduit`
+afhankelijk van is. Vervolgens worden al deze packages gedownload,
+vertaald en geïnstalleerd.
 
 Dit kan wel een paar minuten duren. De compiler output verschijnt op het scherm.
 
 
 # Documentatie lezen: packages en modules
 
-Nu we aan het wachten zijn tot het `http-enumerator` package gereed is 
+Nu we aan het wachten zijn tot het `http-conduit` package gereed is
 voor gebruik, kunnen we vast uitzoeken hoe we het kunnen gebruiken.
 
 Herinner je de link nog naar de API documentatie, onderin de webpage van de package?
@@ -1157,7 +1143,7 @@ Ga daar maar eens heen en bekijk de documentatie.
 Een API pagina begint met een titel die er als volgt uit kan zien:
 
 ~~~~
-Network.HTTP.Enumerator
+Network.HTTP.Conduit
 ~~~~
 
 Dit is de naam van een *module*.
@@ -1169,7 +1155,7 @@ Een *package* is een verzameling van samenhangende modules.
 
 # Documentatie lezen: de rest
 
-Na de gebruikelijke initiele bla bla, bevat de documentatie van een module uit 
+Na de gebruikelijke initiele bla bla, bestaat de documentatie van een module uit
 type signatures en beschrijvingen.
 
 Dit is een heel eenvoudige type signature:
@@ -1182,7 +1168,7 @@ Wat is dat nou weer?
 
 De *naam* van het ding dat hier wordt gedefinieerd komt voor het `::` teken.
 
-Het *type* ervan volgt na de `::`.
+Het *type* ervan volgt na de `::`
 
 Dit betekent dat "de waarde met de naam `foo` is van het type `String`".
 
@@ -1193,7 +1179,7 @@ Tot nu toe hebben we ons niet druk gemaakt over typering of type signatures.
 
 Elke expressie en waarde in Haskell heeft één type.
 
-Deze types kunnen vrijwel altijd automatisch worden *afgeleid* door 
+Deze types kunnen vrijwel altijd automatisch worden *afgeleid* door
 de compiler of interpreter.
 
 
@@ -1234,10 +1220,10 @@ Dus `[String]` betekent "een lijst van waarden, elk met type `String`".
 
 # Type synoniemen
 
-Wat is een `String` eigenlijk? 
+Wat is een `String` eigenlijk?
 
 * Het is niks bijzonders, maar gewoon een *synoniem* voor `[Char]`, oftewel "een lijst van `Char`".
-  
+
 We kunnen zelf ook synoniemen definiëren.
 
 ~~~~ {.haskell}
@@ -1271,7 +1257,7 @@ Welk gedrag zou deze functie kunnen hebben?
 
 # Documentatie uit de *echte* wereld
 
-Hier is het allereerste signature uit `http-enumerator`:
+Hier is het allereerste signature uit `http-conduit`:
 
 ~~~~
 simpleHttp :: MonadIO m => String -> m ByteString
@@ -1284,67 +1270,37 @@ Tussen `'::'` en `'=>'` zien we *constraints* over het gebruik van
 
 * *Belangrijk*: Meestal kan je zonder gevaar dingen negeren die je (nog) niet begrijpt.
 
-We zullen die gekke kleine letter `m` nu ook maar even laten voor wat het is.
+De m laten we ook maar even voor wat het is.
 
 Wat kunnen we nu zeggen over deze functie?
 
-> * Inderdaad: Het is een functie die een String als parameter heeft, en die een Bytestring teruggeeft.
-
-# ByteString
-
-Een `ByteString` is een blob van binaire data.
-
-In tegenstelling tot `String`, wordt het niet als een lijst, maar als een packed array gerepresenteerd.
-
-het bevat binaire *bytes*, geen tekst!
-
-* maak geen gebruik van `ByteString` om datamanipulatie op tekst te doen.
-
+> * Inderdaad: Het is een functie die een String als parameter heeft, en die een ByteString teruggeeft.
 
 # Speelkwartier met ghci!
 
-Heeft iedereen `http-enumerator` inmiddels geïnstalleerd?
+Heeft iedereen `http-conduit` inmiddels geïnstalleerd?
 
 Start `ghci`, en laten we eens wat spelen met de module:
 
 ~~~~
-import Network.HTTP.Enumerator
+import Network.HTTP.Conduit
 ~~~~
 
 Merk op dat de prompt verandert zodra we het hebben getypt:
 
 ~~~~
-Prelude Network.HTTP.Enumerator>
+Prelude Network.HTTP.Conduit>
 ~~~~
 
 We weten hierdoor dat de module geladen en beschikbaar is voor gebruik.
 
 
-# Wacht! Wie gebruikt Windows?
-
-Onder Windows moeten we eerst Winsock initiëren voordat we netwerken kunnen gebruiken.
-
-First, let's load the lowest-level networking module:
-
-~~~~
-import Network.Socket
-~~~~
-
-En zo initiëren we Winsock:
-
-~~~~
-withSocketsDo (return ())
-~~~~
-
-(Onder Unix kan dit geen kwaad.)
-
-
-# Nu we dat hobbeltje genomen hebben ...
+# Ophalen van een webpagina
 
 Eindelijk - we gaan nu een webpagina ophalen!
 
 ~~~~
-simpleHttp "http://example.com/"
+simpleHTTP "http://example.com/"
 ~~~~
 
 Kreeg je een hoop HTML in je terminal window te zien? Yeah!
@@ -1362,12 +1318,12 @@ Voor het gemak nemen we even aan, dat alle web pagina's UTF-8 gecodeerd zijn.
 Tot nu toe is alle code die we hebben geschreven "Puur".
 
 * Het gedrag van al onze functies waren alleen afhankelijk van de input.
-  
+
 * Al onze data is onveranderlijk.
 
-* Er is dus geen manier om een globale variabele of het gedrag 
+* Er is dus geen manier om een globale variabele of het gedrag
  van een functie aan te passen
-  
+
 
 # niet-pure code
 
@@ -1408,7 +1364,7 @@ Het `:type` commando toont nu iets als dit:
 readFile :: FilePath -> IO String
 ~~~~
 
-Zie je het `IO` in het resulterend type? 
+Zie je het `IO` in het resulterend type?
 
 Dat betekent "deze functie kan zij-effecten hebben".
 
@@ -1424,7 +1380,7 @@ Het type-systeem 'weet' welke functies `IO` doen en zorgt ervoor dat we hier op 
 We kunnen echter op een natuurlijke manier pure code mengen met acties:
 
 ~~~~ {.haskell}
-charCount fileName = 
+charCount fileName =
   do contents <- readFile fileName
      return (length contents)
 ~~~~
@@ -1459,7 +1415,7 @@ Het neemt een *pure* waarde (zonder `IO` in zijn type), en *wikkelt* het in het 
 Pure code kan niet-pure code nooit aanroepen. Het kan wel data opleveren aan de niet-pure wereld door gebruik te maken van `return`.
 
 
-# Haskell programs and IO
+# Haskell programs en IO
 
 Elk Haskell programma heeft als entry point een functie met als naam
 `main`.
@@ -1530,7 +1486,7 @@ Schrijf eerst het type op van de actie.
 
 * Haskell definities hebben gewoonlijk geen type signature nodig.
 
-* Ondanks dit is het een goede gewoonte om ze als *documentatie* op te schrijven bij top-level 
+* Ondanks dit is het een goede gewoonte om ze als *documentatie* op te schrijven bij top-level
   definities.
 
 
@@ -1546,7 +1502,7 @@ download :: String -> IO String
 
 * Haskell definities hebben gewoonlijk geen type signature nodig.
 
-* Ondanks dit is het een goede gewoonte om ze als *documentatie* op te schrijven bij top-level 
+* Ondanks dit is het een goede gewoonte om ze als *documentatie* op te schrijven bij top-level
   definities.
 
 ~~~~ {.haskell}
@@ -1564,7 +1520,7 @@ download :: String -> IO String
 
 * Haskell definities hebben gewoonlijk geen type signature nodig.
 
-* Ondanks dit is het een goede gewoonte om ze als *documentatie* op te schrijven bij top-level 
+* Ondanks dit is het een goede gewoonte om ze als *documentatie* op te schrijven bij top-level
   definities.
 
 ~~~~ {.haskell}
@@ -1612,7 +1568,7 @@ Om een lokale kopie van een bestand op te slaan, heb je de actie `writeFile` nod
 
 ~~~~ {.haskell}
 saveAs :: String -> Int -> IO ()
-saveAs url k = 
+saveAs url k =
   do content <- download url
      writeFile (makeFileName k) content
 ~~~~
@@ -1674,7 +1630,7 @@ safeHead []     = None
 # Some? None?
 
 * We gebruiken een constructor met de naam `Some` om het idee te vangen: "We hebben een resultaat".
-  
+
 * De constructor `None` geeft aan: "We hebben hier geen resultaat".
 
 Om deze constructors in het leven te roepen, definiëren we een nieuw type.
@@ -1795,7 +1751,7 @@ isOpenTag (TagWarning x)    = False
 isOpenTag (TagPosition x y) = False
 ~~~~
 
-Begrijpbaar, maar lelijk. 
+Begrijpbaar, maar lelijk.
 
 * We zijn maar in precies één constructor geïnteresseerd.
 
@@ -1816,9 +1772,9 @@ isOpenTag  _            = False
 Het wild card patroon matcht altijd.
 
 * Aangezien we toch geen gebruik maken van `x` of `y`, kunnen we dat expliciet aangeven door gebruik te maken van `_`.
-  
+
 * Aangezien elke constructor behalve `TagOpen` ons niets interesseert, kunnen we ze allemaal laten matchen met `_`.
-  
+
 
 # Even een vraag tussendoor
 
@@ -1862,7 +1818,7 @@ De geparsede tags kunnen verschillende soorten tag namen hebben.
 ~~~~
 
 * Zoek een `tagsoup` functie die tag namen en attributen omzet in kleine letters.
-  
+
 
 # Tags in normaalvorm
 
@@ -1884,8 +1840,8 @@ We zijn alleen geïnteresseerd in open tags die links bevatten, dus `<a>` tags.
 * Hoe zouden we het type functie schrijven die aangeeft of een `Tag` een open tag is met de juiste naam?
 
 * Hoe zouden we die functie gebruiken om alleen de open tags over te houden van een lijst van geparsede tags?
-  
-  
+
+
 # Poeh hee!
 
 Deze cascade begint belachelijke vormen te krijgen.
@@ -2193,7 +2149,7 @@ Een mogelijkheid om deze twee te associeren is een *tuple*:
 ("http://x.org/", ["http://microsoft.com/"])
 ~~~~
 
-Tuples zijn nuttig als we verschillende soorten data hebben zonder dat we 
+Tuples zijn nuttig als we verschillende soorten data hebben zonder dat we
 het gedoe willen van het definieren van een nieuw type.
 
 Nu we het toch over een nieuw type hebben, zo definieer je er een:
@@ -2342,7 +2298,7 @@ We kunnen nu:
 
 * De links ervan extraheren
 
-* van daar uit verder `spideren`, zonder doublures 
+* van daar uit verder `spideren`, zonder doublures
 
 Wat blijft over?
 
@@ -2353,7 +2309,7 @@ Wat blijft over?
 
 # Fin
 
-In het hoogst onwaarschijnlijke geval dat we hier aankomen voordat we uit de tijd zijn gelopen, 
+In het hoogst onwaarschijnlijke geval dat we hier aankomen voordat we uit de tijd zijn gelopen,
 gaam we verder in een we-zien-wel-wat-voor-avontuur sessie.
 
 Bedankt dat je tot nu toe niet bent afgehaakt!
@@ -2371,7 +2327,7 @@ Allemaal hartelijk bedankt voor het lekker meedoen!
 
 #### Hebben we de doelen gehaald?
 
-> * Een idee over wat Functioneel Programmeren is 
+> * Een idee over wat Functioneel Programmeren is
 > * Enthousiasme gedeeld
 > * Een leuke avond
 > * Webcrawler
@@ -2389,4 +2345,3 @@ Deze presentatie staat online:
 > * [http://corp.galois.com](http://corp.galois.com) is een innovatief bedrijf die heel veel met Haskell doet, en daarover veel vertelt.
 > * [www.tryhaskell.org](http://www.tryhaskell.org) (online Haskell)
 > * [www.projecteuler.net](http://www.projecteuler.net) (kijk hoever je zelf komt met Haskell)
-

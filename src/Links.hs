@@ -1,7 +1,7 @@
 module Links where
 
 import Data.Maybe
-import Network.URI
+import Network
 import Text.HTML.TagSoup
 
 links :: String -> String -> [String]

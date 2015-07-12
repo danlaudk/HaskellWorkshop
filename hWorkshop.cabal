@@ -1,0 +1,19 @@
+name: hWorkshop
+version: 0
+cabal-version: >= 1.2
+build-type: Simple
+
+executable hWorkshop
+  hs-source-dirs: src
+  main-is: Main.hs
+
+  build-depends:
+    base,
+    bytestring ,
+    tagsoup == 0.13.3 ,
+    network,
+    utf8-string,
+    HTTP,
+    containers,
+    http-conduit
+  other-modules:  ProcessPage

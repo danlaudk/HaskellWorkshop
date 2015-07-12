@@ -69,9 +69,7 @@
 <ul>
 <li><p>Sheets ook (nu al!) beschikbaar om zelf te doen:</p>
 <p><a href="http://hanjoosten.github.com/HaskellWorkshop" class="uri">http://hanjoosten.github.com/HaskellWorkshop</a></p></li>
-<li><p>beschikbaar op Github:</p></li>
 </ul>
-<pre><code>git clone https://github.com/hanjoosten/HaskellWorkshop</code></pre>
 </div>
 <div id="wat-kan-je-verwachten-1" class="slide section level1">
 <h1>Wat kan je verwachten 1</h1>
@@ -99,7 +97,7 @@
 <li><p>We hebben nu een super gereedschapskist</p>
 <ul>
 <li><p>De GHC compiler (<code>ghc</code>)</p></li>
-<li><p>De GHCi interpreter (<code>ghci</code>)</p></li>
+<li><p>De GHCi interpreter (<code>ghci</code> of <code>winghci</code>)</p></li>
 <li><p>De Cabal package manager (<code>cabal</code>)</p></li>
 <li><p>Enkele handige libraries en tools</p></li>
 </ul></li>
@@ -268,7 +266,7 @@ Prelude&gt;</code></pre>
 </ul>
 <pre><code>Prelude&gt; 500 * 1.03 ** 10
 671.9581896720612
-Prelude&gt; </code></pre>
+Prelude&gt;</code></pre>
 </div>
 <div id="zelf-doen-2" class="slide section level1">
 <h1>Zelf doen: 2</h1>
@@ -289,7 +287,7 @@ Prelude&gt; </code></pre>
 31339
 Prelude&gt; sum [9..250] -2
 31337
-Prelude&gt; </code></pre>
+Prelude&gt;</code></pre>
 </div>
 <div id="zelf-doen-3" class="slide section level1">
 <h1>Zelf doen: 3</h1>
@@ -314,7 +312,7 @@ Prelude&gt; </code></pre>
 332675816112263267856283533963851818076207506005655794001611738031848399818081502871648044328813710016512000000000000
 Prelude&gt; length (show (product [0xBE..0xEF]))
 117
-Prelude&gt; </code></pre>
+Prelude&gt;</code></pre>
 </div>
 <div id="zelf-functies-definiëren" class="slide section level1">
 <h1>Zelf functies definiëren</h1>
@@ -561,7 +559,7 @@ countCaps (x<span class="fu">:</span>xs)
 <p>Zoals in de originele versie, maar nu zonder gebruik van <code>case</code>:</p>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">countCaps xs <span class="fu">=</span>
   <span class="kw">if</span> null xs
-  <span class="kw">then</span> <span class="dv">0</span> 
+  <span class="kw">then</span> <span class="dv">0</span>
   <span class="kw">else</span> <span class="kw">if</span> isUpper (head xs)
        <span class="kw">then</span> <span class="dv">1</span> <span class="fu">+</span> countCaps (tail xs)
        <span class="kw">else</span> countCaps (tail xs)</code></pre></div>
@@ -571,7 +569,7 @@ countCaps (x<span class="fu">:</span>xs)
 <p>Zoals in de originele versie, maar nu zonder gebruik van <code>case</code>:</p>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">countCaps xs <span class="fu">=</span>
   <span class="kw">if</span> null xs
-  <span class="kw">then</span> <span class="dv">0</span> 
+  <span class="kw">then</span> <span class="dv">0</span>
   <span class="kw">else</span> <span class="kw">if</span> isUpper (head xs)
        <span class="kw">then</span> <span class="dv">1</span> <span class="fu">+</span> countCaps (tail xs)
        <span class="kw">else</span> countCaps (tail xs)</code></pre></div>
@@ -637,7 +635,7 @@ filter pred (x<span class="fu">:</span>xs)
   <span class="fu">|</span> pred x     <span class="fu">=</span> x <span class="fu">:</span> filter pred xs
   <span class="fu">|</span> otherwise  <span class="fu">=</span>     filter pred xs</code></pre></div>
 <p>Hoe kunnen we dit gebruiken om <code>countLowerCase</code> te definieren?</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">countLowerCase string <span class="fu">=</span> 
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">countLowerCase string <span class="fu">=</span>
   length (filter isLower string)</code></pre></div>
 </div>
 <div id="data-in-data-uit" class="slide section level1">
@@ -666,7 +664,7 @@ filter pred (x<span class="fu">:</span>xs)
 <p>We plaatsen de argumenten in de rechterkant van onze functie definitie:</p>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">(f <span class="fu">.</span> g) x <span class="fu">=</span> f (g x)</code></pre></div>
 <p>Als eerste argument van &quot;<code>.</code>&quot; hadden we <code>length</code>, en <code>filter isLower</code> als het tweede:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">(length <span class="fu">.</span> filter isLower) x 
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">(length <span class="fu">.</span> filter isLower) x
   <span class="fu">=</span> length (filter isLower x)</code></pre></div>
 </div>
 <div id="lokale-variabelen" class="slide section level1">
@@ -721,7 +719,7 @@ filter pred (x<span class="fu">:</span>xs)
 <p>Voorbeeld:</p>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">klinkerWoorden <span class="st">&quot;Ik denk, dus ik ben.&quot;</span>
   <span class="fu">==</span> <span class="st">&quot;Ik ik&quot;</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">klinkerWoorden <span class="fu">=</span> 
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">klinkerWoorden <span class="fu">=</span>
   <span class="kw">let</span> isKlinker c <span class="fu">=</span> toLower c <span class="ot">`elem`</span> <span class="st">&quot;aeiou&quot;</span>
   <span class="kw">in</span>  unwords <span class="fu">.</span> filter (isKlinker <span class="fu">.</span> head) <span class="fu">.</span> words</code></pre></div>
 <p>Doet dit je denken aan een Unix shell pipeline, maar dan van rechts naar links?</p>
@@ -743,57 +741,54 @@ filter pred (x<span class="fu">:</span>xs)
 <li><p>(In de volksmond: &quot;Hackage&quot;)</p></li>
 </ul>
 <p>Ga er nu heen!</p>
-<p>Click op de <a href="http://hackage.haskell.org/packages/archive/pkg-list.html">Packages</a> link bovenin de pagina om packages te doorzoeken.</p>
+<p>Click op de <a href="http://hackage.haskell.org/packages">Browse</a> link om door packages te bladeren</p>
 <p>Helaas is het een overweldigende grote lijst, maar wie geduld heeft, kan er altijd nuttige dingen vinden.</p>
 <p>Wie heeft geduld?</p>
 </div>
-<div id="bah" class="slide section level1">
-<h1>Bah!</h1>
-<p>Bladeren door <em>duizenden</em> libraries kost veel tijd/moeite. Is er geen betere manier?</p>
-<p>Gebruik het <code>cabal</code> commando!</p>
-<p>Voer dit commando uit in een terminal window:</p>
-<pre><code>cabal update</code></pre>
-<p>Hiermee download je de meest recente index van alle software op Hackage.</p>
-<p>Met deze bijgewerkte index kunnen we zoeken:</p>
-<pre><code>cabal list http</code></pre>
-<p>Je hebt nu nog wel ruim 20 packages om door te akkeren, maar het is beter dan de duizenden packages op de Packages pagina.</p>
+<div id="zoeken" class="slide section level1">
+<h1>Zoeken</h1>
+<p>Bladeren door <em>duizenden</em> libraries kost veel tijd/moeite. Gelukkig kan er ook worden gezocht.</p>
+<p>Click op de <a href="http://hackage.haskell.org/packages/search">Search</a> link om packages te doorzoeken.</p>
+<p>zoek op keyword <em>http</em></p>
+<p>Je hebt nu nog wel heel veel packages om door te akkeren, maar het is beter dan de duizenden packages op de Packages pagina.</p>
 </div>
 <div id="even-de-zoektocht-helpen." class="slide section level1">
 <h1>Even de zoektocht 'helpen'.</h1>
-<p>Een goede HTTP client library heet <code>http-enumerator</code>.</p>
+<p>We gebruiken vandaag de <em>http-conduit</em> library. Die ziet er goed uit, en is nog redelijk recent. Laten we eens kijken of we daar wat mee kunnen.</p>
 <p>De documentatie staat natuurlijk online:</p>
 <ul>
-<li><a href="http://hackage.haskell.org/package/http-enumerator">hackage.haskell.org/package/http-enumerator</a></li>
+<li><a href="http://hackage.haskell.org/package/http-conduit" class="uri">http://hackage.haskell.org/package/http-conduit</a></li>
 </ul>
-<p>De startpagina voor een package kan intimiderend overkomen, maar kijk maar eens onderaan, bij de sectie &quot;Modules&quot;.</p>
+<p>De startpagina voor een package kan intimiderend overkomen. Laat je niet gek maken. Kijk maar eens onderaan, bij de sectie &quot;Modules&quot;.</p>
 <p>Wat zie je?</p>
 </div>
 <div id="een-package-installeren" class="slide section level1">
 <h1>Een package installeren</h1>
-<p>We moeten <code>http-enumerator</code> eerst installeren, voordat we er gebuik van kunnen maken.</p>
-<p>Het installeren van het <code>http-enumerator</code> package gaat met behulp van een eenvoudig commando:</p>
-<pre><code>cabal install http-enumerator</code></pre>
-<p>Dit commando bepaalt alle andere packages waar <code>http-enumerator</code> afhankelijk van is. Vervolgens worden al deze packages gedownload, vertaald en geïnstalleerd.</p>
+<p>We moeten <code>http-conduit</code> eerst installeren, voordat we er gebuik van kunnen maken.</p>
+<p>Het installeren van het <code>http</code> package gaat met behulp van een eenvoudig commando: (eerst doen we nog even een update van de lijst van packeges, want dat verandert met de dag)</p>
+<pre><code>cabal update
+cabal install http-conduit</code></pre>
+<p>Dit commando bepaalt alle andere packages waar <code>http-conduit</code> afhankelijk van is. Vervolgens worden al deze packages gedownload, vertaald en geïnstalleerd.</p>
 <p>Dit kan wel een paar minuten duren. De compiler output verschijnt op het scherm.</p>
 </div>
 <div id="documentatie-lezen-packages-en-modules" class="slide section level1">
 <h1>Documentatie lezen: packages en modules</h1>
-<p>Nu we aan het wachten zijn tot het <code>http-enumerator</code> package gereed is voor gebruik, kunnen we vast uitzoeken hoe we het kunnen gebruiken.</p>
+<p>Nu we aan het wachten zijn tot het <code>http-conduit</code> package gereed is voor gebruik, kunnen we vast uitzoeken hoe we het kunnen gebruiken.</p>
 <p>Herinner je de link nog naar de API documentatie, onderin de webpage van de package? Ga daar maar eens heen en bekijk de documentatie.</p>
 <p>Een API pagina begint met een titel die er als volgt uit kan zien:</p>
-<pre><code>Network.HTTP.Enumerator</code></pre>
+<pre><code>Network.HTTP.Conduit</code></pre>
 <p>Dit is de naam van een <em>module</em>.</p>
 <p>Een module is een verzameling van samenhangende code.</p>
 <p>Een <em>package</em> is een verzameling van samenhangende modules.</p>
 </div>
 <div id="documentatie-lezen-de-rest" class="slide section level1">
 <h1>Documentatie lezen: de rest</h1>
-<p>Na de gebruikelijke initiele bla bla, bevat de documentatie van een module uit type signatures en beschrijvingen.</p>
+<p>Na de gebruikelijke initiele bla bla, bestaat de documentatie van een module uit type signatures en beschrijvingen.</p>
 <p>Dit is een heel eenvoudige type signature:</p>
 <pre><code>foo :: String</code></pre>
 <p>Wat is dat nou weer?</p>
 <p>De <em>naam</em> van het ding dat hier wordt gedefinieerd komt voor het <code>::</code> teken.</p>
-<p>Het <em>type</em> ervan volgt na de <code>::</code>.</p>
+<p>Het <em>type</em> ervan volgt na de <code>::</code></p>
 <p>Dit betekent dat &quot;de waarde met de naam <code>foo</code> is van het type <code>String</code>&quot;.</p>
 </div>
 <div id="type-systeem-van-haskell" class="slide section level1">
@@ -849,50 +844,32 @@ filter pred (x<span class="fu">:</span>xs)
 </div>
 <div id="documentatie-uit-de-echte-wereld" class="slide section level1">
 <h1>Documentatie uit de <em>echte</em> wereld</h1>
-<p>Hier is het allereerste signature uit <code>http-enumerator</code>:</p>
+<p>Hier is het allereerste signature uit <code>http-conduit</code>:</p>
 <pre><code>simpleHttp :: MonadIO m =&gt; String -&gt; m ByteString</code></pre>
 <p>Dit is ingewikkelder! Hoe lezen we dit nu weer?</p>
 <p>Tussen <code>'::'</code> en <code>'=&gt;'</code> zien we <em>constraints</em> over het gebruik van <code>simpleHttp</code> - Dit kunnen we nu wel even laten voor wat het is.</p>
 <ul>
 <li><em>Belangrijk</em>: Meestal kan je zonder gevaar dingen negeren die je (nog) niet begrijpt.</li>
 </ul>
-<p>We zullen die gekke kleine letter <code>m</code> nu ook maar even laten voor wat het is.</p>
+<p>De m laten we ook maar even voor wat het is.</p>
 <p>Wat kunnen we nu zeggen over deze functie?</p>
 <ul class="incremental">
-<li>Inderdaad: Het is een functie die een String als parameter heeft, en die een Bytestring teruggeeft.</li>
-</ul>
-</div>
-<div id="bytestring" class="slide section level1">
-<h1>ByteString</h1>
-<p>Een <code>ByteString</code> is een blob van binaire data.</p>
-<p>In tegenstelling tot <code>String</code>, wordt het niet als een lijst, maar als een packed array gerepresenteerd.</p>
-<p>het bevat binaire <em>bytes</em>, geen tekst!</p>
-<ul>
-<li>maak geen gebruik van <code>ByteString</code> om datamanipulatie op tekst te doen.</li>
+<li>Inderdaad: Het is een functie die een String als parameter heeft, en die een ByteString teruggeeft.</li>
 </ul>
 </div>
 <div id="speelkwartier-met-ghci" class="slide section level1">
 <h1>Speelkwartier met ghci!</h1>
-<p>Heeft iedereen <code>http-enumerator</code> inmiddels geïnstalleerd?</p>
+<p>Heeft iedereen <code>http-conduit</code> inmiddels geïnstalleerd?</p>
 <p>Start <code>ghci</code>, en laten we eens wat spelen met de module:</p>
-<pre><code>import Network.HTTP.Enumerator</code></pre>
+<pre><code>import Network.HTTP.Conduit</code></pre>
 <p>Merk op dat de prompt verandert zodra we het hebben getypt:</p>
-<pre><code>Prelude Network.HTTP.Enumerator&gt;</code></pre>
+<pre><code>Prelude Network.HTTP.Conduit&gt;</code></pre>
 <p>We weten hierdoor dat de module geladen en beschikbaar is voor gebruik.</p>
 </div>
-<div id="wacht-wie-gebruikt-windows" class="slide section level1">
-<h1>Wacht! Wie gebruikt Windows?</h1>
-<p>Onder Windows moeten we eerst Winsock initiëren voordat we netwerken kunnen gebruiken.</p>
-<p>First, let's load the lowest-level networking module:</p>
-<pre><code>import Network.Socket</code></pre>
-<p>En zo initiëren we Winsock:</p>
-<pre><code>withSocketsDo (return ())</code></pre>
-<p>(Onder Unix kan dit geen kwaad.)</p>
-</div>
-<div id="nu-we-dat-hobbeltje-genomen-hebben-..." class="slide section level1">
-<h1>Nu we dat hobbeltje genomen hebben ...</h1>
+<div id="ophalen-van-een-webpagina" class="slide section level1">
+<h1>Ophalen van een webpagina</h1>
 <p>Eindelijk - we gaan nu een webpagina ophalen!</p>
-<pre><code>simpleHttp &quot;http://example.com/&quot;</code></pre>
+<pre><code>simpleHTTP &quot;http://example.com/&quot;</code></pre>
 <p>Kreeg je een hoop HTML in je terminal window te zien? Yeah!</p>
 </div>
 <div id="van-binary-naar-tekst" class="slide section level1">
@@ -942,7 +919,7 @@ filter pred (x<span class="fu">:</span>xs)
 <h1>Mengen van <em>acties</em> met <em>pure code</em></h1>
 <p>Het type-systeem 'weet' welke functies <code>IO</code> doen en zorgt ervoor dat we hier op een nette manier mee omgaan.</p>
 <p>We kunnen echter op een natuurlijke manier pure code mengen met acties:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">charCount fileName <span class="fu">=</span> 
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">charCount fileName <span class="fu">=</span>
   <span class="kw">do</span> contents <span class="ot">&lt;-</span> readFile fileName
      return (length contents)</code></pre></div>
 </div>
@@ -964,8 +941,8 @@ filter pred (x<span class="fu">:</span>xs)
 <p>Het neemt een <em>pure</em> waarde (zonder <code>IO</code> in zijn type), en <em>wikkelt</em> het in het <code>IO</code> type.</p>
 <p>Pure code kan niet-pure code nooit aanroepen. Het kan wel data opleveren aan de niet-pure wereld door gebruik te maken van <code>return</code>.</p>
 </div>
-<div id="haskell-programs-and-io" class="slide section level1">
-<h1>Haskell programs and IO</h1>
+<div id="haskell-programs-en-io" class="slide section level1">
+<h1>Haskell programs en IO</h1>
 <p>Elk Haskell programma heeft als entry point een functie met als naam <code>main</code>.</p>
 <p>Het type van <code>main</code> is altijd:</p>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">main ::</span> <span class="dt">IO</span> ()</code></pre></div>
@@ -1045,7 +1022,7 @@ makeFileName k <span class="fu">=</span> <span class="st">&quot;download-&quot;<
 makeFileName k <span class="fu">=</span> <span class="st">&quot;download-&quot;</span> <span class="fu">++</span> show k <span class="fu">++</span> <span class="st">&quot;.html&quot;</span></code></pre></div>
 <p>Om een lokale kopie van een bestand op te slaan, heb je de actie <code>writeFile</code> nodig.</p>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">saveAs ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()
-saveAs url k <span class="fu">=</span> 
+saveAs url k <span class="fu">=</span>
   <span class="kw">do</span> content <span class="ot">&lt;-</span> download url
      writeFile (makeFileName k) content</code></pre></div>
 </div>

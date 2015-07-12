@@ -1,4 +1,4 @@
-# Slides from Haskell workshops 
+# Slides from Haskell workshops
 
 Bryan O'Sullivan gave a 3-hour "intro to Haskell" workshop at the Strange Loop
 conference, on September 18, 2011. These are the slides he used,
@@ -17,6 +17,4 @@ You can [read my slides online
 here](http://hanjoosten.github.com/HaskellWorkshop/slides/slidesDutch.html).
 
 Feel free to use them yourself, but if you do, please give attribution
-to me and Bryan. Thanks!
-
-
+to Bryan and me. Thanks!
