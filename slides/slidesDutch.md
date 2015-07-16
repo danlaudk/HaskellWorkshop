@@ -44,9 +44,9 @@ Na mijn afstuderen in 1990 heb ik geprogrammeerd in iteratieve talen
 
 * Functioneel programmeren maakt dat je anders zal gaan denken over programmeren
 
-    * Mainstream talen gaan over *state*
+    * Mainstream talen gaan over ***state***
 
-    * Functioneel programmeren gaat over *values*
+    * Functioneel programmeren gaat over ***values***
 
 * Of je nou overstapt op Haskell of niet, je wordt een ***betere programmeur*** in je eigen favoriete taal.
 
@@ -2329,7 +2329,7 @@ Allemaal hartelijk bedankt voor het lekker meedoen!
 
 > * Een idee over wat Functioneel Programmeren is
 > * Enthousiasme gedeeld
-> * Een leuke avond
+> * Een leuke middag
 > * Webcrawler
 
 # Voor de liefhebber
