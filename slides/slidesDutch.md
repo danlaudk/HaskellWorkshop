@@ -2317,31 +2317,46 @@ Bedankt dat je tot nu toe niet bent afgehaakt!
 ~~~~
 git clone https://github.com/hanjoosten/HaskellWorkshop
 ~~~~
+# Overige dia's achterstevoren, ca. 10 minuten voor einde 
 
 
-# Afronding
-Allemaal hartelijk bedankt voor het lekker meedoen!
-
-
-
-
-#### Hebben we de doelen gehaald?
-
-> * Een idee over wat Functioneel Programmeren is
-> * Enthousiasme gedeeld
-> * Een leuke middag
-> * Webcrawler
 
 # Voor de liefhebber
+
 
 Deze presentatie staat online:
 
 * [http://hanjoosten.github.com/HaskellWorkshop](http://hanjoosten.github.com/HaskellWorkshop)
 
-> Leuke Links:
+> Inspiratie:
 
-> * [http://haskell.org]()  (alles over Haskell)
-> * [http://www.haskell.org/haskellwiki/Haskell_in_industry]()(gebruik van Haskell in bedrijfsleven)
-> * [http://corp.galois.com](http://corp.galois.com) is een innovatief bedrijf die heel veel met Haskell doet, en daarover veel vertelt.
-> * [www.tryhaskell.org](http://www.tryhaskell.org) (online Haskell)
-> * [www.projecteuler.net](http://www.projecteuler.net) (kijk hoever je zelf komt met Haskell)
+* [http://haskell.org]()  (alles over Haskell)
+* [http://www.haskell.org/haskellwiki/Haskell_in_industry]()(gebruik van Haskell in bedrijfsleven)
+* [http://corp.galois.com](http://corp.galois.com) is een innovatief bedrijf die heel veel met Haskell doet, en daarover veel vertelt.
+* [www.tryhaskell.org](http://www.tryhaskell.org) (online Haskell)
+* [www.projecteuler.net](http://www.projecteuler.net) (kijk hoever je zelf komt met Haskell)
+
+# Afronding (2)
+
+
+## 
+## 
+## 
+## 
+##
+## Discussie: Wat heb je vanmiddag geleerd, en wat ga je er mee doen? 
+
+# Afronding (1)
+
+~~~~
+Allemaal hartelijk bedankt voor het lekker meedoen!
+~~~~
+
+## 
+## 
+## Hebben we de doelen gehaald?
+
+ * Een idee over wat Functioneel Programmeren is
+ * Enthousiasme gedeeld
+ * Een leuke middag
+ * Webcrawler
