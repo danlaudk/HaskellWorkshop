@@ -1,6 +1,6 @@
 % Introductie Functioneel Programmeren (met Haskell)
 % Han Joosten
-% Juli 2015
+% Augustus 2016
 # Welkom!
 
 ~~~~ {.haskell}
@@ -21,7 +21,7 @@ main = putStrLn "hallo!"
 
 # Achtergrond in (functioneel) programmeren
 
-ik ben in aanraking gekomen met functionele talen op de universiteit
+Ik ben in aanraking gekomen met functionele talen op de universiteit
 
 	* Twentel, Miranda, Lisp
 
@@ -77,7 +77,7 @@ Na mijn afstuderen in 1990 heb ik geprogrammeerd in iteratieve talen
 
 * Dit is een *hands-on* workshop: je gaat zelf code schrijven!
 
-* Na ongeveer een uur is er een korte pauze
+* Pauze? zelf aangeven. (ik vergeet het soms)
 
 * Schroom niet! Stel gerust vragen!
 
@@ -90,18 +90,15 @@ Na mijn afstuderen in 1990 heb ik geprogrammeerd in iteratieve talen
 
 * We hebben nu een super gereedschapskist
 
-    * De GHC compiler (`ghc`)
-
-    * De GHCi interpreter (`ghci` of `winghci`)
-
-    * De Cabal package manager (`cabal`)
-
-    * Enkele handige libraries en tools
+    * De GHC **compiler** (`ghc`)
+    * De GHCi **interpreter** (`ghci` of `winghci`)
+    * De Haskell Tool Stack (`stack`)
+    * Een package manager (`cabal`)
 
 
 # Wat hebben we nog meer nodig?
 
-* Een text editor
+* Een source code editor (bijvoorbeeld editpad, notepad++, sublime text, ...)
 
 * Een terminal window
 
@@ -168,7 +165,7 @@ maar als *ik* programmeer, dan:
 
 In deze omstandigheden werkt een echte compiler vertragend.
 
-Er is daarom een interactieve interpreter, `ghci`.
+Er is daarom een interactieve interpreter, `ghci`. (onder windows: `WinGHCi`)
 
 
 # Aan de slag met GHCi
@@ -176,18 +173,14 @@ Er is daarom een interactieve interpreter, `ghci`.
 Simpel genoeg:
 
 ~~~~
-ghci
+ghci (of winghci)
 ~~~~
 
 Er verschijnt wat opstart-tekst, gevolgd door de prompt:
 
 ~~~~
-GHCi, version 7.0.3: http://www.haskell.org/ghc/  :? for help
-Loading package ghc-prim ... linking ... done.
-Loading package integer-gmp ... linking ... done.
-Loading package base ... linking ... done.
-Loading package ffi-1.0 ... linking ... done.
-Prelude>
+GHCi, version 8.0.1: http://www.haskell.org/ghc/  :? for help
+Prelude> 
 ~~~~
 
 Deze standaard prompt vertelt ons welke modules er beschikbaar zijn om mee te spelen.
@@ -227,7 +220,7 @@ Laten we ons programma in `ghci` laden:
 De `ghci` prompt verandert:
 
 ~~~~
-Main>
+*Main>
 ~~~~
 
 
@@ -368,7 +361,7 @@ De `**` operator is voor machtsverheffen.
 
 ~~~~
 Prelude> 500 * 1.03 ** 10
-671.9581896720612
+671.9581896720609
 Prelude>
 ~~~~
 
@@ -410,8 +403,7 @@ De `length` functie geeft ons het aantal elementen in een lijst.
 length [1,2,3]
 ~~~~
 
-* Uit hoeveel cijfers bestaat het product van alle getallen tussen 0xBE en
-  0xEF, inclusief?
+* Uit hoeveel cijfers bestaat het product van alle getallen vanaf 190 tot en met 239 ?
 
 # Zelf doen: 3
 
@@ -427,13 +419,12 @@ De `length` functie geeft ons het aantal elementen in een lijst.
 length [1,2,3]
 ~~~~
 
-* Uit hoeveel cijfers bestaat het product van alle getallen tussen 0xBE en
-  0xEF, inclusief?
+* Uit hoeveel cijfers bestaat het product van alle getallen vanaf 190 tot en met 239 ?
 
 ~~~~
-Prelude> product [0xBE..0xEF]
+Prelude> product [190..239]
 332675816112263267856283533963851818076207506005655794001611738031848399818081502871648044328813710016512000000000000
-Prelude> length (show (product [0xBE..0xEF]))
+Prelude> length (show (product [190..239]))
 117
 Prelude>
 ~~~~
@@ -608,11 +599,11 @@ Als je een lijst maakt, moet de Haskell runtime onthouden welke constructors je 
 
 Dus de waarde `[5,8]` wordt gerepresenteerd als:
 
-* Een `:` constructor, met `5` als zijn eerste argument, en als tweede ...
+1. Een `:` constructor, met `5` als zijn eerste argument, en als tweede ...
 
-* Nog een `:` constructor, deze keer met `8` als zijn eerste argument, en nu als tweede ...
+2. Nog een `:` constructor, deze keer met `8` als zijn eerste argument, en nu als tweede ...
 
-* Een `[]` constructor.
+3. Een `[]` constructor.
 
 
 # Wat zagen we zojuist?
@@ -692,14 +683,14 @@ isCapitalized name
       (first:rest) -> isUpper first
 ~~~~
 
-* isCapitalized ('A' : 'n' : 'n' : [] )
+* isCapitalized ('A' : 'n' : 'n' : \[\] )
 
-> * *matcht []  ? Nee.*
-> * *matcht (first:rest)  ? Ja!*
-> * first *krijgt als waarde* 'A'
-> * rest *krijgt als waarde* 'n' : 'n' : []
-> * isCapitalized ('A' : 'n' : 'n' : [] ) *wordt herschreven als* isUpper 'A'
-> * isUpper 'A' *evalueert naar* True
+> * matcht *\[\]*  ? Nee.
+> * matcht *(first:rest)*  ? Ja!
+> * *first *krijgt als waarde 'A'
+> * *rest *krijgt als waarde 'n' : 'n' : \[\]
+> * *isCapitalized ('A' : 'n' : 'n' : \[\] )* wordt herschreven als *isUpper 'A'*
+> * *isUpper 'A' *evalueert naar *True*
 
 # Whew! Een paar oefeningen!
 
@@ -830,8 +821,7 @@ countCaps (x:xs)
 
 Schrijf een nieuwe versie van `countCaps`:
 
-* Schrijf een functie die door een lijst loopt, en die een nieuwe lijst genereert
-  bestaande uit alleen de hoofdletters van de oorspronkelijke lijst.
+* Schrijf eerst een functie die door een lijst loopt, en die een nieuwe lijst genereert bestaande uit alleen de hoofdletters van de oorspronkelijke lijst.
 
 ~~~~ {.haskell}
 ~~~~
@@ -847,8 +837,7 @@ Dit zou hetzelfde resultaat moeten opleveren als je eerste functie. Toch?
 
 Schrijf een nieuwe versie van `countCaps`:
 
-* Schrijf een functie die door een lijst loopt, en die een nieuwe lijst genereert
-  bestaande uit alleen de hoofdletters van de oorspronkelijke lijst.
+* Schrijf eerst een functie die door een lijst loopt, en die een nieuwe lijst genereert bestaande uit alleen de hoofdletters van de oorspronkelijke lijst.
 
 ~~~~ {.haskell}
 allCaps [] = []
@@ -990,7 +979,7 @@ Haskell is gevoelig voor white space!
 * Volgend op het begin van een definitie, als de volgende regel
   inspringt, wordt die regel behandeld als vervolg van die definitie.
 
-* Gebruik nooit 'Tab' in je source files.
+* Gebruik **nooit** 'Tab' in je source files.
 
 
 # White space en lokale variabelen
@@ -1064,6 +1053,56 @@ Nu zijn we Haskell pro's, toch?
 
 * Een web pagina downloaden
 
+# Nieuw project aanmaken
+
+1. Ga naar je speel directory en maak een nieuw project op basis van een template:
+
+~~~~
+D:\speeltuin>stack new webspider new-template
+~~~~
+
+~~~~
+D:\speeltuin\webspider>dir
+ De volumenaam van station D is DATA
+ Het volumenummer is EA7B-622E
+
+ Map van D:\speeltuin\webspider
+
+03-08-2016  11:05    <DIR>          .
+03-08-2016  11:05    <DIR>          ..
+03-08-2016  10:56    <DIR>          app
+03-08-2016  10:56             1.528 LICENSE
+03-08-2016  10:56                46 Setup.hs
+03-08-2016  10:56    <DIR>          src
+03-08-2016  10:56             2.181 stack.yaml
+03-08-2016  10:56    <DIR>          test
+03-08-2016  10:56             1.262 webspider.cabal
+               4 bestand(en)            5.017 bytes
+               5 map(pen)  473.942.138.880 bytes beschikbaar
+~~~~
+
+# Nieuw project aanmaken
+
+2. Eenmalig zorgen voor de juiste setup van stack:
+
+~~~~
+D:\speeltuin\webspider>stack setup
+~~~~
+
+Dit kan even duren, maar is gelukkig éénmalig. 
+
+3. Meest belangrijke stack commando: 
+
+~~~~
+D:\speeltuin\webspider>stack build
+~~~~
+
+4. En dan:
+
+~~~~
+D:\speeltuin\webspider>stack exec webspider-exec
+someFunc
+~~~~
 
 # Doen: Een web pagina downloaden!
 
@@ -1113,28 +1152,31 @@ De startpagina voor een package kan intimiderend overkomen. Laat je niet gek mak
 Wat zie je?
 
 
-# Een package installeren
+# Een package gebruiken
 
-We moeten `http-conduit` eerst installeren, voordat we er gebuik van kunnen maken.
-
-Het installeren van het `http` package gaat met behulp van een eenvoudig commando:
-(eerst doen we nog even een update van de lijst van packeges, want dat verandert met de dag)
+We moeten in ons project aangeven, dat we `http-conduit` gebruiken. Dat doen we door de dependency lijst aan te passen in het .cabal bestand:
 
 ~~~~
-cabal update
-cabal install http-conduit
+executable webspider-exe
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                     , http-conduit
+                     , webspider
+  default-language:    Haskell2010
+~~~~ 
+
+Als we vanaf nu een build doen, dan wordt http-conduit beschikbaar gemaakt!
+
 ~~~~
-
-Dit commando bepaalt alle andere packages waar `http-conduit`
-afhankelijk van is. Vervolgens worden al deze packages gedownload,
-vertaald en geïnstalleerd.
-
-Dit kan wel een paar minuten duren. De compiler output verschijnt op het scherm.
+D:\speeltuin\webspider>stack build
+~~~~
 
 
 # Documentatie lezen: packages en modules
 
-Nu we aan het wachten zijn tot het `http-conduit` package gereed is
+Nu we aan het wachten zijn tot het [http-conduit](http://hackage.haskell.org/package/http-conduit) package gereed is
 voor gebruik, kunnen we vast uitzoeken hoe we het kunnen gebruiken.
 
 Herinner je de link nog naar de API documentatie, onderin de webpage van de package?
@@ -1300,7 +1342,7 @@ We weten hierdoor dat de module geladen en beschikbaar is voor gebruik.
 Eindelijk - we gaan nu een webpagina ophalen!
 
 ~~~~
-simpleHTTP "http://example.com/"
+simpleHttp "http://example.com/"
 ~~~~
 
 Kreeg je een hoop HTML in je terminal window te zien? Yeah!

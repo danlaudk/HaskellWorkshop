@@ -8,7 +8,7 @@ slidesDutch.tmp: slidesDutch.md
 	cp slidesDutch.html ../index.html
 clean:
 	rm slide*.html *.tmp
-knit: slidesKnit.html
 
+knit: slidesKnit.html
 slidesKnit.html: slidesDutch.md
 	pandoc -s -S -t dzslides --mathjax -o $@ $<

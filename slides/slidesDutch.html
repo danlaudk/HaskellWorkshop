@@ -19,7 +19,7 @@
   <h1 class="title">Functioneel Programmeren met Haskell</h1>
   <p class="author">Han Joosten</p>
   <p class="email">han.joosten.han@gmail.com</p>
-  <p class="date">Juli 2015</p>
+  <p class="date">Augustus 2016</p>
 </div>
 <div id="welkom" class="slide section level1">
 <h1>Welkom!</h1>
@@ -36,7 +36,7 @@
 </div>
 <div id="achtergrond-in-functioneel-programmeren" class="slide section level1">
 <h1>Achtergrond in (functioneel) programmeren</h1>
-<p>ik ben in aanraking gekomen met functionele talen op de universiteit</p>
+<p>Ik ben in aanraking gekomen met functionele talen op de universiteit</p>
 <pre><code>* Twentel, Miranda, Lisp</code></pre>
 <p>Diverse specificatie talen:</p>
 <pre><code>* Lotos, ASF+SDF, Typol, LaTeX</code></pre>
@@ -83,7 +83,7 @@
 <h1>Wat kan je verwachten 2</h1>
 <ul>
 <li><p>Dit is een <em>hands-on</em> workshop: je gaat zelf code schrijven!</p></li>
-<li><p>Na ongeveer een uur is er een korte pauze</p></li>
+<li><p>Pauze? zelf aangeven. (ik vergeet het soms)</p></li>
 <li><p>Schroom niet! Stel gerust vragen!</p></li>
 </ul>
 </div>
@@ -96,17 +96,17 @@
 </ul></li>
 <li><p>We hebben nu een super gereedschapskist</p>
 <ul>
-<li><p>De GHC compiler (<code>ghc</code>)</p></li>
-<li><p>De GHCi interpreter (<code>ghci</code> of <code>winghci</code>)</p></li>
-<li><p>De Cabal package manager (<code>cabal</code>)</p></li>
-<li><p>Enkele handige libraries en tools</p></li>
+<li>De GHC <strong>compiler</strong> (<code>ghc</code>)</li>
+<li>De GHCi <strong>interpreter</strong> (<code>ghci</code> of <code>winghci</code>)</li>
+<li>De Haskell Tool Stack (<code>stack</code>)</li>
+<li>Een package manager (<code>cabal</code>)</li>
 </ul></li>
 </ul>
 </div>
 <div id="wat-hebben-we-nog-meer-nodig" class="slide section level1">
 <h1>Wat hebben we nog meer nodig?</h1>
 <ul>
-<li><p>Een text editor</p></li>
+<li><p>Een source code editor (bijvoorbeeld editpad, notepad++, sublime text, ...)</p></li>
 <li><p>Een terminal window</p></li>
 <li><p>Een 'speel'-directory</p></li>
 </ul>
@@ -152,19 +152,15 @@
 <li><p>ik maak best veel fouten.</p></li>
 </ul>
 <p>In deze omstandigheden werkt een echte compiler vertragend.</p>
-<p>Er is daarom een interactieve interpreter, <code>ghci</code>.</p>
+<p>Er is daarom een interactieve interpreter, <code>ghci</code>. (onder windows: <code>WinGHCi</code>)</p>
 </div>
 <div id="aan-de-slag-met-ghci" class="slide section level1">
 <h1>Aan de slag met GHCi</h1>
 <p>Simpel genoeg:</p>
-<pre><code>ghci</code></pre>
+<pre><code>ghci (of winghci)</code></pre>
 <p>Er verschijnt wat opstart-tekst, gevolgd door de prompt:</p>
-<pre><code>GHCi, version 7.0.3: http://www.haskell.org/ghc/  :? for help
-Loading package ghc-prim ... linking ... done.
-Loading package integer-gmp ... linking ... done.
-Loading package base ... linking ... done.
-Loading package ffi-1.0 ... linking ... done.
-Prelude&gt;</code></pre>
+<pre><code>GHCi, version 8.0.1: http://www.haskell.org/ghc/  :? for help
+Prelude&gt; </code></pre>
 <p>Deze standaard prompt vertelt ons welke modules er beschikbaar zijn om mee te spelen.</p>
 </div>
 <div id="spelen-met-ghci" class="slide section level1">
@@ -182,7 +178,7 @@ Prelude&gt;</code></pre>
 <p>Laten we ons programma in <code>ghci</code> laden:</p>
 <pre><code>:load Hello.hs</code></pre>
 <p>De <code>ghci</code> prompt verandert:</p>
-<pre><code>Main&gt;</code></pre>
+<pre><code>*Main&gt;</code></pre>
 </div>
 <div id="onze-code-uitvoeren-met-ghci" class="slide section level1">
 <h1>Onze code uitvoeren met ghci</h1>
@@ -265,7 +261,7 @@ Prelude&gt;</code></pre>
 <li>Als ik 500 Euro op een bankrekening zet tegen 3% rente per jaar, hoeveel heb ik dan na 10 jaar?</li>
 </ul>
 <pre><code>Prelude&gt; 500 * 1.03 ** 10
-671.9581896720612
+671.9581896720609
 Prelude&gt;</code></pre>
 </div>
 <div id="zelf-doen-2" class="slide section level1">
@@ -296,7 +292,7 @@ Prelude&gt;</code></pre>
 <p>De <code>length</code> functie geeft ons het aantal elementen in een lijst.</p>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">length [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</code></pre></div>
 <ul>
-<li>Uit hoeveel cijfers bestaat het product van alle getallen tussen 0xBE en 0xEF, inclusief?</li>
+<li>Uit hoeveel cijfers bestaat het product van alle getallen vanaf 190 tot en met 239 ?</li>
 </ul>
 </div>
 <div id="zelf-doen-3-1" class="slide section level1">
@@ -306,11 +302,11 @@ Prelude&gt;</code></pre>
 <p>De <code>length</code> functie geeft ons het aantal elementen in een lijst.</p>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">length [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</code></pre></div>
 <ul>
-<li>Uit hoeveel cijfers bestaat het product van alle getallen tussen 0xBE en 0xEF, inclusief?</li>
+<li>Uit hoeveel cijfers bestaat het product van alle getallen vanaf 190 tot en met 239 ?</li>
 </ul>
-<pre><code>Prelude&gt; product [0xBE..0xEF]
+<pre><code>Prelude&gt; product [190..239]
 332675816112263267856283533963851818076207506005655794001611738031848399818081502871648044328813710016512000000000000
-Prelude&gt; length (show (product [0xBE..0xEF]))
+Prelude&gt; length (show (product [190..239]))
 117
 Prelude&gt;</code></pre>
 </div>
@@ -418,11 +414,11 @@ Prelude&gt;</code></pre>
 <p>We refereren aan <code>[]</code> en <code>:</code> als <em>constructors</em>, omdat we ze gebruiken om lijsten mee te construreren.</p>
 <p>Als je een lijst maakt, moet de Haskell runtime onthouden welke constructors je hebt gebruikt, en waar precies.</p>
 <p>Dus de waarde <code>[5,8]</code> wordt gerepresenteerd als:</p>
-<ul>
+<ol style="list-style-type: decimal">
 <li><p>Een <code>:</code> constructor, met <code>5</code> als zijn eerste argument, en als tweede ...</p></li>
 <li><p>Nog een <code>:</code> constructor, deze keer met <code>8</code> als zijn eerste argument, en nu als tweede ...</p></li>
 <li><p>Een <code>[]</code> constructor.</p></li>
-</ul>
+</ol>
 </div>
 <div id="wat-zagen-we-zojuist" class="slide section level1">
 <h1>Wat zagen we zojuist?</h1>
@@ -485,15 +481,15 @@ isCapitalized name
       []           <span class="ot">-&gt;</span> <span class="dt">False</span>
       (first<span class="fu">:</span>rest) <span class="ot">-&gt;</span> isUpper first</code></pre></div>
 <ul>
-<li>isCapitalized ('A' : 'n' : 'n' : <a href="#section-6"></a> )</li>
+<li>isCapitalized ('A' : 'n' : 'n' : [] )</li>
 </ul>
 <ul class="incremental">
-<li><em>matcht <a href="#section-6"></a> ? Nee.</em></li>
-<li><em>matcht (first:rest) ? Ja!</em></li>
-<li>first <em>krijgt als waarde</em> 'A'</li>
-<li>rest <em>krijgt als waarde</em> 'n' : 'n' : <a href="#section-6"></a></li>
-<li>isCapitalized ('A' : 'n' : 'n' : <a href="#section-6"></a> ) <em>wordt herschreven als</em> isUpper 'A'</li>
-<li>isUpper 'A' <em>evalueert naar</em> True</li>
+<li>matcht <em>[]</em> ? Nee.</li>
+<li>matcht <em>(first:rest)</em> ? Ja!</li>
+<li><em>first </em>krijgt als waarde 'A'</li>
+<li><em>rest </em>krijgt als waarde 'n' : 'n' : []</li>
+<li><em>isCapitalized ('A' : 'n' : 'n' : [] )</em> wordt herschreven als <em>isUpper 'A'</em></li>
+<li><em>isUpper 'A' </em>evalueert naar <em>True</em></li>
 </ul>
 </div>
 <div id="whew-een-paar-oefeningen" class="slide section level1">
@@ -583,7 +579,7 @@ countCaps (x<span class="fu">:</span>xs)
 <h1>Een andere aanpak</h1>
 <p>Schrijf een nieuwe versie van <code>countCaps</code>:</p>
 <ul>
-<li>Schrijf een functie die door een lijst loopt, en die een nieuwe lijst genereert bestaande uit alleen de hoofdletters van de oorspronkelijke lijst.</li>
+<li>Schrijf eerst een functie die door een lijst loopt, en die een nieuwe lijst genereert bestaande uit alleen de hoofdletters van de oorspronkelijke lijst.</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"></code></pre></div>
 <ul>
@@ -596,7 +592,7 @@ countCaps (x<span class="fu">:</span>xs)
 <h1>Een andere aanpak</h1>
 <p>Schrijf een nieuwe versie van <code>countCaps</code>:</p>
 <ul>
-<li>Schrijf een functie die door een lijst loopt, en die een nieuwe lijst genereert bestaande uit alleen de hoofdletters van de oorspronkelijke lijst.</li>
+<li>Schrijf eerst een functie die door een lijst loopt, en die een nieuwe lijst genereert bestaande uit alleen de hoofdletters van de oorspronkelijke lijst.</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">allCaps [] <span class="fu">=</span> []
 allCaps (x<span class="fu">:</span>xs) <span class="fu">=</span> <span class="kw">if</span> isUpper x
@@ -684,7 +680,7 @@ filter pred (x<span class="fu">:</span>xs)
 <ul>
 <li><p>Een top-level definitie start in de meest linkse kolom.</p></li>
 <li><p>Volgend op het begin van een definitie, als de volgende regel inspringt, wordt die regel behandeld als vervolg van die definitie.</p></li>
-<li><p>Gebruik nooit 'Tab' in je source files.</p></li>
+<li><p>Gebruik <strong>nooit</strong> 'Tab' in je source files.</p></li>
 </ul>
 </div>
 <div id="white-space-en-lokale-variabelen" class="slide section level1">
@@ -732,6 +728,47 @@ filter pred (x<span class="fu">:</span>xs)
 <li>Een web pagina downloaden</li>
 </ul>
 </div>
+<div id="nieuw-project-aanmaken" class="slide section level1">
+<h1>Nieuw project aanmaken</h1>
+<ol style="list-style-type: decimal">
+<li>Ga naar je speel directory en maak een nieuw project op basis van een template:</li>
+</ol>
+<pre><code>D:\speeltuin&gt;stack new webspider new-template</code></pre>
+<pre><code>D:\speeltuin\webspider&gt;dir
+ De volumenaam van station D is DATA
+ Het volumenummer is EA7B-622E
+
+ Map van D:\speeltuin\webspider
+
+03-08-2016  11:05    &lt;DIR&gt;          .
+03-08-2016  11:05    &lt;DIR&gt;          ..
+03-08-2016  10:56    &lt;DIR&gt;          app
+03-08-2016  10:56             1.528 LICENSE
+03-08-2016  10:56                46 Setup.hs
+03-08-2016  10:56    &lt;DIR&gt;          src
+03-08-2016  10:56             2.181 stack.yaml
+03-08-2016  10:56    &lt;DIR&gt;          test
+03-08-2016  10:56             1.262 webspider.cabal
+               4 bestand(en)            5.017 bytes
+               5 map(pen)  473.942.138.880 bytes beschikbaar</code></pre>
+</div>
+<div id="nieuw-project-aanmaken-1" class="slide section level1">
+<h1>Nieuw project aanmaken</h1>
+<ol start="2" style="list-style-type: decimal">
+<li>Eenmalig zorgen voor de juiste setup van stack:</li>
+</ol>
+<pre><code>D:\speeltuin\webspider&gt;stack setup</code></pre>
+<p>Dit kan even duren, maar is gelukkig éénmalig.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Meest belangrijke stack commando:</li>
+</ol>
+<pre><code>D:\speeltuin\webspider&gt;stack build</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>En dan:</li>
+</ol>
+<pre><code>D:\speeltuin\webspider&gt;stack exec webspider-exec
+someFunc</code></pre>
+</div>
 <div id="doen-een-web-pagina-downloaden" class="slide section level1">
 <h1>Doen: Een web pagina downloaden!</h1>
 <p>Eigenlijk willen we gebruik maken van een library om een webpagina te kunnen downloaden.</p>
@@ -762,18 +799,23 @@ filter pred (x<span class="fu">:</span>xs)
 <p>De startpagina voor een package kan intimiderend overkomen. Laat je niet gek maken. Kijk maar eens onderaan, bij de sectie &quot;Modules&quot;.</p>
 <p>Wat zie je?</p>
 </div>
-<div id="een-package-installeren" class="slide section level1">
-<h1>Een package installeren</h1>
-<p>We moeten <code>http-conduit</code> eerst installeren, voordat we er gebuik van kunnen maken.</p>
-<p>Het installeren van het <code>http</code> package gaat met behulp van een eenvoudig commando: (eerst doen we nog even een update van de lijst van packeges, want dat verandert met de dag)</p>
-<pre><code>cabal update
-cabal install http-conduit</code></pre>
-<p>Dit commando bepaalt alle andere packages waar <code>http-conduit</code> afhankelijk van is. Vervolgens worden al deze packages gedownload, vertaald en geïnstalleerd.</p>
-<p>Dit kan wel een paar minuten duren. De compiler output verschijnt op het scherm.</p>
+<div id="een-package-gebruiken" class="slide section level1">
+<h1>Een package gebruiken</h1>
+<p>We moeten in ons project aangeven, dat we <code>http-conduit</code> gebruiken. Dat doen we door de dependency lijst aan te passen in het .cabal bestand:</p>
+<pre><code>executable webspider-exe
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                     , http-conduit
+                     , webspider
+  default-language:    Haskell2010</code></pre>
+<p>Als we vanaf nu een build doen, dan wordt http-conduit beschikbaar gemaakt!</p>
+<pre><code>D:\speeltuin\webspider&gt;stack build</code></pre>
 </div>
 <div id="documentatie-lezen-packages-en-modules" class="slide section level1">
 <h1>Documentatie lezen: packages en modules</h1>
-<p>Nu we aan het wachten zijn tot het <code>http-conduit</code> package gereed is voor gebruik, kunnen we vast uitzoeken hoe we het kunnen gebruiken.</p>
+<p>Nu we aan het wachten zijn tot het <a href="http://hackage.haskell.org/package/http-conduit">http-conduit</a> package gereed is voor gebruik, kunnen we vast uitzoeken hoe we het kunnen gebruiken.</p>
 <p>Herinner je de link nog naar de API documentatie, onderin de webpage van de package? Ga daar maar eens heen en bekijk de documentatie.</p>
 <p>Een API pagina begint met een titel die er als volgt uit kan zien:</p>
 <pre><code>Network.HTTP.Conduit</code></pre>
