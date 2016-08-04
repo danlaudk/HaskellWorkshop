@@ -84,15 +84,15 @@ Na mijn afstuderen in 1990 heb ik geprogrammeerd in iteratieve talen
 
 # Je gereedschap
 
-* Je hebt het Haskell Platform al geïnstalleerd als het goed is.
+* Je hebt The Haskell Tool Stack al geïnstalleerd als het goed is.
 
-    * [hackage.haskell.org/platform](http://hackage.haskell.org/platform/)
+    * [https://www.haskellstack.org](https://www.haskellstack.org)
 
 * We hebben nu een super gereedschapskist
 
-    * De GHC **compiler** (`ghc`)
-    * De GHCi **interpreter** (`ghci` of `winghci`)
     * De Haskell Tool Stack (`stack`)
+    * De GHC **compiler** (`ghc`)
+    * De GHCi **interpreter** (`ghci`)
     * Een package manager (`cabal`)
 
 
@@ -165,7 +165,7 @@ maar als *ik* programmeer, dan:
 
 In deze omstandigheden werkt een echte compiler vertragend.
 
-Er is daarom een interactieve interpreter, `ghci`. (onder windows: `WinGHCi`)
+Er is daarom een interactieve interpreter, `ghci`.
 
 
 # Aan de slag met GHCi
@@ -173,7 +173,7 @@ Er is daarom een interactieve interpreter, `ghci`. (onder windows: `WinGHCi`)
 Simpel genoeg:
 
 ~~~~
-ghci (of winghci)
+ghci
 ~~~~
 
 Er verschijnt wat opstart-tekst, gevolgd door de prompt:
@@ -1320,29 +1320,28 @@ Wat kunnen we nu zeggen over deze functie?
 
 # Speelkwartier met ghci!
 
-Heeft iedereen `http-conduit` inmiddels geïnstalleerd?
+~~~~
+D:\speeltuin\webspider>cd app
+D:\speeltuin\webspider\app>stack ghci
+.
+.
+.
+Ok, modules loaded: Lib, Main.
+*Main Lib> main
+someFunc
+*Main Lib> 
+~~~~
 
-Start `ghci`, en laten we eens wat spelen met de module:
+Voeg de volgende regel toe in Main.hs:
 
 ~~~~
 import Network.HTTP.Conduit
 ~~~~
 
-Merk op dat de prompt verandert zodra we het hebben getypt:
+Opslaan, opnieuw laden van Main.hs (`:load Main`) , en probeer maar eens uit:
 
 ~~~~
-Prelude Network.HTTP.Conduit>
-~~~~
-
-We weten hierdoor dat de module geladen en beschikbaar is voor gebruik.
-
-
-# Ophalen van een webpagina
-
-Eindelijk - we gaan nu een webpagina ophalen!
-
-~~~~
-simpleHttp "http://example.com/"
+*Main> simpleHttp "http://example.com"
 ~~~~
 
 Kreeg je een hoop HTML in je terminal window te zien? Yeah!
@@ -1415,22 +1414,21 @@ niet-pure functies, met `IO` in het resulterend type, worden vaak ***acties*** g
 * Dit helpt om ze te onderscheiden van pure functies.
 
 
-# Mengen van *acties* met *pure code*
+# `do`-notatie: Mengen van *acties* met *pure code*
 
 Het type-systeem 'weet' welke functies `IO` doen en zorgt ervoor dat we hier op een nette manier mee omgaan.
 
 We kunnen echter op een natuurlijke manier pure code mengen met acties:
 
 ~~~~ {.haskell}
+charCount :: FilePath -> IO Int
 charCount fileName =
   do contents <- readFile fileName
      return (length contents)
 ~~~~
 
 
-# "do" notatie
-
-Cruciaal in wat we net zagen was het **do** keyword aan het begin van de functie definitie.
+Cruciaal in wat we hier zien is het **`do`** keyword aan het begin van de functie definitie.
 
 Het introduceert een serie van `IO` acties. Één per regel.
 
@@ -1501,7 +1499,9 @@ we maken gebruik van ***[Hayoo!](http://holumbus.fh-wedel.de/hayoo/hayoo.html)**
 Om de conversie te doen, gaan we gebruik maken van het package `utf8-string`, dat we dankzij Hayoo hebben gevonden.
 
 ~~~~
-cabal install utf8-string
+Toevoegen aan webspider.cabal:
+
+utf8-string
 ~~~~
 
 Dit package bevat een module met de naam `Data.ByteString.Lazy.UTF8`.
@@ -1738,15 +1738,17 @@ case foo of
 
 # Tags
 
-Het `tagsoup` package definieert het volgende type:
+Het [tagsoup](http://hackage.haskell.org/package/tagsoup) package definieert het volgende type:
 
 ~~~~ {.haskell}
-data Tag = TagOpen String [Attribute]
-         | TagClose String
-         | TagText String
-         | TagComment String
-         | TagWarning String
-         | TagPosition Row Column
+data Tag str =
+     TagOpen str [Attribute str]  -- ^ An open tag with 'Attribute's in their original order
+   | TagClose str                 -- ^ A closing tag
+   | TagText str                  -- ^ A text node, guaranteed not to be the empty string
+   | TagComment str               -- ^ A comment
+   | TagWarning str               -- ^ Meta: A syntax error in the input file
+   | TagPosition !Row !Column     -- ^ Meta: The position of a parsed element
+     deriving (Show, Eq, Ord, Data, Typeable)
 ~~~~
 
 Wat denk je dat deze constructors kunnen betekenen?
@@ -1771,7 +1773,7 @@ Stel dat we een predikaat willen schrijven die aangeeft of een `Tag` een opening
 * Wat zou het type van deze functie zijn?
 
 ~~~~ {.haskell}
-isOpenTag :: Tag -> Bool
+isTagOpen :: Tag str -> Bool
 ~~~~
 
 * Hoe zou de body van de functie er uit zien?
@@ -1784,13 +1786,13 @@ isOpenTag :: Tag -> Bool
 Onze eerste body zag er als volgt uit:
 
 ~~~~ {.haskell}
-isOpenTag :: Tag -> Bool
-isOpenTag (TagOpen x y)     = True
-isOpenTag (TagClose x)      = False
-isOpenTag (TagText x)       = False
-isOpenTag (TagComment x)    = False
-isOpenTag (TagWarning x)    = False
-isOpenTag (TagPosition x y) = False
+isTagOpen :: Tag str -> Bool
+isTagOpen (TagOpen x y)     = True
+isTagOpen (TagClose x)      = False
+isTagOpen (TagText x)       = False
+isTagOpen (TagComment x)    = False
+isTagOpen (TagWarning x)    = False
+isTagOpen (TagPosition x y) = False
 ~~~~
 
 Begrijpbaar, maar lelijk.
@@ -1806,9 +1808,9 @@ We kunnen met het **"`_`"** teken opschrijven dat het ons niet uitmaakt
 wat een patroon of variabele precies is.
 
 ~~~~ {.haskell}
-isOpenTag :: Tag -> Bool
-isOpenTag (TagOpen _ _) = True
-isOpenTag  _            = False
+isTagOpen :: Tag str -> Bool
+isTagOpen (TagOpen _ _)  = True
+isTagOpen _              = False
 ~~~~
 
 Het wild card patroon matcht altijd.
@@ -1823,9 +1825,9 @@ Het wild card patroon matcht altijd.
 Waarom schrijven we de functie niet op deze manier?
 
 ~~~~ {.haskell}
-isOpenTag :: Tag -> Bool
-isOpenTag  _            = False
-isOpenTag (TagOpen _ _) = True
+isTagOpen :: Tag str -> Bool
+isTagOpen _              = False
+isTagOpen (TagOpen _ _)  = True
 ~~~~
 
 

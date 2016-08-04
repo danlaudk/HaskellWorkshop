@@ -67,15 +67,15 @@
 <div id="je-gereedschap" class="slide section level1">
 <h1>Je gereedschap</h1>
 <ul>
-<li><p>Je hebt het Haskell Platform al geïnstalleerd als het goed is.</p>
+<li><p>Je hebt The Haskell Tool Stack al geïnstalleerd als het goed is.</p>
 <ul>
-<li><a href="http://hackage.haskell.org/platform/">hackage.haskell.org/platform</a></li>
+<li><a href="https://www.haskellstack.org" class="uri">https://www.haskellstack.org</a></li>
 </ul></li>
 <li><p>We hebben nu een super gereedschapskist</p>
 <ul>
-<li>De GHC <strong>compiler</strong> (<code>ghc</code>)</li>
-<li>De GHCi <strong>interpreter</strong> (<code>ghci</code> of <code>winghci</code>)</li>
 <li>De Haskell Tool Stack (<code>stack</code>)</li>
+<li>De GHC <strong>compiler</strong> (<code>ghc</code>)</li>
+<li>De GHCi <strong>interpreter</strong> (<code>ghci</code>)</li>
 <li>Een package manager (<code>cabal</code>)</li>
 </ul></li>
 </ul>
@@ -129,12 +129,12 @@
 <li><p>ik maak best veel fouten.</p></li>
 </ul>
 <p>In deze omstandigheden werkt een echte compiler vertragend.</p>
-<p>Er is daarom een interactieve interpreter, <code>ghci</code>. (onder windows: <code>WinGHCi</code>)</p>
+<p>Er is daarom een interactieve interpreter, <code>ghci</code>.</p>
 </div>
 <div id="aan-de-slag-met-ghci" class="slide section level1">
 <h1>Aan de slag met GHCi</h1>
 <p>Simpel genoeg:</p>
-<pre><code>ghci (of winghci)</code></pre>
+<pre><code>ghci</code></pre>
 <p>Er verschijnt wat opstart-tekst, gevolgd door de prompt:</p>
 <pre><code>GHCi, version 8.0.1: http://www.haskell.org/ghc/  :? for help
 Prelude&gt; </code></pre>
@@ -878,17 +878,19 @@ someFunc</code></pre>
 </div>
 <div id="speelkwartier-met-ghci" class="slide section level1">
 <h1>Speelkwartier met ghci!</h1>
-<p>Heeft iedereen <code>http-conduit</code> inmiddels geïnstalleerd?</p>
-<p>Start <code>ghci</code>, en laten we eens wat spelen met de module:</p>
+<pre><code>D:\speeltuin\webspider&gt;cd app
+D:\speeltuin\webspider\app&gt;stack ghci
+.
+.
+.
+Ok, modules loaded: Lib, Main.
+*Main Lib&gt; main
+someFunc
+*Main Lib&gt; </code></pre>
+<p>Voeg de volgende regel toe in Main.hs:</p>
 <pre><code>import Network.HTTP.Conduit</code></pre>
-<p>Merk op dat de prompt verandert zodra we het hebben getypt:</p>
-<pre><code>Prelude Network.HTTP.Conduit&gt;</code></pre>
-<p>We weten hierdoor dat de module geladen en beschikbaar is voor gebruik.</p>
-</div>
-<div id="ophalen-van-een-webpagina" class="slide section level1">
-<h1>Ophalen van een webpagina</h1>
-<p>Eindelijk - we gaan nu een webpagina ophalen!</p>
-<pre><code>simpleHTTP &quot;http://example.com/&quot;</code></pre>
+<p>Opslaan, opnieuw laden van Main.hs (<code>:load Main</code>) , en probeer maar eens uit:</p>
+<pre><code>*Main&gt; simpleHttp &quot;http://example.com&quot;</code></pre>
 <p>Kreeg je een hoop HTML in je terminal window te zien? Yeah!</p>
 </div>
 <div id="van-binary-naar-tekst" class="slide section level1">
@@ -934,17 +936,15 @@ someFunc</code></pre>
 <li>Dit helpt om ze te onderscheiden van pure functies.</li>
 </ul>
 </div>
-<div id="mengen-van-acties-met-pure-code" class="slide section level1">
-<h1>Mengen van <em>acties</em> met <em>pure code</em></h1>
+<div id="do-notatie-mengen-van-acties-met-pure-code" class="slide section level1">
+<h1><code>do</code>-notatie: Mengen van <em>acties</em> met <em>pure code</em></h1>
 <p>Het type-systeem 'weet' welke functies <code>IO</code> doen en zorgt ervoor dat we hier op een nette manier mee omgaan.</p>
 <p>We kunnen echter op een natuurlijke manier pure code mengen met acties:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">charCount fileName <span class="fu">=</span>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">charCount ::</span> FilePath <span class="ot">-&gt;</span> <span class="dt">IO</span> <span class="dt">Int</span>
+charCount fileName <span class="fu">=</span>
   <span class="kw">do</span> contents <span class="ot">&lt;-</span> readFile fileName
      return (length contents)</code></pre></div>
-</div>
-<div id="do-notatie" class="slide section level1">
-<h1>&quot;do&quot; notatie</h1>
-<p>Cruciaal in wat we net zagen was het <strong>do</strong> keyword aan het begin van de functie definitie.</p>
+<p>Cruciaal in wat we hier zien is het <strong><code>do</code></strong> keyword aan het begin van de functie definitie.</p>
 <p>Het introduceert een serie van <code>IO</code> acties. Één per regel.</p>
 </div>
 <div id="opvangen-van-het-resultaat-van-acties" class="slide section level1">
@@ -982,7 +982,9 @@ someFunc</code></pre>
 <div id="utf-8-conversie" class="slide section level1">
 <h1>UTF-8 conversie</h1>
 <p>Om de conversie te doen, gaan we gebruik maken van het package <code>utf8-string</code>, dat we dankzij Hayoo hebben gevonden.</p>
-<pre><code>cabal install utf8-string</code></pre>
+<pre><code>Toevoegen aan webspider.cabal:
+
+utf8-string</code></pre>
 <p>Dit package bevat een module met de naam <code>Data.ByteString.Lazy.UTF8</code>.</p>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">import </span><span class="dt">Data.ByteString.Lazy.UTF8</span></code></pre></div>
 <p>Hierin is een functie gedefiniëerd met de naam <code>toString</code>:</p>
@@ -1118,13 +1120,15 @@ safeHead []     <span class="fu">=</span> <span class="dt">None</span></code></p
 </div>
 <div id="tags" class="slide section level1">
 <h1>Tags</h1>
-<p>Het <code>tagsoup</code> package definieert het volgende type:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Tag</span> <span class="fu">=</span> <span class="dt">TagOpen</span> <span class="dt">String</span> [<span class="dt">Attribute</span>]
-         <span class="fu">|</span> <span class="dt">TagClose</span> <span class="dt">String</span>
-         <span class="fu">|</span> <span class="dt">TagText</span> <span class="dt">String</span>
-         <span class="fu">|</span> <span class="dt">TagComment</span> <span class="dt">String</span>
-         <span class="fu">|</span> <span class="dt">TagWarning</span> <span class="dt">String</span>
-         <span class="fu">|</span> <span class="dt">TagPosition</span> <span class="dt">Row</span> <span class="dt">Column</span></code></pre></div>
+<p>Het <a href="http://hackage.haskell.org/package/tagsoup">tagsoup</a> package definieert het volgende type:</p>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Tag</span> str <span class="fu">=</span>
+     <span class="dt">TagOpen</span> str [<span class="dt">Attribute</span> str]  <span class="co">-- ^ An open tag with &#39;Attribute&#39;s in their original order</span>
+   <span class="fu">|</span> <span class="dt">TagClose</span> str                 <span class="co">-- ^ A closing tag</span>
+   <span class="fu">|</span> <span class="dt">TagText</span> str                  <span class="co">-- ^ A text node, guaranteed not to be the empty string</span>
+   <span class="fu">|</span> <span class="dt">TagComment</span> str               <span class="co">-- ^ A comment</span>
+   <span class="fu">|</span> <span class="dt">TagWarning</span> str               <span class="co">-- ^ Meta: A syntax error in the input file</span>
+   <span class="fu">|</span> <span class="dt">TagPosition</span> <span class="fu">!</span><span class="dt">Row</span> <span class="fu">!</span><span class="dt">Column</span>     <span class="co">-- ^ Meta: The position of a parsed element</span>
+     <span class="kw">deriving</span> (<span class="dt">Show</span>, <span class="dt">Eq</span>, <span class="dt">Ord</span>, <span class="dt">Data</span>, <span class="dt">Typeable</span>)</code></pre></div>
 <p>Wat denk je dat deze constructors kunnen betekenen?</p>
 </div>
 <div id="pattern-matching-over-een-tag" class="slide section level1">
@@ -1144,7 +1148,7 @@ safeHead []     <span class="fu">=</span> <span class="dt">None</span></code></p
 <ul>
 <li>Wat zou het type van deze functie zijn?</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">isOpenTag ::</span> <span class="dt">Tag</span> <span class="ot">-&gt;</span> <span class="dt">Bool</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">isTagOpen ::</span> <span class="dt">Tag</span> str <span class="ot">-&gt;</span> <span class="dt">Bool</span></code></pre></div>
 <ul>
 <li>Hoe zou de body van de functie er uit zien?</li>
 </ul>
@@ -1153,13 +1157,13 @@ safeHead []     <span class="fu">=</span> <span class="dt">None</span></code></p
 <div id="om-het-even" class="slide section level1">
 <h1>Om het even!</h1>
 <p>Onze eerste body zag er als volgt uit:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">isOpenTag ::</span> <span class="dt">Tag</span> <span class="ot">-&gt;</span> <span class="dt">Bool</span>
-isOpenTag (<span class="dt">TagOpen</span> x y)     <span class="fu">=</span> <span class="dt">True</span>
-isOpenTag (<span class="dt">TagClose</span> x)      <span class="fu">=</span> <span class="dt">False</span>
-isOpenTag (<span class="dt">TagText</span> x)       <span class="fu">=</span> <span class="dt">False</span>
-isOpenTag (<span class="dt">TagComment</span> x)    <span class="fu">=</span> <span class="dt">False</span>
-isOpenTag (<span class="dt">TagWarning</span> x)    <span class="fu">=</span> <span class="dt">False</span>
-isOpenTag (<span class="dt">TagPosition</span> x y) <span class="fu">=</span> <span class="dt">False</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">isTagOpen ::</span> <span class="dt">Tag</span> str <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+isTagOpen (<span class="dt">TagOpen</span> x y)     <span class="fu">=</span> <span class="dt">True</span>
+isTagOpen (<span class="dt">TagClose</span> x)      <span class="fu">=</span> <span class="dt">False</span>
+isTagOpen (<span class="dt">TagText</span> x)       <span class="fu">=</span> <span class="dt">False</span>
+isTagOpen (<span class="dt">TagComment</span> x)    <span class="fu">=</span> <span class="dt">False</span>
+isTagOpen (<span class="dt">TagWarning</span> x)    <span class="fu">=</span> <span class="dt">False</span>
+isTagOpen (<span class="dt">TagPosition</span> x y) <span class="fu">=</span> <span class="dt">False</span></code></pre></div>
 <p>Begrijpbaar, maar lelijk.</p>
 <ul>
 <li><p>We zijn maar in precies één constructor geïnteresseerd.</p></li>
@@ -1169,9 +1173,9 @@ isOpenTag (<span class="dt">TagPosition</span> x y) <span class="fu">=</span> <s
 <div id="het-wild-card-patroon" class="slide section level1">
 <h1>Het wild card patroon</h1>
 <p>We kunnen met het <strong>&quot;<code>_</code>&quot;</strong> teken opschrijven dat het ons niet uitmaakt wat een patroon of variabele precies is.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">isOpenTag ::</span> <span class="dt">Tag</span> <span class="ot">-&gt;</span> <span class="dt">Bool</span>
-isOpenTag (<span class="dt">TagOpen</span> _ _) <span class="fu">=</span> <span class="dt">True</span>
-isOpenTag  _            <span class="fu">=</span> <span class="dt">False</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">isTagOpen ::</span> <span class="dt">Tag</span> str <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+isTagOpen (<span class="dt">TagOpen</span> _ _)  <span class="fu">=</span> <span class="dt">True</span>
+isTagOpen _              <span class="fu">=</span> <span class="dt">False</span></code></pre></div>
 <p>Het wild card patroon matcht altijd.</p>
 <ul>
 <li><p>Aangezien we toch geen gebruik maken van <code>x</code> of <code>y</code>, kunnen we dat expliciet aangeven door gebruik te maken van <code>_</code>.</p></li>
@@ -1181,9 +1185,9 @@ isOpenTag  _            <span class="fu">=</span> <span class="dt">False</span><
 <div id="even-een-vraag-tussendoor" class="slide section level1">
 <h1>Even een vraag tussendoor</h1>
 <p>Waarom schrijven we de functie niet op deze manier?</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">isOpenTag ::</span> <span class="dt">Tag</span> <span class="ot">-&gt;</span> <span class="dt">Bool</span>
-isOpenTag  _            <span class="fu">=</span> <span class="dt">False</span>
-isOpenTag (<span class="dt">TagOpen</span> _ _) <span class="fu">=</span> <span class="dt">True</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">isTagOpen ::</span> <span class="dt">Tag</span> str <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+isTagOpen _              <span class="fu">=</span> <span class="dt">False</span>
+isTagOpen (<span class="dt">TagOpen</span> _ _)  <span class="fu">=</span> <span class="dt">True</span></code></pre></div>
 </div>
 <div id="extractie-van-de-links-van-een-webpagina" class="slide section level1">
 <h1>Extractie van de links van een webpagina</h1>
