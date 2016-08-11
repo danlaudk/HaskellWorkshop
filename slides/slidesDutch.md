@@ -51,15 +51,18 @@ Na mijn afstuderen in 1990 heb ik geprogrammeerd in iteratieve talen
 
 # Over deze presentatie
 
+<img src="http://book.realworldhaskell.org/support/rwh-200.jpg" width="250" hight="250" align="right">
+
 * Doel: Enthousiasmeren van jullie
+
+* Sheets zijn geschreven om ook zelf te kunnen doen:
+
+    [http://hanjoosten.github.com/HaskellWorkshop](http://hanjoosten.github.com/HaskellWorkshop)
 
 * Veel is (met dank!) gepikt van Bryan O'Sullivan
 
-![Real World Haskell](http://book.realworldhaskell.org/support/rwh-200.jpg) Bryan O'Sullivan is co-auteur van het boek [Real World Haskell](http://book.realworldhaskell.org/). Dit is een gratis online boek dat zeer goed bruikbaar is als leerboek als je verder wilt met Haskell.
+* Bryan O'Sullivan is co-auteur van het boek [Real World Haskell](http://book.realworldhaskell.org/). Dit is een gratis online boek dat zeer goed bruikbaar is als leerboek als je verder wilt met Haskell.
 
-* Sheets ook (nu al!) beschikbaar om zelf te doen:
-
-    [http://hanjoosten.github.com/HaskellWorkshop](http://hanjoosten.github.com/HaskellWorkshop)
 
 
 # Wat kan je verwachten 1

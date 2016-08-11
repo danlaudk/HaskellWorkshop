@@ -38,14 +38,13 @@
 </div>
 <div id="over-deze-presentatie" class="slide section level1">
 <h1>Over deze presentatie</h1>
+<p><img src="http://book.realworldhaskell.org/support/rwh-200.jpg" width="250" hight="250" align="right"></p>
 <ul>
 <li><p>Doel: Enthousiasmeren van jullie</p></li>
-<li><p>Veel is (met dank!) gepikt van Bryan O'Sullivan</p></li>
-</ul>
-<p><img src="http://book.realworldhaskell.org/support/rwh-200.jpg" alt="Real World Haskell" /> Bryan O'Sullivan is co-auteur van het boek <a href="http://book.realworldhaskell.org/">Real World Haskell</a>. Dit is een gratis online boek dat zeer goed bruikbaar is als leerboek als je verder wilt met Haskell.</p>
-<ul>
-<li><p>Sheets ook (nu al!) beschikbaar om zelf te doen:</p>
+<li><p>Mijn sheets staan online en zijn geschreven om ook zelf te kunnen doen:</p>
 <p><a href="http://hanjoosten.github.com/HaskellWorkshop" class="uri">http://hanjoosten.github.com/HaskellWorkshop</a></p></li>
+<li><p>Veel is (met dank!) gepikt van Bryan O'Sullivan</p></li>
+<li><p>Bryan O'Sullivan is co-auteur van het boek <a href="http://book.realworldhaskell.org/">Real World Haskell</a>. Dit is een gratis online boek dat zeer goed bruikbaar is als leerboek als je verder wilt met Haskell.</p></li>
 </ul>
 </div>
 <div id="wat-kan-je-verwachten-1" class="slide section level1">
