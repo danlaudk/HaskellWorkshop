@@ -1,13 +1,12 @@
 % Introductie Functioneel Programmeren (met Haskell)
 % Han Joosten
 % Augustus 2016
-# Welkom!
+# putStrLn "hallo!"
 
-~~~~ {.haskell}
-main = putStrLn "hallo!"
-~~~~
 
-* Mijn naam is Han Joosten (han.joosten@oridna.nl)
+<img src="https://avatars0.githubusercontent.com/hanjoosten" width="250" hight="250" align="right">
+
+* Mijn naam is Han Joosten  
 
 * Ik ben Analist bij RT&O
 
@@ -16,7 +15,6 @@ main = putStrLn "hallo!"
 * Ik help mee bij ontwikkeling van Ampersand (Open source project)
 
     * [ampersand op github](https://github.com/AmpersandTarski)
-
 
 
 # Achtergrond in (functioneel) programmeren
