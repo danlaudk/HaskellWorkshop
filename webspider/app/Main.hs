@@ -7,7 +7,7 @@ import Data.Map
 main :: IO()
 main = do 
   args <- getArgs
-  theMap <- spider 5000 (head (args ++ ["http://www.ordina.nl"]))
+  theMap <- spider 50 (head (args ++ ["http://www.ordina.nl"]))
   putStrLn (showTreeWith showItem True False theMap)
  where
    showItem k x = take 80 $ show k --(k,x) 
