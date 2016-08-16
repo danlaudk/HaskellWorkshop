@@ -1,7 +1,8 @@
 module Links where
 
 import Data.Maybe
-import Network
+--import Network
+import Network.URI
 import Text.HTML.TagSoup
 
 links :: String -> String -> [String]
@@ -15,9 +16,9 @@ links url = catMaybes .
             parseTags
 
 canonicalizeLink :: String -> String -> Maybe String
-canonicalizeLink referer path = do
-  r <- parseURI referer
-  p <- parseURIReference path
-  n <- p `nonStrictRelativeTo` r
-  let u = uriToString id n ""
-  return (takeWhile (/= '#') u)
+canonicalizeLink referer path = 
+  case (parseURI referer, parseURIReference path) of
+    (Just r, Just p) -> let n = p `nonStrictRelativeTo` r
+                            u = uriToString id n ""
+                        in Just (takeWhile (/= '#') u)
+    _                -> Nothing

@@ -3,10 +3,12 @@ import Download
 import Text.HTML.TagSoup
 
 
-processPage url = do
-  page <- download url
-  return (process page)
+processPage :: String -> IO [String] 
+processPage url = 
+   do page <- download url
+      return (process page)
 
+process :: String -> [String]
 process =
   filter (not . null) .
   map (fromAttrib "href") .
