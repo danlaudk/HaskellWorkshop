@@ -1101,7 +1101,7 @@ D:\speeltuin\webspider>stack build
 4. En dan:
 
 ~~~~
-D:\speeltuin\webspider>stack exec webspider-exec
+D:\speeltuin\webspider>stack exec webspider-exe
 someFunc
 ~~~~
 
