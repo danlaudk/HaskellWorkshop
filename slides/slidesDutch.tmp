@@ -3,7 +3,7 @@
 <p><img src="https://avatars0.githubusercontent.com/hanjoosten" width="250" hight="250" align="right"></p>
 <ul>
 <li><p>Mijn naam is Han Joosten</p></li>
-<li><p>Ik ben Analist bij RT&amp;O</p></li>
+<li><p>Ik ben Analist bij RulesMatter!</p></li>
 <li><p>Begonnen met Haskell ca. 2006</p></li>
 <li><p>Ik help mee bij ontwikkeling van Ampersand (Open source project)</p>
 <ul>
@@ -25,8 +25,10 @@
 <li><p>Haskell community is heel behulpzaam</p></li>
 </ul>
 </div>
-<div id="waarom-zou-ik-me-druk-maken-over-fp" class="slide section level1">
-<h1>Waarom zou ik me druk maken over FP?</h1>
+<div id="wat-is-er-zo-bijzonder-aan-fp-wat-heb-ik-er-aan" class="slide section level1">
+<h1>Wat is er zo bijzonder aan FP? Wat heb ik er aan?</h1>
+<iframe src="https://docs.google.com/presentation/d/1Ge58uJ97z7KDUeox40MoL9c5IyP3X3IlYaPs-DGtICs/embed?start=false&amp;loop=false&amp;delayms=60000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+</iframe>
 <ul>
 <li><p>Functioneel programmeren maakt dat je anders zal gaan denken over programmeren</p>
 <ul>
@@ -87,8 +89,8 @@
 <li><p>Een 'speel'-directory</p></li>
 </ul>
 </div>
-<div id="probleemstelling" class="slide section level1">
-<h1>Probleemstelling</h1>
+<div id="dit-is-de-uitdaging-voor-vandaag" class="slide section level1">
+<h1>Dit is de uitdaging voor vandaag</h1>
 <p>Gegeven een website. We willen er data afhalen (web-scraping) en er andere belangrijke web pagina's mee vinden.</p>
 <p>Er valt dan ook veel uit te zoeken!</p>
 <ol style="list-style-type: decimal">
@@ -99,25 +101,35 @@
 <li><p>en ook nog een beetje snel?</p></li>
 </ol>
 </div>
-<div id="aan-de-slag" class="slide section level1">
-<h1>Aan de slag!</h1>
-<p>Maak in je 'speel'-directory een file <code>Hello.hs</code> met de volgende inhoud:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">main <span class="fu">=</span> putStrLn <span class="st">&quot;hello, world!&quot;</span></code></pre></div>
+<div id="snelle-start-met-een-simpel-template" class="slide section level1">
+<h1>Snelle start met een simpel template</h1>
+<p>Ga naar je 'speel'-directory en typ daar het volgende commando</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">stack</span> new hello new-template</code></pre></div>
+<p>Dit duurt een paar minuten, maar dan heb je ook wat.</p>
+<pre><code>cd hello\app
+stack ghci</code></pre>
+</div>
+<div id="hello-world" class="slide section level1">
+<h1>hello world</h1>
+<p>We hebben nu een compleet programma! Open <strong>...hello\app\Main.hs</strong> in je favoriete editor.</p>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">module</span> <span class="dt">Main</span> <span class="kw">where</span>
+
+<span class="ot">main ::</span> <span class="dt">IO</span> ()
+main <span class="fu">=</span> <span class="kw">do</span>
+  putStrLn <span class="st">&quot;hello world&quot;</span></code></pre></div>
 <p>De extentie <code>.hs</code> is de standaard voor Haskell source files.</p>
-<p>De naam van een bestand begint met een hoofdletter en iedereen gebruikt <code>CamelCase</code>.</p>
+<p>De naam van een bestand begint met een hoofdletter. Geen spaties in de naam (duh).</p>
 </div>
 <div id="vertalen" class="slide section level1">
 <h1>Vertalen</h1>
-<p>Dit commando zoekt naar <code>Hello.hs</code> in de huidige directory, en vertaalt het:</p>
-<pre><code>ghc --make Hello</code></pre>
-<p>Het gegenereerde programma heet <code>Hello</code> (<code>Hello.exe</code> op Windows).</p>
-<ul>
-<li>De <code>--make</code> optie zorgt er voor dat GHC de afhankelijkheden met andere bestanden en packages automatisch afhandelt.</li>
-</ul>
+<p>Dit commando, gegeven in de directory waar stack.yml staat, bouwt je project:</p>
+<pre><code>stack build</code></pre>
+<p>Dit commando doet hetzelfde, maar kopieert je programma ook naar je pad:</p>
+<pre><code>stack install</code></pre>
 </div>
 <div id="even-controleren" class="slide section level1">
 <h1>Even controleren</h1>
-<p>Is het iedereen gelukt om hun <code>Hello</code> programma te genereren en uit te voeren?</p>
+<p>Is het iedereen gelukt om het programma te genereren en uit te voeren?</p>
 </div>
 <div id="en-nu-wat-handiger" class="slide section level1">
 <h1>En nu wat handiger</h1>
@@ -132,12 +144,14 @@
 </div>
 <div id="aan-de-slag-met-ghci" class="slide section level1">
 <h1>Aan de slag met GHCi</h1>
-<p>Simpel genoeg:</p>
-<pre><code>ghci</code></pre>
+<pre><code>stack ghci</code></pre>
 <p>Er verschijnt wat opstart-tekst, gevolgd door de prompt:</p>
-<pre><code>GHCi, version 8.0.1: http://www.haskell.org/ghc/  :? for help
-Prelude&gt; </code></pre>
-<p>Deze standaard prompt vertelt ons welke modules er beschikbaar zijn om mee te spelen.</p>
+<pre><code>*Main&gt; </code></pre>
+<p>Deze standaard prompt vertelt ons welke modules er beschikbaar zijn om mee te spelen. In ons geval is ons project geladen.</p>
+<p>De functie <em>main</em> is beschikbaar</p>
+<pre><code>*Main&gt;main
+hello world
+*Main&gt;</code></pre>
 </div>
 <div id="spelen-met-ghci" class="slide section level1">
 <h1>Spelen met GHCi</h1>
@@ -148,21 +162,22 @@ Prelude&gt; </code></pre>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="st">&quot;foo&quot;</span> <span class="fu">++</span> <span class="st">&quot;bar&quot;</span></code></pre></div>
 <p>(De <code>++</code> is de &quot;append&quot; operator.)</p>
 </div>
-<div id="interpreter-commandos" class="slide section level1">
-<h1>Interpreter commando's</h1>
-<p>Alle interpreter commando's beginnen met een &quot;<code>:</code>&quot; teken.</p>
-<p>Laten we ons programma in <code>ghci</code> laden:</p>
-<pre><code>:load Hello.hs</code></pre>
-<p>De <code>ghci</code> prompt verandert:</p>
-<pre><code>*Main&gt;</code></pre>
-</div>
 <div id="onze-code-uitvoeren-met-ghci" class="slide section level1">
 <h1>Onze code uitvoeren met ghci</h1>
-<p>We hebben een functie met de naam <code>main</code> gedefinieerd. Voer het nu uit:</p>
+<p>Het template bevat een standaard functie met de naam <code>main</code>. Voer het nu uit:</p>
 <pre><code>main</code></pre>
 <p>Is het gelukt?</p>
 <p>En wat zou dit doen?</p>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">putStrLn <span class="st">&quot;hoi mam!&quot;</span></code></pre></div>
+</div>
+<div id="interpreter-commandos" class="slide section level1">
+<h1>Interpreter commando's</h1>
+<p>Alle interpreter commando's beginnen met een &quot;<code>:</code>&quot; teken.</p>
+<p>Gebruik je eigen favoriete code editor om je code aan te passen en op te slaan</p>
+<p>Verander de String in je main programma. We laden het programma opnieuw:</p>
+<pre><code>:load src/Main.hs</code></pre>
+<p>De <code>ghci</code> prompt blijft:</p>
+<pre><code>*Main&gt;</code></pre>
 </div>
 <div id="enkele-van-de-nuttigste-commandos" class="slide section level1">
 <h1>Enkele van de nuttigste commando's</h1>
@@ -170,7 +185,6 @@ Prelude&gt; </code></pre>
 <ul>
 <li><p><code>:help</code> toont welke commando's we tot onze beschikking hebben.</p></li>
 <li><p><code>:reload</code> laden van het bestand dat het laatst is ge<code>:load</code>.</p></li>
-<li><p><code>:edit</code> opent de tekst editor met het bestand dat het laatst is ge<code>:load</code>. (echter <em>niet</em> automatische <code>:reload</code>.)</p></li>
 <li><p><code>:type</code> geeft het type van een in Haskell gedefinieerd <code>ding</code>.</p></li>
 <li><p><code>:quit</code> beëindigt <code>GHCi</code>.</p></li>
 </ul>
@@ -179,7 +193,7 @@ Prelude&gt; </code></pre>
 <h1>Enkele ghci efficiency tips</h1>
 <p>We kunnen commando's afkorten:</p>
 <ul>
-<li><p><code>:e</code> is synoniem voor <code>:edit</code></p></li>
+<li><p><code>:t</code> is synoniem voor <code>:type</code></p></li>
 <li><p><code>:r</code> is <code>:reload</code></p></li>
 </ul>
 <p>We hebben ook historie en command line editing.</p>
@@ -190,15 +204,14 @@ Prelude&gt; </code></pre>
 </div>
 <div id="gewenning-aan-de-cyclus" class="slide section level1">
 <h1>Gewenning aan de cyclus</h1>
-<p>Gebruik <code>:edit</code> of je tekst editor om de &quot;hello&quot; tekst aan te passen.</p>
 <p>Gebruik <code>:reload</code> om je bestand opnieuw te laden.</p>
 <p>Test je nieuwe definitie van <code>main</code>.</p>
 <ul>
 <li>Oefening: Gebruik de &quot;pijl omhoog&quot; toets om door je commando historie te gaan totdat je terug komt op de laatste keer dat je <code>main</code> typte.</li>
 </ul>
 </div>
-<div id="lijsten-en-strings" class="slide section level1">
-<h1>Lijsten en Strings</h1>
+<div id="terug-naar-haskell-lijsten-en-strings" class="slide section level1">
+<h1>Terug naar Haskell: Lijsten en Strings</h1>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">[<span class="ch">&#39;h&#39;</span>,<span class="ch">&#39;e&#39;</span>,<span class="ch">&#39;l&#39;</span>,<span class="ch">&#39;l&#39;</span>,<span class="ch">&#39;o&#39;</span>]</code></pre></div>
 <p>Dubbele haakjes zijn alleen maar een verkorte schrijfwijze voor de langere vorm:</p>
@@ -242,18 +255,18 @@ Prelude&gt;</code></pre>
 </div>
 <div id="zelf-doen-2" class="slide section level1">
 <h1>Zelf doen: 2</h1>
-<p>De notatie <code>['a'..'z']</code> genereert een lijst van start tot eind, inclusief.</p>
+<p>De notatie <code>['a'..'z']</code> genereert een lijst van start tot eind.</p>
 <p>De <code>sum</code> functie sommeert alle elementen in een lijst.</p>
 <ul>
-<li>Wat is de som van de getallen tussen 9 en 250, inclusief, <em>minus</em> 2?</li>
+<li>Wat is de som van de getallen vanaf 9 tot en met 250, <em>minus</em> 2?</li>
 </ul>
 </div>
 <div id="zelf-doen-2-1" class="slide section level1">
 <h1>Zelf doen: 2</h1>
-<p>De notatie <code>['a'..'z']</code> genereert een lijst van start tot eind, inclusief.</p>
+<p>De notatie <code>['a'..'z']</code> genereert een lijst van start tot eind.</p>
 <p>De <code>sum</code> functie sommeert alle elementen in een lijst.</p>
 <ul>
-<li>Wat is de som van de getallen tussen 9 en 250, inclusief, <em>minus</em> 2?</li>
+<li>Wat is de som van de getallen vanaf 9 tot en met 250, <em>minus</em> 2?</li>
 </ul>
 <pre><code>Prelude&gt; sum [9..250]
 31339
@@ -696,6 +709,9 @@ filter pred (x<span class="fu">:</span>xs)
   <span class="kw">in</span>  unwords <span class="fu">.</span> filter (isKlinker <span class="fu">.</span> head) <span class="fu">.</span> words</code></pre></div>
 <p>Doet dit je denken aan een Unix shell pipeline, maar dan van rechts naar links?</p>
 </div>
+<div id="even-pauze" class="slide section level1">
+<h1>Even pauze?</h1>
+</div>
 <div id="oh-ja-hoe-zat-het-met-onze-probleemstelling" class="slide section level1">
 <h1>Oh ja, hoe zat het met onze probleemstelling?</h1>
 <p>Gegeven een website. We willen er data afhalen (web-scraping) en er andere belangrijke web pagina's mee vinden.</p>
@@ -709,41 +725,42 @@ filter pred (x<span class="fu">:</span>xs)
 <ol style="list-style-type: decimal">
 <li>Ga naar je speel directory en maak een nieuw project op basis van een template:</li>
 </ol>
-<pre><code>D:\speeltuin&gt;stack new webspider new-template</code></pre>
-<pre><code>D:\speeltuin\webspider&gt;dir
- De volumenaam van station D is DATA
- Het volumenummer is EA7B-622E
+<pre><code>C:\Users\hjo20125\Git&gt;stack new webspider simple</code></pre>
+<pre><code>C:\Users\hjo20125\Git\webspider&gt;dir
+ Volume in drive C is Windows
+ Volume Serial Number is 7CBD-7740
 
- Map van D:\speeltuin\webspider
+ Directory of C:\Users\hjo20125\Git\webspider
 
-03-08-2016  11:05    &lt;DIR&gt;          .
-03-08-2016  11:05    &lt;DIR&gt;          ..
-03-08-2016  10:56    &lt;DIR&gt;          app
-03-08-2016  10:56             1.528 LICENSE
-03-08-2016  10:56                46 Setup.hs
-03-08-2016  10:56    &lt;DIR&gt;          src
-03-08-2016  10:56             2.181 stack.yaml
-03-08-2016  10:56    &lt;DIR&gt;          test
-03-08-2016  10:56             1.262 webspider.cabal
-               4 bestand(en)            5.017 bytes
-               5 map(pen)  473.942.138.880 bytes beschikbaar</code></pre>
+07-07-2017  23:28    &lt;DIR&gt;          .
+07-07-2017  23:28    &lt;DIR&gt;          ..
+07-07-2017  23:28             1.528 LICENSE
+07-07-2017  23:28                12 README.md
+07-07-2017  23:28                46 Setup.hs
+07-07-2017  23:28    &lt;DIR&gt;          src
+07-07-2017  23:28             2.173 stack.yaml
+07-07-2017  23:28               603 webspider.cabal
+               5 File(s)          4.362 bytes
+               3 Dir(s)  901.797.781.504 bytes free
+
+C:\Users\hjo20125\Git\webspider&gt;</code></pre>
 </div>
 <div id="nieuw-project-aanmaken-1" class="slide section level1">
 <h1>Nieuw project aanmaken</h1>
 <ol start="2" style="list-style-type: decimal">
 <li>Eenmalig zorgen voor de juiste setup van stack:</li>
 </ol>
-<pre><code>D:\speeltuin\webspider&gt;stack setup</code></pre>
+<pre><code>C:\Users\hjo20125\Git\webspider&gt;stack setup</code></pre>
 <p>Dit kan even duren, maar is gelukkig éénmalig.</p>
 <ol start="3" style="list-style-type: decimal">
 <li>Meest belangrijke stack commando:</li>
 </ol>
-<pre><code>D:\speeltuin\webspider&gt;stack build</code></pre>
+<pre><code>C:\Users\hjo20125\Git\webspider&gt;stack build</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li>En dan:</li>
 </ol>
-<pre><code>D:\speeltuin\webspider&gt;stack exec webspider-exe
-someFunc</code></pre>
+<pre><code>C:\Users\hjo20125\Git\webspider&gt;stack exec webspider
+hello world</code></pre>
 </div>
 <div id="doen-een-web-pagina-downloaden" class="slide section level1">
 <h1>Doen: Een web pagina downloaden!</h1>
@@ -778,16 +795,14 @@ someFunc</code></pre>
 <div id="een-package-gebruiken" class="slide section level1">
 <h1>Een package gebruiken</h1>
 <p>We moeten in ons project aangeven, dat we <code>http-conduit</code> gebruiken. Dat doen we door de dependency lijst aan te passen in het .cabal bestand:</p>
-<pre><code>executable webspider-exe
-  hs-source-dirs:      app
+<pre><code>executable webspider
+  hs-source-dirs:      src
   main-is:             Main.hs
-  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
-  build-depends:       base
-                     , http-conduit
-                     , webspider
-  default-language:    Haskell2010</code></pre>
-<p>Als we vanaf nu een build doen, dan wordt http-conduit beschikbaar gemaakt!</p>
-<pre><code>D:\speeltuin\webspider&gt;stack build</code></pre>
+  default-language:    Haskell2010
+  build-depends:       base &gt;= 4.7 &amp;&amp; &lt; 5
+                     , http-conduit</code></pre>
+<p>Als we vanaf nu een build doen, dan wordt http-conduit beschikbaar gemaakt! Dependencies moeten altijd expliciet worden vermeld in het .cabal bestand.</p>
+<pre><code>stack build</code></pre>
 </div>
 <div id="documentatie-lezen-packages-en-modules" class="slide section level1">
 <h1>Documentatie lezen: packages en modules</h1>
@@ -862,7 +877,8 @@ someFunc</code></pre>
 </div>
 <div id="documentatie-uit-de-echte-wereld" class="slide section level1">
 <h1>Documentatie uit de <em>echte</em> wereld</h1>
-<p>Hier is het allereerste signature uit <code>http-conduit</code>:</p>
+<p>In de documentatie van <code>http-conduit</code> lezen we <a href="http://hackage.haskell.org/package/http-conduit-2.2.3.1/docs/Network-HTTP-Conduit.html">ergens</a>:</p>
+<p><em>If you want a simple interface based on URLs, you can use simpleHttp.</em></p>
 <pre><code>simpleHttp :: MonadIO m =&gt; String -&gt; m ByteString</code></pre>
 <p>Dit is ingewikkelder! Hoe lezen we dit nu weer?</p>
 <p>Tussen <code>'::'</code> en <code>'=&gt;'</code> zien we <em>constraints</em> over het gebruik van <code>simpleHttp</code> - Dit kunnen we nu wel even laten voor wat het is.</p>
@@ -877,18 +893,18 @@ someFunc</code></pre>
 </div>
 <div id="speelkwartier-met-ghci" class="slide section level1">
 <h1>Speelkwartier met ghci!</h1>
-<pre><code>D:\speeltuin\webspider&gt;cd app
-D:\speeltuin\webspider\app&gt;stack ghci
+<pre><code>C:\Users\hjo20125\Git\webspider\app&gt;stack ghci
 .
 .
 .
-Ok, modules loaded: Lib, Main.
-*Main Lib&gt; main
-someFunc
-*Main Lib&gt; </code></pre>
+Ok, modules loaded: Main.
+*Main&gt; main
+hello world
+*Main&gt;</code></pre>
 <p>Voeg de volgende regel toe in Main.hs:</p>
 <pre><code>import Network.HTTP.Conduit</code></pre>
-<p>Opslaan, opnieuw laden van Main.hs (<code>:load Main</code>) , en probeer maar eens uit:</p>
+<p>Opslaan, opnieuw laden van Main.hs (<code>:reload</code>)</p>
+<p>Probeer maar eens uit:</p>
 <pre><code>*Main&gt; simpleHttp &quot;http://example.com&quot;</code></pre>
 <p>Kreeg je een hoop HTML in je terminal window te zien? Yeah!</p>
 </div>
@@ -1054,8 +1070,8 @@ saveAs url k <span class="fu">=</span>
 <li><p>Zelfs het parsen van nette HTML is ingewikkeld.</p></li>
 </ul>
 <p>Laten we voor de verandering maar weer eens een library gaan gebruiken!</p>
-<pre><code>cabal install tagsoup</code></pre>
-<p>De <code>tagsoup</code> package kan willekeurig rommelige HTML aan.</p>
+<pre><code>stack install tagsoup</code></pre>
+<p>De <a href="http://hackage.haskell.org/package/tagsoup"><code>tagsoup</code></a> package kan willekeurig rommelige HTML aan.</p>
 <p>Het levert ons een lijst met events, vergelijkbaar met een SAX parser.</p>
 </div>
 <div id="omgaan-met-problemen" class="slide section level1">
@@ -1308,25 +1324,21 @@ process <span class="fu">=</span>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">parseURI ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">URI</span>
 <span class="ot">parseURIReference ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">URI</span>
 uriToString id <span class="st">&quot;&quot;</span><span class="ot"> ::</span> <span class="dt">URI</span> <span class="ot">-&gt;</span> <span class="dt">String</span>
-<span class="ot">nonStrictRelativeTo ::</span> <span class="dt">URI</span> <span class="ot">-&gt;</span> <span class="dt">URI</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">URI</span></code></pre></div>
+<span class="ot">nonStrictRelativeTo ::</span> <span class="dt">URI</span> <span class="ot">-&gt;</span> <span class="dt">URI</span> <span class="ot">-&gt;</span> <span class="dt">URI</span></code></pre></div>
 </div>
 <div id="een-draak-van-een-inspringer" class="slide section level1">
 <h1>Een draak van een inspringer</h1>
 <p>Dit is niet meer om te lezen!</p>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">import </span><span class="dt">Network.URI</span>
 
-<span class="ot">canon ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">String</span>
-canon referer path <span class="fu">=</span>
+<span class="ot">canonicalizeLink ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">String</span>
+canonicalizeLink referer path <span class="fu">=</span>
   <span class="kw">case</span> parseURI referer <span class="kw">of</span>
     <span class="dt">Nothing</span> <span class="ot">-&gt;</span> <span class="dt">Nothing</span>
     <span class="dt">Just</span> r  <span class="ot">-&gt;</span>
       <span class="kw">case</span> parseURIReference path <span class="kw">of</span>
         <span class="dt">Nothing</span> <span class="ot">-&gt;</span> <span class="dt">Nothing</span>
-        <span class="dt">Just</span> p  <span class="ot">-&gt;</span>
-          <span class="kw">case</span> nonStrictRelativeTo p r <span class="kw">of</span>
-            <span class="dt">Nothing</span> <span class="ot">-&gt;</span> <span class="dt">Nothing</span>
-            <span class="dt">Just</span> u <span class="ot">-&gt;</span>
-             <span class="dt">Just</span> (uriToString id u <span class="st">&quot;&quot;</span>)</code></pre></div>
+        <span class="dt">Just</span> p  <span class="ot">-&gt;</span> <span class="dt">Just</span> (uriToString id (nonStrictRelativeTo p r) <span class="st">&quot;&quot;</span>)</code></pre></div>
 <p>Dat kan vast beter.</p>
 </div>
 <div id="traplopen" class="slide section level1">
@@ -1348,11 +1360,10 @@ bind (<span class="dt">Just</span> value) action <span class="fu">=</span> actio
 <div id="het-gebruik-van-bind" class="slide section level1">
 <h1>Het gebruik van bind</h1>
 <p>Hoe kunnen we dit gebruiken?</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">canon1 referer path <span class="fu">=</span>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">canonicalizeLink1 referer path <span class="fu">=</span>
   parseURI referer                <span class="ot">`bind`</span>
    \r <span class="ot">-&gt;</span> parseURIReference path   <span class="ot">`bind`</span>
-    \p <span class="ot">-&gt;</span> nonStrictRelativeTo p r <span class="ot">`bind`</span>
-     \u <span class="ot">-&gt;</span> <span class="dt">Just</span> (uriToString id u <span class="st">&quot;&quot;</span>)</code></pre></div>
+    \p <span class="ot">-&gt;</span> <span class="dt">Just</span> (uriToString id (nonStrictRelativeTo p r) <span class="st">&quot;&quot;</span>)</code></pre></div>
 <p>Als we een functienaam omsluiten in &quot;`&quot;-tekens, dan kunnen we de functie als infix operator gebruiken.</p>
 </div>
 <div id="een-andere-layout-van-dezelfde-code" class="slide section level1">
@@ -1360,8 +1371,7 @@ bind (<span class="dt">Just</span> value) action <span class="fu">=</span> actio
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">canon referer path <span class="fu">=</span>
   parseURI referer         <span class="ot">`bind`</span> \r <span class="ot">-&gt;</span>
   parseURIReference path   <span class="ot">`bind`</span> \p <span class="ot">-&gt;</span>
-  nonStrictRelativeTo p r  <span class="ot">`bind`</span> \u <span class="ot">-&gt;</span>
-  <span class="dt">Just</span> (uriToString id u <span class="st">&quot;&quot;</span>)</code></pre></div>
+  <span class="dt">Just</span> (uriToString id (nonStrictRelativeTo p r) <span class="st">&quot;&quot;</span>)</code></pre></div>
 </div>
 <div id="een-ingebouwde-naam-voor-bind" class="slide section level1">
 <h1>Een ingebouwde naam voor bind</h1>
@@ -1369,8 +1379,7 @@ bind (<span class="dt">Just</span> value) action <span class="fu">=</span> actio
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">canon referer path <span class="fu">=</span>
   parseURI referer <span class="fu">&gt;&gt;=</span> \r <span class="ot">-&gt;</span>
   parseURIReference path <span class="fu">&gt;&gt;=</span> \p <span class="ot">-&gt;</span>
-  nonStrictRelativeTo p r <span class="fu">&gt;&gt;=</span> \u <span class="ot">-&gt;</span>
-  <span class="dt">Just</span> (uriToString id u <span class="st">&quot;&quot;</span>)</code></pre></div>
+  <span class="dt">Just</span> (uriToString id (nonStrictRelativeTo p r) <span class="st">&quot;&quot;</span>)</code></pre></div>
 </div>
 <div id="gebruik-maken-van-vereenvoudigde-schrijfwijze" class="slide section level1">
 <h1>Gebruik maken van vereenvoudigde schrijfwijze</h1>
@@ -1380,8 +1389,7 @@ bind (<span class="dt">Just</span> value) action <span class="fu">=</span> actio
 canonicalize referer path <span class="fu">=</span> <span class="kw">do</span>
   r <span class="ot">&lt;-</span> parseURI referer
   p <span class="ot">&lt;-</span> parseURIReference path
-  u <span class="ot">&lt;-</span> nonStrictRelativeTo p r
-  return (uriToString id u <span class="st">&quot;&quot;</span>)</code></pre></div>
+  return (uriToString id (nonStrictRelativeTo p r) <span class="st">&quot;&quot;</span>)</code></pre></div>
 </div>
 <div id="bijna-klaar" class="slide section level1">
 <h1>Bijna klaar</h1>
@@ -1410,6 +1418,7 @@ canonicalize referer path <span class="fu">=</span> <span class="kw">do</span>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">import </span><span class="dt">Data.Maybe</span>
 <span class="kw">import </span><span class="dt">Network.URI</span>
 
+<span class="ot">links ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> [<span class="dt">String</span>]
 links url <span class="fu">=</span>
   catMaybes <span class="fu">.</span>
   map (canonicalize url) <span class="fu">.</span>
@@ -1419,6 +1428,9 @@ links url <span class="fu">=</span>
   filter (isTagOpenName <span class="st">&quot;a&quot;</span>) <span class="fu">.</span>
   canonicalizeTags <span class="fu">.</span>
   parseTags</code></pre></div>
+</div>
+<div id="pauze" class="slide section level1">
+<h1>Pauze ?</h1>
 </div>
 <div id="van-links-naar-spideren" class="slide section level1">
 <h1>Van links naar spideren</h1>
@@ -1448,6 +1460,10 @@ links url <span class="fu">=</span>
 <span class="co">-- Let&#39;s define some accessors, too.</span>
 linkFrom (<span class="dt">Link</span> url _) <span class="fu">=</span> url
 linkTo (<span class="dt">Link</span> _ links) <span class="fu">=</span> links</code></pre></div>
+<p>kan ook zo: (identiek)</p>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Link</span> <span class="fu">=</span> <span class="dt">Link</span> {<span class="ot"> linkTo   ::</span> <span class="dt">String</span>
+                 ,<span class="ot"> linkFrom ::</span> [<span class="dt">String</span>]
+                 } </code></pre></div>
 </div>
 <div id="dubbelingen-voorkómen" class="slide section level1">
 <h1>Dubbelingen voorkómen</h1>
@@ -1579,7 +1595,7 @@ spider count url0 <span class="fu">=</span> go <span class="dv">0</span> Map.emp
 <ul>
 <li>Een idee over wat Functioneel Programmeren is</li>
 <li>Enthousiasme gedeeld</li>
-<li>Een leuke middag</li>
+<li>Een leuke dag</li>
 <li>Webcrawler</li>
 </ul>
 </div>

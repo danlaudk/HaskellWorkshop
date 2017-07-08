@@ -1,6 +1,6 @@
 % Introductie Functioneel Programmeren (met Haskell)
 % Han Joosten
-% Augustus 2016
+% Juli 2017
 # putStrLn "hallo!"
 
 
@@ -8,7 +8,7 @@
 
 * Mijn naam is Han Joosten  
 
-* Ik ben Analist bij RT&O
+* Ik ben Analist bij RulesMatter!
 
 * Begonnen met Haskell ca. 2006
 
@@ -38,7 +38,9 @@ Na mijn afstuderen in 1990 heb ik geprogrammeerd in iteratieve talen
 
 * Haskell community is heel behulpzaam
 
-# Waarom zou ik me druk maken over FP?
+# Wat is er zo bijzonder aan FP? Wat heb ik er aan?
+
+<iframe src="https://docs.google.com/presentation/d/1Ge58uJ97z7KDUeox40MoL9c5IyP3X3IlYaPs-DGtICs/embed?start=false&loop=false&delayms=60000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 * Functioneel programmeren maakt dat je anders zal gaan denken over programmeren
 
@@ -105,7 +107,7 @@ Na mijn afstuderen in 1990 heb ik geprogrammeerd in iteratieve talen
 
 * Een 'speel'-directory
 
-# Probleemstelling
+# Dit is de uitdaging voor vandaag
 
 Gegeven een website. We willen er data afhalen (web-scraping) en er andere belangrijke web pagina's mee vinden.
 
@@ -121,37 +123,59 @@ Er valt dan ook veel uit te zoeken!
 
 1. en ook nog een beetje snel?
 
+# Snelle start met een simpel template
 
-# Aan de slag!
+Ga naar je 'speel'-directory en typ daar het volgende commando
 
-Maak in je 'speel'-directory een file `Hello.hs` met de volgende inhoud:
+~~~~{.bash}
+stack new hello new-template
+~~~~
+
+Dit duurt een paar minuten, maar dan heb je ook wat.
+
+~~~~
+cd hello\app
+stack ghci
+~~~~ 
+
+# hello world
+
+We hebben nu een compleet programma!
+Open **...hello\\app\\Main.hs** in je favoriete editor. 
 
 ~~~~ {.haskell}
-main = putStrLn "hello, world!"
+module Main where
+
+main :: IO ()
+main = do
+  putStrLn "hello world"
+
 ~~~~
 
 De extentie `.hs` is de standaard voor Haskell source files.
 
-De naam van een bestand begint met een hoofdletter en iedereen gebruikt `CamelCase`.
+De naam van een bestand begint met een hoofdletter. Geen spaties in de naam (duh).
 
 
 # Vertalen
 
-Dit commando zoekt naar `Hello.hs` in de huidige directory, en vertaalt het:
+Dit commando, gegeven in de directory waar stack.yml staat, bouwt je project:
 
 ~~~~
-ghc --make Hello
+stack build
 ~~~~
 
-Het gegenereerde programma heet `Hello` (`Hello.exe` op
-Windows).
+Dit commando doet hetzelfde, maar kopieert je programma ook naar je pad:
 
-* De `--make` optie zorgt er voor dat GHC de afhankelijkheden met andere bestanden en packages automatisch afhandelt.
+~~~~
+stack install
+~~~~
+
 
 
 # Even controleren
 
-Is het iedereen gelukt om hun `Hello` programma te genereren en uit te voeren?
+Is het iedereen gelukt om het programma te genereren en uit te voeren?
 
 
 # En nu wat handiger
@@ -171,20 +195,28 @@ Er is daarom een interactieve interpreter, `ghci`.
 
 # Aan de slag met GHCi
 
-Simpel genoeg:
+
 
 ~~~~
-ghci
+stack ghci
 ~~~~
 
 Er verschijnt wat opstart-tekst, gevolgd door de prompt:
 
 ~~~~
-GHCi, version 8.0.1: http://www.haskell.org/ghc/  :? for help
-Prelude> 
+*Main> 
 ~~~~
 
-Deze standaard prompt vertelt ons welke modules er beschikbaar zijn om mee te spelen.
+Deze standaard prompt vertelt ons welke modules er beschikbaar zijn om mee te spelen. In ons geval is ons project geladen.
+
+De functie *main* is beschikbaar
+
+~~~~
+*Main>main
+hello world
+*Main>
+~~~~
+
 
 
 # Spelen met GHCi
@@ -208,26 +240,9 @@ Probeer nu zelf:
 (De `++` is de "append" operator.)
 
 
-# Interpreter commando's
-
-Alle interpreter commando's beginnen met een "`:`" teken.
-
-Laten we ons programma in `ghci` laden:
-
-~~~~
-:load Hello.hs
-~~~~
-
-De `ghci` prompt verandert:
-
-~~~~
-*Main>
-~~~~
-
-
 # Onze code uitvoeren met ghci
 
-We hebben een functie met de naam `main` gedefinieerd. Voer het nu uit:
+Het template bevat een standaard functie met de naam `main`. Voer het nu uit:
 
 ~~~~
 main
@@ -241,6 +256,26 @@ En wat zou dit doen?
 putStrLn "hoi mam!"
 ~~~~
 
+# Interpreter commando's
+
+Alle interpreter commando's beginnen met een "`:`" teken.
+
+Gebruik je eigen favoriete code editor om je code aan te passen en op te slaan 
+
+Verander de String in je main programma. We laden het programma opnieuw:
+
+~~~~
+:load src/Main.hs
+~~~~
+
+De `ghci` prompt blijft:
+
+~~~~
+*Main>
+~~~~
+
+
+
 
 # Enkele van de nuttigste commando's
 
@@ -249,8 +284,6 @@ Onthoud dat alle `ghci` commando's met een "`:`" beginnen.
 * `:help` toont welke commando's we tot onze beschikking hebben.
 
 * `:reload` laden van het bestand dat het laatst is ge`:load`.
-
-* `:edit` opent de tekst editor met het bestand dat het laatst is ge`:load`. (echter *niet* automatische `:reload`.)
 
 * `:type` geeft het type van een in Haskell gedefinieerd `ding`.
 
@@ -261,7 +294,7 @@ Onthoud dat alle `ghci` commando's met een "`:`" beginnen.
 
 We kunnen commando's afkorten:
 
-* `:e` is synoniem voor `:edit`
+* `:t` is synoniem voor `:type`
 
 * `:r` is `:reload`
 
@@ -274,8 +307,6 @@ We hebben ook historie en command line editing.
 
 # Gewenning aan de cyclus
 
-Gebruik `:edit` of je tekst editor om de "hello" tekst aan te passen.
-
 Gebruik `:reload` om je bestand opnieuw te laden.
 
 Test je nieuwe definitie van `main`.
@@ -283,7 +314,7 @@ Test je nieuwe definitie van `main`.
 * Oefening: Gebruik de "pijl omhoog" toets om door je commando historie te gaan totdat je terug komt op de laatste keer dat je `main` typte.
 
 
-# Lijsten en Strings
+# Terug naar Haskell: Lijsten en Strings
 
 ~~~~ {.haskell}
 [1,2,3,4]
@@ -368,19 +399,19 @@ Prelude>
 
 # Zelf doen: 2
 
-De notatie `['a'..'z']` genereert een lijst van start tot eind, inclusief.
+De notatie `['a'..'z']` genereert een lijst van start tot eind.
 
 De `sum` functie sommeert alle elementen in een lijst.
 
-* Wat is de som van de getallen tussen 9 en 250, inclusief, *minus* 2?
+* Wat is de som van de getallen vanaf 9 tot en met 250, *minus* 2?
 
 # Zelf doen: 2
 
-De notatie `['a'..'z']` genereert een lijst van start tot eind, inclusief.
+De notatie `['a'..'z']` genereert een lijst van start tot eind.
 
 De `sum` functie sommeert alle elementen in een lijst.
 
-* Wat is de som van de getallen tussen 9 en 250, inclusief, *minus* 2?
+* Wat is de som van de getallen vanaf 9 tot en met 250, *minus* 2?
 
 ~~~~
 Prelude> sum [9..250]
@@ -1045,6 +1076,7 @@ klinkerWoorden =
 
 Doet dit je denken aan een Unix shell pipeline, maar dan van rechts naar links?
 
+# Even pauze?
 
 # Oh ja, hoe zat het met onze probleemstelling?
 
@@ -1059,27 +1091,28 @@ Nu zijn we Haskell pro's, toch?
 1. Ga naar je speel directory en maak een nieuw project op basis van een template:
 
 ~~~~
-D:\speeltuin>stack new webspider new-template
+C:\Users\hjo20125\Git>stack new webspider simple
 ~~~~
 
 ~~~~
-D:\speeltuin\webspider>dir
- De volumenaam van station D is DATA
- Het volumenummer is EA7B-622E
+C:\Users\hjo20125\Git\webspider>dir
+ Volume in drive C is Windows
+ Volume Serial Number is 7CBD-7740
 
- Map van D:\speeltuin\webspider
+ Directory of C:\Users\hjo20125\Git\webspider
 
-03-08-2016  11:05    <DIR>          .
-03-08-2016  11:05    <DIR>          ..
-03-08-2016  10:56    <DIR>          app
-03-08-2016  10:56             1.528 LICENSE
-03-08-2016  10:56                46 Setup.hs
-03-08-2016  10:56    <DIR>          src
-03-08-2016  10:56             2.181 stack.yaml
-03-08-2016  10:56    <DIR>          test
-03-08-2016  10:56             1.262 webspider.cabal
-               4 bestand(en)            5.017 bytes
-               5 map(pen)  473.942.138.880 bytes beschikbaar
+07-07-2017  23:28    <DIR>          .
+07-07-2017  23:28    <DIR>          ..
+07-07-2017  23:28             1.528 LICENSE
+07-07-2017  23:28                12 README.md
+07-07-2017  23:28                46 Setup.hs
+07-07-2017  23:28    <DIR>          src
+07-07-2017  23:28             2.173 stack.yaml
+07-07-2017  23:28               603 webspider.cabal
+               5 File(s)          4.362 bytes
+               3 Dir(s)  901.797.781.504 bytes free
+
+C:\Users\hjo20125\Git\webspider>
 ~~~~
 
 # Nieuw project aanmaken
@@ -1087,7 +1120,7 @@ D:\speeltuin\webspider>dir
 2. Eenmalig zorgen voor de juiste setup van stack:
 
 ~~~~
-D:\speeltuin\webspider>stack setup
+C:\Users\hjo20125\Git\webspider>stack setup
 ~~~~
 
 Dit kan even duren, maar is gelukkig éénmalig. 
@@ -1095,14 +1128,14 @@ Dit kan even duren, maar is gelukkig éénmalig.
 3. Meest belangrijke stack commando: 
 
 ~~~~
-D:\speeltuin\webspider>stack build
+C:\Users\hjo20125\Git\webspider>stack build
 ~~~~
 
 4. En dan:
 
 ~~~~
-D:\speeltuin\webspider>stack exec webspider-exe
-someFunc
+C:\Users\hjo20125\Git\webspider>stack exec webspider
+hello world
 ~~~~
 
 # Doen: Een web pagina downloaden!
@@ -1158,20 +1191,18 @@ Wat zie je?
 We moeten in ons project aangeven, dat we `http-conduit` gebruiken. Dat doen we door de dependency lijst aan te passen in het .cabal bestand:
 
 ~~~~
-executable webspider-exe
-  hs-source-dirs:      app
+executable webspider
+  hs-source-dirs:      src
   main-is:             Main.hs
-  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
-  build-depends:       base
-                     , http-conduit
-                     , webspider
   default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+                     , http-conduit
 ~~~~ 
 
-Als we vanaf nu een build doen, dan wordt http-conduit beschikbaar gemaakt!
+Als we vanaf nu een build doen, dan wordt http-conduit beschikbaar gemaakt! Dependencies moeten altijd expliciet worden vermeld in het .cabal bestand.
 
 ~~~~
-D:\speeltuin\webspider>stack build
+stack build
 ~~~~
 
 
@@ -1300,7 +1331,13 @@ Welk gedrag zou deze functie kunnen hebben?
 
 # Documentatie uit de *echte* wereld
 
-Hier is het allereerste signature uit `http-conduit`:
+In de documentatie van `http-conduit` lezen we [ergens](http://hackage.haskell.org/package/http-conduit-2.2.3.1/docs/Network-HTTP-Conduit.html):
+
+
+
+
+*If you want a simple interface based on URLs, you can use simpleHttp.*
+
 
 ~~~~
 simpleHttp :: MonadIO m => String -> m ByteString
@@ -1322,15 +1359,14 @@ Wat kunnen we nu zeggen over deze functie?
 # Speelkwartier met ghci!
 
 ~~~~
-D:\speeltuin\webspider>cd app
-D:\speeltuin\webspider\app>stack ghci
+C:\Users\hjo20125\Git\webspider\app>stack ghci
 .
 .
 .
-Ok, modules loaded: Lib, Main.
-*Main Lib> main
-someFunc
-*Main Lib> 
+Ok, modules loaded: Main.
+*Main> main
+hello world
+*Main>
 ~~~~
 
 Voeg de volgende regel toe in Main.hs:
@@ -1339,7 +1375,10 @@ Voeg de volgende regel toe in Main.hs:
 import Network.HTTP.Conduit
 ~~~~
 
-Opslaan, opnieuw laden van Main.hs (`:load Main`) , en probeer maar eens uit:
+Opslaan, opnieuw laden van Main.hs (`:reload`) 
+
+
+Probeer maar eens uit:
 
 ~~~~
 *Main> simpleHttp "http://example.com"
@@ -1627,10 +1666,10 @@ Twee waarheden:
 Laten we voor de verandering maar weer eens een library gaan gebruiken!
 
 ~~~~
-cabal install tagsoup
+stack install tagsoup
 ~~~~
 
-De `tagsoup` package kan willekeurig rommelige HTML aan.
+De [`tagsoup`](http://hackage.haskell.org/package/tagsoup) package kan willekeurig rommelige HTML aan.
 
 Het levert ons een lijst met events, vergelijkbaar met een SAX parser.
 
@@ -1998,7 +2037,7 @@ Het package `Network.URI` bevat een paar functies die hier goed van pas komen.
 parseURI :: String -> Maybe URI
 parseURIReference :: String -> Maybe URI
 uriToString id "" :: URI -> String
-nonStrictRelativeTo :: URI -> URI -> Maybe URI
+nonStrictRelativeTo :: URI -> URI -> URI
 ~~~~
 
 
@@ -2009,18 +2048,14 @@ Dit is niet meer om te lezen!
 ~~~~ {.haskell}
 import Network.URI
 
-canon :: String -> String -> Maybe String
-canon referer path =
+canonicalizeLink :: String -> String -> Maybe String
+canonicalizeLink referer path =
   case parseURI referer of
     Nothing -> Nothing
     Just r  ->
       case parseURIReference path of
         Nothing -> Nothing
-        Just p  ->
-          case nonStrictRelativeTo p r of
-            Nothing -> Nothing
-            Just u ->
-             Just (uriToString id u "")
+        Just p  -> Just (uriToString id (nonStrictRelativeTo p r) "")
 ~~~~
 
 Dat kan vast beter.
@@ -2064,11 +2099,10 @@ bind (Just value) action = action value
 Hoe kunnen we dit gebruiken?
 
 ~~~~ {.haskell}
-canon1 referer path =
+canonicalizeLink1 referer path =
   parseURI referer                `bind`
    \r -> parseURIReference path   `bind`
-    \p -> nonStrictRelativeTo p r `bind`
-     \u -> Just (uriToString id u "")
+    \p -> Just (uriToString id (nonStrictRelativeTo p r) "")
 ~~~~
 
 Als we een functienaam omsluiten in "`"-tekens, dan kunnen we de functie als infix operator gebruiken.
@@ -2080,8 +2114,7 @@ Als we een functienaam omsluiten in "`"-tekens, dan kunnen we de functie als inf
 canon referer path =
   parseURI referer         `bind` \r ->
   parseURIReference path   `bind` \p ->
-  nonStrictRelativeTo p r  `bind` \u ->
-  Just (uriToString id u "")
+  Just (uriToString id (nonStrictRelativeTo p r) "")
 ~~~~
 
 
@@ -2093,8 +2126,7 @@ De `>>=` operator is een generieke versie van onze `bind` functie.
 canon referer path =
   parseURI referer >>= \r ->
   parseURIReference path >>= \p ->
-  nonStrictRelativeTo p r >>= \u ->
-  Just (uriToString id u "")
+  Just (uriToString id (nonStrictRelativeTo p r) "")
 ~~~~
 
 
@@ -2108,8 +2140,7 @@ canonicalize :: String -> String -> Maybe String
 canonicalize referer path = do
   r <- parseURI referer
   p <- parseURIReference path
-  u <- nonStrictRelativeTo p r
-  return (uriToString id u "")
+  return (uriToString id (nonStrictRelativeTo p r) "")
 ~~~~
 
 
@@ -2150,6 +2181,7 @@ Wat zien we als eerste resultaat?
 import Data.Maybe
 import Network.URI
 
+links :: String -> String -> [String]
 links url =
   catMaybes .
   map (canonicalize url) .
@@ -2161,6 +2193,7 @@ links url =
   parseTags
 ~~~~
 
+# Pauze ?
 
 # Van links naar spideren
 
@@ -2205,6 +2238,14 @@ data Link = Link String [String]
 -- Let's define some accessors, too.
 linkFrom (Link url _) = url
 linkTo (Link _ links) = links
+~~~~
+
+kan ook zo: (identiek)
+
+~~~~ {.haskell}
+data Link = Link { linkTo   :: String
+                 , linkFrom :: [String]
+                 } 
 ~~~~
 
 
@@ -2403,5 +2444,5 @@ Allemaal hartelijk bedankt voor het lekker meedoen!
 
  * Een idee over wat Functioneel Programmeren is
  * Enthousiasme gedeeld
- * Een leuke middag
+ * Een leuke dag
  * Webcrawler
