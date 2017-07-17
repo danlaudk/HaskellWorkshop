@@ -38,11 +38,11 @@ Na mijn afstuderen in 1990 heb ik geprogrammeerd in iteratieve talen
 
 * Haskell community is heel behulpzaam
 
-# Wat is er zo bijzonder aan FP? Wat heb ik er aan?
+# Introductie in Haskell
 
 <iframe src="https://docs.google.com/presentation/d/1Ge58uJ97z7KDUeox40MoL9c5IyP3X3IlYaPs-DGtICs/embed?start=false&loop=false&delayms=60000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
-* Functioneel programmeren maakt dat je anders zal gaan denken over programmeren
+# Functioneel programmeren maakt dat je anders zal gaan denken over programmeren
 
     * Mainstream talen gaan over ***state***
 
@@ -51,7 +51,7 @@ Na mijn afstuderen in 1990 heb ik geprogrammeerd in iteratieve talen
 * Of je nou overstapt op Haskell of niet, je wordt een ***betere programmeur*** in je eigen favoriete taal.
 
 
-# Over deze presentatie
+# Over deze workshop
 
 <img src="http://book.realworldhaskell.org/support/rwh-200.jpg" width="250" hight="250" align="right">
 
@@ -83,6 +83,8 @@ Na mijn afstuderen in 1990 heb ik geprogrammeerd in iteratieve talen
 * Pauze? zelf aangeven. (ik vergeet het soms)
 
 * Schroom niet! Stel gerust vragen!
+
+* Fun!
 
 
 # Je gereedschap
@@ -2392,6 +2394,7 @@ Wat blijft over?
 
 * Of we zouden kunnen berekenen welke pagina's "belangrijk" zijn
 
+# Achterstevoren
 
 # Fin
 
@@ -2401,7 +2404,7 @@ gaam we verder in een we-zien-wel-wat-voor-avontuur sessie.
 Bedankt dat je tot nu toe niet bent afgehaakt!
 
 ~~~~
-git clone https://github.com/hanjoosten/HaskellWorkshop
+git clone https://github.com/hanjoosten/webspider
 ~~~~
 # Overige dia's achterstevoren, ca. 10 minuten voor einde 
 
