@@ -106,14 +106,14 @@
 <div id="snelle-start-met-een-simpel-template" class="slide section level1">
 <h1>Snelle start met een simpel template</h1>
 <p>Ga naar je 'speel'-directory en typ daar het volgende commando</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">stack</span> new hello new-template</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">stack</span> new hello simple</code></pre></div>
 <p>Dit duurt een paar minuten, maar dan heb je ook wat.</p>
-<pre><code>cd hello\app
+<pre><code>cd hello
 stack ghci</code></pre>
 </div>
 <div id="hello-world" class="slide section level1">
 <h1>hello world</h1>
-<p>We hebben nu een compleet programma! Open <strong>...hello\app\Main.hs</strong> in je favoriete editor.</p>
+<p>We hebben nu een compleet programma! Open <strong>...hello\src\Main.hs</strong> in je favoriete editor.</p>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">module</span> <span class="dt">Main</span> <span class="kw">where</span>
 
 <span class="ot">main ::</span> <span class="dt">IO</span> ()
@@ -895,7 +895,7 @@ hello world</code></pre>
 </div>
 <div id="speelkwartier-met-ghci" class="slide section level1">
 <h1>Speelkwartier met ghci!</h1>
-<pre><code>C:\Users\hjo20125\Git\webspider\app&gt;stack ghci
+<pre><code>C:\Users\hjo20125\Git\webspider\src&gt;stack ghci
 .
 .
 .

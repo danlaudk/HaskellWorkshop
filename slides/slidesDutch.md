@@ -130,20 +130,20 @@ Er valt dan ook veel uit te zoeken!
 Ga naar je 'speel'-directory en typ daar het volgende commando
 
 ~~~~{.bash}
-stack new hello new-template
+stack new hello simple
 ~~~~
 
 Dit duurt een paar minuten, maar dan heb je ook wat.
 
 ~~~~
-cd hello\app
+cd hello
 stack ghci
 ~~~~ 
 
 # hello world
 
 We hebben nu een compleet programma!
-Open **...hello\\app\\Main.hs** in je favoriete editor. 
+Open **...hello\\src\\Main.hs** in je favoriete editor. 
 
 ~~~~ {.haskell}
 module Main where
@@ -1361,7 +1361,7 @@ Wat kunnen we nu zeggen over deze functie?
 # Speelkwartier met ghci!
 
 ~~~~
-C:\Users\hjo20125\Git\webspider\app>stack ghci
+C:\Users\hjo20125\Git\webspider\src>stack ghci
 .
 .
 .
