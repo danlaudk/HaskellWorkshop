@@ -25,7 +25,7 @@
   <p class="github">Slides: <a href="http://hanjoosten.github.io/HaskellWorkshop">http://hanjoosten.github.io/HaskellWorkshop</a></p>
 </div>
 <div id="putstrln-hallo" class="slide section level1">
-<h1>putStrLn &quot;hallo!&quot;</h1>
+<h1>putStrLn “hallo!”</h1>
 <p><img src="https://avatars0.githubusercontent.com/hanjoosten" width="250" hight="250" align="right"></p>
 <ul>
 <li><p>Mijn naam is Han Joosten</p></li>
@@ -71,9 +71,9 @@
 <ul>
 <li><p>Doel: Enthousiasmeren van jullie</p></li>
 <li><p>Sheets zijn geschreven om ook zelf te kunnen doen:</p>
-<p><a href="http://hanjoosten.github.com/HaskellWorkshop" class="uri">http://hanjoosten.github.com/HaskellWorkshop</a></p></li>
-<li><p>Veel is (met dank!) gepikt van Bryan O'Sullivan</p></li>
-<li><p>Bryan O'Sullivan is co-auteur van het boek <a href="http://book.realworldhaskell.org/">Real World Haskell</a>. Dit is een gratis online boek dat zeer goed bruikbaar is als leerboek als je verder wilt met Haskell.</p></li>
+<p><a href="http://hanjoosten.github.com/HaskellWorkshop">http://hanjoosten.github.com/HaskellWorkshop</a></p></li>
+<li><p>Veel is (met dank!) gepikt van Bryan O’Sullivan</p></li>
+<li><p>Bryan O’Sullivan is co-auteur van het boek <a href="http://book.realworldhaskell.org/">Real World Haskell</a>. Dit is een gratis online boek dat zeer goed bruikbaar is als leerboek als je verder wilt met Haskell.</p></li>
 </ul>
 </div>
 <div id="wat-kan-je-verwachten-1" class="slide section level1">
@@ -98,7 +98,7 @@
 <ul>
 <li><p>Je hebt The Haskell Tool Stack al geïnstalleerd als het goed is.</p>
 <ul>
-<li><a href="https://www.haskellstack.org" class="uri">https://www.haskellstack.org</a></li>
+<li><a href="https://www.haskellstack.org">https://www.haskellstack.org</a></li>
 </ul></li>
 <li><p>We hebben nu een super gereedschapskist</p>
 <ul>
@@ -112,39 +112,39 @@
 <div id="wat-hebben-we-nog-meer-nodig" class="slide section level1">
 <h1>Wat hebben we nog meer nodig?</h1>
 <ul>
-<li><p>Een source code editor (bijvoorbeeld editpad, notepad++, sublime text, ...)</p></li>
+<li><p>Een source code editor (bijvoorbeeld editpad, notepad++, sublime text, …)</p></li>
 <li><p>Een terminal window</p></li>
-<li><p>Een 'speel'-directory</p></li>
+<li><p>Een ‘speel’-directory</p></li>
 </ul>
 </div>
 <div id="dit-is-de-uitdaging-voor-vandaag" class="slide section level1">
 <h1>Dit is de uitdaging voor vandaag</h1>
-<p>Gegeven een website. We willen er data afhalen (web-scraping) en er andere belangrijke web pagina's mee vinden.</p>
+<p>Gegeven een website. We willen er data afhalen (web-scraping) en er andere belangrijke web pagina’s mee vinden.</p>
 <p>Er valt dan ook veel uit te zoeken!</p>
 <ol style="list-style-type: decimal">
 <li><p>Haskell leren</p></li>
 <li><p>Een web pagina downloaden</p></li>
-<li><p>De links van een pagina halen, zodat we meer pagina's kunnen vinden om te downloaden</p></li>
-<li><p>Als we zo ver zijn, bepalen we de pagina's die relevant zijn</p></li>
+<li><p>De links van een pagina halen, zodat we meer pagina’s kunnen vinden om te downloaden</p></li>
+<li><p>Als we zo ver zijn, bepalen we de pagina’s die relevant zijn</p></li>
 <li><p>en ook nog een beetje snel?</p></li>
 </ol>
 </div>
 <div id="snelle-start-met-een-simpel-template" class="slide section level1">
 <h1>Snelle start met een simpel template</h1>
-<p>Ga naar je 'speel'-directory en typ daar het volgende commando</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">stack</span> new hello simple</code></pre></div>
+<p>Ga naar je ‘speel’-directory en typ daar het volgende commando</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">stack</span> new hello simple</a></code></pre></div>
 <p>Dit duurt een paar minuten, maar dan heb je ook wat.</p>
 <pre><code>cd hello
 stack ghci</code></pre>
 </div>
 <div id="hello-world" class="slide section level1">
 <h1>hello world</h1>
-<p>We hebben nu een compleet programma! Open <strong>...hello\src\Main.hs</strong> in je favoriete editor.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">module</span> <span class="dt">Main</span> <span class="kw">where</span>
-
-<span class="ot">main ::</span> <span class="dt">IO</span> ()
-main <span class="fu">=</span> <span class="kw">do</span>
-  putStrLn <span class="st">&quot;hello world&quot;</span></code></pre></div>
+<p>We hebben nu een compleet programma! Open <strong>…hello\src\Main.hs</strong> in je favoriete editor.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">module</span> <span class="dt">Main</span> <span class="kw">where</span></a>
+<a class="sourceLine" id="cb7-2" title="2"></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="ot">main ::</span> <span class="dt">IO</span> ()</a>
+<a class="sourceLine" id="cb7-4" title="4">main <span class="ot">=</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb7-5" title="5">  <span class="fu">putStrLn</span> <span class="st">&quot;hello world&quot;</span></a></code></pre></div>
 <p>De extentie <code>.hs</code> is de standaard voor Haskell source files.</p>
 <p>De naam van een bestand begint met een hoofdletter. Geen spaties in de naam (duh).</p>
 </div>
@@ -185,10 +185,10 @@ hello world
 <h1>Spelen met GHCi</h1>
 <p>De <code>ghci</code> interpreter evalueert interactief expressies.</p>
 <p>Probeer nu zelf:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dv">2</span> <span class="fu">+</span> <span class="dv">2</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dv">123456781234567812345678</span> <span class="fu">*</span> <span class="dv">87654321876543</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="st">&quot;foo&quot;</span> <span class="fu">++</span> <span class="st">&quot;bar&quot;</span></code></pre></div>
-<p>(De <code>++</code> is de &quot;append&quot; operator.)</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb13-1" title="1"><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span></a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb14-1" title="1"><span class="dv">123456781234567812345678</span> <span class="op">*</span> <span class="dv">87654321876543</span></a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb15-1" title="1"><span class="st">&quot;foo&quot;</span> <span class="op">++</span> <span class="st">&quot;bar&quot;</span></a></code></pre></div>
+<p>(De <code>++</code> is de “append” operator.)</p>
 </div>
 <div id="onze-code-uitvoeren-met-ghci" class="slide section level1">
 <h1>Onze code uitvoeren met ghci</h1>
@@ -196,11 +196,11 @@ hello world
 <pre><code>main</code></pre>
 <p>Is het gelukt?</p>
 <p>En wat zou dit doen?</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">putStrLn <span class="st">&quot;hoi mam!&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb17-1" title="1"><span class="fu">putStrLn</span> <span class="st">&quot;hoi mam!&quot;</span></a></code></pre></div>
 </div>
 <div id="interpreter-commandos" class="slide section level1">
-<h1>Interpreter commando's</h1>
-<p>Alle interpreter commando's beginnen met een &quot;<code>:</code>&quot; teken.</p>
+<h1>Interpreter commando’s</h1>
+<p>Alle interpreter commando’s beginnen met een “<code>:</code>” teken.</p>
 <p>Gebruik je eigen favoriete code editor om je code aan te passen en op te slaan</p>
 <p>Verander de String in je main programma. We laden het programma opnieuw:</p>
 <pre><code>:load src/Main.hs</code></pre>
@@ -208,10 +208,10 @@ hello world
 <pre><code>*Main&gt;</code></pre>
 </div>
 <div id="enkele-van-de-nuttigste-commandos" class="slide section level1">
-<h1>Enkele van de nuttigste commando's</h1>
-<p>Onthoud dat alle <code>ghci</code> commando's met een &quot;<code>:</code>&quot; beginnen.</p>
+<h1>Enkele van de nuttigste commando’s</h1>
+<p>Onthoud dat alle <code>ghci</code> commando’s met een “<code>:</code>” beginnen.</p>
 <ul>
-<li><p><code>:help</code> toont welke commando's we tot onze beschikking hebben.</p></li>
+<li><p><code>:help</code> toont welke commando’s we tot onze beschikking hebben.</p></li>
 <li><p><code>:reload</code> laden van het bestand dat het laatst is ge<code>:load</code>.</p></li>
 <li><p><code>:type</code> geeft het type van een in Haskell gedefinieerd <code>ding</code>.</p></li>
 <li><p><code>:quit</code> beëindigt <code>GHCi</code>.</p></li>
@@ -219,7 +219,7 @@ hello world
 </div>
 <div id="enkele-ghci-efficiency-tips" class="slide section level1">
 <h1>Enkele ghci efficiency tips</h1>
-<p>We kunnen commando's afkorten:</p>
+<p>We kunnen commando’s afkorten:</p>
 <ul>
 <li><p><code>:t</code> is synoniem voor <code>:type</code></p></li>
 <li><p><code>:r</code> is <code>:reload</code></p></li>
@@ -235,32 +235,32 @@ hello world
 <p>Gebruik <code>:reload</code> om je bestand opnieuw te laden.</p>
 <p>Test je nieuwe definitie van <code>main</code>.</p>
 <ul>
-<li>Oefening: Gebruik de &quot;pijl omhoog&quot; toets om door je commando historie te gaan totdat je terug komt op de laatste keer dat je <code>main</code> typte.</li>
+<li>Oefening: Gebruik de “pijl omhoog” toets om door je commando historie te gaan totdat je terug komt op de laatste keer dat je <code>main</code> typte.</li>
 </ul>
 </div>
 <div id="terug-naar-haskell-lijsten-en-strings" class="slide section level1">
 <h1>Terug naar Haskell: Lijsten en Strings</h1>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">[<span class="ch">&#39;h&#39;</span>,<span class="ch">&#39;e&#39;</span>,<span class="ch">&#39;l&#39;</span>,<span class="ch">&#39;l&#39;</span>,<span class="ch">&#39;o&#39;</span>]</code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb20-1" title="1">[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb21-1" title="1">[<span class="ch">&#39;h&#39;</span>,<span class="ch">&#39;e&#39;</span>,<span class="ch">&#39;l&#39;</span>,<span class="ch">&#39;l&#39;</span>,<span class="ch">&#39;o&#39;</span>]</a></code></pre></div>
 <p>Dubbele haakjes zijn alleen maar een verkorte schrijfwijze voor de langere vorm:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="st">&quot;hello&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb22-1" title="1"><span class="st">&quot;hello&quot;</span></a></code></pre></div>
 <p>Wat zou dit als resultaat opleveren?</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="st">&quot;foo&quot;</span> <span class="fu">==</span> [<span class="ch">&#39;f&#39;</span>,<span class="ch">&#39;o&#39;</span>,<span class="ch">&#39;o&#39;</span>]</code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb23-1" title="1"><span class="st">&quot;foo&quot;</span> <span class="op">==</span> [<span class="ch">&#39;f&#39;</span>,<span class="ch">&#39;o&#39;</span>,<span class="ch">&#39;o&#39;</span>]</a></code></pre></div>
 </div>
 <div id="functies-aanroepen-1" class="slide section level1">
 <h1>Functies aanroepen: 1</h1>
 <p>We gebruiken spaties om de functie van zijn argumenten te scheiden:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">head <span class="st">&quot;foo&quot;</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">head [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">tail [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb24-1" title="1"><span class="fu">head</span> <span class="st">&quot;foo&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb25-1" title="1"><span class="fu">head</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb26-1" title="1"><span class="fu">tail</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</a></code></pre></div>
 </div>
 <div id="functies-aanroepen-2" class="slide section level1">
 <h1>Functies aanroepen: 2</h1>
 <p>Bij meerdere argumenten, worden alle argumenten onderling gescheiden door spaties:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">min <span class="dv">3</span> <span class="dv">4</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb27-1" title="1"><span class="fu">min</span> <span class="dv">3</span> <span class="dv">4</span></a></code></pre></div>
 <p>Als een argument zelf een samengestelde expressie is, moeten er haken omheen:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">compare (<span class="dv">3</span><span class="fu">+</span><span class="dv">5</span>) (<span class="dv">2</span><span class="fu">+</span><span class="dv">7</span>)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">max (min <span class="dv">3</span> <span class="dv">4</span>) <span class="dv">5</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb28-1" title="1"><span class="fu">compare</span> (<span class="dv">3</span><span class="op">+</span><span class="dv">5</span>) (<span class="dv">2</span><span class="op">+</span><span class="dv">7</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb29-1" title="1"><span class="fu">max</span> (<span class="fu">min</span> <span class="dv">3</span> <span class="dv">4</span>) <span class="dv">5</span></a></code></pre></div>
 </div>
 <div id="zelf-doen-1" class="slide section level1">
 <h1>Zelf doen: 1</h1>
@@ -305,9 +305,9 @@ Prelude&gt;</code></pre>
 <div id="zelf-doen-3" class="slide section level1">
 <h1>Zelf doen: 3</h1>
 <p>De <code>show</code> functie toont een waarde als een String. Probeer maar!</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">show (<span class="dv">1</span> <span class="fu">==</span> <span class="dv">2</span>)</code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb32-1" title="1"><span class="fu">show</span> (<span class="dv">1</span> <span class="op">==</span> <span class="dv">2</span>)</a></code></pre></div>
 <p>De <code>length</code> functie geeft ons het aantal elementen in een lijst.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">length [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb33-1" title="1"><span class="fu">length</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</a></code></pre></div>
 <ul>
 <li>Uit hoeveel cijfers bestaat het product van alle getallen vanaf 190 tot en met 239 ?</li>
 </ul>
@@ -315,9 +315,9 @@ Prelude&gt;</code></pre>
 <div id="zelf-doen-3-1" class="slide section level1">
 <h1>Zelf doen: 3</h1>
 <p>De <code>show</code> functie toont een waarde als een String. Probeer maar!</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">show (<span class="dv">1</span> <span class="fu">==</span> <span class="dv">2</span>)</code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb34-1" title="1"><span class="fu">show</span> (<span class="dv">1</span> <span class="op">==</span> <span class="dv">2</span>)</a></code></pre></div>
 <p>De <code>length</code> functie geeft ons het aantal elementen in een lijst.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">length [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb35-1" title="1"><span class="fu">length</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</a></code></pre></div>
 <ul>
 <li>Uit hoeveel cijfers bestaat het product van alle getallen vanaf 190 tot en met 239 ?</li>
 </ul>
@@ -331,7 +331,7 @@ Prelude&gt;</code></pre>
 <h1>Zelf functies definiëren</h1>
 <p>Zelf functies definiëren is best eenvoudig.</p>
 <p>Open je tekst editor, maak een nieuw bestand met de <code>.hs</code> extentie, en begin te schrijven:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">isOneven x  <span class="fu">=</span>  (rem x <span class="dv">2</span>) <span class="fu">==</span> <span class="dv">1</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb37-1" title="1">isOneven x  <span class="ot">=</span>  (<span class="fu">rem</span> x <span class="dv">2</span>) <span class="op">==</span> <span class="dv">1</span></a></code></pre></div>
 <ul>
 <li><p>We beginnen met de naam van de functie.</p></li>
 <li><p>Vervolgens komen de namen van de parameter(s) die we willen, gescheiden door spaties.</p></li>
@@ -348,9 +348,9 @@ Prelude&gt;</code></pre>
 <h1>Conditionele uitvoering</h1>
 <p>Q: Hoe ziet de bekende <code>if</code> er uit in Haskell?</p>
 <p>A: Bekend!</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">ggd a b <span class="fu">=</span> <span class="kw">if</span> b <span class="fu">==</span> <span class="dv">0</span>
-          <span class="kw">then</span> a
-          <span class="kw">else</span> ggd b (rem a b)</code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb38-1" title="1">ggd a b <span class="ot">=</span> <span class="kw">if</span> b <span class="op">==</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb38-2" title="2">          <span class="kw">then</span> a</a>
+<a class="sourceLine" id="cb38-3" title="3">          <span class="kw">else</span> ggd b (<span class="fu">rem</span> a b)</a></code></pre></div>
 <p>We hebben de volgende elementen:</p>
 <ul>
 <li><p>Een Boolean expressie</p></li>
@@ -363,9 +363,9 @@ Prelude&gt;</code></pre>
 <p>De twee mogelijke resultaat expressies van een <code>if</code> expressie moeten hetzelfde type hebben.</p>
 <p>Als <code>then</code> een <code>String</code> oplevert, dan moet <code>else</code> dat ook doen!</p>
 <p>Het volgende voorbeeld is natuurlijk onzin:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">if</span> <span class="dt">True</span>
-<span class="kw">then</span> <span class="fl">3.14</span>
-<span class="kw">else</span> <span class="st">&quot;wombat&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb39-1" title="1"><span class="kw">if</span> <span class="dt">True</span></a>
+<a class="sourceLine" id="cb39-2" title="2"><span class="kw">then</span> <span class="fl">3.14</span></a>
+<a class="sourceLine" id="cb39-3" title="3"><span class="kw">else</span> <span class="st">&quot;wombat&quot;</span></a></code></pre></div>
 <p>Dit soort onzin-typering is in Haskell verboden.</p>
 </div>
 <div id="wat-nog-meer-over-else" class="slide section level1">
@@ -376,33 +376,33 @@ Prelude&gt;</code></pre>
 </div>
 <div id="een-bijna-triviale-oefening" class="slide section level1">
 <h1>Een bijna triviale oefening</h1>
-<p>Schrijf een functie met een string als parameter. Het resultaat is het argument met daarachter <code>&quot;, world&quot;</code> geplakt, als dat argument <code>&quot;hello&quot;</code> is, of alleen maar het onveranderde argument in andere gevallen.</p>
+<p>Schrijf een functie met een string als parameter. Het resultaat is het argument met daarachter <code>", world"</code> geplakt, als dat argument <code>"hello"</code> is, of alleen maar het onveranderde argument in andere gevallen.</p>
 <ul>
-<li>Oh ja, De &quot;append&quot;-functie luistert naar de naam <code>++</code>.</li>
+<li>Oh ja, De “append”-functie luistert naar de naam <code>++</code>.</li>
 </ul>
 </div>
 <div id="een-bijna-triviale-oefening-1" class="slide section level1">
 <h1>Een bijna triviale oefening</h1>
-<p>Schrijf een functie met een string als parameter. Het resultaat is het argument met daarachter <code>&quot;, world&quot;</code> geplakt, als dat argument <code>&quot;hello&quot;</code> is, of alleen maar het onveranderde argument in andere gevallen.</p>
+<p>Schrijf een functie met een string als parameter. Het resultaat is het argument met daarachter <code>", world"</code> geplakt, als dat argument <code>"hello"</code> is, of alleen maar het onveranderde argument in andere gevallen.</p>
 <ul>
-<li>Oh ja, De &quot;append&quot;-functie luistert naar de naam <code>++</code>.</li>
+<li>Oh ja, De “append”-functie luistert naar de naam <code>++</code>.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">hw1 str <span class="fu">=</span> <span class="kw">if</span> str <span class="fu">==</span> <span class="st">&quot;hello&quot;</span>
-          <span class="kw">then</span> str <span class="fu">++</span> <span class="st">&quot;, world&quot;</span>
-          <span class="kw">else</span> str</code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb40-1" title="1">hw1 str <span class="ot">=</span> <span class="kw">if</span> str <span class="op">==</span> <span class="st">&quot;hello&quot;</span></a>
+<a class="sourceLine" id="cb40-2" title="2">          <span class="kw">then</span> str <span class="op">++</span> <span class="st">&quot;, world&quot;</span></a>
+<a class="sourceLine" id="cb40-3" title="3">          <span class="kw">else</span> str</a></code></pre></div>
 <p>of</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">hw2 str <span class="fu">=</span> str <span class="fu">++</span> <span class="kw">if</span> str <span class="fu">==</span> <span class="st">&quot;hello&quot;</span>
-                 <span class="kw">then</span> <span class="st">&quot;, world&quot;</span>
-                 <span class="kw">else</span> <span class="st">&quot;&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb41-1" title="1">hw2 str <span class="ot">=</span> str <span class="op">++</span> <span class="kw">if</span> str <span class="op">==</span> <span class="st">&quot;hello&quot;</span></a>
+<a class="sourceLine" id="cb41-2" title="2">                 <span class="kw">then</span> <span class="st">&quot;, world&quot;</span></a>
+<a class="sourceLine" id="cb41-3" title="3">                 <span class="kw">else</span> <span class="st">&quot;&quot;</span></a></code></pre></div>
 </div>
 <div id="lijsten-in-haskell" class="slide section level1">
 <h1>Lijsten in Haskell</h1>
 <p>We weten al hoe een lijst er in Haskell uitziet:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb42-1" title="1">[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</a></code></pre></div>
 <p>En natuurlijk de verkorte schrijfwijze voor Strings:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="st">&quot;foo&quot;</span> <span class="fu">==</span> [<span class="ch">&#39;f&#39;</span>,<span class="ch">&#39;o&#39;</span>,<span class="ch">&#39;o&#39;</span>]</code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb43-1" title="1"><span class="st">&quot;foo&quot;</span> <span class="op">==</span> [<span class="ch">&#39;f&#39;</span>,<span class="ch">&#39;o&#39;</span>,<span class="ch">&#39;o&#39;</span>]</a></code></pre></div>
 <p>En misschien had je dit ook al geprobeerd:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">[<span class="dv">1</span><span class="fu">..</span>]</code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb44-1" title="1">[<span class="dv">1</span><span class="op">..</span>]</a></code></pre></div>
 <p>Maar is dit alles wat er valt te weten?</p>
 </div>
 <div id="lijst-constructors" class="slide section level1">
@@ -416,15 +416,15 @@ Prelude&gt;</code></pre>
 <div id="typ-dit-in-ghci" class="slide section level1">
 <h1>Typ dit in ghci</h1>
 <p>Voeg een element toe aan een lege lijst:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dv">1</span> <span class="fu">:</span> []</code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb45-1" title="1"><span class="dv">1</span> <span class="op">:</span> []</a></code></pre></div>
 </div>
 <div id="en-nu-verder-vanaf-lijsten-met-één-element" class="slide section level1">
 <h1>En nu verder vanaf lijsten met één element</h1>
-<p>Hoe breiden we zo'n lijst uit?</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dv">2</span> <span class="fu">:</span> (<span class="dv">1</span> <span class="fu">:</span> [])</code></pre></div>
+<p>Hoe breiden we zo’n lijst uit?</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb46-1" title="1"><span class="dv">2</span> <span class="op">:</span> (<span class="dv">1</span> <span class="op">:</span> [])</a></code></pre></div>
 <p>Je hebt vaste wel geraden dat <code>[2,1]</code> een verkorte schrijfwijze is voor <code>2:(1:[])</code>. En dat is inderdaad zo!</p>
 <p>Wat is het resultaat van deze expressie?</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dv">5</span> <span class="fu">:</span> <span class="dv">8</span> <span class="fu">:</span> [] <span class="fu">==</span> [<span class="dv">5</span>,<span class="dv">8</span>]</code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb47-1" title="1"><span class="dv">5</span> <span class="op">:</span> <span class="dv">8</span> <span class="op">:</span> [] <span class="op">==</span> [<span class="dv">5</span>,<span class="dv">8</span>]</a></code></pre></div>
 </div>
 <div id="constructors" class="slide section level1">
 <h1>Constructors</h1>
@@ -432,8 +432,8 @@ Prelude&gt;</code></pre>
 <p>Als je een lijst maakt, moet de Haskell runtime onthouden welke constructors je hebt gebruikt, en waar precies.</p>
 <p>Dus de waarde <code>[5,8]</code> wordt gerepresenteerd als:</p>
 <ol style="list-style-type: decimal">
-<li><p>Een <code>:</code> constructor, met <code>5</code> als zijn eerste argument, en als tweede ...</p></li>
-<li><p>Nog een <code>:</code> constructor, deze keer met <code>8</code> als zijn eerste argument, en nu als tweede ...</p></li>
+<li><p>Een <code>:</code> constructor, met <code>5</code> als zijn eerste argument, en als tweede …</p></li>
+<li><p>Nog een <code>:</code> constructor, deze keer met <code>8</code> als zijn eerste argument, en nu als tweede …</p></li>
 <li><p>Een <code>[]</code> constructor.</p></li>
 </ol>
 </div>
@@ -460,17 +460,17 @@ Prelude&gt;</code></pre>
 <div id="de-case-expressie" class="slide section level1">
 <h1>De case-expressie</h1>
 <p>De <code>case</code> expressie laat ons een structuur <em>inspecteren</em>.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">import </span><span class="dt">Data.Char</span>
-
-isCapitalized name
-  <span class="fu">=</span> <span class="kw">case</span> name <span class="kw">of</span>
-      []           <span class="ot">-&gt;</span> <span class="dt">False</span>
-      (first<span class="fu">:</span>rest) <span class="ot">-&gt;</span> isUpper first</code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb48-1" title="1"><span class="kw">import</span> <span class="dt">Data.Char</span></a>
+<a class="sourceLine" id="cb48-2" title="2"></a>
+<a class="sourceLine" id="cb48-3" title="3">isCapitalized name</a>
+<a class="sourceLine" id="cb48-4" title="4">  <span class="ot">=</span> <span class="kw">case</span> name <span class="kw">of</span></a>
+<a class="sourceLine" id="cb48-5" title="5">      []           <span class="ot">-&gt;</span> <span class="dt">False</span></a>
+<a class="sourceLine" id="cb48-6" title="6">      (first<span class="op">:</span>rest) <span class="ot">-&gt;</span> <span class="fu">isUpper</span> first</a></code></pre></div>
 <ul>
 <li>Tussen <code>case</code> en <code>of</code> staat de te inspecteren expressie.</li>
 <li>Als de structuur overeenkomt met de lege-lijst constructor <code>[]</code>, dan is de structuur <code>name</code> die we inspecteren leeg. Dus geen hoofdletter.</li>
 </ul>
-<p>Als de gebruikte constructor de &quot;aan de voorkant toevoegen&quot; <code>:</code> operator is, dan wordt het interessanter.</p>
+<p>Als de gebruikte constructor de “aan de voorkant toevoegen” <code>:</code> operator is, dan wordt het interessanter.</p>
 <ul>
 <li>Wat er ook maar als eerste argument gebruikt is voor de <code>:</code> constructor wordt gebonden aan de naam <code>first</code>.</li>
 <li>Het tweede argument van de <code>:</code> constructor (dus alles in de lijst na het eerste element) wordt gebonden aan de naam <code>rest</code>.</li>
@@ -482,31 +482,31 @@ isCapitalized name
 <p>Wat de <code>case</code> expressie doet, noemen we <em>pattern matching</em>.</p>
 <ul>
 <li><p>Patronen worden gecontroleerd van boven naar beneden.</p></li>
-<li><p>Zodra een een patroon 'matcht', wordt het rechter deel (het deel achter de <code>-&gt;</code>) gebruikt als het resultaat van de hele <code>case</code> expressie.</p></li>
-<li><p>Als geen enkel patroon 'matcht', ontstaat een exceptie.</p></li>
+<li><p>Zodra een een patroon ‘matcht’, wordt het rechter deel (het deel achter de <code>-&gt;</code>) gebruikt als het resultaat van de hele <code>case</code> expressie.</p></li>
+<li><p>Als geen enkel patroon ‘matcht’, ontstaat een exceptie.</p></li>
 </ul>
 </div>
 <div id="een-voorbeeld" class="slide section level1">
 <h1>Een voorbeeld</h1>
 <p>Laten we stap voor stap kijken wat er gebeurt als we deze expressie evalueren.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">isCapitalized <span class="st">&quot;Ann&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb49-1" title="1">isCapitalized <span class="st">&quot;Ann&quot;</span></a></code></pre></div>
 </div>
 <div id="een-voorbeeld-1" class="slide section level1">
 <h1>Een voorbeeld</h1>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">isCapitalized name
-  <span class="fu">=</span> <span class="kw">case</span> name <span class="kw">of</span>
-      []           <span class="ot">-&gt;</span> <span class="dt">False</span>
-      (first<span class="fu">:</span>rest) <span class="ot">-&gt;</span> isUpper first</code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb50-1" title="1">isCapitalized name</a>
+<a class="sourceLine" id="cb50-2" title="2">  <span class="ot">=</span> <span class="kw">case</span> name <span class="kw">of</span></a>
+<a class="sourceLine" id="cb50-3" title="3">      []           <span class="ot">-&gt;</span> <span class="dt">False</span></a>
+<a class="sourceLine" id="cb50-4" title="4">      (first<span class="op">:</span>rest) <span class="ot">-&gt;</span> <span class="fu">isUpper</span> first</a></code></pre></div>
 <ul>
-<li>isCapitalized ('A' : 'n' : 'n' : [] )</li>
+<li>isCapitalized (‘A’ : ‘n’ : ‘n’ : [] )</li>
 </ul>
 <ul class="incremental">
 <li>matcht <em>[]</em> ? Nee.</li>
 <li>matcht <em>(first:rest)</em> ? Ja!</li>
-<li><em>first </em>krijgt als waarde 'A'</li>
-<li><em>rest </em>krijgt als waarde 'n' : 'n' : []</li>
-<li><em>isCapitalized ('A' : 'n' : 'n' : [] )</em> wordt herschreven als <em>isUpper 'A'</em></li>
-<li><em>isUpper 'A' </em>evalueert naar <em>True</em></li>
+<li><em>first </em>krijgt als waarde ‘A’</li>
+<li><em>rest </em>krijgt als waarde ‘n’ : ‘n’ : []</li>
+<li><em>isCapitalized (‘A’ : ‘n’ : ‘n’ : [] )</em> wordt herschreven als <em>isUpper ‘A’</em></li>
+<li><em>isUpper ‘A’ </em>evalueert naar <em>True</em></li>
 </ul>
 </div>
 <div id="whew-een-paar-oefeningen" class="slide section level1">
@@ -515,7 +515,7 @@ isCapitalized name
 <p>Nu je het begin van een lijst kan inspecteren, zou je een <em>hele</em> lijst recursief kunnen afhandelen.</p>
 <p>Schrijf eerst een functie met de naam <code>myLength</code> die het aantal elementen in een lijst bepaalt.</p>
 <p>Vervolgens schrijf je een functie met de naam <code>countCaps</code> die het aantal hoofdletters in een String bepaalt.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">countCaps <span class="st">&quot;Monkey Butter&quot;</span> <span class="fu">==</span> <span class="dv">2</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb51-1" title="1">countCaps <span class="st">&quot;Monkey Butter&quot;</span> <span class="op">==</span> <span class="dv">2</span></a></code></pre></div>
 </div>
 <div id="whew-een-paar-oefeningen-1" class="slide section level1">
 <h1>Whew! Een paar oefeningen!</h1>
@@ -523,22 +523,22 @@ isCapitalized name
 <p>Nu je het begin van een lijst kan inspecteren, zou je een <em>hele</em> lijst recursief kunnen afhandelen.</p>
 <p>Schrijf eerst een functie met de naam <code>myLength</code> die het aantal elementen in een lijst bepaalt.</p>
 <p>Vervolgens schrijf je een functie met de naam <code>countCaps</code> die het aantal hoofdletters in een String bepaalt.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">countCaps <span class="st">&quot;Monkey Butter&quot;</span> <span class="fu">==</span> <span class="dv">2</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">myLength lijst <span class="fu">=</span>
-   <span class="kw">case</span> lijst <span class="kw">of</span>
-     []   <span class="ot">-&gt;</span> <span class="dv">0</span>
-     e<span class="fu">:</span>es <span class="ot">-&gt;</span> <span class="dv">1</span> <span class="fu">+</span> myLength es</code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb52-1" title="1">countCaps <span class="st">&quot;Monkey Butter&quot;</span> <span class="op">==</span> <span class="dv">2</span></a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb53-1" title="1">myLength lijst <span class="ot">=</span></a>
+<a class="sourceLine" id="cb53-2" title="2">   <span class="kw">case</span> lijst <span class="kw">of</span></a>
+<a class="sourceLine" id="cb53-3" title="3">     []   <span class="ot">-&gt;</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb53-4" title="4">     e<span class="op">:</span>es <span class="ot">-&gt;</span> <span class="dv">1</span> <span class="op">+</span> myLength es</a></code></pre></div>
 </div>
 <div id="het-tellen-van-hoofdletters" class="slide section level1">
 <h1>Het tellen van Hoofdletters</h1>
 <p>Jôh, die countCaps functie was knap lastig. Of niet?</p>
 <p>Hier is mijn definitie, gebruik makend van alleen de dingen die we tot nu toe hebben geleerd:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">countCaps string <span class="fu">=</span>
-  <span class="kw">case</span> string <span class="kw">of</span>
-    []     <span class="ot">-&gt;</span> <span class="dv">0</span>
-    (x<span class="fu">:</span>xs) <span class="ot">-&gt;</span> <span class="kw">if</span> isUpper x
-              <span class="kw">then</span> <span class="dv">1</span> <span class="fu">+</span> countCaps xs
-              <span class="kw">else</span> countCaps xs</code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb54-1" title="1">countCaps string <span class="ot">=</span></a>
+<a class="sourceLine" id="cb54-2" title="2">  <span class="kw">case</span> string <span class="kw">of</span></a>
+<a class="sourceLine" id="cb54-3" title="3">    []     <span class="ot">-&gt;</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb54-4" title="4">    (x<span class="op">:</span>xs) <span class="ot">-&gt;</span> <span class="kw">if</span> <span class="fu">isUpper</span> x</a>
+<a class="sourceLine" id="cb54-5" title="5">              <span class="kw">then</span> <span class="dv">1</span> <span class="op">+</span> countCaps xs</a>
+<a class="sourceLine" id="cb54-6" title="6">              <span class="kw">else</span> countCaps xs</a></code></pre></div>
 </div>
 <div id="huh." class="slide section level1">
 <h1>Huh.</h1>
@@ -546,20 +546,20 @@ isCapitalized name
 </div>
 <div id="leesbaarheid-1-top-level-pattern-matching" class="slide section level1">
 <h1>Leesbaarheid 1: top-level pattern matching</h1>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">countCaps []     <span class="fu">=</span> <span class="dv">0</span>
-countCaps (x<span class="fu">:</span>xs) <span class="fu">=</span>
-    <span class="kw">if</span> isUpper x
-    <span class="kw">then</span> <span class="dv">1</span> <span class="fu">+</span> countCaps xs
-    <span class="kw">else</span> countCaps xs</code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb55-1" title="1">countCaps []     <span class="ot">=</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb55-2" title="2">countCaps (x<span class="op">:</span>xs) <span class="ot">=</span></a>
+<a class="sourceLine" id="cb55-3" title="3">    <span class="kw">if</span> <span class="fu">isUpper</span> x</a>
+<a class="sourceLine" id="cb55-4" title="4">    <span class="kw">then</span> <span class="dv">1</span> <span class="op">+</span> countCaps xs</a>
+<a class="sourceLine" id="cb55-5" title="5">    <span class="kw">else</span> countCaps xs</a></code></pre></div>
 <p>We kunnen een functie definieren als een serie vergelijkingen, die elk een <code>pattern match</code> bevatten.</p>
 <p>Dit is een beter leesbare schrijfwijze voor <code>case</code>.</p>
 </div>
 <div id="leesbaarheid-2-guards" class="slide section level1">
 <h1>Leesbaarheid 2: guards</h1>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">countCaps []     <span class="fu">=</span> <span class="dv">0</span>
-countCaps (x<span class="fu">:</span>xs)
-   <span class="fu">|</span> isUpper x    <span class="fu">=</span> <span class="dv">1</span> <span class="fu">+</span> countCaps xs
-   <span class="fu">|</span> otherwise    <span class="fu">=</span> countCaps xs</code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb56-1" title="1">countCaps []     <span class="ot">=</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb56-2" title="2">countCaps (x<span class="op">:</span>xs)</a>
+<a class="sourceLine" id="cb56-3" title="3">   <span class="op">|</span> <span class="fu">isUpper</span> x    <span class="ot">=</span> <span class="dv">1</span> <span class="op">+</span> countCaps xs</a>
+<a class="sourceLine" id="cb56-4" title="4">   <span class="op">|</span> <span class="fu">otherwise</span>    <span class="ot">=</span> countCaps xs</a></code></pre></div>
 <p>Achter elke <code>|</code> staat een <em>guard</em>.</p>
 <ul>
 <li><p>Als een patroon matcht, evalueren we iedere Boolean guard expressie van boven naar beneden.</p></li>
@@ -570,27 +570,27 @@ countCaps (x<span class="fu">:</span>xs)
 <div id="vóór" class="slide section level1">
 <h1>Vóór</h1>
 <p>Zoals in de originele versie, maar nu zonder gebruik van <code>case</code>:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">countCaps xs <span class="fu">=</span>
-  <span class="kw">if</span> null xs
-  <span class="kw">then</span> <span class="dv">0</span>
-  <span class="kw">else</span> <span class="kw">if</span> isUpper (head xs)
-       <span class="kw">then</span> <span class="dv">1</span> <span class="fu">+</span> countCaps (tail xs)
-       <span class="kw">else</span> countCaps (tail xs)</code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb57-1" title="1">countCaps xs <span class="ot">=</span></a>
+<a class="sourceLine" id="cb57-2" title="2">  <span class="kw">if</span> <span class="fu">null</span> xs</a>
+<a class="sourceLine" id="cb57-3" title="3">  <span class="kw">then</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb57-4" title="4">  <span class="kw">else</span> <span class="kw">if</span> <span class="fu">isUpper</span> (<span class="fu">head</span> xs)</a>
+<a class="sourceLine" id="cb57-5" title="5">       <span class="kw">then</span> <span class="dv">1</span> <span class="op">+</span> countCaps (<span class="fu">tail</span> xs)</a>
+<a class="sourceLine" id="cb57-6" title="6">       <span class="kw">else</span> countCaps (<span class="fu">tail</span> xs)</a></code></pre></div>
 </div>
 <div id="vóór-en-na" class="slide section level1">
 <h1>Vóór en Na</h1>
 <p>Zoals in de originele versie, maar nu zonder gebruik van <code>case</code>:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">countCaps xs <span class="fu">=</span>
-  <span class="kw">if</span> null xs
-  <span class="kw">then</span> <span class="dv">0</span>
-  <span class="kw">else</span> <span class="kw">if</span> isUpper (head xs)
-       <span class="kw">then</span> <span class="dv">1</span> <span class="fu">+</span> countCaps (tail xs)
-       <span class="kw">else</span> countCaps (tail xs)</code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb58-1" title="1">countCaps xs <span class="ot">=</span></a>
+<a class="sourceLine" id="cb58-2" title="2">  <span class="kw">if</span> <span class="fu">null</span> xs</a>
+<a class="sourceLine" id="cb58-3" title="3">  <span class="kw">then</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb58-4" title="4">  <span class="kw">else</span> <span class="kw">if</span> <span class="fu">isUpper</span> (<span class="fu">head</span> xs)</a>
+<a class="sourceLine" id="cb58-5" title="5">       <span class="kw">then</span> <span class="dv">1</span> <span class="op">+</span> countCaps (<span class="fu">tail</span> xs)</a>
+<a class="sourceLine" id="cb58-6" title="6">       <span class="kw">else</span> countCaps (<span class="fu">tail</span> xs)</a></code></pre></div>
 <p>Zowel korter als beter leesbaar:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">countCaps []     <span class="fu">=</span> <span class="dv">0</span>
-countCaps (x<span class="fu">:</span>xs)
-   <span class="fu">|</span> isUpper x    <span class="fu">=</span> <span class="dv">1</span> <span class="fu">+</span> countCaps xs
-   <span class="fu">|</span> otherwise    <span class="fu">=</span> countCaps xs</code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb59-1" title="1">countCaps []     <span class="ot">=</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb59-2" title="2">countCaps (x<span class="op">:</span>xs)</a>
+<a class="sourceLine" id="cb59-3" title="3">   <span class="op">|</span> <span class="fu">isUpper</span> x    <span class="ot">=</span> <span class="dv">1</span> <span class="op">+</span> countCaps xs</a>
+<a class="sourceLine" id="cb59-4" title="4">   <span class="op">|</span> <span class="fu">otherwise</span>    <span class="ot">=</span> countCaps xs</a></code></pre></div>
 </div>
 <div id="een-andere-aanpak" class="slide section level1">
 <h1>Een andere aanpak</h1>
@@ -598,12 +598,12 @@ countCaps (x<span class="fu">:</span>xs)
 <ul>
 <li>Schrijf eerst een functie die door een lijst loopt, en die een nieuwe lijst genereert bestaande uit alleen de hoofdletters van de oorspronkelijke lijst.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode haskell"><code class="sourceCode haskell"></code></pre></div>
 <ul>
 <li>Gebruik <code>length</code> om het aantal elementen te tellen.</li>
 </ul>
 <p>Dit zou hetzelfde resultaat moeten opleveren als je eerste functie. Toch?</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode haskell"><code class="sourceCode haskell"></code></pre></div>
 </div>
 <div id="een-andere-aanpak-1" class="slide section level1">
 <h1>Een andere aanpak</h1>
@@ -611,15 +611,15 @@ countCaps (x<span class="fu">:</span>xs)
 <ul>
 <li>Schrijf eerst een functie die door een lijst loopt, en die een nieuwe lijst genereert bestaande uit alleen de hoofdletters van de oorspronkelijke lijst.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">allCaps [] <span class="fu">=</span> []
-allCaps (x<span class="fu">:</span>xs) <span class="fu">=</span> <span class="kw">if</span> isUpper x
-                 <span class="kw">then</span> x <span class="fu">:</span> allCaps xs
-                 <span class="kw">else</span> allCaps xs</code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb62-1" title="1">allCaps [] <span class="ot">=</span> []</a>
+<a class="sourceLine" id="cb62-2" title="2">allCaps (x<span class="op">:</span>xs) <span class="ot">=</span> <span class="kw">if</span> <span class="fu">isUpper</span> x</a>
+<a class="sourceLine" id="cb62-3" title="3">                 <span class="kw">then</span> x <span class="op">:</span> allCaps xs</a>
+<a class="sourceLine" id="cb62-4" title="4">                 <span class="kw">else</span> allCaps xs</a></code></pre></div>
 <ul>
 <li>Gebruik <code>length</code> om het aantal elementen te tellen.</li>
 </ul>
 <p>Dit zou hetzelfde resultaat moeten opleveren als je eerste functie. Toch?</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">countCaps2 string <span class="fu">=</span> length (allCaps string)</code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb63-1" title="1">countCaps2 string <span class="ot">=</span> <span class="fu">length</span> (allCaps string)</a></code></pre></div>
 </div>
 <div id="wijziging-van-de-specificatie" class="slide section level1">
 <h1>Wijziging van de specificatie</h1>
@@ -633,59 +633,59 @@ allCaps (x<span class="fu">:</span>xs) <span class="fu">=</span> <span class="kw
 <div id="hogere-orde-functies" class="slide section level1">
 <h1>Hogere orde functies</h1>
 <p><em>Hogere orde functie</em>: een functie die een andere functie accepteert als argument.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">filter pred [] <span class="fu">=</span> []
-filter pred (x<span class="fu">:</span>xs)
-  <span class="fu">|</span> pred x     <span class="fu">=</span> x <span class="fu">:</span> filter pred xs
-  <span class="fu">|</span> otherwise  <span class="fu">=</span>     filter pred xs</code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb64-1" title="1"><span class="fu">filter</span> <span class="fu">pred</span> [] <span class="ot">=</span> []</a>
+<a class="sourceLine" id="cb64-2" title="2"><span class="fu">filter</span> <span class="fu">pred</span> (x<span class="op">:</span>xs)</a>
+<a class="sourceLine" id="cb64-3" title="3">  <span class="op">|</span> <span class="fu">pred</span> x     <span class="ot">=</span> x <span class="op">:</span> <span class="fu">filter</span> <span class="fu">pred</span> xs</a>
+<a class="sourceLine" id="cb64-4" title="4">  <span class="op">|</span> <span class="fu">otherwise</span>  <span class="ot">=</span>     <span class="fu">filter</span> <span class="fu">pred</span> xs</a></code></pre></div>
 <p>Hoe kunnen we dit gebruiken om <code>countLowerCase</code> te definieren?</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode haskell"><code class="sourceCode haskell"></code></pre></div>
 </div>
 <div id="hogere-orde-functies-1" class="slide section level1">
 <h1>Hogere orde functies</h1>
 <p><em>Hogere orde functie</em>: een functie die een andere functie accepteert als argument.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">filter pred [] <span class="fu">=</span> []
-filter pred (x<span class="fu">:</span>xs)
-  <span class="fu">|</span> pred x     <span class="fu">=</span> x <span class="fu">:</span> filter pred xs
-  <span class="fu">|</span> otherwise  <span class="fu">=</span>     filter pred xs</code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb66-1" title="1"><span class="fu">filter</span> <span class="fu">pred</span> [] <span class="ot">=</span> []</a>
+<a class="sourceLine" id="cb66-2" title="2"><span class="fu">filter</span> <span class="fu">pred</span> (x<span class="op">:</span>xs)</a>
+<a class="sourceLine" id="cb66-3" title="3">  <span class="op">|</span> <span class="fu">pred</span> x     <span class="ot">=</span> x <span class="op">:</span> <span class="fu">filter</span> <span class="fu">pred</span> xs</a>
+<a class="sourceLine" id="cb66-4" title="4">  <span class="op">|</span> <span class="fu">otherwise</span>  <span class="ot">=</span>     <span class="fu">filter</span> <span class="fu">pred</span> xs</a></code></pre></div>
 <p>Hoe kunnen we dit gebruiken om <code>countLowerCase</code> te definieren?</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">countLowerCase string <span class="fu">=</span>
-  length (filter isLower string)</code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb67-1" title="1">countLowerCase string <span class="ot">=</span></a>
+<a class="sourceLine" id="cb67-2" title="2">  <span class="fu">length</span> (<span class="fu">filter</span> <span class="fu">isLower</span> string)</a></code></pre></div>
 </div>
 <div id="data-in-data-uit" class="slide section level1">
 <h1>Data in, data uit</h1>
 <p>Tot nu toe hebben we verschillende definities gezien zoals deze:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">countLowerCase string <span class="fu">=</span>
-  length (filter isLower string)</code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb68-1" title="1">countLowerCase string <span class="ot">=</span></a>
+<a class="sourceLine" id="cb68-2" title="2">  <span class="fu">length</span> (<span class="fu">filter</span> <span class="fu">isLower</span> string)</a></code></pre></div>
 <p>We zien hierin een terugkerend pattroon:</p>
 <ul>
 <li><p>Een functie met één argument</p></li>
-<li><p>krijgt als input het resultaat van ...</p></li>
-<li><p>... een andere functie met één argument</p></li>
+<li><p>krijgt als input het resultaat van …</p></li>
+<li><p>… een andere functie met één argument</p></li>
 </ul>
 </div>
 <div id="functie-compositie" class="slide section level1">
 <h1>Functie compositie</h1>
 <p>Haskell beperkt ons niet tot alleen maar alfanumerieke namen voor functies.</p>
-<p>We kunnen een functie definiëren met de simpele naam &quot;<code>.</code>&quot;, die we als een operator kunnen gebruiken:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">(f <span class="fu">.</span> g) x <span class="fu">=</span> f (g x)</code></pre></div>
+<p>We kunnen een functie definiëren met de simpele naam “<code>.</code>”, die we als een operator kunnen gebruiken:</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb69-1" title="1">(f <span class="op">.</span> g) x <span class="ot">=</span> f (g x)</a></code></pre></div>
 <p>Wat is hier het nut van?</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">countLowerCase <span class="fu">=</span> length <span class="fu">.</span> filter isLower</code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb70-1" title="1">countLowerCase <span class="ot">=</span> <span class="fu">length</span> <span class="op">.</span> <span class="fu">filter</span> <span class="fu">isLower</span></a></code></pre></div>
 </div>
 <div id="compositie" class="slide section level1">
 <h1>Compositie???</h1>
-<p>Enige toelichting is wel op z'n plek, om het duidelijker te maken.</p>
+<p>Enige toelichting is wel op z’n plek, om het duidelijker te maken.</p>
 <p>We plaatsen de argumenten in de rechterkant van onze functie definitie:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">(f <span class="fu">.</span> g) x <span class="fu">=</span> f (g x)</code></pre></div>
-<p>Als eerste argument van &quot;<code>.</code>&quot; hadden we <code>length</code>, en <code>filter isLower</code> als het tweede:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">(length <span class="fu">.</span> filter isLower) x
-  <span class="fu">=</span> length (filter isLower x)</code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb71-1" title="1">(f <span class="op">.</span> g) x <span class="ot">=</span> f (g x)</a></code></pre></div>
+<p>Als eerste argument van “<code>.</code>” hadden we <code>length</code>, en <code>filter isLower</code> als het tweede:</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb72-1" title="1">(<span class="fu">length</span> <span class="op">.</span> <span class="fu">filter</span> <span class="fu">isLower</span>) x</a>
+<a class="sourceLine" id="cb72-2" title="2">  <span class="ot">=</span> <span class="fu">length</span> (<span class="fu">filter</span> <span class="fu">isLower</span> x)</a></code></pre></div>
 </div>
 <div id="lokale-variabelen" class="slide section level1">
 <h1>Lokale variabelen</h1>
 <p>Binnen in een expressie kunnen we nieuwe variabelen introduceren door gebruik te maken van <code>let</code>.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">let</span> x <span class="fu">=</span> <span class="dv">2</span>
-    y <span class="fu">=</span> <span class="dv">4</span>
-<span class="kw">in</span> x <span class="fu">+</span> y</code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb73-1" title="1"><span class="kw">let</span> x <span class="ot">=</span> <span class="dv">2</span></a>
+<a class="sourceLine" id="cb73-2" title="2">    y <span class="ot">=</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb73-3" title="3"><span class="kw">in</span> x <span class="op">+</span> y</a></code></pre></div>
 <ul>
 <li><p>Lokale definities komen na <code>let</code>.</p></li>
 <li><p>De expressie waarin we ze gebruiken komen na <code>in</code>.</p></li>
@@ -697,20 +697,20 @@ filter pred (x<span class="fu">:</span>xs)
 <ul>
 <li><p>Een top-level definitie start in de meest linkse kolom.</p></li>
 <li><p>Volgend op het begin van een definitie, als de volgende regel inspringt, wordt die regel behandeld als vervolg van die definitie.</p></li>
-<li><p>Gebruik <strong>nooit</strong> 'Tab' in je source files.</p></li>
+<li><p>Gebruik <strong>nooit</strong> ‘Tab’ in je source files.</p></li>
 </ul>
 </div>
 <div id="white-space-en-lokale-variabelen" class="slide section level1">
 <h1>White space en lokale variabelen</h1>
 <p>Als je lokale variabelen definieert, dan moeten ze allemaal beginnen in dezelfde kolom.</p>
 <p>Dit is goed:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">let</span> x <span class="fu">=</span> <span class="dv">2</span>
-    y <span class="fu">=</span> <span class="dv">4</span>
-<span class="kw">in</span> x <span class="fu">+</span> y</code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb74-1" title="1"><span class="kw">let</span> x <span class="ot">=</span> <span class="dv">2</span></a>
+<a class="sourceLine" id="cb74-2" title="2">    y <span class="ot">=</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb74-3" title="3"><span class="kw">in</span> x <span class="op">+</span> y</a></code></pre></div>
 <p>Maar dit niet:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">let</span> x <span class="fu">=</span> <span class="dv">2</span>
-      y <span class="fu">=</span> <span class="dv">4</span>
-<span class="kw">in</span> x <span class="fu">+</span> y</code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb75-1" title="1"><span class="kw">let</span> x <span class="ot">=</span> <span class="dv">2</span></a>
+<a class="sourceLine" id="cb75-2" title="2">      y <span class="ot">=</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb75-3" title="3"><span class="kw">in</span> x <span class="op">+</span> y</a></code></pre></div>
 </div>
 <div id="oefenen-met-compositie" class="slide section level1">
 <h1>Oefenen met compositie</h1>
@@ -719,9 +719,9 @@ filter pred (x<span class="fu">:</span>xs)
 <li>Voor je begint, is het verstandig om eerst met de <code>words</code> en <code>unwords</code> functies te spelen.</li>
 </ul>
 <p>Voorbeeld:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">klinkerWoorden <span class="st">&quot;Ik denk, dus ik ben.&quot;</span>
-  <span class="fu">==</span> <span class="st">&quot;Ik ik&quot;</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb76-1" title="1">klinkerWoorden <span class="st">&quot;Ik denk, dus ik ben.&quot;</span></a>
+<a class="sourceLine" id="cb76-2" title="2">  <span class="op">==</span> <span class="st">&quot;Ik ik&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode haskell"><code class="sourceCode haskell"></code></pre></div>
 </div>
 <div id="oefenen-met-compositie-1" class="slide section level1">
 <h1>Oefenen met compositie</h1>
@@ -730,11 +730,11 @@ filter pred (x<span class="fu">:</span>xs)
 <li>Voor je begint, is het verstandig om eerst met de <code>words</code> en <code>unwords</code> functies te spelen.</li>
 </ul>
 <p>Voorbeeld:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">klinkerWoorden <span class="st">&quot;Ik denk, dus ik ben.&quot;</span>
-  <span class="fu">==</span> <span class="st">&quot;Ik ik&quot;</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">klinkerWoorden <span class="fu">=</span>
-  <span class="kw">let</span> isKlinker c <span class="fu">=</span> toLower c <span class="ot">`elem`</span> <span class="st">&quot;aeiou&quot;</span>
-  <span class="kw">in</span>  unwords <span class="fu">.</span> filter (isKlinker <span class="fu">.</span> head) <span class="fu">.</span> words</code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb78-1" title="1">klinkerWoorden <span class="st">&quot;Ik denk, dus ik ben.&quot;</span></a>
+<a class="sourceLine" id="cb78-2" title="2">  <span class="op">==</span> <span class="st">&quot;Ik ik&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb79-1" title="1">klinkerWoorden <span class="ot">=</span></a>
+<a class="sourceLine" id="cb79-2" title="2">  <span class="kw">let</span> isKlinker c <span class="ot">=</span> <span class="fu">toLower</span> c <span class="ot">`elem`</span> <span class="st">&quot;aeiou&quot;</span></a>
+<a class="sourceLine" id="cb79-3" title="3">  <span class="kw">in</span>  <span class="fu">unwords</span> <span class="op">.</span> <span class="fu">filter</span> (isKlinker <span class="op">.</span> <span class="fu">head</span>) <span class="op">.</span> <span class="fu">words</span></a></code></pre></div>
 <p>Doet dit je denken aan een Unix shell pipeline, maar dan van rechts naar links?</p>
 </div>
 <div id="even-pauze" class="slide section level1">
@@ -742,8 +742,8 @@ filter pred (x<span class="fu">:</span>xs)
 </div>
 <div id="oh-ja-hoe-zat-het-met-onze-probleemstelling" class="slide section level1">
 <h1>Oh ja, hoe zat het met onze probleemstelling?</h1>
-<p>Gegeven een website. We willen er data afhalen (web-scraping) en er andere belangrijke web pagina's mee vinden.</p>
-<p>Nu zijn we Haskell pro's, toch?</p>
+<p>Gegeven een website. We willen er data afhalen (web-scraping) en er andere belangrijke web pagina’s mee vinden.</p>
+<p>Nu zijn we Haskell pro’s, toch?</p>
 <ul>
 <li>Een web pagina downloaden</li>
 </ul>
@@ -796,7 +796,7 @@ hello world</code></pre>
 <p>Gelukkig bestaat er voor dit soort gevallen een hele handige centrale repository van open source Haskell software:</p>
 <ul>
 <li><p><a href="http://hackage.haskell.org/">http://hackage.haskell.org</a></p></li>
-<li><p>(In de volksmond: &quot;Hackage&quot;)</p></li>
+<li><p>(In de volksmond: “Hackage”)</p></li>
 </ul>
 <p>Ga er nu heen!</p>
 <p>Click op de <a href="http://hackage.haskell.org/packages">Browse</a> link om door packages te bladeren</p>
@@ -811,13 +811,13 @@ hello world</code></pre>
 <p>Je hebt nu nog wel heel veel packages om door te akkeren, maar het is beter dan de duizenden packages op de Packages pagina.</p>
 </div>
 <div id="even-de-zoektocht-helpen." class="slide section level1">
-<h1>Even de zoektocht 'helpen'.</h1>
+<h1>Even de zoektocht ‘helpen’.</h1>
 <p>We gebruiken vandaag de <em>http-conduit</em> library. Die ziet er goed uit, en is nog redelijk recent. Laten we eens kijken of we daar wat mee kunnen.</p>
 <p>De documentatie staat natuurlijk online:</p>
 <ul>
-<li><a href="http://hackage.haskell.org/package/http-conduit" class="uri">http://hackage.haskell.org/package/http-conduit</a></li>
+<li><a href="http://hackage.haskell.org/package/http-conduit">http://hackage.haskell.org/package/http-conduit</a></li>
 </ul>
-<p>De startpagina voor een package kan intimiderend overkomen. Laat je niet gek maken. Kijk maar eens onderaan, bij de sectie &quot;Modules&quot;.</p>
+<p>De startpagina voor een package kan intimiderend overkomen. Laat je niet gek maken. Kijk maar eens onderaan, bij de sectie “Modules”.</p>
 <p>Wat zie je?</p>
 </div>
 <div id="een-package-gebruiken" class="slide section level1">
@@ -850,7 +850,7 @@ hello world</code></pre>
 <p>Wat is dat nou weer?</p>
 <p>De <em>naam</em> van het ding dat hier wordt gedefinieerd komt voor het <code>::</code> teken.</p>
 <p>Het <em>type</em> ervan volgt na de <code>::</code></p>
-<p>Dit betekent dat &quot;de waarde met de naam <code>foo</code> is van het type <code>String</code>&quot;.</p>
+<p>Dit betekent dat “de waarde met de naam <code>foo</code> is van het type <code>String</code>”.</p>
 </div>
 <div id="type-systeem-van-haskell" class="slide section level1">
 <h1>Type systeem van Haskell</h1>
@@ -871,24 +871,24 @@ hello world</code></pre>
 <h1>De signature van een functie</h1>
 <p>Hier is nog een type signature:</p>
 <pre><code>words :: String -&gt; [String]</code></pre>
-<p>we zien een nieuw symbool, <code>-&gt;</code>. Die zegt &quot;dit is een functie&quot;.</p>
+<p>we zien een nieuw symbool, <code>-&gt;</code>. Die zegt “dit is een functie”.</p>
 <p>Het type na de laatste <code>-&gt;</code> is het return type van de functie.</p>
 <p>Alles ertussen zijn de types van de argumenten.</p>
-<p>Dus dit is een functie die een <code>String</code> als argument heeft. En het resultaat is een... wat?</p>
+<p>Dus dit is een functie die een <code>String</code> als argument heeft. En het resultaat is een… wat?</p>
 </div>
 <div id="lijst-notatie" class="slide section level1">
 <h1>Lijst notatie</h1>
-<p>De notatie <code>[a]</code> betekent &quot;een lijst van waarden, elk met een of ander type <code>a</code>&quot;.</p>
-<p>Dus <code>[String]</code> betekent &quot;een lijst van waarden, elk met type <code>String</code>&quot;.</p>
+<p>De notatie <code>[a]</code> betekent “een lijst van waarden, elk met een of ander type <code>a</code>”.</p>
+<p>Dus <code>[String]</code> betekent “een lijst van waarden, elk met type <code>String</code>”.</p>
 </div>
 <div id="type-synoniemen" class="slide section level1">
 <h1>Type synoniemen</h1>
 <p>Wat is een <code>String</code> eigenlijk?</p>
 <ul>
-<li>Het is niks bijzonders, maar gewoon een <em>synoniem</em> voor <code>[Char]</code>, oftewel &quot;een lijst van <code>Char</code>&quot;.</li>
+<li>Het is niks bijzonders, maar gewoon een <em>synoniem</em> voor <code>[Char]</code>, oftewel “een lijst van <code>Char</code>”.</li>
 </ul>
 <p>We kunnen zelf ook synoniemen definiëren.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">type</span> <span class="dt">Euros</span> <span class="fu">=</span> <span class="dt">Int</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb90-1" title="1"><span class="kw">type</span> <span class="dt">Euros</span> <span class="ot">=</span> <span class="dt">Int</span></a></code></pre></div>
 <p>Een type synoniem kan handig zijn om de bedoeling van een bestaand type te documenteren.</p>
 </div>
 <div id="words" class="slide section level1">
@@ -939,11 +939,11 @@ hello world
 <div id="van-binary-naar-tekst" class="slide section level1">
 <h1>Van binary naar tekst</h1>
 <p>We hebben nu een <code>ByteString</code>, die we om moeten zetten naar tekst, om er mee te kunnen manipuleren.</p>
-<p>Voor het gemak nemen we even aan, dat alle web pagina's UTF-8 gecodeerd zijn.</p>
+<p>Voor het gemak nemen we even aan, dat alle web pagina’s UTF-8 gecodeerd zijn.</p>
 </div>
 <div id="pure-code" class="slide section level1">
 <h1>Pure code</h1>
-<p>Tot nu toe is alle code die we hebben geschreven &quot;Puur&quot;.</p>
+<p>Tot nu toe is alle code die we hebben geschreven “Puur”.</p>
 <ul>
 <li><p>Het gedrag van al onze functies waren alleen afhankelijk van de input.</p></li>
 <li><p>Al onze data is onveranderlijk.</p></li>
@@ -952,14 +952,14 @@ hello world
 </div>
 <div id="niet-pure-code" class="slide section level1">
 <h1>niet-pure code</h1>
-<p>En toch ... Op een of andere manier hebben we een webpagina gedownload!</p>
+<p>En toch … Op een of andere manier hebben we een webpagina gedownload!</p>
 <ul>
-<li>Webpagina's zijn duidelijk <em>niet</em> puur.</li>
+<li>Webpagina’s zijn duidelijk <em>niet</em> puur.</li>
 </ul>
 <p>Hoe kan dit dan?</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">length (simpleHttp <span class="st">&quot;http://x.org/&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb97-1" title="1"><span class="fu">length</span> (simpleHttp <span class="st">&quot;http://x.org/&quot;</span>)</a></code></pre></div>
 <p>HELAAS.</p>
-<p>Het type systeem van Haskell maakt onderscheid tussen code die puur moet zijn en code dat zij-effecten mag hebben (&quot;niet-pure&quot; code).</p>
+<p>Het type systeem van Haskell maakt onderscheid tussen code die puur moet zijn en code dat zij-effecten mag hebben (“niet-pure” code).</p>
 </div>
 <div id="wat-nu" class="slide section level1">
 <h1>Wat nu?</h1>
@@ -971,9 +971,9 @@ hello world
 <div id="io" class="slide section level1">
 <h1>IO</h1>
 <p>Het <code>:type</code> commando toont nu iets als dit:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">readFile<span class="ot"> ::</span> FilePath <span class="ot">-&gt;</span> <span class="dt">IO</span> <span class="dt">String</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb99-1" title="1"><span class="fu">readFile</span><span class="ot"> ::</span> <span class="dt">FilePath</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> <span class="dt">String</span></a></code></pre></div>
 <p>Zie je het <code>IO</code> in het resulterend type?</p>
-<p>Dat betekent &quot;deze functie kan zij-effecten hebben&quot;.</p>
+<p>Dat betekent “deze functie kan zij-effecten hebben”.</p>
 <p>niet-pure functies, met <code>IO</code> in het resulterend type, worden vaak <strong><em>acties</em></strong> genoemd.</p>
 <ul>
 <li>Dit helpt om ze te onderscheiden van pure functies.</li>
@@ -981,24 +981,24 @@ hello world
 </div>
 <div id="do-notatie-mengen-van-acties-met-pure-code" class="slide section level1">
 <h1><code>do</code>-notatie: Mengen van <em>acties</em> met <em>pure code</em></h1>
-<p>Het type-systeem 'weet' welke functies <code>IO</code> doen en zorgt ervoor dat we hier op een nette manier mee omgaan.</p>
+<p>Het type-systeem ‘weet’ welke functies <code>IO</code> doen en zorgt ervoor dat we hier op een nette manier mee omgaan.</p>
 <p>We kunnen echter op een natuurlijke manier pure code mengen met acties:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">charCount ::</span> FilePath <span class="ot">-&gt;</span> <span class="dt">IO</span> <span class="dt">Int</span>
-charCount fileName <span class="fu">=</span>
-  <span class="kw">do</span> contents <span class="ot">&lt;-</span> readFile fileName
-     return (length contents)</code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb100-1" title="1"><span class="ot">charCount ::</span> <span class="dt">FilePath</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> <span class="dt">Int</span></a>
+<a class="sourceLine" id="cb100-2" title="2">charCount fileName <span class="ot">=</span></a>
+<a class="sourceLine" id="cb100-3" title="3">  <span class="kw">do</span> contents <span class="ot">&lt;-</span> <span class="fu">readFile</span> fileName</a>
+<a class="sourceLine" id="cb100-4" title="4">     <span class="fu">return</span> (<span class="fu">length</span> contents)</a></code></pre></div>
 <p>Cruciaal in wat we hier zien is het <strong><code>do</code></strong> keyword aan het begin van de functie definitie.</p>
 <p>Het introduceert een serie van <code>IO</code> acties. Één per regel.</p>
 </div>
 <div id="opvangen-van-het-resultaat-van-acties" class="slide section level1">
 <h1>Opvangen van het resultaat van acties</h1>
 <p>Om het resultaat van een <code>IO</code> actie op te vangen, gebruiken we <code>&lt;-</code> in plaats van <code>=</code>.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">contents <span class="ot">&lt;-</span> readFile fileName</code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb101-1" title="1">contents <span class="ot">&lt;-</span> <span class="fu">readFile</span> fileName</a></code></pre></div>
 <p>Het resultaat (<code>contents</code>) is puur - Het heeft <em>geen</em> <code>IO</code> type.</p>
 <p>Hiermee voeden we pure code met data uit acties (niet-pure code).</p>
 </div>
 <div id="de-return-actie" class="slide section level1">
-<h1>De &quot;return&quot; actie</h1>
+<h1>De “return” actie</h1>
 <p>Dit is <em>niet</em> het <code>return</code> type zoals je gewend bent!</p>
 <p>Het neemt een <em>pure</em> waarde (zonder <code>IO</code> in zijn type), en <em>wikkelt</em> het in het <code>IO</code> type.</p>
 <p>Pure code kan niet-pure code nooit aanroepen. Het kan wel data opleveren aan de niet-pure wereld door gebruik te maken van <code>return</code>.</p>
@@ -1007,19 +1007,19 @@ charCount fileName <span class="fu">=</span>
 <h1>Haskell programs en IO</h1>
 <p>Elk Haskell programma heeft als entry point een functie met als naam <code>main</code>.</p>
 <p>Het type van <code>main</code> is altijd:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">main ::</span> <span class="dt">IO</span> ()</code></pre></div>
-<p><code>()</code> heet &quot;unit&quot;, en betekent zo ongeveer hetzelfde als <code>void</code> in C or Java.</p>
-<p>Dit betekent dat <em>alle</em> haskell programma's niet-puur zijn!</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb102-1" title="1"><span class="ot">main ::</span> <span class="dt">IO</span> ()</a></code></pre></div>
+<p><code>()</code> heet “unit”, en betekent zo ongeveer hetzelfde als <code>void</code> in C or Java.</p>
+<p>Dit betekent dat <em>alle</em> haskell programma’s niet-puur zijn!</p>
 </div>
 <div id="binary-naar-tekst" class="slide section level1">
 <h1>Binary naar tekst</h1>
 <p>Herinner je nog dat we probeerden vals te spelen?</p>
 <p>We hadden dit:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">simpleHttp ::</span> <span class="dt">MonadIO</span> m <span class="ot">=&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> m <span class="dt">ByteString</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb103-1" title="1"><span class="ot">simpleHttp ::</span> <span class="dt">MonadIO</span> m <span class="ot">=&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> m <span class="dt">ByteString</span></a></code></pre></div>
 <p>In plaats hiervan hebben we iets nodig met als resultaat <code>IO String</code>.</p>
 <p>Hoe moet dat er uit zien?</p>
 <p>we zoeken een functie met het volgende type:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">eenOfAndereConversieFunctie ::</span> <span class="dt">ByteString</span> <span class="ot">-&gt;</span> <span class="dt">String</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb104-1" title="1"><span class="ot">eenOfAndereConversieFunctie ::</span> <span class="dt">ByteString</span> <span class="ot">-&gt;</span> <span class="dt">String</span></a></code></pre></div>
 <p>we maken gebruik van <strong><em><a href="http://holumbus.fh-wedel.de/hayoo/hayoo.html">Hayoo!</a></em></strong></p>
 </div>
 <div id="utf-8-conversie" class="slide section level1">
@@ -1029,15 +1029,15 @@ charCount fileName <span class="fu">=</span>
 
 utf8-string</code></pre>
 <p>Dit package bevat een module met de naam <code>Data.ByteString.Lazy.UTF8</code>.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">import </span><span class="dt">Data.ByteString.Lazy.UTF8</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb106-1" title="1"><span class="kw">import</span> <span class="dt">Data.ByteString.Lazy.UTF8</span></a></code></pre></div>
 <p>Hierin is een functie gedefiniëerd met de naam <code>toString</code>:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">toString ::</span> <span class="dt">ByteString</span> <span class="ot">-&gt;</span> <span class="dt">String</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb107-1" title="1"><span class="ot">toString ::</span> <span class="dt">ByteString</span> <span class="ot">-&gt;</span> <span class="dt">String</span></a></code></pre></div>
 </div>
 <div id="utf-8-conversie-oefening" class="slide section level1">
 <h1>UTF-8 conversie oefening</h1>
 <p>Gebruik <code>toString</code> om een actie te schrijven die een URL downloadt en het resultaat converteert naar een <code>String</code>.</p>
 <p>Schrijf eerst het type op van de actie.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode haskell"><code class="sourceCode haskell"></code></pre></div>
 <ul>
 <li><p>Haskell definities hebben gewoonlijk geen type signature nodig.</p></li>
 <li><p>Ondanks dit is het een goede gewoonte om ze als <em>documentatie</em> op te schrijven bij top-level definities.</p></li>
@@ -1047,48 +1047,48 @@ utf8-string</code></pre>
 <h1>UTF-8 conversie oefening</h1>
 <p>Gebruik <code>toString</code> om een actie te schrijven die een URL downloadt en het resultaat converteert naar een <code>String</code>.</p>
 <p>Schrijf eerst het type op van de actie.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">download ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> <span class="dt">String</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb109-1" title="1"><span class="ot">download ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> <span class="dt">String</span></a></code></pre></div>
 <ul>
 <li><p>Haskell definities hebben gewoonlijk geen type signature nodig.</p></li>
 <li><p>Ondanks dit is het een goede gewoonte om ze als <em>documentatie</em> op te schrijven bij top-level definities.</p></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode haskell"><code class="sourceCode haskell"></code></pre></div>
 </div>
 <div id="utf-8-conversie-oefening-2" class="slide section level1">
 <h1>UTF-8 conversie oefening</h1>
 <p>Gebruik <code>toString</code> om een actie te schrijven die een URL downloadt en het resultaat converteert naar een <code>String</code>.</p>
 <p>Schrijf eerst het type op van de actie.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">download ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> <span class="dt">String</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb111-1" title="1"><span class="ot">download ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> <span class="dt">String</span></a></code></pre></div>
 <ul>
 <li><p>Haskell definities hebben gewoonlijk geen type signature nodig.</p></li>
 <li><p>Ondanks dit is het een goede gewoonte om ze als <em>documentatie</em> op te schrijven bij top-level definities.</p></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">download ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> <span class="dt">String</span>
-download url <span class="fu">=</span> <span class="kw">do</span> res <span class="ot">&lt;-</span> simpleHttp url
-                  return (toString res)</code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb112-1" title="1"><span class="ot">download ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> <span class="dt">String</span></a>
+<a class="sourceLine" id="cb112-2" title="2">download url <span class="ot">=</span> <span class="kw">do</span> res <span class="ot">&lt;-</span> simpleHttp url</a>
+<a class="sourceLine" id="cb112-3" title="3">                  <span class="fu">return</span> (toString res)</a></code></pre></div>
 </div>
 <div id="downloaden-en-opslaan-van-een-web-pagina" class="slide section level1">
 <h1>Downloaden en opslaan van een web pagina</h1>
 <p>Gebruik je <code>download</code> functie om een lokale kopie op te slaan van een webpagina.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">saveAs ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb113-1" title="1"><span class="ot">saveAs ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</a></code></pre></div>
 <p>Laten we voor het gemak de lokale files opslaan met namen die nummers bevatten:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">makeFileName ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> FilePath
-makeFileName k <span class="fu">=</span> <span class="st">&quot;download-&quot;</span> <span class="fu">++</span> show k <span class="fu">++</span> <span class="st">&quot;.html&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb114-1" title="1"><span class="ot">makeFileName ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">FilePath</span></a>
+<a class="sourceLine" id="cb114-2" title="2">makeFileName k <span class="ot">=</span> <span class="st">&quot;download-&quot;</span> <span class="op">++</span> <span class="fu">show</span> k <span class="op">++</span> <span class="st">&quot;.html&quot;</span></a></code></pre></div>
 <p>Om een lokale kopie van een bestand op te slaan, heb je de actie <code>writeFile</code> nodig.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode haskell"><code class="sourceCode haskell"></code></pre></div>
 </div>
 <div id="downloaden-en-opslaan-van-een-web-pagina-1" class="slide section level1">
 <h1>Downloaden en opslaan van een web pagina</h1>
 <p>Gebruik je <code>download</code> functie om een lokale kopie op te slaan van een webpagina.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">saveAs ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb116-1" title="1"><span class="ot">saveAs ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</a></code></pre></div>
 <p>Laten we voor het gemak de lokale files opslaan met namen die nummers bevatten:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">makeFileName ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> FilePath
-makeFileName k <span class="fu">=</span> <span class="st">&quot;download-&quot;</span> <span class="fu">++</span> show k <span class="fu">++</span> <span class="st">&quot;.html&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb117-1" title="1"><span class="ot">makeFileName ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">FilePath</span></a>
+<a class="sourceLine" id="cb117-2" title="2">makeFileName k <span class="ot">=</span> <span class="st">&quot;download-&quot;</span> <span class="op">++</span> <span class="fu">show</span> k <span class="op">++</span> <span class="st">&quot;.html&quot;</span></a></code></pre></div>
 <p>Om een lokale kopie van een bestand op te slaan, heb je de actie <code>writeFile</code> nodig.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">saveAs ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()
-saveAs url k <span class="fu">=</span>
-  <span class="kw">do</span> content <span class="ot">&lt;-</span> download url
-     writeFile (makeFileName k) content</code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb118-1" title="1"><span class="ot">saveAs ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</a>
+<a class="sourceLine" id="cb118-2" title="2">saveAs url k <span class="ot">=</span></a>
+<a class="sourceLine" id="cb118-3" title="3">  <span class="kw">do</span> content <span class="ot">&lt;-</span> download url</a>
+<a class="sourceLine" id="cb118-4" title="4">     <span class="fu">writeFile</span> (makeFileName k) content</a></code></pre></div>
 </div>
 <div id="spitten-in-html" class="slide section level1">
 <h1>Spitten in HTML</h1>
@@ -1105,29 +1105,29 @@ saveAs url k <span class="fu">=</span>
 <div id="omgaan-met-problemen" class="slide section level1">
 <h1>Omgaan met problemen</h1>
 <p>Probeer dit:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">head [<span class="dv">1</span>]</code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb120-1" title="1"><span class="fu">head</span> [<span class="dv">1</span>]</a></code></pre></div>
 <p>Probeer nu dit:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">head []</code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb121-1" title="1"><span class="fu">head</span> []</a></code></pre></div>
 </div>
 <div id="oei" class="slide section level1">
 <h1>Oei</h1>
 <p>Als we een lege lijst aanleveren, levert de <code>head</code> functie een foutmelding.</p>
 <p>Stel dat we een versie van <code>head</code> nodig hebben die <em>geen</em> foutmelding geeft.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">safeHead ::</span> [a] <span class="ot">-&gt;</span> <span class="fu">????</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb122-1" title="1"><span class="ot">safeHead ::</span> [a] <span class="ot">-&gt;</span> <span class="op">????</span></a></code></pre></div>
 <p>Wat zou de <code>????</code> moeten zijn?</p>
 <p>Laten we wat proberen.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">safeHead (x<span class="fu">:</span>xs) <span class="fu">=</span> <span class="dt">Some</span> x
-safeHead []     <span class="fu">=</span> <span class="dt">None</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb123-1" title="1">safeHead (x<span class="op">:</span>xs) <span class="ot">=</span> <span class="dt">Some</span> x</a>
+<a class="sourceLine" id="cb123-2" title="2">safeHead []     <span class="ot">=</span> <span class="dt">None</span></a></code></pre></div>
 </div>
 <div id="some-none" class="slide section level1">
 <h1>Some? None?</h1>
 <ul>
-<li><p>We gebruiken een constructor met de naam <code>Some</code> om het idee te vangen: &quot;We hebben een resultaat&quot;.</p></li>
-<li><p>De constructor <code>None</code> geeft aan: &quot;We hebben hier geen resultaat&quot;.</p></li>
+<li><p>We gebruiken een constructor met de naam <code>Some</code> om het idee te vangen: “We hebben een resultaat”.</p></li>
+<li><p>De constructor <code>None</code> geeft aan: “We hebben hier geen resultaat”.</p></li>
 </ul>
 <p>Om deze constructors in het leven te roepen, definiëren we een nieuw type.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Perhaps</span> a <span class="fu">=</span> <span class="dt">Some</span> a
-               <span class="fu">|</span> <span class="dt">None</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb124-1" title="1"><span class="kw">data</span> <span class="dt">Perhaps</span> a <span class="ot">=</span> <span class="dt">Some</span> a</a>
+<a class="sourceLine" id="cb124-2" title="2">               <span class="op">|</span> <span class="dt">None</span></a></code></pre></div>
 <p>Het <code>|</code> teken scheidt de constructors. We lezen het als volgt:</p>
 <ul>
 <li><p>Het <code>Perhaps</code> type kent twee constructors:</p></li>
@@ -1138,8 +1138,8 @@ safeHead []     <span class="fu">=</span> <span class="dt">None</span></code></p
 <div id="maybe" class="slide section level1">
 <h1>Maybe</h1>
 <p>Eigenlijk heeft Haskell al een <code>Perhaps</code> type.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Maybe</span> a <span class="fu">=</span> <span class="dt">Just</span> a
-             <span class="fu">|</span> <span class="dt">Nothing</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb125-1" title="1"><span class="kw">data</span> <span class="dt">Maybe</span> a <span class="ot">=</span> <span class="dt">Just</span> a</a>
+<a class="sourceLine" id="cb125-2" title="2">             <span class="op">|</span> <span class="dt">Nothing</span></a></code></pre></div>
 <p>De <code>a</code> is een <em>type parameter</em>, met als betekenis dat als we dit type opschrijven, dat we dan een ander moeten toevoegen als parameter:</p>
 <ul>
 <li><p><code>Maybe Int</code></p></li>
@@ -1149,29 +1149,29 @@ safeHead []     <span class="fu">=</span> <span class="dt">None</span></code></p
 <div id="gebruik-maken-van-constructors" class="slide section level1">
 <h1>Gebruik maken van constructors</h1>
 <p>Als we een <code>Maybe Int</code> willen samenstellen door gebruik te maken van de <code>Just</code> constructor, dan moeten we een <code>Int</code> meegeven.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dt">Just</span> <span class="dv">1</span><span class="ot">  ::</span> <span class="dt">Maybe</span> <span class="dt">Int</span>
-<span class="dt">Nothing</span><span class="ot"> ::</span> <span class="dt">Maybe</span> <span class="dt">Int</span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb126-1" title="1"><span class="dt">Just</span> <span class="dv">1</span><span class="ot">  ::</span> <span class="dt">Maybe</span> <span class="dt">Int</span></a>
+<a class="sourceLine" id="cb126-2" title="2"><span class="dt">Nothing</span><span class="ot"> ::</span> <span class="dt">Maybe</span> <span class="dt">Int</span></a></code></pre></div>
 <p>Dit gaat niet werken, want de types komen niet overeen:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dt">Just</span> [<span class="dv">1</span>]<span class="ot"> ::</span> <span class="dt">Maybe</span> <span class="dt">String</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb127-1" title="1"><span class="dt">Just</span> [<span class="dv">1</span>]<span class="ot"> ::</span> <span class="dt">Maybe</span> <span class="dt">String</span></a></code></pre></div>
 </div>
 <div id="pattern-matching-met-constructors" class="slide section level1">
 <h1>Pattern matching met constructors</h1>
 <p>We kunnen pattern matchen met constructors van <code>Maybe</code> op dezelfde manier als dat we dat hebben gedaan voor lijsten.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">case</span> foo <span class="kw">of</span>
-  <span class="dt">Just</span> x  <span class="ot">-&gt;</span> x
-  <span class="dt">Nothing</span> <span class="ot">-&gt;</span> bar</code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb128-1" title="1"><span class="kw">case</span> foo <span class="kw">of</span></a>
+<a class="sourceLine" id="cb128-2" title="2">  <span class="dt">Just</span> x  <span class="ot">-&gt;</span> x</a>
+<a class="sourceLine" id="cb128-3" title="3">  <span class="dt">Nothing</span> <span class="ot">-&gt;</span> bar</a></code></pre></div>
 </div>
 <div id="tags" class="slide section level1">
 <h1>Tags</h1>
 <p>Het <a href="http://hackage.haskell.org/package/tagsoup">tagsoup</a> package definieert het volgende type:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Tag</span> str <span class="fu">=</span>
-     <span class="dt">TagOpen</span> str [<span class="dt">Attribute</span> str]  <span class="co">-- ^ An open tag with &#39;Attribute&#39;s in their original order</span>
-   <span class="fu">|</span> <span class="dt">TagClose</span> str                 <span class="co">-- ^ A closing tag</span>
-   <span class="fu">|</span> <span class="dt">TagText</span> str                  <span class="co">-- ^ A text node, guaranteed not to be the empty string</span>
-   <span class="fu">|</span> <span class="dt">TagComment</span> str               <span class="co">-- ^ A comment</span>
-   <span class="fu">|</span> <span class="dt">TagWarning</span> str               <span class="co">-- ^ Meta: A syntax error in the input file</span>
-   <span class="fu">|</span> <span class="dt">TagPosition</span> <span class="fu">!</span><span class="dt">Row</span> <span class="fu">!</span><span class="dt">Column</span>     <span class="co">-- ^ Meta: The position of a parsed element</span>
-     <span class="kw">deriving</span> (<span class="dt">Show</span>, <span class="dt">Eq</span>, <span class="dt">Ord</span>, <span class="dt">Data</span>, <span class="dt">Typeable</span>)</code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb129-1" title="1"><span class="kw">data</span> <span class="dt">Tag</span> str <span class="ot">=</span></a>
+<a class="sourceLine" id="cb129-2" title="2">     <span class="dt">TagOpen</span> str [<span class="dt">Attribute</span> str]  <span class="co">-- ^ An open tag with &#39;Attribute&#39;s in their original order</span></a>
+<a class="sourceLine" id="cb129-3" title="3">   <span class="op">|</span> <span class="dt">TagClose</span> str                 <span class="co">-- ^ A closing tag</span></a>
+<a class="sourceLine" id="cb129-4" title="4">   <span class="op">|</span> <span class="dt">TagText</span> str                  <span class="co">-- ^ A text node, guaranteed not to be the empty string</span></a>
+<a class="sourceLine" id="cb129-5" title="5">   <span class="op">|</span> <span class="dt">TagComment</span> str               <span class="co">-- ^ A comment</span></a>
+<a class="sourceLine" id="cb129-6" title="6">   <span class="op">|</span> <span class="dt">TagWarning</span> str               <span class="co">-- ^ Meta: A syntax error in the input file</span></a>
+<a class="sourceLine" id="cb129-7" title="7">   <span class="op">|</span> <span class="dt">TagPosition</span> <span class="op">!</span><span class="dt">Row</span> <span class="op">!</span><span class="dt">Column</span>     <span class="co">-- ^ Meta: The position of a parsed element</span></a>
+<a class="sourceLine" id="cb129-8" title="8">     <span class="kw">deriving</span> (<span class="dt">Show</span>, <span class="dt">Eq</span>, <span class="dt">Ord</span>, <span class="dt">Data</span>, <span class="dt">Typeable</span>)</a></code></pre></div>
 <p>Wat denk je dat deze constructors kunnen betekenen?</p>
 </div>
 <div id="pattern-matching-over-een-tag" class="slide section level1">
@@ -1180,7 +1180,7 @@ safeHead []     <span class="fu">=</span> <span class="dt">None</span></code></p
 <ul>
 <li>Wat zou het type van deze functie zijn?</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode haskell"><code class="sourceCode haskell"></code></pre></div>
 <ul>
 <li>Hoe zou de body van de functie er uit zien?</li>
 </ul>
@@ -1191,22 +1191,22 @@ safeHead []     <span class="fu">=</span> <span class="dt">None</span></code></p
 <ul>
 <li>Wat zou het type van deze functie zijn?</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">isTagOpen ::</span> <span class="dt">Tag</span> str <span class="ot">-&gt;</span> <span class="dt">Bool</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb131-1" title="1"><span class="ot">isTagOpen ::</span> <span class="dt">Tag</span> str <span class="ot">-&gt;</span> <span class="dt">Bool</span></a></code></pre></div>
 <ul>
 <li>Hoe zou de body van de functie er uit zien?</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode haskell"><code class="sourceCode haskell"></code></pre></div>
 </div>
 <div id="om-het-even" class="slide section level1">
 <h1>Om het even!</h1>
 <p>Onze eerste body zag er als volgt uit:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">isTagOpen ::</span> <span class="dt">Tag</span> str <span class="ot">-&gt;</span> <span class="dt">Bool</span>
-isTagOpen (<span class="dt">TagOpen</span> x y)     <span class="fu">=</span> <span class="dt">True</span>
-isTagOpen (<span class="dt">TagClose</span> x)      <span class="fu">=</span> <span class="dt">False</span>
-isTagOpen (<span class="dt">TagText</span> x)       <span class="fu">=</span> <span class="dt">False</span>
-isTagOpen (<span class="dt">TagComment</span> x)    <span class="fu">=</span> <span class="dt">False</span>
-isTagOpen (<span class="dt">TagWarning</span> x)    <span class="fu">=</span> <span class="dt">False</span>
-isTagOpen (<span class="dt">TagPosition</span> x y) <span class="fu">=</span> <span class="dt">False</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb133-1" title="1"><span class="ot">isTagOpen ::</span> <span class="dt">Tag</span> str <span class="ot">-&gt;</span> <span class="dt">Bool</span></a>
+<a class="sourceLine" id="cb133-2" title="2">isTagOpen (<span class="dt">TagOpen</span> x y)     <span class="ot">=</span> <span class="dt">True</span></a>
+<a class="sourceLine" id="cb133-3" title="3">isTagOpen (<span class="dt">TagClose</span> x)      <span class="ot">=</span> <span class="dt">False</span></a>
+<a class="sourceLine" id="cb133-4" title="4">isTagOpen (<span class="dt">TagText</span> x)       <span class="ot">=</span> <span class="dt">False</span></a>
+<a class="sourceLine" id="cb133-5" title="5">isTagOpen (<span class="dt">TagComment</span> x)    <span class="ot">=</span> <span class="dt">False</span></a>
+<a class="sourceLine" id="cb133-6" title="6">isTagOpen (<span class="dt">TagWarning</span> x)    <span class="ot">=</span> <span class="dt">False</span></a>
+<a class="sourceLine" id="cb133-7" title="7">isTagOpen (<span class="dt">TagPosition</span> x y) <span class="ot">=</span> <span class="dt">False</span></a></code></pre></div>
 <p>Begrijpbaar, maar lelijk.</p>
 <ul>
 <li><p>We zijn maar in precies één constructor geïnteresseerd.</p></li>
@@ -1215,10 +1215,10 @@ isTagOpen (<span class="dt">TagPosition</span> x y) <span class="fu">=</span> <s
 </div>
 <div id="het-wild-card-patroon" class="slide section level1">
 <h1>Het wild card patroon</h1>
-<p>We kunnen met het <strong>&quot;<code>_</code>&quot;</strong> teken opschrijven dat het ons niet uitmaakt wat een patroon of variabele precies is.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">isTagOpen ::</span> <span class="dt">Tag</span> str <span class="ot">-&gt;</span> <span class="dt">Bool</span>
-isTagOpen (<span class="dt">TagOpen</span> _ _)  <span class="fu">=</span> <span class="dt">True</span>
-isTagOpen _              <span class="fu">=</span> <span class="dt">False</span></code></pre></div>
+<p>We kunnen met het <strong>“<code>_</code>”</strong> teken opschrijven dat het ons niet uitmaakt wat een patroon of variabele precies is.</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb134-1" title="1"><span class="ot">isTagOpen ::</span> <span class="dt">Tag</span> str <span class="ot">-&gt;</span> <span class="dt">Bool</span></a>
+<a class="sourceLine" id="cb134-2" title="2">isTagOpen (<span class="dt">TagOpen</span> _ _)  <span class="ot">=</span> <span class="dt">True</span></a>
+<a class="sourceLine" id="cb134-3" title="3">isTagOpen _              <span class="ot">=</span> <span class="dt">False</span></a></code></pre></div>
 <p>Het wild card patroon matcht altijd.</p>
 <ul>
 <li><p>Aangezien we toch geen gebruik maken van <code>x</code> of <code>y</code>, kunnen we dat expliciet aangeven door gebruik te maken van <code>_</code>.</p></li>
@@ -1228,9 +1228,9 @@ isTagOpen _              <span class="fu">=</span> <span class="dt">False</span>
 <div id="even-een-vraag-tussendoor" class="slide section level1">
 <h1>Even een vraag tussendoor</h1>
 <p>Waarom schrijven we de functie niet op deze manier?</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">isTagOpen ::</span> <span class="dt">Tag</span> str <span class="ot">-&gt;</span> <span class="dt">Bool</span>
-isTagOpen _              <span class="fu">=</span> <span class="dt">False</span>
-isTagOpen (<span class="dt">TagOpen</span> _ _)  <span class="fu">=</span> <span class="dt">True</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb135-1" title="1"><span class="ot">isTagOpen ::</span> <span class="dt">Tag</span> str <span class="ot">-&gt;</span> <span class="dt">Bool</span></a>
+<a class="sourceLine" id="cb135-2" title="2">isTagOpen _              <span class="ot">=</span> <span class="dt">False</span></a>
+<a class="sourceLine" id="cb135-3" title="3">isTagOpen (<span class="dt">TagOpen</span> _ _)  <span class="ot">=</span> <span class="dt">True</span></a></code></pre></div>
 </div>
 <div id="extractie-van-de-links-van-een-webpagina" class="slide section level1">
 <h1>Extractie van de links van een webpagina</h1>
@@ -1242,9 +1242,9 @@ isTagOpen (<span class="dt">TagOpen</span> _ _)  <span class="fu">=</span> <span
 </div>
 <div id="die-kunnen-we-mooi-gebruiken" class="slide section level1">
 <h1>Die kunnen we mooi gebruiken!</h1>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">processPage url <span class="fu">=</span> <span class="kw">do</span>
-  page <span class="ot">&lt;-</span> download url
-  return (parseTags page)</code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb136-1" title="1">processPage url <span class="ot">=</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb136-2" title="2">  page <span class="ot">&lt;-</span> download url</a>
+<a class="sourceLine" id="cb136-3" title="3">  <span class="fu">return</span> (parseTags page)</a></code></pre></div>
 </div>
 <div id="tags-opschonen" class="slide section level1">
 <h1>Tags opschonen</h1>
@@ -1258,11 +1258,11 @@ isTagOpen (<span class="dt">TagOpen</span> _ _)  <span class="fu">=</span> <span
 <div id="tags-in-normaalvorm" class="slide section level1">
 <h1>Tags in normaalvorm</h1>
 <p>Laten we onze functie gebruiken om het resultaat van <code>parseTags</code> op te schonen.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">processPage url <span class="fu">=</span> <span class="kw">do</span>
-  page <span class="ot">&lt;-</span> download url
-  return
-    (canonicalizeTags
-      (parseTags page))</code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb139-1" title="1">processPage url <span class="ot">=</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb139-2" title="2">  page <span class="ot">&lt;-</span> download url</a>
+<a class="sourceLine" id="cb139-3" title="3">  <span class="fu">return</span></a>
+<a class="sourceLine" id="cb139-4" title="4">    (canonicalizeTags</a>
+<a class="sourceLine" id="cb139-5" title="5">      (parseTags page))</a></code></pre></div>
 </div>
 <div id="extractie-van-links" class="slide section level1">
 <h1>Extractie van links</h1>
@@ -1275,12 +1275,12 @@ isTagOpen (<span class="dt">TagOpen</span> _ _)  <span class="fu">=</span> <span
 <div id="poeh-hee" class="slide section level1">
 <h1>Poeh hee!</h1>
 <p>Deze cascade begint belachelijke vormen te krijgen.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">processPage url <span class="fu">=</span> <span class="kw">do</span>
-  page <span class="ot">&lt;-</span> download url
-  return
-    (filter (isTagOpenName <span class="st">&quot;a&quot;</span>)
-      (canonicalizeTags
-        (parseTags page)))</code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb140-1" title="1">processPage url <span class="ot">=</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb140-2" title="2">  page <span class="ot">&lt;-</span> download url</a>
+<a class="sourceLine" id="cb140-3" title="3">  <span class="fu">return</span></a>
+<a class="sourceLine" id="cb140-4" title="4">    (<span class="fu">filter</span> (isTagOpenName <span class="st">&quot;a&quot;</span>)</a>
+<a class="sourceLine" id="cb140-5" title="5">      (canonicalizeTags</a>
+<a class="sourceLine" id="cb140-6" title="6">        (parseTags page)))</a></code></pre></div>
 <p>Twee observaties:</p>
 <ul>
 <li><p>Onze actie is nu voor het merendeel pure code.</p></li>
@@ -1291,145 +1291,145 @@ isTagOpen (<span class="dt">TagOpen</span> _ _)  <span class="fu">=</span> <span
 <h1>Een herschrijf oefening</h1>
 <p>Verdeel de functie in pure en niet-pure delen.</p>
 <p>Schrijf het pure gedeelte met gebruikmaking van functie compositie.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">processPage url <span class="fu">=</span> <span class="kw">do</span>
-  page <span class="ot">&lt;-</span> download url
-  return
-    (filter (isTagOpenName <span class="st">&quot;a&quot;</span>)
-      (canonicalizeTags
-        (parseTags page)))</code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb141-1" title="1">processPage url <span class="ot">=</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb141-2" title="2">  page <span class="ot">&lt;-</span> download url</a>
+<a class="sourceLine" id="cb141-3" title="3">  <span class="fu">return</span></a>
+<a class="sourceLine" id="cb141-4" title="4">    (<span class="fu">filter</span> (isTagOpenName <span class="st">&quot;a&quot;</span>)</a>
+<a class="sourceLine" id="cb141-5" title="5">      (canonicalizeTags</a>
+<a class="sourceLine" id="cb141-6" title="6">        (parseTags page)))</a></code></pre></div>
 </div>
 <div id="mijn-oplossing" class="slide section level1">
 <h1>Mijn oplossing</h1>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">processPage url <span class="fu">=</span> <span class="kw">do</span>
-  page <span class="ot">&lt;-</span> download url
-  return (process page)
-
-process <span class="fu">=</span>
-    filter (isTagOpenName <span class="st">&quot;a&quot;</span>) <span class="fu">.</span>
-    canonicalizeTags <span class="fu">.</span>
-    parseTags</code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb142-1" title="1">processPage url <span class="ot">=</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb142-2" title="2">  page <span class="ot">&lt;-</span> download url</a>
+<a class="sourceLine" id="cb142-3" title="3">  <span class="fu">return</span> (process page)</a>
+<a class="sourceLine" id="cb142-4" title="4"></a>
+<a class="sourceLine" id="cb142-5" title="5">process <span class="ot">=</span></a>
+<a class="sourceLine" id="cb142-6" title="6">    <span class="fu">filter</span> (isTagOpenName <span class="st">&quot;a&quot;</span>) <span class="op">.</span></a>
+<a class="sourceLine" id="cb142-7" title="7">    canonicalizeTags <span class="op">.</span></a>
+<a class="sourceLine" id="cb142-8" title="8">    parseTags</a></code></pre></div>
 </div>
 <div id="we-willen-nog-meer-kwijt" class="slide section level1">
 <h1>We willen nog meer kwijt</h1>
 <p>Laten we de <code>nofollow</code> links ook weglaten.</p>
-<p>We willen het <code>&quot;rel&quot;</code> attribuut van een tag.</p>
+<p>We willen het <code>"rel"</code> attribuut van een tag.</p>
 <ul>
 <li>Zoek een functie die een attribuut van een tag teruggeeft.</li>
 </ul>
 </div>
 <div id="geen-following" class="slide section level1">
 <h1>Geen following</h1>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">nofollow tag <span class="fu">=</span> fromAttrib <span class="st">&quot;rel&quot;</span> tag <span class="fu">==</span> <span class="st">&quot;nofollow&quot;</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">process <span class="fu">=</span>
-    filter (not <span class="fu">.</span> nofollow) <span class="fu">.</span>
-    filter (isTagOpenName <span class="st">&quot;a&quot;</span>) <span class="fu">.</span>
-    canonicalizeTags <span class="fu">.</span>
-    parseTags</code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb143-1" title="1">nofollow tag <span class="ot">=</span> fromAttrib <span class="st">&quot;rel&quot;</span> tag <span class="op">==</span> <span class="st">&quot;nofollow&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb144-1" title="1">process <span class="ot">=</span></a>
+<a class="sourceLine" id="cb144-2" title="2">    <span class="fu">filter</span> (<span class="fu">not</span> <span class="op">.</span> nofollow) <span class="op">.</span></a>
+<a class="sourceLine" id="cb144-3" title="3">    <span class="fu">filter</span> (isTagOpenName <span class="st">&quot;a&quot;</span>) <span class="op">.</span></a>
+<a class="sourceLine" id="cb144-4" title="4">    canonicalizeTags <span class="op">.</span></a>
+<a class="sourceLine" id="cb144-5" title="5">    parseTags</a></code></pre></div>
 </div>
 <div id="we-hebben-een-lijst-met-a-tags" class="slide section level1">
 <h1>We hebben een lijst met &lt;a&gt; tags</h1>
-<p>Hoe zouden we het <code>&quot;href&quot;</code> attribuute ophalen van elk element uit de lijst?</p>
+<p>Hoe zouden we het <code>"href"</code> attribuute ophalen van elk element uit de lijst?</p>
 </div>
 <div id="allen-niet-lege-a-href-tags" class="slide section level1">
 <h1>Allen niet-lege &lt;a href&gt; tags</h1>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">process <span class="fu">=</span>
-    filter (not <span class="fu">.</span> null) <span class="fu">.</span>
-    map (fromAttrib <span class="st">&quot;href&quot;</span>) <span class="fu">.</span>
-    filter (not <span class="fu">.</span> nofollow) <span class="fu">.</span>
-    filter (isTagOpenName <span class="st">&quot;a&quot;</span>) <span class="fu">.</span>
-    canonicalizeTags <span class="fu">.</span>
-    parseTags</code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb145-1" title="1">process <span class="ot">=</span></a>
+<a class="sourceLine" id="cb145-2" title="2">    <span class="fu">filter</span> (<span class="fu">not</span> <span class="op">.</span> <span class="fu">null</span>) <span class="op">.</span></a>
+<a class="sourceLine" id="cb145-3" title="3">    <span class="fu">map</span> (fromAttrib <span class="st">&quot;href&quot;</span>) <span class="op">.</span></a>
+<a class="sourceLine" id="cb145-4" title="4">    <span class="fu">filter</span> (<span class="fu">not</span> <span class="op">.</span> nofollow) <span class="op">.</span></a>
+<a class="sourceLine" id="cb145-5" title="5">    <span class="fu">filter</span> (isTagOpenName <span class="st">&quot;a&quot;</span>) <span class="op">.</span></a>
+<a class="sourceLine" id="cb145-6" title="6">    canonicalizeTags <span class="op">.</span></a>
+<a class="sourceLine" id="cb145-7" title="7">    parseTags</a></code></pre></div>
 </div>
 <div id="urls-in-normaalvorm" class="slide section level1">
 <h1>URLs in normaalvorm</h1>
 <p>Links kunnen absoluut, relatief of onzinnige rommel zijn. We willen alleen maar absolute links die er geldig uitzien.</p>
 <p>Om netjes een absolute link te maken moeten we de absolute URL kennen van de pagina waar we naar kijken.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">canonicalizeLink ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">String</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb146-1" title="1"><span class="ot">canonicalizeLink ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">String</span></a></code></pre></div>
 </div>
 <div id="werken-met-uris" class="slide section level1">
 <h1>Werken met URIs</h1>
 <p>Het package <code>Network.URI</code> bevat een paar functies die hier goed van pas komen.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">parseURI ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">URI</span>
-<span class="ot">parseURIReference ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">URI</span>
-uriToString id <span class="st">&quot;&quot;</span><span class="ot"> ::</span> <span class="dt">URI</span> <span class="ot">-&gt;</span> <span class="dt">String</span>
-<span class="ot">nonStrictRelativeTo ::</span> <span class="dt">URI</span> <span class="ot">-&gt;</span> <span class="dt">URI</span> <span class="ot">-&gt;</span> <span class="dt">URI</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb147-1" title="1"><span class="ot">parseURI ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">URI</span></a>
+<a class="sourceLine" id="cb147-2" title="2"><span class="ot">parseURIReference ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">URI</span></a>
+<a class="sourceLine" id="cb147-3" title="3">uriToString <span class="fu">id</span> <span class="st">&quot;&quot;</span><span class="ot"> ::</span> <span class="dt">URI</span> <span class="ot">-&gt;</span> <span class="dt">String</span></a>
+<a class="sourceLine" id="cb147-4" title="4"><span class="ot">nonStrictRelativeTo ::</span> <span class="dt">URI</span> <span class="ot">-&gt;</span> <span class="dt">URI</span> <span class="ot">-&gt;</span> <span class="dt">URI</span></a></code></pre></div>
 </div>
 <div id="een-draak-van-een-inspringer" class="slide section level1">
 <h1>Een draak van een inspringer</h1>
 <p>Dit is niet meer om te lezen!</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">import </span><span class="dt">Network.URI</span>
-
-<span class="ot">canonicalizeLink ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">String</span>
-canonicalizeLink referer path <span class="fu">=</span>
-  <span class="kw">case</span> parseURI referer <span class="kw">of</span>
-    <span class="dt">Nothing</span> <span class="ot">-&gt;</span> <span class="dt">Nothing</span>
-    <span class="dt">Just</span> r  <span class="ot">-&gt;</span>
-      <span class="kw">case</span> parseURIReference path <span class="kw">of</span>
-        <span class="dt">Nothing</span> <span class="ot">-&gt;</span> <span class="dt">Nothing</span>
-        <span class="dt">Just</span> p  <span class="ot">-&gt;</span> <span class="dt">Just</span> (uriToString id (nonStrictRelativeTo p r) <span class="st">&quot;&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb148-1" title="1"><span class="kw">import</span> <span class="dt">Network.URI</span></a>
+<a class="sourceLine" id="cb148-2" title="2"></a>
+<a class="sourceLine" id="cb148-3" title="3"><span class="ot">canonicalizeLink ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">String</span></a>
+<a class="sourceLine" id="cb148-4" title="4">canonicalizeLink referer path <span class="ot">=</span></a>
+<a class="sourceLine" id="cb148-5" title="5">  <span class="kw">case</span> parseURI referer <span class="kw">of</span></a>
+<a class="sourceLine" id="cb148-6" title="6">    <span class="dt">Nothing</span> <span class="ot">-&gt;</span> <span class="dt">Nothing</span></a>
+<a class="sourceLine" id="cb148-7" title="7">    <span class="dt">Just</span> r  <span class="ot">-&gt;</span></a>
+<a class="sourceLine" id="cb148-8" title="8">      <span class="kw">case</span> parseURIReference path <span class="kw">of</span></a>
+<a class="sourceLine" id="cb148-9" title="9">        <span class="dt">Nothing</span> <span class="ot">-&gt;</span> <span class="dt">Nothing</span></a>
+<a class="sourceLine" id="cb148-10" title="10">        <span class="dt">Just</span> p  <span class="ot">-&gt;</span> <span class="dt">Just</span> (uriToString <span class="fu">id</span> (nonStrictRelativeTo p r) <span class="st">&quot;&quot;</span>)</a></code></pre></div>
 <p>Dat kan vast beter.</p>
 </div>
 <div id="traplopen" class="slide section level1">
 <h1>Traplopen</h1>
 <p>Is het je opgevallen dat die functie een serie is van met <code>case</code> inspecties van <code>Maybe</code> waarden?</p>
 <p>Stel je voor dat we een functie zouden hebben die een gewone waarde als input heeft, en die een <code>Maybe</code> waarde teruggeeft.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">a <span class="ot">-&gt;</span> <span class="dt">Maybe</span> b</code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb149-1" title="1">a <span class="ot">-&gt;</span> <span class="dt">Maybe</span> b</a></code></pre></div>
 <p>En stel je voor dat we een begrijpbare syntax hebben om een anonieme functie te schrijven.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">\a <span class="ot">-&gt;</span> <span class="st">&quot;hoi mam! &quot;</span> <span class="fu">++</span> a</code></pre></div>
-<p>De <code>\</code> noemen we &quot;lambda&quot;.</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb150-1" title="1">\a <span class="ot">-&gt;</span> <span class="st">&quot;hoi mam! &quot;</span> <span class="op">++</span> a</a></code></pre></div>
+<p>De <code>\</code> noemen we “lambda”.</p>
 </div>
 <div id="observatie" class="slide section level1">
 <h1>Observatie</h1>
 <p>De inspectie met <code>case</code> is nogal breedsprakig. Stel dat we een functie zouden hebben die de inspectie deed, en een andere functie zou aanroepen als de waarde een <code>Just</code> was.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">bind ::</span> <span class="dt">Maybe</span> a <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> <span class="dt">Maybe</span> b) <span class="ot">-&gt;</span> <span class="dt">Maybe</span> b
-bind  <span class="dt">Nothing</span>      _     <span class="fu">=</span> <span class="dt">Nothing</span>
-bind (<span class="dt">Just</span> value) action <span class="fu">=</span> action value</code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb151-1" title="1"><span class="ot">bind ::</span> <span class="dt">Maybe</span> a <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> <span class="dt">Maybe</span> b) <span class="ot">-&gt;</span> <span class="dt">Maybe</span> b</a>
+<a class="sourceLine" id="cb151-2" title="2">bind  <span class="dt">Nothing</span>      _     <span class="ot">=</span> <span class="dt">Nothing</span></a>
+<a class="sourceLine" id="cb151-3" title="3">bind (<span class="dt">Just</span> value) action <span class="ot">=</span> action value</a></code></pre></div>
 </div>
 <div id="het-gebruik-van-bind" class="slide section level1">
 <h1>Het gebruik van bind</h1>
 <p>Hoe kunnen we dit gebruiken?</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">canonicalizeLink1 referer path <span class="fu">=</span>
-  parseURI referer                <span class="ot">`bind`</span>
-   \r <span class="ot">-&gt;</span> parseURIReference path   <span class="ot">`bind`</span>
-    \p <span class="ot">-&gt;</span> <span class="dt">Just</span> (uriToString id (nonStrictRelativeTo p r) <span class="st">&quot;&quot;</span>)</code></pre></div>
-<p>Als we een functienaam omsluiten in &quot;`&quot;-tekens, dan kunnen we de functie als infix operator gebruiken.</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb152-1" title="1">canonicalizeLink1 referer path <span class="ot">=</span></a>
+<a class="sourceLine" id="cb152-2" title="2">  parseURI referer                <span class="ot">`bind`</span></a>
+<a class="sourceLine" id="cb152-3" title="3">   \r <span class="ot">-&gt;</span> parseURIReference path   <span class="ot">`bind`</span></a>
+<a class="sourceLine" id="cb152-4" title="4">    \p <span class="ot">-&gt;</span> <span class="dt">Just</span> (uriToString <span class="fu">id</span> (nonStrictRelativeTo p r) <span class="st">&quot;&quot;</span>)</a></code></pre></div>
+<p>Als we een functienaam omsluiten in “`”-tekens, dan kunnen we de functie als infix operator gebruiken.</p>
 </div>
 <div id="een-andere-layout-van-dezelfde-code" class="slide section level1">
 <h1>Een andere layout van dezelfde code</h1>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">canon referer path <span class="fu">=</span>
-  parseURI referer         <span class="ot">`bind`</span> \r <span class="ot">-&gt;</span>
-  parseURIReference path   <span class="ot">`bind`</span> \p <span class="ot">-&gt;</span>
-  <span class="dt">Just</span> (uriToString id (nonStrictRelativeTo p r) <span class="st">&quot;&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb153-1" title="1">canon referer path <span class="ot">=</span></a>
+<a class="sourceLine" id="cb153-2" title="2">  parseURI referer         <span class="ot">`bind`</span> \r <span class="ot">-&gt;</span></a>
+<a class="sourceLine" id="cb153-3" title="3">  parseURIReference path   <span class="ot">`bind`</span> \p <span class="ot">-&gt;</span></a>
+<a class="sourceLine" id="cb153-4" title="4">  <span class="dt">Just</span> (uriToString <span class="fu">id</span> (nonStrictRelativeTo p r) <span class="st">&quot;&quot;</span>)</a></code></pre></div>
 </div>
 <div id="een-ingebouwde-naam-voor-bind" class="slide section level1">
 <h1>Een ingebouwde naam voor bind</h1>
 <p>De <code>&gt;&gt;=</code> operator is een generieke versie van onze <code>bind</code> functie.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">canon referer path <span class="fu">=</span>
-  parseURI referer <span class="fu">&gt;&gt;=</span> \r <span class="ot">-&gt;</span>
-  parseURIReference path <span class="fu">&gt;&gt;=</span> \p <span class="ot">-&gt;</span>
-  <span class="dt">Just</span> (uriToString id (nonStrictRelativeTo p r) <span class="st">&quot;&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb154-1" title="1">canon referer path <span class="ot">=</span></a>
+<a class="sourceLine" id="cb154-2" title="2">  parseURI referer <span class="op">&gt;&gt;=</span> \r <span class="ot">-&gt;</span></a>
+<a class="sourceLine" id="cb154-3" title="3">  parseURIReference path <span class="op">&gt;&gt;=</span> \p <span class="ot">-&gt;</span></a>
+<a class="sourceLine" id="cb154-4" title="4">  <span class="dt">Just</span> (uriToString <span class="fu">id</span> (nonStrictRelativeTo p r) <span class="st">&quot;&quot;</span>)</a></code></pre></div>
 </div>
 <div id="gebruik-maken-van-vereenvoudigde-schrijfwijze" class="slide section level1">
 <h1>Gebruik maken van vereenvoudigde schrijfwijze</h1>
 <p>Hier is wat nettere syntax, die je vast bekend voorkomt.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">canonicalize ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">String</span>
-
-canonicalize referer path <span class="fu">=</span> <span class="kw">do</span>
-  r <span class="ot">&lt;-</span> parseURI referer
-  p <span class="ot">&lt;-</span> parseURIReference path
-  return (uriToString id (nonStrictRelativeTo p r) <span class="st">&quot;&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb155-1" title="1"><span class="ot">canonicalize ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">String</span></a>
+<a class="sourceLine" id="cb155-2" title="2"></a>
+<a class="sourceLine" id="cb155-3" title="3">canonicalize referer path <span class="ot">=</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb155-4" title="4">  r <span class="ot">&lt;-</span> parseURI referer</a>
+<a class="sourceLine" id="cb155-5" title="5">  p <span class="ot">&lt;-</span> parseURIReference path</a>
+<a class="sourceLine" id="cb155-6" title="6">  <span class="fu">return</span> (uriToString <span class="fu">id</span> (nonStrictRelativeTo p r) <span class="st">&quot;&quot;</span>)</a></code></pre></div>
 </div>
 <div id="bijna-klaar" class="slide section level1">
 <h1>Bijna klaar</h1>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">process url <span class="fu">=</span>
-   map (canonicalize url) <span class="fu">.</span>
-   filter (not <span class="fu">.</span> null) <span class="fu">.</span>
-   map (fromAttrib <span class="st">&quot;href&quot;</span>) <span class="fu">.</span>
-   filter (\t <span class="ot">-&gt;</span> fromAttrib <span class="st">&quot;rel&quot;</span> t <span class="fu">/=</span> <span class="st">&quot;nofollow&quot;</span>) <span class="fu">.</span>
-   filter (isTagOpenName <span class="st">&quot;a&quot;</span>) <span class="fu">.</span>
-   canonicalizeTags <span class="fu">.</span>
-   parseTags</code></pre></div>
-<p>Da's nou onhandig: wat is het type van deze functie?</p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb156-1" title="1">process url <span class="ot">=</span></a>
+<a class="sourceLine" id="cb156-2" title="2">   <span class="fu">map</span> (canonicalize url) <span class="op">.</span></a>
+<a class="sourceLine" id="cb156-3" title="3">   <span class="fu">filter</span> (<span class="fu">not</span> <span class="op">.</span> <span class="fu">null</span>) <span class="op">.</span></a>
+<a class="sourceLine" id="cb156-4" title="4">   <span class="fu">map</span> (fromAttrib <span class="st">&quot;href&quot;</span>) <span class="op">.</span></a>
+<a class="sourceLine" id="cb156-5" title="5">   <span class="fu">filter</span> (\t <span class="ot">-&gt;</span> fromAttrib <span class="st">&quot;rel&quot;</span> t <span class="op">/=</span> <span class="st">&quot;nofollow&quot;</span>) <span class="op">.</span></a>
+<a class="sourceLine" id="cb156-6" title="6">   <span class="fu">filter</span> (isTagOpenName <span class="st">&quot;a&quot;</span>) <span class="op">.</span></a>
+<a class="sourceLine" id="cb156-7" title="7">   canonicalizeTags <span class="op">.</span></a>
+<a class="sourceLine" id="cb156-8" title="8">   parseTags</a></code></pre></div>
+<p>Da’s nou onhandig: wat is het type van deze functie?</p>
 </div>
 <div id="van-maybe-a-naar-a" class="slide section level1">
 <h1>Van [Maybe a] naar [a]</h1>
@@ -1438,24 +1438,24 @@ canonicalize referer path <span class="fu">=</span> <span class="kw">do</span>
 <li><a href="http://haskell.org/hoogle">haskell.org/hoogle</a></li>
 </ul>
 <p>Typ dit in de search box:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">[<span class="dt">Maybe</span> a] <span class="ot">-&gt;</span> [a]</code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb157-1" title="1">[<span class="dt">Maybe</span> a] <span class="ot">-&gt;</span> [a]</a></code></pre></div>
 <p>Wat zien we als eerste resultaat?</p>
 </div>
 <div id="klaar" class="slide section level1">
 <h1>Klaar!</h1>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">import </span><span class="dt">Data.Maybe</span>
-<span class="kw">import </span><span class="dt">Network.URI</span>
-
-<span class="ot">links ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> [<span class="dt">String</span>]
-links url <span class="fu">=</span>
-  catMaybes <span class="fu">.</span>
-  map (canonicalize url) <span class="fu">.</span>
-  filter (not <span class="fu">.</span> null) <span class="fu">.</span>
-  map (fromAttrib <span class="st">&quot;href&quot;</span>) <span class="fu">.</span>
-  filter (\t <span class="ot">-&gt;</span> fromAttrib <span class="st">&quot;rel&quot;</span> t <span class="fu">/=</span> <span class="st">&quot;nofollow&quot;</span>) <span class="fu">.</span>
-  filter (isTagOpenName <span class="st">&quot;a&quot;</span>) <span class="fu">.</span>
-  canonicalizeTags <span class="fu">.</span>
-  parseTags</code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb158-1" title="1"><span class="kw">import</span> <span class="dt">Data.Maybe</span></a>
+<a class="sourceLine" id="cb158-2" title="2"><span class="kw">import</span> <span class="dt">Network.URI</span></a>
+<a class="sourceLine" id="cb158-3" title="3"></a>
+<a class="sourceLine" id="cb158-4" title="4"><span class="ot">links ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> [<span class="dt">String</span>]</a>
+<a class="sourceLine" id="cb158-5" title="5">links url <span class="ot">=</span></a>
+<a class="sourceLine" id="cb158-6" title="6">  catMaybes <span class="op">.</span></a>
+<a class="sourceLine" id="cb158-7" title="7">  <span class="fu">map</span> (canonicalize url) <span class="op">.</span></a>
+<a class="sourceLine" id="cb158-8" title="8">  <span class="fu">filter</span> (<span class="fu">not</span> <span class="op">.</span> <span class="fu">null</span>) <span class="op">.</span></a>
+<a class="sourceLine" id="cb158-9" title="9">  <span class="fu">map</span> (fromAttrib <span class="st">&quot;href&quot;</span>) <span class="op">.</span></a>
+<a class="sourceLine" id="cb158-10" title="10">  <span class="fu">filter</span> (\t <span class="ot">-&gt;</span> fromAttrib <span class="st">&quot;rel&quot;</span> t <span class="op">/=</span> <span class="st">&quot;nofollow&quot;</span>) <span class="op">.</span></a>
+<a class="sourceLine" id="cb158-11" title="11">  <span class="fu">filter</span> (isTagOpenName <span class="st">&quot;a&quot;</span>) <span class="op">.</span></a>
+<a class="sourceLine" id="cb158-12" title="12">  canonicalizeTags <span class="op">.</span></a>
+<a class="sourceLine" id="cb158-13" title="13">  parseTags</a></code></pre></div>
 </div>
 <div id="pauze" class="slide section level1">
 <h1>Pauze ?</h1>
@@ -1463,7 +1463,7 @@ links url <span class="fu">=</span>
 <div id="van-links-naar-spideren" class="slide section level1">
 <h1>Van links naar spideren</h1>
 <p>Als we de links van een webpagina af kunnen halen, kunnen we eenvoudig een spider schrijven om die links te volgen.</p>
-<p>Om het eenvoudig te houden, zetten we een limiet op het aantal pagina's dat we willen downloaden.</p>
+<p>Om het eenvoudig te houden, zetten we een limiet op het aantal pagina’s dat we willen downloaden.</p>
 <p>Welke informatie willen we genereren?</p>
 <p>Wat willen we onderweg bijhouden?</p>
 </div>
@@ -1471,33 +1471,33 @@ links url <span class="fu">=</span>
 <h1>Wat we willen bijhouden</h1>
 <p>De status die we willen bijhouden:</p>
 <ul>
-<li><p>Het aantal pagina's dat we hebben gedownload</p></li>
-<li><p>Een verzameling pagina's waar we links naartoe hebben gezien, maar die we (nog) niet hebben gedownload</p></li>
-<li><p>Een verzameling pagina's met hun uitgaande links</p></li>
+<li><p>Het aantal pagina’s dat we hebben gedownload</p></li>
+<li><p>Een verzameling pagina’s waar we links naartoe hebben gezien, maar die we (nog) niet hebben gedownload</p></li>
+<li><p>Een verzameling pagina’s met hun uitgaande links</p></li>
 </ul>
 </div>
 <div id="bijhouden-wat-we-gezien-hebben" class="slide section level1">
 <h1>Bijhouden wat we gezien hebben</h1>
-<p>Voor een willekeurige pagina, willen we de pagina zelf bewaren en alle pagina's waar het naar verwijst.</p>
+<p>Voor een willekeurige pagina, willen we de pagina zelf bewaren en alle pagina’s waar het naar verwijst.</p>
 <p>Een mogelijkheid om deze twee te associeren is een <em>tuple</em>:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">(<span class="st">&quot;http://x.org/&quot;</span>, [<span class="st">&quot;http://microsoft.com/&quot;</span>])</code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb159-1" title="1">(<span class="st">&quot;http://x.org/&quot;</span>, [<span class="st">&quot;http://microsoft.com/&quot;</span>])</a></code></pre></div>
 <p>Tuples zijn nuttig als we verschillende soorten data hebben zonder dat we het gedoe willen van het definieren van een nieuw type.</p>
 <p>Nu we het toch over een nieuw type hebben, zo definieer je er een:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Link</span> <span class="fu">=</span> <span class="dt">Link</span> <span class="dt">String</span> [<span class="dt">String</span>]
-
-<span class="co">-- Let&#39;s define some accessors, too.</span>
-linkFrom (<span class="dt">Link</span> url _) <span class="fu">=</span> url
-linkTo (<span class="dt">Link</span> _ links) <span class="fu">=</span> links</code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb160-1" title="1"><span class="kw">data</span> <span class="dt">Link</span> <span class="ot">=</span> <span class="dt">Link</span> <span class="dt">String</span> [<span class="dt">String</span>]</a>
+<a class="sourceLine" id="cb160-2" title="2"></a>
+<a class="sourceLine" id="cb160-3" title="3"><span class="co">-- Let&#39;s define some accessors, too.</span></a>
+<a class="sourceLine" id="cb160-4" title="4">linkFrom (<span class="dt">Link</span> url _) <span class="ot">=</span> url</a>
+<a class="sourceLine" id="cb160-5" title="5">linkTo (<span class="dt">Link</span> _ links) <span class="ot">=</span> links</a></code></pre></div>
 <p>kan ook zo: (identiek)</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Link</span> <span class="fu">=</span> <span class="dt">Link</span> {<span class="ot"> linkTo   ::</span> <span class="dt">String</span>
-                 ,<span class="ot"> linkFrom ::</span> [<span class="dt">String</span>]
-                 } </code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb161-1" title="1"><span class="kw">data</span> <span class="dt">Link</span> <span class="ot">=</span> <span class="dt">Link</span> {<span class="ot"> linkTo   ::</span> <span class="dt">String</span></a>
+<a class="sourceLine" id="cb161-2" title="2">                 ,<span class="ot"> linkFrom ::</span> [<span class="dt">String</span>]</a>
+<a class="sourceLine" id="cb161-3" title="3">                 } </a></code></pre></div>
 </div>
 <div id="dubbelingen-voorkómen" class="slide section level1">
 <h1>Dubbelingen voorkómen</h1>
 <p>We willen een URL niet twee keer bezoeken.</p>
 <p>Hoe voorkomen we dat?</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">visited url <span class="fu">=</span> elem url <span class="fu">.</span> map linkTo</code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb162-1" title="1">visited url <span class="ot">=</span> <span class="fu">elem</span> url <span class="op">.</span> <span class="fu">map</span> linkTo</a></code></pre></div>
 <p>Deze functie heeft een probleem - zie je welk probleem?</p>
 </div>
 <div id="betere-performance" class="slide section level1">
@@ -1510,10 +1510,10 @@ linkTo (<span class="dt">Link</span> _ links) <span class="fu">=</span> links</c
 <p>In Haskell bestaan muteerbare hash tables, maar die gebruiken we niet.</p>
 <p>in plaats hiervan gebruiken we liever <em>onveranderlijke</em> key-value maps.</p>
 <p>We moeten de nodige trucks uithalen bij het importeren, want de <code>Data.Map</code> module definieert veel namen die anders zouden overlappen met ingebouwde namen.</p>
-<p>Dit betekent &quot;importeer alleen de naam <code>Map</code> van de module <code>Data.Map</code>&quot;:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">import </span><span class="dt">Data.Map</span> (<span class="dt">Map</span>)</code></pre></div>
-<p>En dit betekent &quot;importeer alles van <code>Data.Map</code>, maar elk van deze namen moet voorafgegaan worden door <code>Map.</code>&quot;:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">import qualified</span> <span class="dt">Data.Map</span> <span class="kw">as</span> <span class="dt">Map</span></code></pre></div>
+<p>Dit betekent “importeer alleen de naam <code>Map</code> van de module <code>Data.Map</code>”:</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb163-1" title="1"><span class="kw">import</span> <span class="dt">Data.Map</span> (<span class="dt">Map</span>)</a></code></pre></div>
+<p>En dit betekent “importeer alles van <code>Data.Map</code>, maar elk van deze namen moet voorafgegaan worden door <code>Map.</code>”:</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb164-1" title="1"><span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.Map</span> <span class="kw">as</span> <span class="dt">Map</span></a></code></pre></div>
 </div>
 <div id="wat-is-het-nut-van-een-onveranderlijke-data-structuur" class="slide section level1">
 <h1>Wat is het nut van een onveranderlijke data structuur?</h1>
@@ -1528,42 +1528,42 @@ linkTo (<span class="dt">Link</span> _ links) <span class="fu">=</span> links</c
 <div id="een-hand-vol-dollars" class="slide section level1">
 <h1>Een hand vol dollars</h1>
 <p>Hier is een verbazingwekkend handige ingebouwde operator:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">f <span class="fu">$</span> x <span class="fu">=</span> f x</code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb165-1" title="1">f <span class="op">$</span> x <span class="ot">=</span> f x</a></code></pre></div>
 <p>Waarom is dit nuttig? Omdat we hierdoor haakjes kunnen weglaten.</p>
 <p>zonder $:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">explode k <span class="fu">=</span> error (<span class="st">&quot;failed on &quot;</span> <span class="fu">++</span> show k)</code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb166-1" title="1">explode k <span class="ot">=</span> <span class="fu">error</span> (<span class="st">&quot;failed on &quot;</span> <span class="op">++</span> <span class="fu">show</span> k)</a></code></pre></div>
 <p>met $:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">explode k <span class="fu">=</span> error <span class="fu">$</span> <span class="st">&quot;failed on &quot;</span> <span class="fu">++</span> show k</code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb167-1" title="1">explode k <span class="ot">=</span> <span class="fu">error</span> <span class="op">$</span> <span class="st">&quot;failed on &quot;</span> <span class="op">++</span> <span class="fu">show</span> k</a></code></pre></div>
 </div>
 <div id="partiele-toepassing" class="slide section level1">
 <h1>Partiele toepassing</h1>
 <p>Dit is onhandig om op te schrijven:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">increment k <span class="fu">=</span> <span class="dv">1</span> <span class="fu">+</span> k</code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb168-1" title="1">increment k <span class="ot">=</span> <span class="dv">1</span> <span class="op">+</span> k</a></code></pre></div>
 <p>Bijna net zo erg:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">\k <span class="ot">-&gt;</span> <span class="dv">1</span> <span class="fu">+</span> k</code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb169-1" title="1">\k <span class="ot">-&gt;</span> <span class="dv">1</span> <span class="op">+</span> k</a></code></pre></div>
 <p>Veel handiger, en identiek:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">(<span class="dv">1</span><span class="fu">+</span>)</code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb170-1" title="1">(<span class="dv">1</span><span class="op">+</span>)</a></code></pre></div>
 <p>Dit is valide:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">increment <span class="fu">=</span> (<span class="dv">1</span><span class="fu">+</span>)</code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb171-1" title="1">increment <span class="ot">=</span> (<span class="dv">1</span><span class="op">+</span>)</a></code></pre></div>
 </div>
 <div id="spideren-in-al-zijn-glans" class="slide section level1">
 <h1>Spideren, in al zijn glans</h1>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">spider ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">URL</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> (<span class="dt">Map</span> <span class="dt">URL</span> [<span class="dt">URL</span>])
-spider count url0 <span class="fu">=</span> go <span class="dv">0</span> Map.empty (Set.singleton url0)
-  <span class="kw">where</span>
-    go k seen queue0
-        <span class="fu">|</span> k <span class="fu">&gt;=</span> count <span class="fu">=</span> return seen
-        <span class="fu">|</span> otherwise  <span class="fu">=</span>
-      <span class="kw">case</span> Set.minView queue0 <span class="kw">of</span>
-        <span class="dt">Nothing</span> <span class="ot">-&gt;</span> return seen
-        <span class="dt">Just</span> (url, queue) <span class="ot">-&gt;</span> <span class="kw">do</span>
-          page <span class="ot">&lt;-</span> download url
-          <span class="kw">let</span> ls       <span class="fu">=</span> links url page
-              newSeen  <span class="fu">=</span> Map.insert url ls seen
-              notSeen  <span class="fu">=</span> Set.fromList <span class="fu">.</span>
-                         filter (<span class="ot">`Map.notMember`</span> newSeen) <span class="fu">$</span> ls
-              newQueue <span class="fu">=</span> queue <span class="ot">`Set.union`</span> notSeen
-          go (k<span class="fu">+</span><span class="dv">1</span>) newSeen newQueue</code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb172-1" title="1"><span class="ot">spider ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">URL</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> (<span class="dt">Map</span> <span class="dt">URL</span> [<span class="dt">URL</span>])</a>
+<a class="sourceLine" id="cb172-2" title="2">spider count url0 <span class="ot">=</span> go <span class="dv">0</span> Map.empty (Set.singleton url0)</a>
+<a class="sourceLine" id="cb172-3" title="3">  <span class="kw">where</span></a>
+<a class="sourceLine" id="cb172-4" title="4">    go k seen queue0</a>
+<a class="sourceLine" id="cb172-5" title="5">        <span class="op">|</span> k <span class="op">&gt;=</span> count <span class="ot">=</span> <span class="fu">return</span> seen</a>
+<a class="sourceLine" id="cb172-6" title="6">        <span class="op">|</span> <span class="fu">otherwise</span>  <span class="ot">=</span></a>
+<a class="sourceLine" id="cb172-7" title="7">      <span class="kw">case</span> Set.minView queue0 <span class="kw">of</span></a>
+<a class="sourceLine" id="cb172-8" title="8">        <span class="dt">Nothing</span> <span class="ot">-&gt;</span> <span class="fu">return</span> seen</a>
+<a class="sourceLine" id="cb172-9" title="9">        <span class="dt">Just</span> (url, queue) <span class="ot">-&gt;</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb172-10" title="10">          page <span class="ot">&lt;-</span> download url</a>
+<a class="sourceLine" id="cb172-11" title="11">          <span class="kw">let</span> ls       <span class="ot">=</span> links url page</a>
+<a class="sourceLine" id="cb172-12" title="12">              newSeen  <span class="ot">=</span> Map.insert url ls seen</a>
+<a class="sourceLine" id="cb172-13" title="13">              notSeen  <span class="ot">=</span> Set.fromList <span class="op">.</span></a>
+<a class="sourceLine" id="cb172-14" title="14">                         <span class="fu">filter</span> (<span class="ot">`Map.notMember`</span> newSeen) <span class="op">$</span> ls</a>
+<a class="sourceLine" id="cb172-15" title="15">              newQueue <span class="ot">=</span> queue <span class="ot">`Set.union`</span> notSeen</a>
+<a class="sourceLine" id="cb172-16" title="16">          go (k<span class="op">+</span><span class="dv">1</span>) newSeen newQueue</a></code></pre></div>
 </div>
 <div id="stand-van-zaken" class="slide section level1">
 <h1>Stand van zaken?</h1>
@@ -1575,8 +1575,8 @@ spider count url0 <span class="fu">=</span> go <span class="dv">0</span> Map.emp
 </ul>
 <p>Wat blijft over?</p>
 <ul>
-<li><p>We zouden meerdere pagina's tegelijkertijd kunnen spideren</p></li>
-<li><p>Of we zouden kunnen berekenen welke pagina's &quot;belangrijk&quot; zijn</p></li>
+<li><p>We zouden meerdere pagina’s tegelijkertijd kunnen spideren</p></li>
+<li><p>Of we zouden kunnen berekenen welke pagina’s “belangrijk” zijn</p></li>
 </ul>
 </div>
 <div id="achterstevoren" class="slide section level1">
@@ -1589,13 +1589,13 @@ spider count url0 <span class="fu">=</span> go <span class="dv">0</span> Map.emp
 <pre><code>git clone https://github.com/hanjoosten/webspider</code></pre>
 </div>
 <div id="overige-dias-achterstevoren-ca.-10-minuten-voor-einde" class="slide section level1">
-<h1>Overige dia's achterstevoren, ca. 10 minuten voor einde</h1>
+<h1>Overige dia’s achterstevoren, ca. 10 minuten voor einde</h1>
 </div>
 <div id="voor-de-liefhebber" class="slide section level1">
 <h1>Voor de liefhebber</h1>
 <p>Deze presentatie staat online:</p>
 <ul>
-<li><a href="http://hanjoosten.github.com/HaskellWorkshop" class="uri">http://hanjoosten.github.com/HaskellWorkshop</a></li>
+<li><a href="http://hanjoosten.github.com/HaskellWorkshop">http://hanjoosten.github.com/HaskellWorkshop</a></li>
 </ul>
 <blockquote>
 <p>Inspiratie:</p>
@@ -1603,7 +1603,7 @@ spider count url0 <span class="fu">=</span> go <span class="dv">0</span> Map.emp
 <ul>
 <li><a href="">http://haskell.org</a> (alles over Haskell)</li>
 <li><a href="">http://www.haskell.org/haskellwiki/Haskell_in_industry</a>(gebruik van Haskell in bedrijfsleven)</li>
-<li><a href="http://corp.galois.com" class="uri">http://corp.galois.com</a> is een innovatief bedrijf die heel veel met Haskell doet, en daarover veel vertelt.</li>
+<li><a href="http://corp.galois.com">http://corp.galois.com</a> is een innovatief bedrijf die heel veel met Haskell doet, en daarover veel vertelt.</li>
 <li><a href="http://www.tryhaskell.org">www.tryhaskell.org</a> (online Haskell)</li>
 <li><a href="http://www.projecteuler.net">www.projecteuler.net</a> (kijk hoever je zelf komt met Haskell)</li>
 </ul>
