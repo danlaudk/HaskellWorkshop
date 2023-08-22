@@ -1,25 +1,26 @@
 # Opzet dag 1
 
-- Intro (voorstellen, verwachtingen uitwisselen)
+## Intro
+
+- Voorstellen, verwachtingen uitwisselen
 - Wat is Functional style?
   - Functional (Functions are first class, functions are typed)
   - Evaluating expressions, not executing instructions
   - Pure (referentially transparent, stateless, immutable, no side-effects)
   - Lazy (infinite data structures) (downside: pitfalls)
-- Voordelen/nadelen
+- Voordelen/nadelen van FP
 
-- Main excersise: Build a webspider
+## Main excersise: Build a webspider
 
+- Problem description
 - Introduction to Haskell (toolstack)
 - Playing with GHCi
-
 - Functions
 - If-then-else
-- constructors
+- Constructors
 - Pattern matching
 - Functions as parameters (HOF: filter, map)
 - Function composition (. , currying)
-
 - Opzettten project webspider
 - Libraries! (Hackage, hoogle)
 - Types
@@ -27,10 +28,7 @@
 - Maybe
 - Refactoring
 - Defining types
-- ... (people expanding their own webspider application. )
 
-- Afronding, conclusies
+### ... (people expanding their own webspider application. )
 
-### Resources for insiration:
-
-https://github.com/haskell-beginners-2022/course-plan
+## Afronding, conclusies
