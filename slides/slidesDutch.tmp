@@ -135,7 +135,7 @@ Han Joosten
 <ul>
 <li><p>Doel: Enthousiasmeren van jullie</p></li>
 <li><p>Sheets zijn geschreven om ook zelf te kunnen doen:</p>
-<p><a href="http://hanjoosten.github.com/HaskellWorkshop">http://hanjoosten.github.com/HaskellWorkshop</a></p></li>
+<p><a href="http://hanjoosten.github.io/HaskellWorkshop">http://hanjoosten.github.io/HaskellWorkshop</a></p></li>
 <li><p>Veel is (met dank!) gepikt van Bryan O’Sullivan</p></li>
 <li><p>Bryan O’Sullivan is co-auteur van het boek <a href="http://book.realworldhaskell.org/">Real World Haskell</a>. Dit is een gratis online boek dat zeer goed bruikbaar is als leerboek als je verder wilt met Haskell.</p></li>
 </ul>
@@ -238,7 +238,7 @@ stack ghci</code></pre>
 <h1>Aan de slag met GHCi</h1>
 <pre><code>stack ghci</code></pre>
 <p>Er verschijnt wat opstart-tekst, gevolgd door de prompt:</p>
-<pre><code>*Main&gt; </code></pre>
+<pre><code>*Main&gt;</code></pre>
 <p>Deze standaard prompt vertelt ons welke modules er beschikbaar zijn om mee te spelen. In ons geval is ons project geladen.</p>
 <p>De functie <em>main</em> is beschikbaar</p>
 <pre><code>*Main&gt;main
@@ -1555,7 +1555,7 @@ utf8-string</code></pre>
 <p>kan ook zo: (identiek)</p>
 <div class="sourceCode" id="cb161"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true"></a><span class="kw">data</span> <span class="dt">Link</span> <span class="ot">=</span> <span class="dt">Link</span> {<span class="ot"> linkTo   ::</span> <span class="dt">String</span></span>
 <span id="cb161-2"><a href="#cb161-2" aria-hidden="true"></a>                 ,<span class="ot"> linkFrom ::</span> [<span class="dt">String</span>]</span>
-<span id="cb161-3"><a href="#cb161-3" aria-hidden="true"></a>                 } </span></code></pre></div>
+<span id="cb161-3"><a href="#cb161-3" aria-hidden="true"></a>                 }</span></code></pre></div>
 </div>
 <div id="dubbelingen-voorkómen" class="slide section level1">
 <h1>Dubbelingen voorkómen</h1>
@@ -1659,7 +1659,7 @@ utf8-string</code></pre>
 <h1>Voor de liefhebber</h1>
 <p>Deze presentatie staat online:</p>
 <ul>
-<li><a href="http://hanjoosten.github.com/HaskellWorkshop">http://hanjoosten.github.com/HaskellWorkshop</a></li>
+<li><a href="http://hanjoosten.github.io/HaskellWorkshop">http://hanjoosten.github.io/HaskellWorkshop</a></li>
 </ul>
 <blockquote>
 <p>Inspiratie:</p>
