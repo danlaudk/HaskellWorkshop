@@ -1,29 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="author" content="Han Joosten" />
-  <meta name="date" content="July 2017" />
-  <title>Functioneel Programmeren met Haskell</title>
-  <link rel="stylesheet" type="text/css" media="screen, projection, print"
-    href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
-  <link rel="stylesheet" type="text/css" href="style.css" />
-  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js.gz"
-    charset="utf-8" type="text/javascript"></script>
-</head>
-<body>
-<div class="slide titlepage">
-  <h1 class="title">Functioneel Programmeren met Haskell</h1>
-  <p class="author">Han Joosten</p>
-  <p class="github">Github: hanjoosten</p>
-  <p class="email">han.joosten@ordina.nl</p>
-  <p class="date">19 Juli 2017</p>
-  <p></p>
-  <p class="github">Slides: <a href="http://hanjoosten.github.io/HaskellWorkshop">http://hanjoosten.github.io/HaskellWorkshop</a></p>
-</div>
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -2019,7 +1993,5 @@ Wat heb je vanmiddag geleerd, en wat ga je er mee doen?</h2>
 <li>Webcrawler</li>
 </ul>
 </div>
-</body>
-</html>
 </body>
 </html>
