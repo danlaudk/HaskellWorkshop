@@ -13,6 +13,17 @@
   <link rel="stylesheet" type="text/css" href="style.css" />
   <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js.gz"
     charset="utf-8" type="text/javascript"></script>
+    <script>
+      // Get the current date
+      var currentDate = new Date();
+  
+      // Format the date as a string
+      var dateString = currentDate.toDateString();
+  
+      // Display the date in the HTML page
+      document.getElementById('currentDate').innerText = dateString;
+    </script>
+  
 </head>
 <body>
 <div class="slide titlepage">
@@ -20,7 +31,7 @@
   <p class="author">Han Joosten</p>
   <p class="github">Github: hanjoosten</p>
   <p class="email">han.joosten@ordina.nl</p>
-  <p class="date">19 Juli 2017</p>
+  <p class="date">id="currentDate"</p>
   <p></p>
   <p class="github">Slides: <a href="http://hanjoosten.github.io/HaskellWorkshop">http://hanjoosten.github.io/HaskellWorkshop</a></p>
 </div>
