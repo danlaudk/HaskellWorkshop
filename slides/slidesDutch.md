@@ -1,6 +1,5 @@
 % Introductie Functioneel Programmeren (met Haskell)
 % Han Joosten
-% Juli 2017
 
 # putStrLn "hallo!"
 

@@ -1,3 +1,6 @@
 /.dist-buildwrapper/
-slides/slidesDutch.tmp
+
 .vscode/
+*.tmp
+/index.html
+slide*.html
