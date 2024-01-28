@@ -78,9 +78,8 @@ git clone https://github.com/bos/strange-loop-2011
     
     * Some handy libraries and tools
 
-# Lets get started!
 
-# Problem definition
+# Problem definition for the rest of the workshop
 
 Given a web site, we want to scrape it and find important web pages.
 
