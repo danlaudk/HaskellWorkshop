@@ -61,5 +61,5 @@ code.sourceCode span.co { color: #60a0b0; font-style: italic; }
 code.sourceCode span.ot { color: #007020; }
 code.sourceCode span.al { color: red; font-weight: bold; }
 code.sourceCode span.fu { color: #06287e; }
-code.sourceCode span.re { }
+code.sourceCode span.re { color: red;}
 code.sourceCode span.er { color: red; font-weight: bold; }

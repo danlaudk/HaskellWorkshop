@@ -1,5 +1,6 @@
-% Haskell: Functional Programming, Solid Code, Big Data
-% Han Joosten
+% Haskell: Functional Programming 
+% Han Joosten & Daniel Lau
+% 2024-03-11
 
 
 # Welcome!
@@ -9,75 +10,56 @@ main = putStrLn "hello!"
 ~~~~
 
 * My name is Han Joosten
-
 * I started using Haskell in 2006
+* I am a co-developer of [Ampersand](https://github.com/AmpersandTarski)
 
-* I am a co-developer of Ampersand
+# Slides
 
-  - [ampersand op github](https://github.com/AmpersandTarski)
-
-
-
-# Credits
-
-These sheets are forked from a workshop by Bryan O'Sullivan
 ~~~~
-git clone https://github.com/bos/strange-loop-2011
+https://hanjoosten.github.io/HaskellWorkshop
 ~~~~
 
+* Suited for workshop AND self-learning
+* forked from [Bryan O’Sullivan](https://github.com/bos/strange-loop-2011)
 
-# My background in (functional) programming
+
+# Han's background in (functional) programming
 
 * Introduced to FP at university
     * Twentel, Miranda, Lisp
-
 * Several specification languages:
-
     * Lotos, ASF+SDF, Typol, LaTeX
-
 * After graduation in 1990 I programmed mainly in imperative programming languages 
     * Pascal, C, Perl, Rexx, Cool:Gen (integrated Case tool)
-
 * I've found Haskell to be a great general-purpose language
-
 * The community of people is amazing
-
 
 # What to expect 1
 
 * Haskell is a fairly big language
-
 * Since so much is unfamiliar to newcomers, expect to wander far from
   your comfort zone
-
-* I'm going to teach you *interesting* things, but not *everything*
+* We're going to teach you *interesting* things, but not *everything*
 
 
 # What to expect 2
 
 * This is a *hands-on* workshop: you'll be writing code!
-
+* Work in pairs (pair programming)
 * There will be a short break every 45 minutes
-
 * Don't be afraid to ask questions!
-
 
 # Your tools
 
 * You've already created your Haskell environment, right?
 
-    * [Instructions are here](https://github.com/hanjoosten/haskellProject/blob/main/README.md)
+    * [https://github.com/hanjoosten/haskellProjectTemplate/blob/main/README.md](https://github.com/hanjoosten/haskellProject/blob/main/README.md)
 
-* This gives us a great toolchain
+* This gives us a great IDE 
 
-    * The GHC compiler (`ghc`)
-
-    * The GHCi interpreter (`ghci`)
-    
-    * The Cabal package manager (`cabal`)
-    
+    * vs-code with Haskell support
+    * A compiler (`ghc`), interpreter (`ghci`), Package managers (`stack` and `cabal`)
     * Some handy libraries and tools
-
 
 # Problem definition for the rest of the workshop
 
@@ -98,9 +80,12 @@ This involves a lot of figuring stuff out!
 
 # Let's get started!
 
-Create a file named `Hello.hs` and give it the following contents:
+Open `Main.hs` in the src directory. It has the following contents:
 
 ~~~~ {.haskell}
+module Main ()
+where
+
 main = putStrLn "hello, world!"
 ~~~~
 
@@ -111,23 +96,21 @@ File names start with a capital letter, and everyone uses `CamelCase`.
 
 # Building it
 
-This command will look for `Hello.hs` in the current directory, and
-compile it:
+The package manager is set up to look for `Main.hs` in the src directory. This command will install it:
 
 ~~~~
-ghc --make Hello
+stack install
 ~~~~
 
-The generated executable will be named `Hello` (`Hello.exe` on
-Windows).
+The generated output will reveal the name of the executable. Run it to see the output.
 
-* That `--make` option up there tells GHC to automatically deal with
+* stack is the name of the package manager. It takes care to automatically deal with
   dependencies on source files and packages.
-
+* Everything required to set up your project is beyond scope of this introduction. 
 
 # Checking in
 
-Is everyone able to build and run their `Hello` executable?
+Is everyone able to build and run their executable?
 
 
 # Something a little more convenient
@@ -137,29 +120,25 @@ It's nice to have fast, native code at our fingertips.
 But when *I'm* working, I expect a few things:
 
 * I do lots of exploration.
-
 * I make tons of mistakes.
 
-For these circumstances, a full compiler is a bit slow.
+For these circumstances, a full compiler can be a bit slow.
 
-Instead, I often use the interactive interpreter, `ghci`.
-
+Instead, I sometimes use the interactive interpreter, `ghci`.
 
 # Let's start GHCi
 
-Easily done:
+Easily done in vscode with extension `ghci-helper`:
+
+ * vscode command: `Start GHCi using stack`
+
+
+It will spin up ghci, load the current file, followed by a prompt:
 
 ~~~~
-ghci
+ghci>
 ~~~~
 
-It will display a startup banner, followed by a prompt:
-
-~~~~
-Prelude>
-~~~~
-
-This default prompt tells us which modules are available to play with.
 
 
 # Play around
@@ -183,28 +162,12 @@ Try it out:
 (That `++` is the "append" operator.)
 
 
-# Directives
-
-All interpreter directives start with a "`:`" character.
-
-Let's load our source file into `ghci`:
-
-~~~~
-:load Hello.hs
-~~~~
-
-Now the `ghci` prompt changes:
-
-~~~~
-*Main>
-~~~~
-
 
 # Running our code in ghci
 
 We defined a function named `main`, so let's invoke it:
 
-~~~~
+~~~~{.haskell}
 main
 ~~~~
 
@@ -216,47 +179,27 @@ What about this?
 putStrLn "hi mom!"
 ~~~~
 
+# Directives
 
-# A few more useful directives
+All interpreter directives start with a "`:`" character.
 
-Remember, all `ghci` directives start with a "`:`".
+Let's see what else `ghci` is up to:
 
 * `:help` tells us what directives are available.
-
 * `:reload` reloads the file we last `:load`ed.
-
-* `:edit` launches our text editor on the file you most recently
-  `:load`ed.  (Does *not* automatically `:reload`.)
-  
 * `:quit` exits back to the shell.
 
+Abbreviation works, so `:r` is `:reload`
 
-# Final ghci efficiency tips
+# Error messages
 
-We can abbreviate directives:
+Error messages can be intimidating. Once you get used to them, they contain a lot of info. 
 
-* `:e` is treated as `:edit`
+Explaination of common errors can be found at:
 
-* `:r` is `:reload`
-
-We also have command line history and editing.
-
-* On Unix, compatible with `readline`.
-
-* On Windows, the same as `cmd.exe`.
-
-
-# Getting used to the cycle
-
-Use `:edit` or your text editor to change the "hello" text.
-
-Use `:reload` to reload the source file.
-
-Test out your redefinition of `main`.
-
-* For practice, hit the "up arrow" key to cycle through your command
-  history until you get back to the last time you typed `main`.
-
+~~~~
+https://errors.haskell.org/
+~~~~
 
 # Lists and strings
 
@@ -324,8 +267,8 @@ Use `ghci` as a calculator.
 
 The `**` operator performs exponentiation.
 
-* If I invest 5 quatloos at 3% compound interest per annum, how many
-  quatloos will I have after 10 years?
+* If I invest 5 euro at 3% compound interest per year, how many
+  euro's will I have after 10 years?
 
 
 # Quick exercises: 2
@@ -368,10 +311,8 @@ isOdd x  =  (rem x 2) == 1
 ~~~~
 
 * We start with the name of the function.
-
 * Next come the names we want to give its parameter(s), separated by
   white space.
-
 * After those come a single `=` character, with the *body* of the
   function following.
 
@@ -404,7 +345,6 @@ We have the following elements:
 
 * `then` an expression that will be the result if the Boolean is
   `True`
-  
 * `else` an expression that will be the result if the Boolean is
   `False`
 
@@ -468,7 +408,6 @@ But is this everything there is to know?
 Supposing we want to construct a list from first principles.
 
 * We write the *empty list* as `[]`.
-
 * Given an existing list, we can add another element to the *front* of
   the list using the `:` operator.
 
@@ -512,10 +451,8 @@ So the value `[5,8]` is represented as:
 
 * A `:` constructor, with `5` as its first parameter, and as its
   second ...
-
 * Another `:` constructor, this time with `8` as its first parameter,
   and now as its second ...
-  
 * A `[]` constructor
 
 
@@ -525,7 +462,6 @@ Depending on your background, I bet you're thinking something like
 this:
 
 * "Hey! Haskell lists look like singly linked lists!"
-
 * "Hey! That looks just like lists built out of `cons` cells in Lisp!"
 
 Right on.
@@ -562,19 +498,16 @@ isCapitalized name
 ~~~~
 
 * In between `case` and `of` is the expression we are inspecting.
-
 * If the constructor used was the empty-list constructor `[]`, then
   clearly the `name` we're inspecting is empty, hence not capitalized.
 
 If the constructor used was the "add to the front" `:` operator,
 then things get more interesting.
-  
+
 * Whatever was the first parameter of the `:` constructor is bound
   to the name `first`.
-    
 * The second parameter of the `:` constructor (i.e. everything in the
   list after the first element) is bound to the name `rest`.
-
 * The expression following the `->` is evaluated with these values.
 
 
@@ -583,10 +516,8 @@ then things get more interesting.
 The `case` expression performs what we call *pattern matching*.
 
 * Patterns are checked from top to bottom.
-
 * As soon as a match is found, its right hand side (after the `->`) is
   used as the result of the entire `case` expression.
-  
 * If no match succeeds, an exception is thrown.
 
 
@@ -669,7 +600,6 @@ After each `|` is a *guard*.
 
 * If a pattern matches, we evaluate each Boolean guard expression from
   top to bottom.
-
 * When one succeeds, we evaluate the RHS as the body of the function.
 
 (Yes, patterns in a `case` can have guards too.)
@@ -706,7 +636,6 @@ Write a new version of `countCaps` as follows:
 
 * Write a function that goes through a list, and which generates a new
   list that contains only its capital letters.
-
 * Use `length` to count the number of elements.
 
 This should give the same result as your first function. Right?
@@ -749,9 +678,7 @@ countLowerCase string =
 This is a recurring pattern:
 
 * A function of one argument
-
 * It's being fed the result of ...
-
 * ... another function of one argument
 
 
@@ -803,7 +730,6 @@ in x + y
 ~~~~
 
 * Local definitions come after the `let`.
-
 * The expression where we use them comes after the `in`.
 
 
@@ -812,13 +738,10 @@ in x + y
 Haskell is sensitive to white space!
 
 * A top-level definition starts in the leftmost column.
-
 * After the beginning of a definition, if the next non-empty line is
   indented further, it is treated as a continuation of that
   definition.
-
 * Never use tabs in your source files.
-
 
 # White space and local variables
 
@@ -890,53 +813,32 @@ At times like this, there's a very handy central repository of open
 source Haskell software:
 
 * [http://hackage.haskell.org](http://hackage.haskell.org/)
-
 * (Everyone just calls it "Hackage")
 
 Go there now!
 
 Click on the
-[Packages](http://hackage.haskell.org/packages/archive/pkg-list.html)
+[Browse](https://hackage.haskell.org/packages/browse)
 link at the top of the page to browse packages.
 
 Alas, the list is overwhelmingly long, but we can find libraries for
 all kinds of tasks if we're patient.
 
-Are we patient?
+`search` can be used to restrict the list to find specific libraries 
 
-
-# Ugh!
-
-Scrolling through thousands of libraries is hard - surely there's a
-better way?
-
-Enter the `cabal` command!
-
-Run this command in a terminal window:
-
-~~~~
-cabal update
-~~~~
-
-This downloads the latest index of all software on Hackage.
-
-With the index updated, we can search it:
-
-~~~~
-cabal list http
-~~~~
+* Search for `HTTP`
 
 That still gives us 20+ packages to comb through, but at least it's
-better than the 3,400 on the Packages web page.
+better than the 16,400 on the Packages web page.
 
 
 # Short-cutting the search
 
-The best HTTP client library is named `http-enumerator`.
+We'll use the HTTP client library named `http-conduit`.
 
 We can read about it online:
 
-* [hackage.haskell.org/package/http-enumerator](http://hackage.haskell.org/package/http-enumerator)
+* [hackage.haskell.org/package/http-conduit](http://hackage.haskell.org/package/http-conduit)
 
 That landing page for a package is intimidating, but look towards the
 bottom, at the section labeled "Modules".
@@ -946,34 +848,47 @@ What do you see?
 
 # Installing a package
 
-Before we can use `http-enumerator`, we must install it.
+Before we can use `http-conduit`, we must tell the package manager that we need it.
 
-To install the `http-enumerator` package, we just issue a single
-command:
+add `http-conduit` to the `dependencies` section in your `package.yaml` file:
 
 ~~~~
-cabal install http-enumerator
+dependencies:
+  - base >= 4.7 && < 5
+  - http-conduit
 ~~~~
 
-This command figures out all the other libraries that
-`http-enumerator` depends on, and downloads, compiles, and installs
+The next time you build your program, it figures out all the other libraries that
+`http-conduit` depends on, and downloads, compiles, and installs
 the whole lot.
 
-Expect it to take a few minutes and print a lot of output.
+Now also add the following dependencies, for you will need them later as well
+~~~~
+ - bytestring
+ - tagsoup
+~~~~
+
+Expect the build to take a few minutes and print a lot of output. 
 
 
 # Reading docs: packages and modules
 
-While we're waiting for the `http-enumerator` package and all of its
-dependencies to install, let's try to figure out how we should use it.
+
+While we're figuring out how to use the `http-conduit` package, lets build it in the meantime:
+
+~~~~
+stack install
+~~~~
+
+Now let's try to figure out how we should use it.
 
 Remember the link to API documentation at the end of the package's web
-page? Click through to the API docs.
+page? Click through to the API docs. (For now, ignore the reference to `stackage`)
 
 An API page begins with a title that looks something like this:
 
 ~~~~
-Network.HTTP.Enumerator
+Network.HTTP.Simple
 ~~~~
 
 This is the name of a *module*.
@@ -1020,13 +935,9 @@ compiler or interpreter.
 # The most common basic types
 
 * `Bool`
-
 * `Int`
-
 * `Char`
-
 * `Double`
-
 
 # A function signature
 
@@ -1096,9 +1007,10 @@ What are some reasonable possible behaviours for this function?
 
 # Reading real-world docs
 
-Here is the very first signature from `http-enumerator`:
+Here is the very first signature from `http-conduit`:
 
 ~~~~
+httpBS :: MonadIO m => Request -> m (Response ByteString)
 simpleHttp 
   :: (MonadIO m, Failure HttpException m) => 
      String -> m ByteString
@@ -1107,7 +1019,7 @@ simpleHttp
 This is more complex! How the heck do we read it?
 
 The bits between `::` and '=>' are *constraints* on where we can use
-`simpleHttp` - but let's ignore constraints for now.
+`httpBS` - but let's ignore constraints for now.
 
 * *Important*: it's often safe to gloss over things we don't (yet)
   understand.
@@ -1132,48 +1044,18 @@ However, it contains binary *bytes*, not text!
 
 # Let's play in ghci!
 
-Does everyone have `http-enumerator` installed now?
+Does everyone have `http-conduit` installed now?
 
-Fire up `ghci`, and let's play with the module:
-
-~~~~
-import Network.HTTP.Enumerator
-~~~~
-
-Notice that after we type this, the prompt changes:
+Add the import of the module to your file, and fire up `ghci`, so we can play with it:
 
 ~~~~
-Prelude Network.HTTP.Enumerator>
+import Network.HTTP.Simple
 ~~~~
 
-This tells us that the module has loaded and is available.
-
-
-# Wait! Are you on Windows?
-
-On Windows, we have to set up Winsock before any networking will work.
-
-First, let's load the lowest-level networking module:
+let's load a web page!
 
 ~~~~
-import Network.Socket
-~~~~
-
-And here's how we initialize Winsock:
-
-~~~~
-withSocketsDo (return ())
-~~~~
-
-(It's harmless to do this on Unix.)
-
-
-# With that out of the way ...
-
-Finally - let's load a web page!
-
-~~~~
-simpleHttp "http://example.com/"
+httpBS "http://example.com/"
 ~~~~
 
 Did that just print a ton of HTML in the terminal window?  All right!
@@ -1193,13 +1075,10 @@ So far, all of the code we have written has been "pure".
 
 * The behaviour of all of our functions has depended only on their
   inputs.
-  
 * All of our data is immutable.
-
 * There's thus no way to change a global variable and modify the
   behaviour of a function.
   
-
 # Impure code
 
 And yet ... somehow we downloaded a web page!
@@ -2120,3 +1999,8 @@ At this point, if we have miraculously not run out of time, we're
 going on a choose-your-own-adventure session in Emacs.
 
 Thanks for sticking with the slideshow so far!
+
+# Credits
+
+These sheets are forked from a [workshop by Bryan O'Sullivan](https://github.com/bos/strange-loop-2011)
+
