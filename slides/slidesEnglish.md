@@ -828,7 +828,7 @@ all kinds of tasks if we're patient.
 
 * Search for `HTTP`
 
-That still gives us 20+ packages to comb through, but at least it's
+That still gives us 300+ packages to comb through, but at least it's
 better than the 16,400 on the Packages web page.
 
 
@@ -1011,9 +1011,6 @@ Here is the very first signature from `http-conduit`:
 
 ~~~~
 httpBS :: MonadIO m => Request -> m (Response ByteString)
-simpleHttp 
-  :: (MonadIO m, Failure HttpException m) => 
-     String -> m ByteString
 ~~~~
 
 This is more complex! How the heck do we read it?
@@ -1029,7 +1026,27 @@ We'll also ignore that mysterious lowercase `m` for a bit.
 What can we tell about this function?
 
 
-# ByteString
+# Side note: Polymorphic types
+
+In Haskell, a type can contain one or more type variables. 
+
+`Response` is defined together with a type variable
+
+~~~~
+data Response body
+~~~~
+
+notice `body` starts with a lowercase character. It is a `Type` within a `Type`
+
+This goes beyond the scope of the workshop. For now think of 
+
+~~~~
+Response Bytestring
+~~~~
+
+to be some `Response` datastructure in the form of a `Bytestring` 
+
+# Bytestring
 
 A `ByteString` is a blob of binary data.
 
@@ -1049,7 +1066,8 @@ Does everyone have `http-conduit` installed now?
 Add the import of the module to your file, and fire up `ghci`, so we can play with it:
 
 ~~~~
-import Network.HTTP.Simple
+import           Network.HTTP.Simple
+import qualified Data.ByteString.Char8 as B8
 ~~~~
 
 let's load a web page!
@@ -1058,15 +1076,24 @@ let's load a web page!
 httpBS "http://example.com/"
 ~~~~
 
-Did that just print a ton of HTML in the terminal window?  All right!
+What is that response? 
 
+# It's a `Response Bytestring` !
 
-# From binary to text
+Take a good look at what just appeared as output. 
 
-Now we have a `ByteString`, which we need to turn into text for
-manipulating.
+Prettyprinted, it looks like something like this: 
 
-Let's cheat, and assume that all web pages are encoded in UTF-8.
+~~~~
+Response 
+  {responseStatus = Status {statusCode = 200, statusMessage = "OK"},
+   responseVersion = HTTP/1.1,
+   responseHeaders = [("Content-Encoding","gzip"),("Accept-Ranges","bytes"), 
+
+   etc.
+~~~~
+
+Did you get a response? Yeah!
 
 
 # Pure code
@@ -1088,7 +1115,7 @@ And yet ... somehow we downloaded a web page!
 So can we write code like this?
 
 ~~~~ {.haskell}
-length (simpleHttp "http://x.org/")
+length (httpBS "http://x.org/")
 ~~~~
 
 NO.
@@ -1099,7 +1126,7 @@ have side effects ("impure" code).
 
 # Are we stuck?
 
-Well, let's look at a simpler example than `simpleHttp`.
+Well, let's look at a simpler example than `httpBS`.
 
 Type this in `ghci`:
 
@@ -1191,6 +1218,28 @@ in C or Java.
 
 What this means is that *all* Haskell programs are impure!
 
+# Get stuff from the Response
+In the documentation you can find function definitions like: 
+
+~~~~
+getResponseBody :: Response a -> a
+~~~~
+
+In the case of Response Bytestring, this would become
+
+~~~~
+getResponseBody :: Response Bytestring -> Bytestring
+~~~~
+
+This can be used to get specific stuff from the response!
+
+# From binary to text
+
+Now we have a `ByteString`, which we need to turn into text for
+manipulating.
+
+Let's cheat, and assume that all web pages are encoded in UTF-8.
+
 
 # Binary to text
 
@@ -1199,7 +1248,7 @@ Remember we were planning to cheat earlier?
 We had this:
 
 ~~~~ {.haskell}
-simpleHttp :: String -> IO ByteString
+httpBS :: Request -> IO (Request ByteString)
 ~~~~
 
 We need something whose result is an `IO String` instead.
