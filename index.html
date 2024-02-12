@@ -218,7 +218,7 @@ download</p></li>
 <h1>Let’s get started!</h1>
 <p>Open <code>Main.hs</code> in the src directory. It has the following
 contents:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="kw">module</span> <span class="dt">Main</span> ()</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="kw">module</span> <span class="dt">Main</span> (main)</span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="kw">where</span></span>
 <span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>main <span class="ot">=</span> <span class="fu">putStrLn</span> <span class="st">&quot;hello, world!&quot;</span></span></code></pre></div>
@@ -230,7 +230,8 @@ files.</p>
 <div id="building-it" class="slide section level1">
 <h1>Building it</h1>
 <p>The package manager is set up to look for <code>Main.hs</code> in the
-src directory. This command will install it:</p>
+src directory.</p>
+<p>This command will install it:</p>
 <pre><code>stack install</code></pre>
 <p>The generated output will reveal the name of the executable. Run it
 to see the output.</p>
@@ -776,12 +777,12 @@ better than the 16,400 on the Packages web page.</p>
 <ul>
 <li><a href="http://hackage.haskell.org/package/http-conduit">hackage.haskell.org/package/http-conduit</a></li>
 </ul>
-<p>That landing page for a package is intimidating, but look towards the
-bottom, at the section labeled “Modules”.</p>
+<p>That landing page for a package is intimidating, but look at the
+section labeled “Modules”.</p>
 <p>What do you see?</p>
 </div>
-<div id="installing-a-package" class="slide section level1">
-<h1>Installing a package</h1>
+<div id="adding-dependencies" class="slide section level1">
+<h1>Adding dependencies</h1>
 <p>Before we can use <code>http-conduit</code>, we must tell the package
 manager that we need it.</p>
 <p>add <code>http-conduit</code> to the <code>dependencies</code>
@@ -793,18 +794,26 @@ section in your <code>package.yaml</code> file:</p>
 libraries that <code>http-conduit</code> depends on, and downloads,
 compiles, and installs the whole lot.</p>
 <p>Now also add the following dependencies, for you will need them later
-as well ~~~~ - bytestring - tagsoup ~~~~</p>
+as well:</p>
+<pre><code>  - bytestring
+  - utf8-string
+  - tagsoup</code></pre>
+</div>
+<div id="instalation" class="slide section level1">
+<h1>Instalation</h1>
 <p>Expect the build to take a few minutes and print a lot of output.</p>
+<p>Let’s build the packages we specified in our
+<code>package.yaml</code> file:</p>
+<pre><code>stack install</code></pre>
+<p>This will install all specified packages and all of their
+dependencies as well.</p>
 </div>
 <div id="reading-docs-packages-and-modules" class="slide section level1">
 <h1>Reading docs: packages and modules</h1>
-<p>While we’re figuring out how to use the <code>http-conduit</code>
-package, lets build it in the meantime:</p>
-<pre><code>stack install</code></pre>
-<p>Now let’s try to figure out how we should use it.</p>
-<p>Remember the link to API documentation at the end of the package’s
-web page? Click through to the API docs. (For now, ignore the reference
-to <code>stackage</code>)</p>
+<p>While we’re waiting, let’s try to figure out how we should use <a href="https://hackage.haskell.org/package/http-conduit"><code>http-conduit</code></a>.</p>
+<p>Remember the link to API documentation in the <code>Modules</code>
+section of the package’s web page? Click through to the API docs.</p>
+<p>(For now, ignore the reference to <code>stackage</code>)</p>
 <p>An API page begins with a title that looks something like this:</p>
 <pre><code>Network.HTTP.Simple</code></pre>
 <p>This is the name of a <em>module</em>.</p>
@@ -860,6 +869,9 @@ and returns… what?</p>
 type <code>a</code>”.</p>
 <p>So <code>[String]</code> means “a list of values, all of type
 <code>String</code>”.</p>
+<p><code>a</code> is a type variable, it can be substituted with any
+concrete type. Notice the lower case for type variables, upper case for
+concrete types.</p>
 </div>
 <div id="type-synonyms" class="slide section level1">
 <h1>Type synonyms</h1>
@@ -869,7 +881,7 @@ type <code>a</code>”.</p>
 i.e. “a list of <code>Char</code>”.</li>
 </ul>
 <p>We can introduce new synonyms of our own.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb57-1"><a href="#cb57-1" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Dollars</span> <span class="ot">=</span> <span class="dt">Int</span></span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb58-1"><a href="#cb58-1" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Dollars</span> <span class="ot">=</span> <span class="dt">Int</span></span></code></pre></div>
 <p>A type synonym can be handy for documenting an intended use for an
 existing type.</p>
 </div>
@@ -908,12 +920,9 @@ bit.</p>
 <p>In Haskell, a type can contain one or more type variables.</p>
 <p><code>Response</code> is defined together with a type variable</p>
 <pre><code>data Response body</code></pre>
-<p>notice <code>body</code> starts with a lowercase character. It is a
-<code>Type</code> within a <code>Type</code></p>
-<p>This goes beyond the scope of the workshop. For now think of</p>
+<p>In our case, the body is replaced by a concrete type:</p>
 <pre><code>Response Bytestring</code></pre>
-<p>to be some <code>Response</code> datastructure in the form of a
-<code>Bytestring</code></p>
+<p>So it is a <code>Response</code> of <code>Bytestring</code></p>
 </div>
 <div id="bytestring" class="slide section level1">
 <h1>Bytestring</h1>
@@ -937,8 +946,8 @@ import qualified Data.ByteString.Char8 as B8</code></pre>
 <pre><code>httpBS &quot;http://example.com/&quot;</code></pre>
 <p>What is that response?</p>
 </div>
-<div id="its-a-response-bytestring" class="slide section level1">
-<h1>It’s a <code>Response Bytestring</code> !</h1>
+<div id="it-looks-like-a-response-bytestring" class="slide section level1">
+<h1>It looks like a <code>Response Bytestring</code></h1>
 <p>Take a good look at what just appeared as output.</p>
 <p>Prettyprinted, it looks like something like this:</p>
 <pre><code>Response 
@@ -947,10 +956,7 @@ import qualified Data.ByteString.Char8 as B8</code></pre>
    responseHeaders = [(&quot;Content-Encoding&quot;,&quot;gzip&quot;),(&quot;Accept-Ranges&quot;,&quot;bytes&quot;), 
 
    etc.</code></pre>
-<p>Did you get a response? Yeah!</p>
-</div>
-<div id="pure-code" class="slide section level1">
-<h1>Pure code</h1>
+<p>Did you get a response? Yeah! # Pure code</p>
 <p>So far, all of the code we have written has been “pure”.</p>
 <ul>
 <li>The behaviour of all of our functions has depended only on their
@@ -967,7 +973,7 @@ behaviour of a function.</li>
 <li>Web pages clearly are <em>not</em> pure.</li>
 </ul>
 <p>So can we write code like this?</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb66-1"><a href="#cb66-1" tabindex="-1"></a><span class="fu">length</span> (httpBS <span class="st">&quot;http://x.org/&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb67-1"><a href="#cb67-1" tabindex="-1"></a><span class="fu">length</span> (httpBS <span class="st">&quot;http://x.org/&quot;</span>)</span></code></pre></div>
 <p>NO.</p>
 <p>The type system segregates code that must be pure from code that may
 have side effects (“impure” code).</p>
@@ -983,7 +989,7 @@ have side effects (“impure” code).</p>
 <h1>IO</h1>
 <p>The <code>:type</code> directive should print something like
 this:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb68-1"><a href="#cb68-1" tabindex="-1"></a><span class="fu">readFile</span><span class="ot"> ::</span> <span class="dt">FilePath</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> <span class="dt">String</span></span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb69-1"><a href="#cb69-1" tabindex="-1"></a><span class="fu">readFile</span><span class="ot"> ::</span> <span class="dt">FilePath</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> <span class="dt">String</span></span></code></pre></div>
 <p>Notice that <code>IO</code> on the result type?</p>
 <p>It means “this function may have side effects”.</p>
 <p>We often refer to impure functions, with <code>IO</code> in the
@@ -997,9 +1003,9 @@ result type, as <em>actions</em>.</p>
 <p>The type system keeps track of which functions have <code>IO</code>
 in their types, and keeps us honest.</p>
 <p>We can still mix pure and impure code in a natural way:</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb69-1"><a href="#cb69-1" tabindex="-1"></a>charCount fileName <span class="ot">=</span> <span class="kw">do</span></span>
-<span id="cb69-2"><a href="#cb69-2" tabindex="-1"></a>  contents <span class="ot">&lt;-</span> <span class="fu">readFile</span> fileName</span>
-<span id="cb69-3"><a href="#cb69-3" tabindex="-1"></a>  <span class="fu">return</span> (<span class="fu">length</span> contents)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb70-1"><a href="#cb70-1" tabindex="-1"></a>charCount fileName <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb70-2"><a href="#cb70-2" tabindex="-1"></a>  contents <span class="ot">&lt;-</span> <span class="fu">readFile</span> fileName</span>
+<span id="cb70-3"><a href="#cb70-3" tabindex="-1"></a>  <span class="fu">return</span> (<span class="fu">length</span> contents)</span></code></pre></div>
 </div>
 <div id="do-notation" class="slide section level1">
 <h1>“do” notation</h1>
@@ -1012,7 +1018,7 @@ line.</p>
 <h1>Capturing the results of impure code</h1>
 <p>To capture the result of an <code>IO</code> action, we use
 <code>&lt;-</code> instead of <code>=</code>.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb70-1"><a href="#cb70-1" tabindex="-1"></a>contents <span class="ot">&lt;-</span> <span class="fu">readFile</span> fileName</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb71-1"><a href="#cb71-1" tabindex="-1"></a>contents <span class="ot">&lt;-</span> <span class="fu">readFile</span> fileName</span></code></pre></div>
 <p>The result (<code>contents</code>) is pure - it <em>does not
 have</em> the <code>IO</code> type.</p>
 <p>This is how we supply pure code with data returned from impure
@@ -1031,18 +1037,43 @@ the impure world using <code>return</code>.</p>
 <p>When you write a Haskell program, its entry point must be named
 <code>main</code>.</p>
 <p>The type of <code>main</code> must be:</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb71-1"><a href="#cb71-1" tabindex="-1"></a><span class="ot">main ::</span> <span class="dt">IO</span> ()</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb72-1"><a href="#cb72-1" tabindex="-1"></a><span class="ot">main ::</span> <span class="dt">IO</span> ()</span></code></pre></div>
 <p><code>()</code> is named “unit”, and means more or less the same
 thing as <code>void</code> in C or Java.</p>
 <p>What this means is that <em>all</em> Haskell programs are impure!</p>
 </div>
-<div id="get-stuff-from-the-response" class="slide section level1">
-<h1>Get stuff from the Response</h1>
+<div id="what-is-the-type-of-the-thing-we-download" class="slide section level1">
+<h1>What is the type of the thing we download?</h1>
+<p>Try:</p>
+<pre><code>:t httpBS &quot;http://example.com&quot;</code></pre>
+<p>Note the type variable <code>m</code>. In our case we will use
+<code>IO</code> for it.</p>
+</div>
+<div id="get-the-body-from-the-response" class="slide section level1">
+<h1>Get the body from the Response</h1>
 <p>In the documentation you can find function definitions like:</p>
 <pre><code>getResponseBody :: Response a -&gt; a</code></pre>
-<p>In the case of Response Bytestring, this would become</p>
+<p>In our case we have <code>Response Bytestring</code>, so this would
+become</p>
 <pre><code>getResponseBody :: Response Bytestring -&gt; Bytestring</code></pre>
 <p>This can be used to get specific stuff from the response!</p>
+</div>
+<div id="start-to-get-downloading" class="slide section level1">
+<h1>Start to get downloading</h1>
+<pre><code>module Main (main)
+where
+
+import           Network.HTTP.Simple
+import qualified Data.ByteString.Char8 as B8
+
+main = putStrLn &quot;hello, world!&quot;
+
+download = do
+   response &lt;- httpBS &quot;http://example.com&quot; :: IO(Response ByteString)
+   let body = getResponseBody response
+   return body</code></pre>
+<p>Note that we have to tell explicitly that we want to use
+<code>IO</code> as concrete value for <code>m</code></p>
 </div>
 <div id="from-binary-to-text" class="slide section level1">
 <h1>From binary to text</h1>
@@ -1054,7 +1085,7 @@ text for manipulating.</p>
 <h1>Binary to text</h1>
 <p>Remember we were planning to cheat earlier?</p>
 <p>We had this:</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb74-1"><a href="#cb74-1" tabindex="-1"></a><span class="ot">httpBS ::</span> <span class="dt">Request</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> (<span class="dt">Request</span> <span class="dt">ByteString</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb77-1"><a href="#cb77-1" tabindex="-1"></a><span class="ot">httpBS ::</span> <span class="dt">Request</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> (<span class="dt">Request</span> <span class="dt">ByteString</span>)</span></code></pre></div>
 <p>We need something whose result is an <code>IO String</code>
 instead.</p>
 <p>How should that look?</p>
@@ -1066,9 +1097,9 @@ instead.</p>
 <pre><code>cabal install utf8-string</code></pre>
 <p>That contains a package named
 <code>Data.ByteString.Lazy.UTF8</code>.</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb76-1"><a href="#cb76-1" tabindex="-1"></a><span class="kw">import</span> <span class="dt">Data.ByteString.Lazy.UTF8</span></span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb79-1"><a href="#cb79-1" tabindex="-1"></a><span class="kw">import</span> <span class="dt">Data.ByteString.Lazy.UTF8</span></span></code></pre></div>
 <p>It defines a function named <code>toString</code>:</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb77-1"><a href="#cb77-1" tabindex="-1"></a><span class="ot">toString ::</span> <span class="dt">ByteString</span> <span class="ot">-&gt;</span> <span class="dt">String</span></span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb80-1"><a href="#cb80-1" tabindex="-1"></a><span class="ot">toString ::</span> <span class="dt">ByteString</span> <span class="ot">-&gt;</span> <span class="dt">String</span></span></code></pre></div>
 </div>
 <div id="utf-8-conversion-exercise" class="slide section level1">
 <h1>UTF-8 conversion exercise</h1>
@@ -1087,11 +1118,11 @@ all top-level definitions.</p></li>
 <h1>Downloading and saving a web page</h1>
 <p>Use your <code>download</code> function to save a local copy of the
 page you just wrote.</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb78-1"><a href="#cb78-1" tabindex="-1"></a><span class="ot">saveAs ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb81-1"><a href="#cb81-1" tabindex="-1"></a><span class="ot">saveAs ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</span></code></pre></div>
 <p>For simplicity, let’s save the local files as names containing
 numbers:</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb79-1"><a href="#cb79-1" tabindex="-1"></a><span class="ot">makeFileName ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">FilePath</span></span>
-<span id="cb79-2"><a href="#cb79-2" tabindex="-1"></a>makeFileName k <span class="ot">=</span> <span class="st">&quot;download-&quot;</span> <span class="op">++</span> <span class="fu">show</span> k <span class="op">++</span> <span class="st">&quot;.html&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb82-1"><a href="#cb82-1" tabindex="-1"></a><span class="ot">makeFileName ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">FilePath</span></span>
+<span id="cb82-2"><a href="#cb82-2" tabindex="-1"></a>makeFileName k <span class="ot">=</span> <span class="st">&quot;download-&quot;</span> <span class="op">++</span> <span class="fu">show</span> k <span class="op">++</span> <span class="st">&quot;.html&quot;</span></span></code></pre></div>
 <p>To save a local copy of a file, you’ll need the
 <code>writeFile</code> action.</p>
 </div>
@@ -1111,9 +1142,9 @@ HTML.</p>
 <div id="dealing-with-problems" class="slide section level1">
 <h1>Dealing with problems</h1>
 <p>Try this:</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb81-1"><a href="#cb81-1" tabindex="-1"></a><span class="fu">head</span> [<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb84-1"><a href="#cb84-1" tabindex="-1"></a><span class="fu">head</span> [<span class="dv">1</span>]</span></code></pre></div>
 <p>Now try this:</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb82-1"><a href="#cb82-1" tabindex="-1"></a><span class="fu">head</span> []</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb85-1"><a href="#cb85-1" tabindex="-1"></a><span class="fu">head</span> []</span></code></pre></div>
 </div>
 <div id="oops" class="slide section level1">
 <h1>Oops</h1>
@@ -1121,11 +1152,11 @@ HTML.</p>
 exception.</p>
 <p>Suppose we need a version of <code>head</code> that will <em>not</em>
 throw an exception.</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb83-1"><a href="#cb83-1" tabindex="-1"></a><span class="ot">safeHead ::</span> [a] <span class="ot">-&gt;</span> <span class="op">????</span></span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb86-1"><a href="#cb86-1" tabindex="-1"></a><span class="ot">safeHead ::</span> [a] <span class="ot">-&gt;</span> <span class="op">????</span></span></code></pre></div>
 <p>What should the <code>????</code> be?</p>
 <p>Let’s invent something.</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb84-1"><a href="#cb84-1" tabindex="-1"></a>safeHead (x<span class="op">:</span>xs) <span class="ot">=</span> <span class="dt">Some</span> x</span>
-<span id="cb84-2"><a href="#cb84-2" tabindex="-1"></a>safeHead []     <span class="ot">=</span> <span class="dt">None</span></span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb87-1"><a href="#cb87-1" tabindex="-1"></a>safeHead (x<span class="op">:</span>xs) <span class="ot">=</span> <span class="dt">Some</span> x</span>
+<span id="cb87-2"><a href="#cb87-2" tabindex="-1"></a>safeHead []     <span class="ot">=</span> <span class="dt">None</span></span></code></pre></div>
 </div>
 <div id="some-none" class="slide section level1">
 <h1>Some? None?</h1>
@@ -1137,8 +1168,8 @@ result here”.</p></li>
 </ul>
 <p>To bring these constructors into existence, we need to declare a new
 type.</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb85-1"><a href="#cb85-1" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Perhaps</span> a <span class="ot">=</span> <span class="dt">Some</span> a</span>
-<span id="cb85-2"><a href="#cb85-2" tabindex="-1"></a>               <span class="op">|</span> <span class="dt">None</span></span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb88-1"><a href="#cb88-1" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Perhaps</span> a <span class="ot">=</span> <span class="dt">Some</span> a</span>
+<span id="cb88-2"><a href="#cb88-2" tabindex="-1"></a>               <span class="op">|</span> <span class="dt">None</span></span></code></pre></div>
 <p>The <code>|</code> character separates the constructors. We can read
 it as:</p>
 <ul>
@@ -1150,8 +1181,8 @@ it as:</p>
 <div id="maybe" class="slide section level1">
 <h1>Maybe</h1>
 <p>Actually, Haskell already has a <code>Perhaps</code> type.</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb86-1"><a href="#cb86-1" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Maybe</span> a <span class="ot">=</span> <span class="dt">Just</span> a</span>
-<span id="cb86-2"><a href="#cb86-2" tabindex="-1"></a>             <span class="op">|</span> <span class="dt">Nothing</span></span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb89-1"><a href="#cb89-1" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Maybe</span> a <span class="ot">=</span> <span class="dt">Just</span> a</span>
+<span id="cb89-2"><a href="#cb89-2" tabindex="-1"></a>             <span class="op">|</span> <span class="dt">Nothing</span></span></code></pre></div>
 <p>The <code>a</code> is a <em>type parameter</em>, meaning that when we
 write this type, we have to supply another type as a parameter:</p>
 <ul>
@@ -1163,28 +1194,28 @@ write this type, we have to supply another type as a parameter:</p>
 <h1>Using constructors</h1>
 <p>If we want to construct a <code>Maybe Int</code> using the
 <code>Just</code> constructor, we must pass it an <code>Int</code>.</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb87-1"><a href="#cb87-1" tabindex="-1"></a><span class="dt">Just</span> <span class="dv">1</span><span class="ot">  ::</span> <span class="dt">Maybe</span> <span class="dt">Int</span></span>
-<span id="cb87-2"><a href="#cb87-2" tabindex="-1"></a><span class="dt">Nothing</span><span class="ot"> ::</span> <span class="dt">Maybe</span> <span class="dt">Int</span></span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb90-1"><a href="#cb90-1" tabindex="-1"></a><span class="dt">Just</span> <span class="dv">1</span><span class="ot">  ::</span> <span class="dt">Maybe</span> <span class="dt">Int</span></span>
+<span id="cb90-2"><a href="#cb90-2" tabindex="-1"></a><span class="dt">Nothing</span><span class="ot"> ::</span> <span class="dt">Maybe</span> <span class="dt">Int</span></span></code></pre></div>
 <p>This will not work, because the types don’t match:</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb88-1"><a href="#cb88-1" tabindex="-1"></a><span class="dt">Just</span> [<span class="dv">1</span>]<span class="ot"> ::</span> <span class="dt">Maybe</span> <span class="dt">String</span></span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb91-1"><a href="#cb91-1" tabindex="-1"></a><span class="dt">Just</span> [<span class="dv">1</span>]<span class="ot"> ::</span> <span class="dt">Maybe</span> <span class="dt">String</span></span></code></pre></div>
 </div>
 <div id="pattern-matching-over-constructors" class="slide section level1">
 <h1>Pattern matching over constructors</h1>
 <p>We can pattern match over the constructors for <code>Maybe</code>
 just as we did for lists.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb89-1"><a href="#cb89-1" tabindex="-1"></a><span class="kw">case</span> foo <span class="kw">of</span></span>
-<span id="cb89-2"><a href="#cb89-2" tabindex="-1"></a>  <span class="dt">Just</span> x  <span class="ot">-&gt;</span> x</span>
-<span id="cb89-3"><a href="#cb89-3" tabindex="-1"></a>  <span class="dt">Nothing</span> <span class="ot">-&gt;</span> bar</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb92-1"><a href="#cb92-1" tabindex="-1"></a><span class="kw">case</span> foo <span class="kw">of</span></span>
+<span id="cb92-2"><a href="#cb92-2" tabindex="-1"></a>  <span class="dt">Just</span> x  <span class="ot">-&gt;</span> x</span>
+<span id="cb92-3"><a href="#cb92-3" tabindex="-1"></a>  <span class="dt">Nothing</span> <span class="ot">-&gt;</span> bar</span></code></pre></div>
 </div>
 <div id="tags" class="slide section level1">
 <h1>Tags</h1>
 <p>The <code>tagsoup</code> package defines the following type:</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb90-1"><a href="#cb90-1" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Tag</span> <span class="ot">=</span> <span class="dt">TagOpen</span> <span class="dt">String</span> [<span class="dt">Attribute</span>]</span>
-<span id="cb90-2"><a href="#cb90-2" tabindex="-1"></a>         <span class="op">|</span> <span class="dt">TagClose</span> <span class="dt">String</span></span>
-<span id="cb90-3"><a href="#cb90-3" tabindex="-1"></a>         <span class="op">|</span> <span class="dt">TagText</span> <span class="dt">String</span></span>
-<span id="cb90-4"><a href="#cb90-4" tabindex="-1"></a>         <span class="op">|</span> <span class="dt">TagComment</span> <span class="dt">String</span></span>
-<span id="cb90-5"><a href="#cb90-5" tabindex="-1"></a>         <span class="op">|</span> <span class="dt">TagWarning</span> <span class="dt">String</span></span>
-<span id="cb90-6"><a href="#cb90-6" tabindex="-1"></a>         <span class="op">|</span> <span class="dt">TagPosition</span> <span class="dt">Row</span> <span class="dt">Column</span></span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb93-1"><a href="#cb93-1" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Tag</span> <span class="ot">=</span> <span class="dt">TagOpen</span> <span class="dt">String</span> [<span class="dt">Attribute</span>]</span>
+<span id="cb93-2"><a href="#cb93-2" tabindex="-1"></a>         <span class="op">|</span> <span class="dt">TagClose</span> <span class="dt">String</span></span>
+<span id="cb93-3"><a href="#cb93-3" tabindex="-1"></a>         <span class="op">|</span> <span class="dt">TagText</span> <span class="dt">String</span></span>
+<span id="cb93-4"><a href="#cb93-4" tabindex="-1"></a>         <span class="op">|</span> <span class="dt">TagComment</span> <span class="dt">String</span></span>
+<span id="cb93-5"><a href="#cb93-5" tabindex="-1"></a>         <span class="op">|</span> <span class="dt">TagWarning</span> <span class="dt">String</span></span>
+<span id="cb93-6"><a href="#cb93-6" tabindex="-1"></a>         <span class="op">|</span> <span class="dt">TagPosition</span> <span class="dt">Row</span> <span class="dt">Column</span></span></code></pre></div>
 <p>What do you think the constructors mean?</p>
 </div>
 <div id="pattern-matching-on-a-tag" class="slide section level1">
@@ -1199,12 +1230,12 @@ just as we did for lists.</p>
 <div id="dont-care" class="slide section level1">
 <h1>Don’t care!</h1>
 <p>Our first body looked like this:</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb91-1"><a href="#cb91-1" tabindex="-1"></a>isOpenTag (<span class="dt">TagOpen</span> x y)     <span class="ot">=</span> <span class="dt">True</span></span>
-<span id="cb91-2"><a href="#cb91-2" tabindex="-1"></a>isOpenTag (<span class="dt">TagClose</span> x)      <span class="ot">=</span> <span class="dt">False</span></span>
-<span id="cb91-3"><a href="#cb91-3" tabindex="-1"></a>isOpenTag (<span class="dt">TagText</span> x)       <span class="ot">=</span> <span class="dt">False</span></span>
-<span id="cb91-4"><a href="#cb91-4" tabindex="-1"></a>isOpenTag (<span class="dt">TagComment</span> x)    <span class="ot">=</span> <span class="dt">False</span></span>
-<span id="cb91-5"><a href="#cb91-5" tabindex="-1"></a>isOpenTag (<span class="dt">TagWarning</span> x)    <span class="ot">=</span> <span class="dt">False</span></span>
-<span id="cb91-6"><a href="#cb91-6" tabindex="-1"></a>isOpenTag (<span class="dt">TagPosition</span> x y) <span class="ot">=</span> <span class="dt">False</span></span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb94-1"><a href="#cb94-1" tabindex="-1"></a>isOpenTag (<span class="dt">TagOpen</span> x y)     <span class="ot">=</span> <span class="dt">True</span></span>
+<span id="cb94-2"><a href="#cb94-2" tabindex="-1"></a>isOpenTag (<span class="dt">TagClose</span> x)      <span class="ot">=</span> <span class="dt">False</span></span>
+<span id="cb94-3"><a href="#cb94-3" tabindex="-1"></a>isOpenTag (<span class="dt">TagText</span> x)       <span class="ot">=</span> <span class="dt">False</span></span>
+<span id="cb94-4"><a href="#cb94-4" tabindex="-1"></a>isOpenTag (<span class="dt">TagComment</span> x)    <span class="ot">=</span> <span class="dt">False</span></span>
+<span id="cb94-5"><a href="#cb94-5" tabindex="-1"></a>isOpenTag (<span class="dt">TagWarning</span> x)    <span class="ot">=</span> <span class="dt">False</span></span>
+<span id="cb94-6"><a href="#cb94-6" tabindex="-1"></a>isOpenTag (<span class="dt">TagPosition</span> x y) <span class="ot">=</span> <span class="dt">False</span></span></code></pre></div>
 <p>Concise, but ugly.</p>
 <ul>
 <li><p>We really only care about one constructor.</p></li>
@@ -1216,8 +1247,8 @@ we declare.</p></li>
 <h1>The wild card pattern</h1>
 <p>We can write “I don’t care what this pattern or variable is” using
 the “<code>_</code>” character.</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb92-1"><a href="#cb92-1" tabindex="-1"></a>isOpenTag (<span class="dt">TagOpen</span> _ _) <span class="ot">=</span> <span class="dt">True</span></span>
-<span id="cb92-2"><a href="#cb92-2" tabindex="-1"></a>isOpenTag  _            <span class="ot">=</span> <span class="dt">False</span></span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb95-1"><a href="#cb95-1" tabindex="-1"></a>isOpenTag (<span class="dt">TagOpen</span> _ _) <span class="ot">=</span> <span class="dt">True</span></span>
+<span id="cb95-2"><a href="#cb95-2" tabindex="-1"></a>isOpenTag  _            <span class="ot">=</span> <span class="dt">False</span></span></code></pre></div>
 <p>The wild card pattern always matches.</p>
 <ul>
 <li><p>Since we don’t care about <code>x</code> or <code>y</code>, we
@@ -1230,8 +1261,8 @@ can state that explicitly using <code>_</code>.</p></li>
 <div id="just-a-quick-question" class="slide section level1">
 <h1>Just a quick question</h1>
 <p>Why don’t we write the function like this?</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb93-1"><a href="#cb93-1" tabindex="-1"></a>isOpenTag  _            <span class="ot">=</span> <span class="dt">False</span></span>
-<span id="cb93-2"><a href="#cb93-2" tabindex="-1"></a>isOpenTag (<span class="dt">TagOpen</span> _ _) <span class="ot">=</span> <span class="dt">True</span></span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb96-1"><a href="#cb96-1" tabindex="-1"></a>isOpenTag  _            <span class="ot">=</span> <span class="dt">False</span></span>
+<span id="cb96-2"><a href="#cb96-2" tabindex="-1"></a>isOpenTag (<span class="dt">TagOpen</span> _ _) <span class="ot">=</span> <span class="dt">True</span></span></code></pre></div>
 </div>
 <div id="extracting-links-from-a-web-page" class="slide section level1">
 <h1>Extracting links from a web page</h1>
@@ -1245,9 +1276,9 @@ tags.</p></li>
 </div>
 <div id="lets-use-it" class="slide section level1">
 <h1>Let’s use it!</h1>
-<div class="sourceCode" id="cb94"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb94-1"><a href="#cb94-1" tabindex="-1"></a>processPage url <span class="ot">=</span> <span class="kw">do</span></span>
-<span id="cb94-2"><a href="#cb94-2" tabindex="-1"></a>  page <span class="ot">&lt;-</span> download url</span>
-<span id="cb94-3"><a href="#cb94-3" tabindex="-1"></a>  <span class="fu">return</span> (parseTags page)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb97-1"><a href="#cb97-1" tabindex="-1"></a>processPage url <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb97-2"><a href="#cb97-2" tabindex="-1"></a>  page <span class="ot">&lt;-</span> download url</span>
+<span id="cb97-3"><a href="#cb97-3" tabindex="-1"></a>  <span class="fu">return</span> (parseTags page)</span></code></pre></div>
 </div>
 <div id="tidying-tags-up" class="slide section level1">
 <h1>Tidying tags up</h1>
@@ -1263,11 +1294,11 @@ attributes to lower case.</li>
 <h1>Canonical tags</h1>
 <p>Let’s use our function to clean up the result of
 <code>parseTags</code>.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb97-1"><a href="#cb97-1" tabindex="-1"></a>processPage url <span class="ot">=</span> <span class="kw">do</span></span>
-<span id="cb97-2"><a href="#cb97-2" tabindex="-1"></a>  page <span class="ot">&lt;-</span> download url</span>
-<span id="cb97-3"><a href="#cb97-3" tabindex="-1"></a>  <span class="fu">return</span></span>
-<span id="cb97-4"><a href="#cb97-4" tabindex="-1"></a>    (canonicalizeTags</span>
-<span id="cb97-5"><a href="#cb97-5" tabindex="-1"></a>      (parseTags page))</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb100-1"><a href="#cb100-1" tabindex="-1"></a>processPage url <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb100-2"><a href="#cb100-2" tabindex="-1"></a>  page <span class="ot">&lt;-</span> download url</span>
+<span id="cb100-3"><a href="#cb100-3" tabindex="-1"></a>  <span class="fu">return</span></span>
+<span id="cb100-4"><a href="#cb100-4" tabindex="-1"></a>    (canonicalizeTags</span>
+<span id="cb100-5"><a href="#cb100-5" tabindex="-1"></a>      (parseTags page))</span></code></pre></div>
 </div>
 <div id="extracting-links" class="slide section level1">
 <h1>Extracting links</h1>
@@ -1284,12 +1315,12 @@ a list of parsed tags?</p></li>
 <div id="whee" class="slide section level1">
 <h1>Whee!</h1>
 <p>This cascade is getting a bit ridiculous.</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb98-1"><a href="#cb98-1" tabindex="-1"></a>processPage url <span class="ot">=</span> <span class="kw">do</span></span>
-<span id="cb98-2"><a href="#cb98-2" tabindex="-1"></a>  page <span class="ot">&lt;-</span> download url</span>
-<span id="cb98-3"><a href="#cb98-3" tabindex="-1"></a>  <span class="fu">return</span></span>
-<span id="cb98-4"><a href="#cb98-4" tabindex="-1"></a>    (<span class="fu">filter</span> (isTagOpenName <span class="st">&quot;a&quot;</span>)</span>
-<span id="cb98-5"><a href="#cb98-5" tabindex="-1"></a>      (canonicalizeTags</span>
-<span id="cb98-6"><a href="#cb98-6" tabindex="-1"></a>        (parseTags page)))</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb101-1"><a href="#cb101-1" tabindex="-1"></a>processPage url <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb101-2"><a href="#cb101-2" tabindex="-1"></a>  page <span class="ot">&lt;-</span> download url</span>
+<span id="cb101-3"><a href="#cb101-3" tabindex="-1"></a>  <span class="fu">return</span></span>
+<span id="cb101-4"><a href="#cb101-4" tabindex="-1"></a>    (<span class="fu">filter</span> (isTagOpenName <span class="st">&quot;a&quot;</span>)</span>
+<span id="cb101-5"><a href="#cb101-5" tabindex="-1"></a>      (canonicalizeTags</span>
+<span id="cb101-6"><a href="#cb101-6" tabindex="-1"></a>        (parseTags page)))</span></code></pre></div>
 <p>Two observations:</p>
 <ul>
 <li><p>Our action is now mostly pure code.</p></li>
@@ -1300,23 +1331,23 @@ a list of parsed tags?</p></li>
 <h1>A rewriting exercise</h1>
 <p>Take this function and split it into pure and impure parts.</p>
 <p>Write the pure part using function composition.</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb99-1"><a href="#cb99-1" tabindex="-1"></a>processPage url <span class="ot">=</span> <span class="kw">do</span></span>
-<span id="cb99-2"><a href="#cb99-2" tabindex="-1"></a>  page <span class="ot">&lt;-</span> download url</span>
-<span id="cb99-3"><a href="#cb99-3" tabindex="-1"></a>  <span class="fu">return</span></span>
-<span id="cb99-4"><a href="#cb99-4" tabindex="-1"></a>    (<span class="fu">filter</span> (isTagOpenName <span class="st">&quot;a&quot;</span>)</span>
-<span id="cb99-5"><a href="#cb99-5" tabindex="-1"></a>      (canonicalizeTags</span>
-<span id="cb99-6"><a href="#cb99-6" tabindex="-1"></a>        (parseTags page)))</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb102-1"><a href="#cb102-1" tabindex="-1"></a>processPage url <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb102-2"><a href="#cb102-2" tabindex="-1"></a>  page <span class="ot">&lt;-</span> download url</span>
+<span id="cb102-3"><a href="#cb102-3" tabindex="-1"></a>  <span class="fu">return</span></span>
+<span id="cb102-4"><a href="#cb102-4" tabindex="-1"></a>    (<span class="fu">filter</span> (isTagOpenName <span class="st">&quot;a&quot;</span>)</span>
+<span id="cb102-5"><a href="#cb102-5" tabindex="-1"></a>      (canonicalizeTags</span>
+<span id="cb102-6"><a href="#cb102-6" tabindex="-1"></a>        (parseTags page)))</span></code></pre></div>
 </div>
 <div id="my-solution-1" class="slide section level1">
 <h1>My solution</h1>
-<div class="sourceCode" id="cb100"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb100-1"><a href="#cb100-1" tabindex="-1"></a>processPage url <span class="ot">=</span> <span class="kw">do</span></span>
-<span id="cb100-2"><a href="#cb100-2" tabindex="-1"></a>  page <span class="ot">&lt;-</span> download url</span>
-<span id="cb100-3"><a href="#cb100-3" tabindex="-1"></a>  <span class="fu">return</span> (process page)</span>
-<span id="cb100-4"><a href="#cb100-4" tabindex="-1"></a></span>
-<span id="cb100-5"><a href="#cb100-5" tabindex="-1"></a>process <span class="ot">=</span></span>
-<span id="cb100-6"><a href="#cb100-6" tabindex="-1"></a>    <span class="fu">filter</span> (isTagOpenName <span class="st">&quot;a&quot;</span>) <span class="op">.</span></span>
-<span id="cb100-7"><a href="#cb100-7" tabindex="-1"></a>    canonicalizeTags <span class="op">.</span></span>
-<span id="cb100-8"><a href="#cb100-8" tabindex="-1"></a>    parseTags</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb103-1"><a href="#cb103-1" tabindex="-1"></a>processPage url <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb103-2"><a href="#cb103-2" tabindex="-1"></a>  page <span class="ot">&lt;-</span> download url</span>
+<span id="cb103-3"><a href="#cb103-3" tabindex="-1"></a>  <span class="fu">return</span> (process page)</span>
+<span id="cb103-4"><a href="#cb103-4" tabindex="-1"></a></span>
+<span id="cb103-5"><a href="#cb103-5" tabindex="-1"></a>process <span class="ot">=</span></span>
+<span id="cb103-6"><a href="#cb103-6" tabindex="-1"></a>    <span class="fu">filter</span> (isTagOpenName <span class="st">&quot;a&quot;</span>) <span class="op">.</span></span>
+<span id="cb103-7"><a href="#cb103-7" tabindex="-1"></a>    canonicalizeTags <span class="op">.</span></span>
+<span id="cb103-8"><a href="#cb103-8" tabindex="-1"></a>    parseTags</span></code></pre></div>
 </div>
 <div id="more-stuff-to-filter-out" class="slide section level1">
 <h1>More stuff to filter out</h1>
@@ -1328,12 +1359,12 @@ a list of parsed tags?</p></li>
 </div>
 <div id="no-following" class="slide section level1">
 <h1>No following</h1>
-<div class="sourceCode" id="cb101"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb101-1"><a href="#cb101-1" tabindex="-1"></a>nofollow tag <span class="ot">=</span> fromAttrib <span class="st">&quot;rel&quot;</span> tag <span class="op">==</span> <span class="st">&quot;nofollow&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb102"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb102-1"><a href="#cb102-1" tabindex="-1"></a>process <span class="ot">=</span></span>
-<span id="cb102-2"><a href="#cb102-2" tabindex="-1"></a>    <span class="fu">filter</span> (<span class="fu">not</span> <span class="op">.</span> nofollow) <span class="op">.</span></span>
-<span id="cb102-3"><a href="#cb102-3" tabindex="-1"></a>    <span class="fu">filter</span> (isTagOpenName <span class="st">&quot;a&quot;</span>) <span class="op">.</span></span>
-<span id="cb102-4"><a href="#cb102-4" tabindex="-1"></a>    canonicalizeTags <span class="op">.</span></span>
-<span id="cb102-5"><a href="#cb102-5" tabindex="-1"></a>    parseTags</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb104-1"><a href="#cb104-1" tabindex="-1"></a>nofollow tag <span class="ot">=</span> fromAttrib <span class="st">&quot;rel&quot;</span> tag <span class="op">==</span> <span class="st">&quot;nofollow&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb105-1"><a href="#cb105-1" tabindex="-1"></a>process <span class="ot">=</span></span>
+<span id="cb105-2"><a href="#cb105-2" tabindex="-1"></a>    <span class="fu">filter</span> (<span class="fu">not</span> <span class="op">.</span> nofollow) <span class="op">.</span></span>
+<span id="cb105-3"><a href="#cb105-3" tabindex="-1"></a>    <span class="fu">filter</span> (isTagOpenName <span class="st">&quot;a&quot;</span>) <span class="op">.</span></span>
+<span id="cb105-4"><a href="#cb105-4" tabindex="-1"></a>    canonicalizeTags <span class="op">.</span></span>
+<span id="cb105-5"><a href="#cb105-5" tabindex="-1"></a>    parseTags</span></code></pre></div>
 </div>
 <div id="we-have-a-list-of-a-tags" class="slide section level1">
 <h1>We have a list of &lt;a&gt; tags</h1>
@@ -1342,13 +1373,13 @@ element of the list?</p>
 </div>
 <div id="only-non-empty-a-href-tags" class="slide section level1">
 <h1>Only non-empty &lt;a href&gt; tags</h1>
-<div class="sourceCode" id="cb103"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb103-1"><a href="#cb103-1" tabindex="-1"></a>process <span class="ot">=</span></span>
-<span id="cb103-2"><a href="#cb103-2" tabindex="-1"></a>    <span class="fu">filter</span> (<span class="fu">not</span> <span class="op">.</span> <span class="fu">null</span>) <span class="op">.</span></span>
-<span id="cb103-3"><a href="#cb103-3" tabindex="-1"></a>    <span class="fu">map</span> (fromAttrib <span class="st">&quot;href&quot;</span>) <span class="op">.</span></span>
-<span id="cb103-4"><a href="#cb103-4" tabindex="-1"></a>    <span class="fu">filter</span> (<span class="fu">not</span> <span class="op">.</span> nofollow) <span class="op">.</span></span>
-<span id="cb103-5"><a href="#cb103-5" tabindex="-1"></a>    <span class="fu">filter</span> (isTagOpenName <span class="st">&quot;a&quot;</span>) <span class="op">.</span></span>
-<span id="cb103-6"><a href="#cb103-6" tabindex="-1"></a>    canonicalizeTags <span class="op">.</span></span>
-<span id="cb103-7"><a href="#cb103-7" tabindex="-1"></a>    parseTags</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb106-1"><a href="#cb106-1" tabindex="-1"></a>process <span class="ot">=</span></span>
+<span id="cb106-2"><a href="#cb106-2" tabindex="-1"></a>    <span class="fu">filter</span> (<span class="fu">not</span> <span class="op">.</span> <span class="fu">null</span>) <span class="op">.</span></span>
+<span id="cb106-3"><a href="#cb106-3" tabindex="-1"></a>    <span class="fu">map</span> (fromAttrib <span class="st">&quot;href&quot;</span>) <span class="op">.</span></span>
+<span id="cb106-4"><a href="#cb106-4" tabindex="-1"></a>    <span class="fu">filter</span> (<span class="fu">not</span> <span class="op">.</span> nofollow) <span class="op">.</span></span>
+<span id="cb106-5"><a href="#cb106-5" tabindex="-1"></a>    <span class="fu">filter</span> (isTagOpenName <span class="st">&quot;a&quot;</span>) <span class="op">.</span></span>
+<span id="cb106-6"><a href="#cb106-6" tabindex="-1"></a>    canonicalizeTags <span class="op">.</span></span>
+<span id="cb106-7"><a href="#cb106-7" tabindex="-1"></a>    parseTags</span></code></pre></div>
 </div>
 <div id="canonical-urls" class="slide section level1">
 <h1>Canonical URLs</h1>
@@ -1356,34 +1387,34 @@ element of the list?</p>
 valid-looking absolute links.</p>
 <p>To properly create an absolute link, we need to know the absolute URL
 of the page we’re looking at.</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb104-1"><a href="#cb104-1" tabindex="-1"></a><span class="ot">canonicalizeLink ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">String</span></span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb107-1"><a href="#cb107-1" tabindex="-1"></a><span class="ot">canonicalizeLink ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">String</span></span></code></pre></div>
 </div>
 <div id="working-with-uris" class="slide section level1">
 <h1>Working with URIs</h1>
 <p>The <code>Network.URI</code> package contains some functions we might
 find handy.</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb105-1"><a href="#cb105-1" tabindex="-1"></a><span class="ot">parseURI ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">URI</span></span>
-<span id="cb105-2"><a href="#cb105-2" tabindex="-1"></a><span class="ot">parseURIReference ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">URI</span></span>
-<span id="cb105-3"><a href="#cb105-3" tabindex="-1"></a>uriToString <span class="fu">id</span> <span class="st">&quot;&quot;</span><span class="ot"> ::</span> <span class="dt">URI</span> <span class="ot">-&gt;</span> <span class="dt">String</span></span>
-<span id="cb105-4"><a href="#cb105-4" tabindex="-1"></a><span class="ot">nonStrictRelativeTo ::</span> <span class="dt">URI</span> <span class="ot">-&gt;</span> <span class="dt">URI</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">URI</span></span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb108-1"><a href="#cb108-1" tabindex="-1"></a><span class="ot">parseURI ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">URI</span></span>
+<span id="cb108-2"><a href="#cb108-2" tabindex="-1"></a><span class="ot">parseURIReference ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">URI</span></span>
+<span id="cb108-3"><a href="#cb108-3" tabindex="-1"></a>uriToString <span class="fu">id</span> <span class="st">&quot;&quot;</span><span class="ot"> ::</span> <span class="dt">URI</span> <span class="ot">-&gt;</span> <span class="dt">String</span></span>
+<span id="cb108-4"><a href="#cb108-4" tabindex="-1"></a><span class="ot">nonStrictRelativeTo ::</span> <span class="dt">URI</span> <span class="ot">-&gt;</span> <span class="dt">URI</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">URI</span></span></code></pre></div>
 </div>
 <div id="a-monster-of-indentation" class="slide section level1">
 <h1>A monster of indentation</h1>
 <p>This is really hard to read!</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb106-1"><a href="#cb106-1" tabindex="-1"></a><span class="kw">import</span> <span class="dt">Network.URI</span></span>
-<span id="cb106-2"><a href="#cb106-2" tabindex="-1"></a></span>
-<span id="cb106-3"><a href="#cb106-3" tabindex="-1"></a><span class="ot">canon ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">String</span></span>
-<span id="cb106-4"><a href="#cb106-4" tabindex="-1"></a>canon referer path <span class="ot">=</span></span>
-<span id="cb106-5"><a href="#cb106-5" tabindex="-1"></a>  <span class="kw">case</span> parseURI referer <span class="kw">of</span></span>
-<span id="cb106-6"><a href="#cb106-6" tabindex="-1"></a>    <span class="dt">Nothing</span> <span class="ot">-&gt;</span> <span class="dt">Nothing</span></span>
-<span id="cb106-7"><a href="#cb106-7" tabindex="-1"></a>    <span class="dt">Just</span> r  <span class="ot">-&gt;</span></span>
-<span id="cb106-8"><a href="#cb106-8" tabindex="-1"></a>      <span class="kw">case</span> parseURIReference path <span class="kw">of</span></span>
-<span id="cb106-9"><a href="#cb106-9" tabindex="-1"></a>        <span class="dt">Nothing</span> <span class="ot">-&gt;</span> <span class="dt">Nothing</span></span>
-<span id="cb106-10"><a href="#cb106-10" tabindex="-1"></a>        <span class="dt">Just</span> p  <span class="ot">-&gt;</span></span>
-<span id="cb106-11"><a href="#cb106-11" tabindex="-1"></a>          <span class="kw">case</span> nonStrictRelativeTo p r <span class="kw">of</span></span>
-<span id="cb106-12"><a href="#cb106-12" tabindex="-1"></a>            <span class="dt">Nothing</span> <span class="ot">-&gt;</span> <span class="dt">Nothing</span></span>
-<span id="cb106-13"><a href="#cb106-13" tabindex="-1"></a>            <span class="dt">Just</span> u <span class="ot">-&gt;</span></span>
-<span id="cb106-14"><a href="#cb106-14" tabindex="-1"></a>             <span class="dt">Just</span> (uriToString <span class="fu">id</span> u <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb109-1"><a href="#cb109-1" tabindex="-1"></a><span class="kw">import</span> <span class="dt">Network.URI</span></span>
+<span id="cb109-2"><a href="#cb109-2" tabindex="-1"></a></span>
+<span id="cb109-3"><a href="#cb109-3" tabindex="-1"></a><span class="ot">canon ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">String</span></span>
+<span id="cb109-4"><a href="#cb109-4" tabindex="-1"></a>canon referer path <span class="ot">=</span></span>
+<span id="cb109-5"><a href="#cb109-5" tabindex="-1"></a>  <span class="kw">case</span> parseURI referer <span class="kw">of</span></span>
+<span id="cb109-6"><a href="#cb109-6" tabindex="-1"></a>    <span class="dt">Nothing</span> <span class="ot">-&gt;</span> <span class="dt">Nothing</span></span>
+<span id="cb109-7"><a href="#cb109-7" tabindex="-1"></a>    <span class="dt">Just</span> r  <span class="ot">-&gt;</span></span>
+<span id="cb109-8"><a href="#cb109-8" tabindex="-1"></a>      <span class="kw">case</span> parseURIReference path <span class="kw">of</span></span>
+<span id="cb109-9"><a href="#cb109-9" tabindex="-1"></a>        <span class="dt">Nothing</span> <span class="ot">-&gt;</span> <span class="dt">Nothing</span></span>
+<span id="cb109-10"><a href="#cb109-10" tabindex="-1"></a>        <span class="dt">Just</span> p  <span class="ot">-&gt;</span></span>
+<span id="cb109-11"><a href="#cb109-11" tabindex="-1"></a>          <span class="kw">case</span> nonStrictRelativeTo p r <span class="kw">of</span></span>
+<span id="cb109-12"><a href="#cb109-12" tabindex="-1"></a>            <span class="dt">Nothing</span> <span class="ot">-&gt;</span> <span class="dt">Nothing</span></span>
+<span id="cb109-13"><a href="#cb109-13" tabindex="-1"></a>            <span class="dt">Just</span> u <span class="ot">-&gt;</span></span>
+<span id="cb109-14"><a href="#cb109-14" tabindex="-1"></a>             <span class="dt">Just</span> (uriToString <span class="fu">id</span> u <span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <p>Surely there’s a better way.</p>
 </div>
 <div id="stair-stepping" class="slide section level1">
@@ -1392,10 +1423,10 @@ find handy.</p>
 inspections of <code>Maybe</code> values?</p>
 <p>Suppose we had a function that accepted a normal value, and returned
 a <code>Maybe</code> value.</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb107-1"><a href="#cb107-1" tabindex="-1"></a>a <span class="ot">-&gt;</span> <span class="dt">Maybe</span> b</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb110-1"><a href="#cb110-1" tabindex="-1"></a>a <span class="ot">-&gt;</span> <span class="dt">Maybe</span> b</span></code></pre></div>
 <p>And suppose we had a concise syntax for writing an anonymous
 function.</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb108-1"><a href="#cb108-1" tabindex="-1"></a>\a <span class="ot">-&gt;</span> <span class="st">&quot;hi mom! &quot;</span> <span class="op">++</span> a</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb111-1"><a href="#cb111-1" tabindex="-1"></a>\a <span class="ot">-&gt;</span> <span class="st">&quot;hi mom! &quot;</span> <span class="op">++</span> a</span></code></pre></div>
 <p>The <code>\</code> is pronounced “lambda”.</p>
 </div>
 <div id="observation" class="slide section level1">
@@ -1403,60 +1434,60 @@ function.</p>
 <p>The <code>case</code> analysis is quite verbose. Suppose we had a
 function that performed it, and called another function if our value was
 <code>Just</code>.</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb109-1"><a href="#cb109-1" tabindex="-1"></a><span class="ot">bind ::</span> <span class="dt">Maybe</span> a <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> <span class="dt">Maybe</span> b) <span class="ot">-&gt;</span> <span class="dt">Maybe</span> b</span>
-<span id="cb109-2"><a href="#cb109-2" tabindex="-1"></a>bind  <span class="dt">Nothing</span>      _     <span class="ot">=</span> <span class="dt">Nothing</span></span>
-<span id="cb109-3"><a href="#cb109-3" tabindex="-1"></a>bind (<span class="dt">Just</span> value) action <span class="ot">=</span> action value</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb112-1"><a href="#cb112-1" tabindex="-1"></a><span class="ot">bind ::</span> <span class="dt">Maybe</span> a <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> <span class="dt">Maybe</span> b) <span class="ot">-&gt;</span> <span class="dt">Maybe</span> b</span>
+<span id="cb112-2"><a href="#cb112-2" tabindex="-1"></a>bind  <span class="dt">Nothing</span>      _     <span class="ot">=</span> <span class="dt">Nothing</span></span>
+<span id="cb112-3"><a href="#cb112-3" tabindex="-1"></a>bind (<span class="dt">Just</span> value) action <span class="ot">=</span> action value</span></code></pre></div>
 </div>
 <div id="using-bind" class="slide section level1">
 <h1>Using bind</h1>
 <p>How could we use this?</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb110-1"><a href="#cb110-1" tabindex="-1"></a>canon1 referer path <span class="ot">=</span></span>
-<span id="cb110-2"><a href="#cb110-2" tabindex="-1"></a>  parseURI referer                <span class="ot">`bind`</span></span>
-<span id="cb110-3"><a href="#cb110-3" tabindex="-1"></a>   \r <span class="ot">-&gt;</span> parseURIReference path   <span class="ot">`bind`</span></span>
-<span id="cb110-4"><a href="#cb110-4" tabindex="-1"></a>    \p <span class="ot">-&gt;</span> nonStrictRelativeTo p r <span class="ot">`bind`</span></span>
-<span id="cb110-5"><a href="#cb110-5" tabindex="-1"></a>     \u <span class="ot">-&gt;</span> <span class="dt">Just</span> (uriToString <span class="fu">id</span> u <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb113-1"><a href="#cb113-1" tabindex="-1"></a>canon1 referer path <span class="ot">=</span></span>
+<span id="cb113-2"><a href="#cb113-2" tabindex="-1"></a>  parseURI referer                <span class="ot">`bind`</span></span>
+<span id="cb113-3"><a href="#cb113-3" tabindex="-1"></a>   \r <span class="ot">-&gt;</span> parseURIReference path   <span class="ot">`bind`</span></span>
+<span id="cb113-4"><a href="#cb113-4" tabindex="-1"></a>    \p <span class="ot">-&gt;</span> nonStrictRelativeTo p r <span class="ot">`bind`</span></span>
+<span id="cb113-5"><a href="#cb113-5" tabindex="-1"></a>     \u <span class="ot">-&gt;</span> <span class="dt">Just</span> (uriToString <span class="fu">id</span> u <span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <p>If we enclose a function name in backticks, we can use the function
 as an infix operator.</p>
 </div>
 <div id="reformatting-the-code" class="slide section level1">
 <h1>Reformatting the code</h1>
-<div class="sourceCode" id="cb111"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb111-1"><a href="#cb111-1" tabindex="-1"></a>canon referer path <span class="ot">=</span></span>
-<span id="cb111-2"><a href="#cb111-2" tabindex="-1"></a>  parseURI referer         <span class="ot">`bind`</span> \r <span class="ot">-&gt;</span></span>
-<span id="cb111-3"><a href="#cb111-3" tabindex="-1"></a>  parseURIReference path   <span class="ot">`bind`</span> \p <span class="ot">-&gt;</span></span>
-<span id="cb111-4"><a href="#cb111-4" tabindex="-1"></a>  nonStrictRelativeTo p r  <span class="ot">`bind`</span> \u <span class="ot">-&gt;</span></span>
-<span id="cb111-5"><a href="#cb111-5" tabindex="-1"></a>  <span class="dt">Just</span> (uriToString <span class="fu">id</span> u <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb114-1"><a href="#cb114-1" tabindex="-1"></a>canon referer path <span class="ot">=</span></span>
+<span id="cb114-2"><a href="#cb114-2" tabindex="-1"></a>  parseURI referer         <span class="ot">`bind`</span> \r <span class="ot">-&gt;</span></span>
+<span id="cb114-3"><a href="#cb114-3" tabindex="-1"></a>  parseURIReference path   <span class="ot">`bind`</span> \p <span class="ot">-&gt;</span></span>
+<span id="cb114-4"><a href="#cb114-4" tabindex="-1"></a>  nonStrictRelativeTo p r  <span class="ot">`bind`</span> \u <span class="ot">-&gt;</span></span>
+<span id="cb114-5"><a href="#cb114-5" tabindex="-1"></a>  <span class="dt">Just</span> (uriToString <span class="fu">id</span> u <span class="st">&quot;&quot;</span>)</span></code></pre></div>
 </div>
 <div id="a-built-in-name-for-bind" class="slide section level1">
 <h1>A built-in name for bind</h1>
 <p>The <code>&gt;&gt;=</code> operator is a more general version of our
 <code>bind</code> function.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb112-1"><a href="#cb112-1" tabindex="-1"></a>canon referer path <span class="ot">=</span></span>
-<span id="cb112-2"><a href="#cb112-2" tabindex="-1"></a>  parseURI referer <span class="op">&gt;&gt;=</span> \r <span class="ot">-&gt;</span></span>
-<span id="cb112-3"><a href="#cb112-3" tabindex="-1"></a>  parseURIReference path <span class="op">&gt;&gt;=</span> \p <span class="ot">-&gt;</span></span>
-<span id="cb112-4"><a href="#cb112-4" tabindex="-1"></a>  nonStrictRelativeTo p r <span class="op">&gt;&gt;=</span> \u <span class="ot">-&gt;</span></span>
-<span id="cb112-5"><a href="#cb112-5" tabindex="-1"></a>  <span class="dt">Just</span> (uriToString <span class="fu">id</span> u <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb115-1"><a href="#cb115-1" tabindex="-1"></a>canon referer path <span class="ot">=</span></span>
+<span id="cb115-2"><a href="#cb115-2" tabindex="-1"></a>  parseURI referer <span class="op">&gt;&gt;=</span> \r <span class="ot">-&gt;</span></span>
+<span id="cb115-3"><a href="#cb115-3" tabindex="-1"></a>  parseURIReference path <span class="op">&gt;&gt;=</span> \p <span class="ot">-&gt;</span></span>
+<span id="cb115-4"><a href="#cb115-4" tabindex="-1"></a>  nonStrictRelativeTo p r <span class="op">&gt;&gt;=</span> \u <span class="ot">-&gt;</span></span>
+<span id="cb115-5"><a href="#cb115-5" tabindex="-1"></a>  <span class="dt">Just</span> (uriToString <span class="fu">id</span> u <span class="st">&quot;&quot;</span>)</span></code></pre></div>
 </div>
 <div id="using-syntactic-sugar" class="slide section level1">
 <h1>Using syntactic sugar</h1>
 <p>Here’s some tidier syntax that should look familiar.</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb113-1"><a href="#cb113-1" tabindex="-1"></a><span class="ot">canonicalize ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">String</span></span>
-<span id="cb113-2"><a href="#cb113-2" tabindex="-1"></a></span>
-<span id="cb113-3"><a href="#cb113-3" tabindex="-1"></a>canonicalize referer path <span class="ot">=</span> <span class="kw">do</span></span>
-<span id="cb113-4"><a href="#cb113-4" tabindex="-1"></a>  r <span class="ot">&lt;-</span> parseURI referer</span>
-<span id="cb113-5"><a href="#cb113-5" tabindex="-1"></a>  p <span class="ot">&lt;-</span> parseURIReference path</span>
-<span id="cb113-6"><a href="#cb113-6" tabindex="-1"></a>  u <span class="ot">&lt;-</span> nonStrictRelativeTo p r</span>
-<span id="cb113-7"><a href="#cb113-7" tabindex="-1"></a>  <span class="fu">return</span> (uriToString <span class="fu">id</span> u <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb116-1"><a href="#cb116-1" tabindex="-1"></a><span class="ot">canonicalize ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">String</span></span>
+<span id="cb116-2"><a href="#cb116-2" tabindex="-1"></a></span>
+<span id="cb116-3"><a href="#cb116-3" tabindex="-1"></a>canonicalize referer path <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb116-4"><a href="#cb116-4" tabindex="-1"></a>  r <span class="ot">&lt;-</span> parseURI referer</span>
+<span id="cb116-5"><a href="#cb116-5" tabindex="-1"></a>  p <span class="ot">&lt;-</span> parseURIReference path</span>
+<span id="cb116-6"><a href="#cb116-6" tabindex="-1"></a>  u <span class="ot">&lt;-</span> nonStrictRelativeTo p r</span>
+<span id="cb116-7"><a href="#cb116-7" tabindex="-1"></a>  <span class="fu">return</span> (uriToString <span class="fu">id</span> u <span class="st">&quot;&quot;</span>)</span></code></pre></div>
 </div>
 <div id="nearly-there" class="slide section level1">
 <h1>Nearly there</h1>
-<div class="sourceCode" id="cb114"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb114-1"><a href="#cb114-1" tabindex="-1"></a>process url <span class="ot">=</span></span>
-<span id="cb114-2"><a href="#cb114-2" tabindex="-1"></a>   <span class="fu">map</span> (canonicalize url) <span class="op">.</span></span>
-<span id="cb114-3"><a href="#cb114-3" tabindex="-1"></a>   <span class="fu">filter</span> (<span class="fu">not</span> <span class="op">.</span> <span class="fu">null</span>) <span class="op">.</span></span>
-<span id="cb114-4"><a href="#cb114-4" tabindex="-1"></a>   <span class="fu">map</span> (fromAttrib <span class="st">&quot;href&quot;</span>) <span class="op">.</span></span>
-<span id="cb114-5"><a href="#cb114-5" tabindex="-1"></a>   <span class="fu">filter</span> (\t <span class="ot">-&gt;</span> fromAttrib <span class="st">&quot;rel&quot;</span> t <span class="op">/=</span> <span class="st">&quot;nofollow&quot;</span>) <span class="op">.</span></span>
-<span id="cb114-6"><a href="#cb114-6" tabindex="-1"></a>   <span class="fu">filter</span> (isTagOpenName <span class="st">&quot;a&quot;</span>) <span class="op">.</span></span>
-<span id="cb114-7"><a href="#cb114-7" tabindex="-1"></a>   canonicalizeTags <span class="op">.</span></span>
-<span id="cb114-8"><a href="#cb114-8" tabindex="-1"></a>   parseTags</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb117-1"><a href="#cb117-1" tabindex="-1"></a>process url <span class="ot">=</span></span>
+<span id="cb117-2"><a href="#cb117-2" tabindex="-1"></a>   <span class="fu">map</span> (canonicalize url) <span class="op">.</span></span>
+<span id="cb117-3"><a href="#cb117-3" tabindex="-1"></a>   <span class="fu">filter</span> (<span class="fu">not</span> <span class="op">.</span> <span class="fu">null</span>) <span class="op">.</span></span>
+<span id="cb117-4"><a href="#cb117-4" tabindex="-1"></a>   <span class="fu">map</span> (fromAttrib <span class="st">&quot;href&quot;</span>) <span class="op">.</span></span>
+<span id="cb117-5"><a href="#cb117-5" tabindex="-1"></a>   <span class="fu">filter</span> (\t <span class="ot">-&gt;</span> fromAttrib <span class="st">&quot;rel&quot;</span> t <span class="op">/=</span> <span class="st">&quot;nofollow&quot;</span>) <span class="op">.</span></span>
+<span id="cb117-6"><a href="#cb117-6" tabindex="-1"></a>   <span class="fu">filter</span> (isTagOpenName <span class="st">&quot;a&quot;</span>) <span class="op">.</span></span>
+<span id="cb117-7"><a href="#cb117-7" tabindex="-1"></a>   canonicalizeTags <span class="op">.</span></span>
+<span id="cb117-8"><a href="#cb117-8" tabindex="-1"></a>   parseTags</span></code></pre></div>
 <p>One awkward thing: what is the type of this function?</p>
 </div>
 <div id="from-maybe-a-to-a" class="slide section level1">
@@ -1466,23 +1497,23 @@ as an infix operator.</p>
 <li><a href="http://haskell.org/hoogle">haskell.org/hoogle</a></li>
 </ul>
 <p>Type this into the search box:</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb115-1"><a href="#cb115-1" tabindex="-1"></a>[<span class="dt">Maybe</span> a] <span class="ot">-&gt;</span> [a]</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb118-1"><a href="#cb118-1" tabindex="-1"></a>[<span class="dt">Maybe</span> a] <span class="ot">-&gt;</span> [a]</span></code></pre></div>
 <p>What does the first result say?</p>
 </div>
 <div id="were-there" class="slide section level1">
 <h1>We’re there!</h1>
-<div class="sourceCode" id="cb116"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb116-1"><a href="#cb116-1" tabindex="-1"></a><span class="kw">import</span> <span class="dt">Data.Maybe</span></span>
-<span id="cb116-2"><a href="#cb116-2" tabindex="-1"></a><span class="kw">import</span> <span class="dt">Network.URI</span></span>
-<span id="cb116-3"><a href="#cb116-3" tabindex="-1"></a></span>
-<span id="cb116-4"><a href="#cb116-4" tabindex="-1"></a>links url <span class="ot">=</span></span>
-<span id="cb116-5"><a href="#cb116-5" tabindex="-1"></a>  catMaybes <span class="op">.</span></span>
-<span id="cb116-6"><a href="#cb116-6" tabindex="-1"></a>  <span class="fu">map</span> (canonicalize url) <span class="op">.</span></span>
-<span id="cb116-7"><a href="#cb116-7" tabindex="-1"></a>  <span class="fu">filter</span> (<span class="fu">not</span> <span class="op">.</span> <span class="fu">null</span>) <span class="op">.</span></span>
-<span id="cb116-8"><a href="#cb116-8" tabindex="-1"></a>  <span class="fu">map</span> (fromAttrib <span class="st">&quot;href&quot;</span>) <span class="op">.</span></span>
-<span id="cb116-9"><a href="#cb116-9" tabindex="-1"></a>  <span class="fu">filter</span> (\t <span class="ot">-&gt;</span> fromAttrib <span class="st">&quot;rel&quot;</span> t <span class="op">/=</span> <span class="st">&quot;nofollow&quot;</span>) <span class="op">.</span></span>
-<span id="cb116-10"><a href="#cb116-10" tabindex="-1"></a>  <span class="fu">filter</span> (isTagOpenName <span class="st">&quot;a&quot;</span>) <span class="op">.</span></span>
-<span id="cb116-11"><a href="#cb116-11" tabindex="-1"></a>  canonicalizeTags <span class="op">.</span></span>
-<span id="cb116-12"><a href="#cb116-12" tabindex="-1"></a>  parseTags</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb119-1"><a href="#cb119-1" tabindex="-1"></a><span class="kw">import</span> <span class="dt">Data.Maybe</span></span>
+<span id="cb119-2"><a href="#cb119-2" tabindex="-1"></a><span class="kw">import</span> <span class="dt">Network.URI</span></span>
+<span id="cb119-3"><a href="#cb119-3" tabindex="-1"></a></span>
+<span id="cb119-4"><a href="#cb119-4" tabindex="-1"></a>links url <span class="ot">=</span></span>
+<span id="cb119-5"><a href="#cb119-5" tabindex="-1"></a>  catMaybes <span class="op">.</span></span>
+<span id="cb119-6"><a href="#cb119-6" tabindex="-1"></a>  <span class="fu">map</span> (canonicalize url) <span class="op">.</span></span>
+<span id="cb119-7"><a href="#cb119-7" tabindex="-1"></a>  <span class="fu">filter</span> (<span class="fu">not</span> <span class="op">.</span> <span class="fu">null</span>) <span class="op">.</span></span>
+<span id="cb119-8"><a href="#cb119-8" tabindex="-1"></a>  <span class="fu">map</span> (fromAttrib <span class="st">&quot;href&quot;</span>) <span class="op">.</span></span>
+<span id="cb119-9"><a href="#cb119-9" tabindex="-1"></a>  <span class="fu">filter</span> (\t <span class="ot">-&gt;</span> fromAttrib <span class="st">&quot;rel&quot;</span> t <span class="op">/=</span> <span class="st">&quot;nofollow&quot;</span>) <span class="op">.</span></span>
+<span id="cb119-10"><a href="#cb119-10" tabindex="-1"></a>  <span class="fu">filter</span> (isTagOpenName <span class="st">&quot;a&quot;</span>) <span class="op">.</span></span>
+<span id="cb119-11"><a href="#cb119-11" tabindex="-1"></a>  canonicalizeTags <span class="op">.</span></span>
+<span id="cb119-12"><a href="#cb119-12" tabindex="-1"></a>  parseTags</span></code></pre></div>
 </div>
 <div id="from-links-to-spidering" class="slide section level1">
 <h1>From links to spidering</h1>
@@ -1508,21 +1539,21 @@ downloaded</p></li>
 <p>For any given page, we need to remember both it and all the pages it
 links to.</p>
 <p>One possibility for associating the two is a <em>tuple</em>:</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb117-1"><a href="#cb117-1" tabindex="-1"></a>(<span class="st">&quot;http://x.org/&quot;</span>, [<span class="st">&quot;http://microsoft.com/&quot;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb120-1"><a href="#cb120-1" tabindex="-1"></a>(<span class="st">&quot;http://x.org/&quot;</span>, [<span class="st">&quot;http://microsoft.com/&quot;</span>])</span></code></pre></div>
 <p>Tuples are useful any time we want mixed-type data without the hassle
 of creating a new type.</p>
 <p>Speaking of a new type, here’s how we’d define one:</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb118-1"><a href="#cb118-1" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Link</span> <span class="ot">=</span> <span class="dt">Link</span> <span class="dt">String</span> [<span class="dt">String</span>]</span>
-<span id="cb118-2"><a href="#cb118-2" tabindex="-1"></a></span>
-<span id="cb118-3"><a href="#cb118-3" tabindex="-1"></a><span class="co">-- Let&#39;s define some accessors, too.</span></span>
-<span id="cb118-4"><a href="#cb118-4" tabindex="-1"></a>linkFrom (<span class="dt">Link</span> url _) <span class="ot">=</span> url</span>
-<span id="cb118-5"><a href="#cb118-5" tabindex="-1"></a>linkTo (<span class="dt">Link</span> _ links) <span class="ot">=</span> links</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb121-1"><a href="#cb121-1" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Link</span> <span class="ot">=</span> <span class="dt">Link</span> <span class="dt">String</span> [<span class="dt">String</span>]</span>
+<span id="cb121-2"><a href="#cb121-2" tabindex="-1"></a></span>
+<span id="cb121-3"><a href="#cb121-3" tabindex="-1"></a><span class="co">-- Let&#39;s define some accessors, too.</span></span>
+<span id="cb121-4"><a href="#cb121-4" tabindex="-1"></a>linkFrom (<span class="dt">Link</span> url _) <span class="ot">=</span> url</span>
+<span id="cb121-5"><a href="#cb121-5" tabindex="-1"></a>linkTo (<span class="dt">Link</span> _ links) <span class="ot">=</span> links</span></code></pre></div>
 </div>
 <div id="avoiding-duplication" class="slide section level1">
 <h1>Avoiding duplication</h1>
 <p>We don’t want to visit any URL twice.</p>
 <p>How do we avoid this?</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb119-1"><a href="#cb119-1" tabindex="-1"></a>visited url <span class="ot">=</span> <span class="fu">elem</span> url <span class="op">.</span> <span class="fu">map</span> linkTo</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb122-1"><a href="#cb122-1" tabindex="-1"></a>visited url <span class="ot">=</span> <span class="fu">elem</span> url <span class="op">.</span> <span class="fu">map</span> linkTo</span></code></pre></div>
 <p>This function has a problem - what is that problem?</p>
 </div>
 <div id="better-performance" class="slide section level1">
@@ -1539,10 +1570,10 @@ of creating a new type.</p>
 overlap with built-in names.</p>
 <p>This means “only import the name <code>Map</code> from
 <code>Data.Map</code>”:</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb120-1"><a href="#cb120-1" tabindex="-1"></a><span class="kw">import</span> <span class="dt">Data.Map</span> (<span class="dt">Map</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb123-1"><a href="#cb123-1" tabindex="-1"></a><span class="kw">import</span> <span class="dt">Data.Map</span> (<span class="dt">Map</span>)</span></code></pre></div>
 <p>And this means “import everything from <code>Data.Map</code>, but all
 those names must be prefixed with <code>Map.</code>”:</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb121-1"><a href="#cb121-1" tabindex="-1"></a><span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.Map</span> <span class="kw">as</span> <span class="dt">Map</span></span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb124-1"><a href="#cb124-1" tabindex="-1"></a><span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.Map</span> <span class="kw">as</span> <span class="dt">Map</span></span></code></pre></div>
 </div>
 <div id="what-use-is-an-immutable-data-structure" class="slide section level1">
 <h1>What use is an immutable data structure?</h1>
@@ -1558,42 +1589,42 @@ with the requested element added.</li>
 <div id="a-fistful-of-dollars" class="slide section level1">
 <h1>A fistful of dollars</h1>
 <p>Here’s a surprisingly handy built-in operator:</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb122-1"><a href="#cb122-1" tabindex="-1"></a>f <span class="op">$</span> x <span class="ot">=</span> f x</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb125-1"><a href="#cb125-1" tabindex="-1"></a>f <span class="op">$</span> x <span class="ot">=</span> f x</span></code></pre></div>
 <p>Why is this useful? Because it lets us eliminate parentheses.</p>
 <p>Before:</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb123-1"><a href="#cb123-1" tabindex="-1"></a>explode k <span class="ot">=</span> <span class="fu">error</span> (<span class="st">&quot;failed on &quot;</span> <span class="op">++</span> <span class="fu">show</span> k)</span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb126-1"><a href="#cb126-1" tabindex="-1"></a>explode k <span class="ot">=</span> <span class="fu">error</span> (<span class="st">&quot;failed on &quot;</span> <span class="op">++</span> <span class="fu">show</span> k)</span></code></pre></div>
 <p>After:</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb124-1"><a href="#cb124-1" tabindex="-1"></a>explode k <span class="ot">=</span> <span class="fu">error</span> <span class="op">$</span> <span class="st">&quot;failed on &quot;</span> <span class="op">++</span> <span class="fu">show</span> k</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb127-1"><a href="#cb127-1" tabindex="-1"></a>explode k <span class="ot">=</span> <span class="fu">error</span> <span class="op">$</span> <span class="st">&quot;failed on &quot;</span> <span class="op">++</span> <span class="fu">show</span> k</span></code></pre></div>
 </div>
 <div id="partial-application" class="slide section level1">
 <h1>Partial application</h1>
 <p>This is annoying to write:</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb125-1"><a href="#cb125-1" tabindex="-1"></a>increment k <span class="ot">=</span> <span class="dv">1</span> <span class="op">+</span> k</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb128-1"><a href="#cb128-1" tabindex="-1"></a>increment k <span class="ot">=</span> <span class="dv">1</span> <span class="op">+</span> k</span></code></pre></div>
 <p>Almost as bad:</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb126-1"><a href="#cb126-1" tabindex="-1"></a>\k <span class="ot">-&gt;</span> <span class="dv">1</span> <span class="op">+</span> k</span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb129-1"><a href="#cb129-1" tabindex="-1"></a>\k <span class="ot">-&gt;</span> <span class="dv">1</span> <span class="op">+</span> k</span></code></pre></div>
 <p>Much handier, and identical:</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb127-1"><a href="#cb127-1" tabindex="-1"></a>(<span class="dv">1</span><span class="op">+</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb130-1"><a href="#cb130-1" tabindex="-1"></a>(<span class="dv">1</span><span class="op">+</span>)</span></code></pre></div>
 <p>In fact, this is valid:</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb128-1"><a href="#cb128-1" tabindex="-1"></a>increment <span class="ot">=</span> (<span class="dv">1</span><span class="op">+</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb131-1"><a href="#cb131-1" tabindex="-1"></a>increment <span class="ot">=</span> (<span class="dv">1</span><span class="op">+</span>)</span></code></pre></div>
 </div>
 <div id="spidering-in-all-its-glory" class="slide section level1">
 <h1>Spidering, in all its glory</h1>
-<div class="sourceCode" id="cb129"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb129-1"><a href="#cb129-1" tabindex="-1"></a><span class="ot">spider ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">URL</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> (<span class="dt">Map</span> <span class="dt">URL</span> [<span class="dt">URL</span>])</span>
-<span id="cb129-2"><a href="#cb129-2" tabindex="-1"></a>spider count url0 <span class="ot">=</span> go <span class="dv">0</span> Map.empty (Set.singleton url0)</span>
-<span id="cb129-3"><a href="#cb129-3" tabindex="-1"></a>  <span class="kw">where</span></span>
-<span id="cb129-4"><a href="#cb129-4" tabindex="-1"></a>    go k seen queue0</span>
-<span id="cb129-5"><a href="#cb129-5" tabindex="-1"></a>        <span class="op">|</span> k <span class="op">&gt;=</span> count <span class="ot">=</span> <span class="fu">return</span> seen</span>
-<span id="cb129-6"><a href="#cb129-6" tabindex="-1"></a>        <span class="op">|</span> <span class="fu">otherwise</span>  <span class="ot">=</span></span>
-<span id="cb129-7"><a href="#cb129-7" tabindex="-1"></a>      <span class="kw">case</span> Set.minView queue0 <span class="kw">of</span></span>
-<span id="cb129-8"><a href="#cb129-8" tabindex="-1"></a>        <span class="dt">Nothing</span> <span class="ot">-&gt;</span> <span class="fu">return</span> seen</span>
-<span id="cb129-9"><a href="#cb129-9" tabindex="-1"></a>        <span class="dt">Just</span> (url, queue) <span class="ot">-&gt;</span> <span class="kw">do</span></span>
-<span id="cb129-10"><a href="#cb129-10" tabindex="-1"></a>          page <span class="ot">&lt;-</span> download url</span>
-<span id="cb129-11"><a href="#cb129-11" tabindex="-1"></a>          <span class="kw">let</span> ls       <span class="ot">=</span> links url page</span>
-<span id="cb129-12"><a href="#cb129-12" tabindex="-1"></a>              newSeen  <span class="ot">=</span> Map.insert url ls seen</span>
-<span id="cb129-13"><a href="#cb129-13" tabindex="-1"></a>              notSeen  <span class="ot">=</span> Set.fromList <span class="op">.</span></span>
-<span id="cb129-14"><a href="#cb129-14" tabindex="-1"></a>                         <span class="fu">filter</span> (<span class="ot">`Map.notMember`</span> newSeen) <span class="op">$</span> ls</span>
-<span id="cb129-15"><a href="#cb129-15" tabindex="-1"></a>              newQueue <span class="ot">=</span> queue <span class="ot">`Set.union`</span> notSeen</span>
-<span id="cb129-16"><a href="#cb129-16" tabindex="-1"></a>          go (k<span class="op">+</span><span class="dv">1</span>) newSeen newQueue</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb132-1"><a href="#cb132-1" tabindex="-1"></a><span class="ot">spider ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">URL</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> (<span class="dt">Map</span> <span class="dt">URL</span> [<span class="dt">URL</span>])</span>
+<span id="cb132-2"><a href="#cb132-2" tabindex="-1"></a>spider count url0 <span class="ot">=</span> go <span class="dv">0</span> Map.empty (Set.singleton url0)</span>
+<span id="cb132-3"><a href="#cb132-3" tabindex="-1"></a>  <span class="kw">where</span></span>
+<span id="cb132-4"><a href="#cb132-4" tabindex="-1"></a>    go k seen queue0</span>
+<span id="cb132-5"><a href="#cb132-5" tabindex="-1"></a>        <span class="op">|</span> k <span class="op">&gt;=</span> count <span class="ot">=</span> <span class="fu">return</span> seen</span>
+<span id="cb132-6"><a href="#cb132-6" tabindex="-1"></a>        <span class="op">|</span> <span class="fu">otherwise</span>  <span class="ot">=</span></span>
+<span id="cb132-7"><a href="#cb132-7" tabindex="-1"></a>      <span class="kw">case</span> Set.minView queue0 <span class="kw">of</span></span>
+<span id="cb132-8"><a href="#cb132-8" tabindex="-1"></a>        <span class="dt">Nothing</span> <span class="ot">-&gt;</span> <span class="fu">return</span> seen</span>
+<span id="cb132-9"><a href="#cb132-9" tabindex="-1"></a>        <span class="dt">Just</span> (url, queue) <span class="ot">-&gt;</span> <span class="kw">do</span></span>
+<span id="cb132-10"><a href="#cb132-10" tabindex="-1"></a>          page <span class="ot">&lt;-</span> download url</span>
+<span id="cb132-11"><a href="#cb132-11" tabindex="-1"></a>          <span class="kw">let</span> ls       <span class="ot">=</span> links url page</span>
+<span id="cb132-12"><a href="#cb132-12" tabindex="-1"></a>              newSeen  <span class="ot">=</span> Map.insert url ls seen</span>
+<span id="cb132-13"><a href="#cb132-13" tabindex="-1"></a>              notSeen  <span class="ot">=</span> Set.fromList <span class="op">.</span></span>
+<span id="cb132-14"><a href="#cb132-14" tabindex="-1"></a>                         <span class="fu">filter</span> (<span class="ot">`Map.notMember`</span> newSeen) <span class="op">$</span> ls</span>
+<span id="cb132-15"><a href="#cb132-15" tabindex="-1"></a>              newQueue <span class="ot">=</span> queue <span class="ot">`Set.union`</span> notSeen</span>
+<span id="cb132-16"><a href="#cb132-16" tabindex="-1"></a>          go (k<span class="op">+</span><span class="dv">1</span>) newSeen newQueue</span></code></pre></div>
 </div>
 <div id="where-do-we-stand" class="slide section level1">
 <h1>Where do we stand?</h1>

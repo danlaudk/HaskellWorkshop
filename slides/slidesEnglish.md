@@ -83,7 +83,7 @@ This involves a lot of figuring stuff out!
 Open `Main.hs` in the src directory. It has the following contents:
 
 ~~~~ {.haskell}
-module Main ()
+module Main (main)
 where
 
 main = putStrLn "hello, world!"
@@ -96,7 +96,9 @@ File names start with a capital letter, and everyone uses `CamelCase`.
 
 # Building it
 
-The package manager is set up to look for `Main.hs` in the src directory. This command will install it:
+The package manager is set up to look for `Main.hs` in the src directory. 
+
+This command will install it:
 
 ~~~~
 stack install
@@ -104,8 +106,7 @@ stack install
 
 The generated output will reveal the name of the executable. Run it to see the output.
 
-* stack is the name of the package manager. It takes care to automatically deal with
-  dependencies on source files and packages.
+* stack is the name of the package manager. It takes care to automatically deal with dependencies on source files and packages.
 * Everything required to set up your project is beyond scope of this introduction. 
 
 # Checking in
@@ -840,13 +841,12 @@ We can read about it online:
 
 * [hackage.haskell.org/package/http-conduit](http://hackage.haskell.org/package/http-conduit)
 
-That landing page for a package is intimidating, but look towards the
-bottom, at the section labeled "Modules".
+That landing page for a package is intimidating, but look at the section labeled "Modules".
 
 What do you see?
 
 
-# Installing a package
+# Adding dependencies
 
 Before we can use `http-conduit`, we must tell the package manager that we need it.
 
@@ -862,28 +862,34 @@ The next time you build your program, it figures out all the other libraries tha
 `http-conduit` depends on, and downloads, compiles, and installs
 the whole lot.
 
-Now also add the following dependencies, for you will need them later as well
+Now also add the following dependencies, for you will need them later as well:
+
 ~~~~
- - bytestring
- - tagsoup
+  - bytestring
+  - utf8-string
+  - tagsoup
 ~~~~
+
+# Instalation
 
 Expect the build to take a few minutes and print a lot of output. 
 
-
-# Reading docs: packages and modules
-
-
-While we're figuring out how to use the `http-conduit` package, lets build it in the meantime:
+Let's build the packages we specified in our `package.yaml` file:
 
 ~~~~
 stack install
 ~~~~
 
-Now let's try to figure out how we should use it.
+This will install all specified packages and all of their dependencies as well.
 
-Remember the link to API documentation at the end of the package's web
-page? Click through to the API docs. (For now, ignore the reference to `stackage`)
+# Reading docs: packages and modules
+
+While we're waiting, let's try to figure out how we should use [`http-conduit`](https://hackage.haskell.org/package/http-conduit).
+
+Remember the link to API documentation in the `Modules` section of the package's web
+page? Click through to the API docs. 
+
+(For now, ignore the reference to `stackage`)
 
 An API page begins with a title that looks something like this:
 
@@ -963,6 +969,8 @@ The notation `[a]` means "a list of values, all of some type `a`".
 
 So `[String]` means "a list of values, all of type `String`".
 
+`a` is a type variable, it can be substituted with any concrete type. Notice the lower case for type variables, upper case for concrete types. 
+
 
 # Type synonyms
 
@@ -1036,15 +1044,13 @@ In Haskell, a type can contain one or more type variables.
 data Response body
 ~~~~
 
-notice `body` starts with a lowercase character. It is a `Type` within a `Type`
-
-This goes beyond the scope of the workshop. For now think of 
+In our case, the body is replaced by a concrete type:
 
 ~~~~
 Response Bytestring
 ~~~~
 
-to be some `Response` datastructure in the form of a `Bytestring` 
+So it is a `Response` of `Bytestring` 
 
 # Bytestring
 
@@ -1078,7 +1084,7 @@ httpBS "http://example.com/"
 
 What is that response? 
 
-# It's a `Response Bytestring` !
+# It looks like a `Response Bytestring`
 
 Take a good look at what just appeared as output. 
 
@@ -1094,8 +1100,6 @@ Response
 ~~~~
 
 Did you get a response? Yeah!
-
-
 # Pure code
 
 So far, all of the code we have written has been "pure".
@@ -1218,20 +1222,49 @@ in C or Java.
 
 What this means is that *all* Haskell programs are impure!
 
-# Get stuff from the Response
+# What is the type of the thing we download?
+
+Try:
+
+~~~~
+:t httpBS "http://example.com"
+~~~~
+
+Note the type variable `m`. In our case we will use `IO` for it.
+
+# Get the body from the Response
 In the documentation you can find function definitions like: 
 
 ~~~~
 getResponseBody :: Response a -> a
 ~~~~
 
-In the case of Response Bytestring, this would become
+In our case we have `Response Bytestring`, so this would become
 
 ~~~~
 getResponseBody :: Response Bytestring -> Bytestring
 ~~~~
 
 This can be used to get specific stuff from the response!
+
+# Start to get downloading
+
+~~~~
+module Main (main)
+where
+
+import           Network.HTTP.Simple
+import qualified Data.ByteString.Char8 as B8
+
+main = putStrLn "hello, world!"
+
+download = do
+   response <- httpBS "http://example.com" :: IO(Response ByteString)
+   let body = getResponseBody response
+   return body
+~~~~
+
+Note that we have to tell explicitly that we want to use `IO` as concrete value for `m`
 
 # From binary to text
 
