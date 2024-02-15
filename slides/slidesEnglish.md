@@ -868,6 +868,8 @@ Now also add the following dependencies, for you will need them later as well:
   - bytestring
   - utf8-string
   - tagsoup
+  - network-uri
+  - containers
 ~~~~
 
 # Instalation
@@ -1038,13 +1040,13 @@ What can we tell about this function?
 
 In Haskell, a type can contain one or more type variables. 
 
-`Response` is defined together with a type variable
+`Response` is defined together with a type variable. Type variables start with a lowercase character.
 
 ~~~~
 data Response body
 ~~~~
 
-In our case, the body is replaced by a concrete type:
+In our case, `body` is replaced by a concrete type:
 
 ~~~~
 Response Bytestring
@@ -1064,6 +1066,12 @@ However, it contains binary *bytes*, not text!
 * Don't use `ByteString` for working with data that you have to
   manipulate as text.
 
+# From binary to text
+
+Now we have a `ByteString`, which we need to turn into text for
+manipulating.
+
+Let's cheat, and assume that all web pages are encoded in UTF-8.
 
 # Let's play in ghci!
 
@@ -1100,6 +1108,7 @@ Response
 ~~~~
 
 Did you get a response? Yeah!
+
 # Pure code
 
 So far, all of the code we have written has been "pure".
@@ -1259,20 +1268,12 @@ import qualified Data.ByteString.Char8 as B8
 main = putStrLn "hello, world!"
 
 download = do
-   response <- httpBS "http://example.com" :: IO(Response ByteString)
+   response <- httpBS "http://example.com" :: IO(Response B8.ByteString)
    let body = getResponseBody response
    return body
 ~~~~
 
-Note that we have to tell explicitly that we want to use `IO` as concrete value for `m`
-
-# From binary to text
-
-Now we have a `ByteString`, which we need to turn into text for
-manipulating.
-
-Let's cheat, and assume that all web pages are encoded in UTF-8.
-
+Note that we have to tell explicitly that we want to use `IO` as concrete value for `m`, for other monadic types would fit too. (Bonus: Take a look at the error message if you leave the type annotation out.)
 
 # Binary to text
 
@@ -1281,7 +1282,7 @@ Remember we were planning to cheat earlier?
 We had this:
 
 ~~~~ {.haskell}
-httpBS :: Request -> IO (Request ByteString)
+httpBS :: Request -> IO (Response ByteString)
 ~~~~
 
 We need something whose result is an `IO String` instead.
@@ -1293,14 +1294,10 @@ How should that look?
 
 To do the conversion, let's grab a package named `utf8-string`.
 
-~~~~
-cabal install utf8-string
-~~~~
-
-That contains a package named `Data.ByteString.Lazy.UTF8`.
+Remember that we added it to our package.yaml file previously? Now we can use it. It contains a package named `Data.ByteString.UTF8`.
 
 ~~~~ {.haskell}
-import Data.ByteString.Lazy.UTF8
+import Data.ByteString.UTF8
 ~~~~
 
 It defines a function named `toString`:
@@ -1318,9 +1315,9 @@ Write an action that downloads a URL and converts it from a
 Write a type signature for the action.
 
 * Haskell definitions usually don't require type signatures.
-
 * Nevertheless, we write them for *documentation* on almost all
   top-level definitions.
+* Vs-code suggests the type, and will warn you if a top-level signature is missing. 
 
 
 # Downloading and saving a web page
@@ -1348,19 +1345,15 @@ To save a local copy of a file, you'll need the `writeFile` action.
 Two truisms:
 
 * Most HTML in the wild is a mess.
-
 * Even parsing well formed HTML is complicated.
 
 So! Let's use another library.
-
-~~~~
-cabal install tagsoup
-~~~~
 
 The `tagsoup` package can parse arbitrarily messy HTML.
 
 It will feed us a list of events, like a SAX parser.
 
+We allready added it to our `package.yaml` file, so it is ready for us to use!
 
 # Dealing with problems
 
@@ -1470,15 +1463,15 @@ case foo of
 
 # Tags
 
-The `tagsoup` package defines the following type:
+The [`tagsoup`](https://hackage.haskell.org/package/tagsoup-0.14.8/docs/Text-HTML-TagSoup.html) package defines the following type:
 
 ~~~~ {.haskell}
-data Tag = TagOpen String [Attribute]
-         | TagClose String
-         | TagText String
-         | TagComment String
-         | TagWarning String
-         | TagPosition Row Column
+data Tag = TagOpen str [Attribute str]
+         | TagClose str
+         | TagText str
+         | TagComment str
+         | TagWarning str
+         | TagPosition !Row !Column
 ~~~~
 
 What do you think the constructors mean?
@@ -1547,7 +1540,7 @@ isOpenTag (TagOpen _ _) = True
 
 Suppose we have a page in memory already.
 
-* Browse the `tagsoup` docs, in the `Text.HTML.TagSoup` module.
+* Browse the `tagsoup` docs, in the [`Text.HTML.TagSoup`](https://hackage.haskell.org/package/tagsoup-0.14.8/docs/Text-HTML-TagSoup.html) module.
 
 * Find a function that will parse a web page into a series of tags.
 
@@ -1733,11 +1726,7 @@ canon referer path =
     Just r  ->
       case parseURIReference path of
         Nothing -> Nothing
-        Just p  ->
-          case nonStrictRelativeTo p r of
-            Nothing -> Nothing
-            Just u ->
-             Just (uriToString id u "")
+        Just p  -> Just (uriToString id (nonStrictRelativeTo p r) "")
 ~~~~
 
 Surely there's a better way.
@@ -1781,11 +1770,10 @@ bind (Just value) action = action value
 How could we use this?
 
 ~~~~ {.haskell}
-canon1 referer path =
+canon1  referer path =
   parseURI referer                `bind`
    \r -> parseURIReference path   `bind`
-    \p -> nonStrictRelativeTo p r `bind`
-     \u -> Just (uriToString id u "")
+    \p -> Just (uriToString id (nonStrictRelativeTo p r) "")
 ~~~~
 
 If we enclose a function name in backticks, we can use the function as
@@ -1795,11 +1783,10 @@ an infix operator.
 # Reformatting the code
 
 ~~~~ {.haskell}
-canon referer path =
-  parseURI referer         `bind` \r ->
-  parseURIReference path   `bind` \p ->
-  nonStrictRelativeTo p r  `bind` \u ->
-  Just (uriToString id u "")
+canon  referer path =
+  parseURI referer         `bind` \r -> 
+  parseURIReference path   `bind` \p -> 
+  Just (uriToString id (nonStrictRelativeTo p r) "")
 ~~~~
 
 
@@ -1808,11 +1795,10 @@ canon referer path =
 The `>>=` operator is a more general version of our `bind` function.
 
 ~~~~ {.haskell}
-canon referer path =
-  parseURI referer >>= \r ->
-  parseURIReference path >>= \p ->
-  nonStrictRelativeTo p r >>= \u ->
-  Just (uriToString id u "")
+canon  referer path =
+  parseURI referer         >>= \r -> 
+  parseURIReference path   >>= \p -> 
+  Just (uriToString id (nonStrictRelativeTo p r) "")
 ~~~~
 
 
@@ -1826,8 +1812,7 @@ canonicalize :: String -> String -> Maybe String
 canonicalize referer path = do
   r <- parseURI referer
   p <- parseURIReference path
-  u <- nonStrictRelativeTo p r
-  return (uriToString id u "")
+  return (uriToString id (nonStrictRelativeTo p r) "")
 ~~~~
 
 
@@ -1862,7 +1847,7 @@ Type this into the search box:
 What does the first result say?
 
 
-# We're there!
+# We're getting closer!
 
 ~~~~ {.haskell}
 import Data.Maybe
@@ -1877,6 +1862,23 @@ links url =
   filter (isTagOpenName "a") .
   canonicalizeTags .
   parseTags
+~~~~
+
+# We're there!
+
+In Vscode, a suggestion is done (blue wiggely line) to use `mapMaybe`.
+
+Hoover over the blue line, select the blue dot and `apply hint "use mapMaybe"` 
+
+~~~~{.haskell}
+links :: String -> String -> [String]
+links url =
+    mapMaybe (canonicalizeLink url) . filter (not . null) .
+    map (fromAttrib "href") .
+    filter (not . nofollow) .
+    filter (isTagOpenName "a") .
+    canonicalizeTags .
+    parseTags
 ~~~~
 
 
@@ -2039,7 +2041,7 @@ increment = (1+)
 # Spidering, in all its glory
 
 ~~~~ {.haskell}
-spider :: Int -> URL -> IO (Map URL [URL])
+spider :: Int -> String -> IO (Map.Map String [String])
 spider count url0 = go 0 Map.empty (Set.singleton url0)
   where
     go k seen queue0
@@ -2048,14 +2050,14 @@ spider count url0 = go 0 Map.empty (Set.singleton url0)
       case Set.minView queue0 of
         Nothing -> return seen
         Just (url, queue) -> do
-          page <- download url
+          request <- parseRequest  url
+          page <- download request
           let ls       = links url page
               newSeen  = Map.insert url ls seen
               notSeen  = Set.fromList .
                          filter (`Map.notMember` newSeen) $ ls
               newQueue = queue `Set.union` notSeen
-          go (k+1) newSeen newQueue
-~~~~
+          go (k+1) newSeen newQueue~~~~
 
 
 # Where do we stand?
@@ -2081,8 +2083,3 @@ At this point, if we have miraculously not run out of time, we're
 going on a choose-your-own-adventure session in Emacs.
 
 Thanks for sticking with the slideshow so far!
-
-# Credits
-
-These sheets are forked from a [workshop by Bryan O'Sullivan](https://github.com/bos/strange-loop-2011)
-
