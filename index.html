@@ -1627,14 +1627,23 @@ with the requested element added.</li>
 </div>
 <div id="spidering-in-all-its-glory" class="slide section level1">
 <h1>Spidering, in all its glory</h1>
-<p>~~~~ {.haskell} spider :: Int -&gt; String -&gt; IO (Map.Map String
-[String]) spider count url0 = go 0 Map.empty (Set.singleton url0) where
-go k seen queue0 | k &gt;= count = return seen | otherwise = case
-Set.minView queue0 of Nothing -&gt; return seen Just (url, queue) -&gt;
-do request &lt;- parseRequest url page &lt;- download request let ls =
-links url page newSeen = Map.insert url ls seen notSeen = Set.fromList .
-filter (<code>Map.notMember</code> newSeen) $ ls newQueue = queue
-<code>Set.union</code> notSeen go (k+1) newSeen newQueue~~~~</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb131-1"><a href="#cb131-1" tabindex="-1"></a><span class="ot">spider ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> (<span class="dt">Map.Map</span> <span class="dt">String</span> [<span class="dt">String</span>])</span>
+<span id="cb131-2"><a href="#cb131-2" tabindex="-1"></a>spider count url0 <span class="ot">=</span> go <span class="dv">0</span> Map.empty (Set.singleton url0)</span>
+<span id="cb131-3"><a href="#cb131-3" tabindex="-1"></a>  <span class="kw">where</span></span>
+<span id="cb131-4"><a href="#cb131-4" tabindex="-1"></a>    go k seen queue0</span>
+<span id="cb131-5"><a href="#cb131-5" tabindex="-1"></a>        <span class="op">|</span> k <span class="op">&gt;=</span> count <span class="ot">=</span> <span class="fu">return</span> seen</span>
+<span id="cb131-6"><a href="#cb131-6" tabindex="-1"></a>        <span class="op">|</span> <span class="fu">otherwise</span>  <span class="ot">=</span></span>
+<span id="cb131-7"><a href="#cb131-7" tabindex="-1"></a>      <span class="kw">case</span> Set.minView queue0 <span class="kw">of</span></span>
+<span id="cb131-8"><a href="#cb131-8" tabindex="-1"></a>        <span class="dt">Nothing</span> <span class="ot">-&gt;</span> <span class="fu">return</span> seen</span>
+<span id="cb131-9"><a href="#cb131-9" tabindex="-1"></a>        <span class="dt">Just</span> (url, queue) <span class="ot">-&gt;</span> <span class="kw">do</span></span>
+<span id="cb131-10"><a href="#cb131-10" tabindex="-1"></a>          request <span class="ot">&lt;-</span> parseRequest  url</span>
+<span id="cb131-11"><a href="#cb131-11" tabindex="-1"></a>          page <span class="ot">&lt;-</span> download request</span>
+<span id="cb131-12"><a href="#cb131-12" tabindex="-1"></a>          <span class="kw">let</span> ls       <span class="ot">=</span> links url page</span>
+<span id="cb131-13"><a href="#cb131-13" tabindex="-1"></a>              newSeen  <span class="ot">=</span> Map.insert url ls seen</span>
+<span id="cb131-14"><a href="#cb131-14" tabindex="-1"></a>              notSeen  <span class="ot">=</span> Set.fromList <span class="op">.</span></span>
+<span id="cb131-15"><a href="#cb131-15" tabindex="-1"></a>                         <span class="fu">filter</span> (<span class="ot">`Map.notMember`</span> newSeen) <span class="op">$</span> ls</span>
+<span id="cb131-16"><a href="#cb131-16" tabindex="-1"></a>              newQueue <span class="ot">=</span> queue <span class="ot">`Set.union`</span> notSeen</span>
+<span id="cb131-17"><a href="#cb131-17" tabindex="-1"></a>          go (k<span class="op">+</span><span class="dv">1</span>) newSeen newQueue</span></code></pre></div>
 </div>
 <div id="where-do-we-stand" class="slide section level1">
 <h1>Where do we stand?</h1>

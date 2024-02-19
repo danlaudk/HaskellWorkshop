@@ -2057,7 +2057,9 @@ spider count url0 = go 0 Map.empty (Set.singleton url0)
               notSeen  = Set.fromList .
                          filter (`Map.notMember` newSeen) $ ls
               newQueue = queue `Set.union` notSeen
-          go (k+1) newSeen newQueue~~~~
+          go (k+1) newSeen newQueue
+
+~~~~
 
 
 # Where do we stand?
