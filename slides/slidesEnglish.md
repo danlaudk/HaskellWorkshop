@@ -1,5 +1,5 @@
 % Haskell: Functional Programming 
-% Han Joosten & Daniel Lau
+% Han Joosten & Dan Lau
 % 2024-03-11
 
 
@@ -34,7 +34,29 @@ https://hanjoosten.github.io/HaskellWorkshop
 * I've found Haskell to be a great general-purpose language
 * The community of people is amazing
 
-# What to expect 1
+
+# Dan's background
+
+* 4 year old Scala developer
+* previously 4 years data science & econometrics (in R, also FP, without knowing it)
+* In 4 Ordina assignments, teams are FP. Current teammates learning Rust. Deploying blockchain
+* Completed LG1 last year and facilitated LG2 FP in Elm
+* Reactive experience with Akka actors (JVM) 
+* Kotlin developer Thom van Kalkeren (Codestar) joins tomorrow
+
+# Discuss
+
+* What is Functional Programming
+* What are your experiences? Why FP?
+- Do you share some common reactions
+- Good use cases for FP 
+- Where FP not useful
+- Trends and architectures where FP plays a role
+
+Form groups of 3 to a whiteboard/flipboard, and write down some answers. 
+We will then go from board to board, and another group will try to riff on what you have written on your board
+
+# Workshop: What to expect 1
 
 * Haskell is a fairly big language
 * Since so much is unfamiliar to newcomers, expect to wander far from
